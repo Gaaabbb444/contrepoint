@@ -25,7 +25,7 @@
 | Notes Sustainalytics sur Yahoo | Requête des notes ESG pour les ETF et même pour Apple | ❌ **Yahoo ne fournit plus aucune note ESG** (erreur « introuvable » partout). Piste abandonnée. |
 | Notes ESG MSCI | Lecture de la fiche iShares | ⚠️ Seule une note **globale** (AAA à CCC) est affichée, pas de notes E, S, G séparées. Voir § 4.4. |
 | Flux RSS | 59 flux testés (34 « marché », 25 « ESG ») | ✅ 18 flux « marché » et 13 flux « ESG » retenus (liste au § 5.1) |
-| GDELT DOC 2.0 | 6 requêtes espacées de 6 à 30 secondes | ⚠️ **Refus systématique** (« trop de requêtes »). Peu fiable : traité comme un bonus facultatif, jamais comme une dépendance (§ 5.5). |
+| GDELT DOC 2.0 | 6 requêtes espacées de 6 à 30 secondes | ⚠️ **Refus systématique** (« trop de requêtes »). **Retiré le 17/10/2026** (§ 5.6). |
 | FinBERT (ProsusAI/finbert) | Vérification sur Hugging Face | ✅ Disponible, très utilisé (≈ 4 millions de téléchargements par mois). Licence **CC BY-NC-SA 4.0** : usage non commercial autorisé, avec citation. |
 | Modèle de sentiment français | Recherche sur Hugging Face | ❌ Aucun modèle financier français éprouvé. On reste en anglais. |
 | Banque centrale européenne (BCE) | Taux EUR/USD et €STR | ✅ API officielle, gratuite, sans clé |
@@ -43,7 +43,7 @@
             │                                                                   │
  Yahoo   ───┼──► [Chaque nuit, 04 h 41 UTC]                                     │
  BCE     ───┼──►   1. prix → performances                                       │
- GDELT   ───┼──►   2. agrégation du sentiment de la dernière fenêtre de bourse  │
+            │      2. agrégation du sentiment de la dernière fenêtre de bourse  │
             │      3. mise en parallèle + synthèse                              │
             │      4. vérification → écriture des JSON → commit automatique     │
             │                                                                   │
@@ -76,7 +76,6 @@ Projet/
 │   ├── collecte_prix.py          ← télécharge les cours (Yahoo) et les taux (BCE)
 │   ├── performance.py            ← rendements, volatilité, perte maximale, ratios
 │   ├── sentiment.py              ← dédoublonnage + FinBERT + indicateurs du jour
-│   ├── controle_gdelt.py         ← indicateur de contrôle facultatif
 │   ├── mise_en_parallele.py      ← corrélations, test de décalage, comparaison
 │   ├── synthese.py               ← phrase automatique en français (règles fixes)
 │   ├── journal.py                ← enregistre succès et échecs de chaque étape
@@ -85,7 +84,6 @@ Projet/
 ├── data/                         ← l'historique, conservé indéfiniment
 │   ├── titres/2026/10/2026-10-17.csv          ← titre, source, lien, date, score FinBERT (jamais le résumé)
 │   ├── sentiment_quotidien.csv                ← une ligne par jour et par groupe
-│   ├── gdelt_ton.csv                          ← série GDELT, séparée
 │   └── journal_execution.csv                  ← une ligne par exécution et par étape
 │
 ├── docs/                         ← le site (GitHub Pages sert ce dossier)
@@ -265,14 +263,14 @@ Chaque jour, les **5 titres les plus positifs et les 5 plus négatifs** (titre, 
   - `collecte_titres.py` : collecte, dédoublonnage, notation et enregistrement sans résumé ;
   - `fenetres.py` : journées de bourse, d'après le calendrier officiel Xetra ;
   - `sentiment.py` : FinBERT et indicateurs du jour ;
-  - `controle_gdelt.py` : contrôle GDELT ;
   - agrégation quotidienne dans `traitement_nuit.py`.
 - **Collecte réelle à blanc** depuis le PC : 31 flux sur 31 fonctionnent. Sur 36 heures : 429 articles lus, 32 doublons, 397 retenus (253 « marché », 144 « ESG »).
 - **FinBERT** : version figée (commit `0bc2ac10`, 12/10/2026). Ce commit, publié par ProsusAI, ajoute les conditions de licence CC BY-NC-SA 4.0 et des poids au format sûr « safetensors ». Notre usage, personnel et non commercial, est autorisé avec citation.
 - **Mise en cache** (`.github/workflows/collecte_titres.yml`) : la clé du cache contient la version du modèle. Quand le modèle est trouvé dans le cache, tout accès à Hugging Face est coupé (`HF_HUB_OFFLINE=1`), ce qui prouve qu'il n'est pas retéléchargé.
 - **Non encore exécuté** : FinBERT lui-même, qui ne peut tourner que dans GitHub Actions. Cela nécessite le dépôt GitHub.
 
-### 5.6 GDELT
+### 5.6 GDELT — retiré le 17/10/2026
+- **Décision (17/10/2026, après la mise en ligne)** : GDELT est retiré du traitement. Bilan : 2 réponses sur 7 tentatives depuis GitHub, jamais pour la requête ESG ; série trop lacunaire pour servir de contrôle. Il n'est plus mentionné que dans la partie « Limites » de la méthodologie. Le texte ci-dessous est conservé pour l'historique.
 - **Constat** : l'API a refusé presque toutes mes requêtes, même espacées de 30 secondes. Une seule est passée le 17/10/2026 : l'accès est donc possible, mais très intermittent. Les serveurs de GitHub partagent leurs adresses avec beaucoup d'utilisateurs, ce sera sans doute pire.
 - **Proposition** : une tentative facultative par nuit (2 requêtes), **qui ne peut jamais faire échouer le reste**. Si elle réussit au premier lancement, elle fournit 3 mois de tonalité comme historique de départ, **affiché séparément** et étiqueté « GDELT — méthode différente ».
 - **Différence expliquée sur le site** : GDELT compte des mots positifs et négatifs d'après un dictionnaire, sur des articles complets du monde entier. FinBERT est un réseau de neurones entraîné sur des phrases financières, appliqué à nos titres. Les deux échelles ne sont pas comparables : on ne les mélange jamais.
@@ -344,7 +342,7 @@ La documentation dit qu'en dépôt public, les tâches planifiées sont désacti
 **Règles d'affichage déjà décidées** (à respecter quelle que soit la maquette) :
 - **Pied de page de chaque page** : crédits lus dans `etat.json`, dont FinBERT (© MIH AI B.V., CC BY-NC-SA 4.0), les sources de cours (Yahoo Finance, BCE) et les données ESG.
 - **Bandeau de mise à jour** : date des dernières données (`etat.json`), astérisque si la dernière clôture est provisoire, alertes des dernières 24 heures.
-- **GDELT** : rien n'est affiché si `etat.json` indique `gdelt_disponible: false`, ni graphique vide, ni alerte.
+- **GDELT** : retiré le 17/10/2026 (§ 5.6) ; mentionné seulement dans les limites de la méthodologie.
 - **Volet 3** : tant que l'échantillon est insuffisant, une barre de progression (« 12 / 60 jours de bourse ») et la date estimée, jamais un simple message d'attente.
 - **Corrélation glissante** : toujours affichée avec une **zone du hasard** (bande grisée de −0,36 à +0,36 sur 30 séances, valeur lue dans `parallele.json` → `zone_hasard_correlation_glissante`), accompagnée d'une phrase expliquant qu'à l'intérieur de cette zone, la courbe ne dit rien.
 - **Test principal et tests exploratoires** : le test principal est mis en avant. Les tests exploratoires sont présentés à part, sous ce nom, avec leur probabilité corrigée (Holm), et jamais formulés comme des conclusions.

@@ -101,9 +101,6 @@ Une journée de sentiment couvre les articles publiés **de la clôture de la s�
 
 **Comment FinBERT traite l'actualité ESG.** Le groupe « ESG » est nettement plus souvent neutre (environ 70 %) que le groupe « marché » (environ 30 %). FinBERT a été entraîné à juger l'effet d'une phrase sur la situation financière d'une entreprise, du point de vue d'un investisseur ; or beaucoup de titres ESG sont informatifs (calendrier réglementaire, publication d'un rapport, lancement d'une initiative) sans conséquence financière explicite, et sont donc classés neutres. Sur les premiers titres collectés, les annonces d'entreprises (lancements, partenariats) ne sont jamais classées négatives, alors que les titres réglementaires le sont plus souvent (environ un quart : contraintes, reports, sanctions). Conséquence : le niveau du solde ESG ne se compare pas à celui du marché, mais à **son propre historique**. Ce taux de neutres est suivi chaque nuit (moyenne sur 20 journées).
 
-### Contrôle externe : GDELT
-GDELT, projet universitaire gratuit, publie la « tonalité » moyenne de la presse mondiale, calculée en comptant les mots positifs et négatifs d'un dictionnaire sur les articles complets. C'est une méthode très différente de FinBERT ; les deux séries sont affichées séparément et ne se comparent qu'en tendance. Le service refuse souvent les requêtes : cette série peut donc présenter des trous.
-
 ### Historique des changements de sources
 Toute modification de la liste des sources change ce que mesure l'indicateur ; elle est donc datée ici. Les changements intervenus avant la première journée exploitable ont été appliqués rétroactivement aux titres déjà collectés, pour que l'historique reste homogène.
 
@@ -149,8 +146,13 @@ Avant de chercher un lien avec les ETF ESG, on vérifie que l'indicateur mesure 
 ### Synthèse automatique
 Le court texte affiché en haut du site est produit par des **règles fixes**, sans intelligence artificielle : des phrases à trous remplies avec les chiffres du jour (humeur du marché et de l'actualité ESG, bilan des 5 dernières journées, performance relative de l'ETF choisi sur 5 séances et sur un an, état du **test principal**). Elle ne cite jamais un test exploratoire, même « significatif ». Les règles sont écrites dans `pipeline/synthese.py`.
 
-### Contrôle externe GDELT
-Quand la série GDELT est indisponible ou vide, rien n'est affiché sur le site (ni graphique vide, ni message d'alerte) : c'est un complément facultatif.
+---
+
+## Limites
+- **Le passé ne prédit pas l'avenir.** Les écarts de performance mesurés dépendent de la période (voir plus haut le rôle des géants technologiques américains de 2023 à 2026).
+- **Le sentiment mesure le ton des titres**, pas la réalité économique, et seulement dans la presse anglophone gratuite. FinBERT se trompe parfois sur le sens d'une nouvelle pour les marchés (exemples plus haut).
+- **Corrélation n'est pas causalité**, même lorsque le test principal sera interprétable.
+- **Pas de contrôle externe de l'indicateur de sentiment.** Il était prévu de le comparer à la « tonalité » publiée par GDELT, projet universitaire gratuit qui compte les mots positifs et négatifs d'un dictionnaire dans la presse mondiale. Depuis les serveurs de GitHub, ce service a refusé la grande majorité des requêtes (« trop de requêtes ») : 2 réponses sur 7 tentatives le 17/10/2026, et jamais pour la requête ESG. Une série aussi lacunaire ne permettait aucun contrôle fiable : GDELT a été retiré le 17/10/2026. La cohérence de l'indicateur repose donc sur le contrôle de validité décrit plus haut (lien avec la performance du MSCI World le même jour) et sur l'affichage quotidien des titres les plus positifs et les plus négatifs, que chacun peut juger.
 
 ---
 

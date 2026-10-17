@@ -2,16 +2,19 @@
 
 Lancement :  python -m pipeline.traitement_nuit
 
-Étape 1 du projet : seule la partie « performance des ETF » existe pour
-l'instant. Le sentiment, la mise en parallèle et la synthèse s'ajouteront aux
-étapes suivantes, chacune isolée : la panne de l'une n'empêche pas les autres.
+Étapes : performance des ETF, explication sectorielle, sentiment de la veille,
+mise en parallèle, synthèse, page Méthodologie, fichier d'état du site.
+Chacune est isolée : la panne de l'une n'empêche pas les autres.
+
+GDELT (contrôle externe du sentiment) a été retiré le 17/10/2026 : son service
+refusait presque toutes les requêtes (voir la méthodologie, « Limites »).
 """
 
 from datetime import date, datetime, timedelta, timezone
 
 import pandas as pd
 
-from pipeline import (collecte_prix, collecte_titres, controle_gdelt, fenetres, parallele, performance, secteurs, site,
+from pipeline import (collecte_prix, collecte_titres, fenetres, parallele, performance, secteurs, site,
                       sentiment, synthese)
 from pipeline.config import DOSSIER_DATA, DOSSIER_SITE_DATA, config_etf, lire_yaml, parametres
 from pipeline.journal import FICHIER_JOURNAL, Journal
@@ -22,8 +25,6 @@ FICHIER_PROVISOIRES = DOSSIER_DATA / "clotures_provisoires.json"
 FICHIER_SECTEURS = DOSSIER_SITE_DATA / "secteurs.json"
 FICHIER_SENTIMENT = DOSSIER_SITE_DATA / "sentiment.json"
 FICHIER_HISTO_SENTIMENT = DOSSIER_DATA / "sentiment_quotidien.csv"
-FICHIER_GDELT = DOSSIER_DATA / "gdelt_ton.csv"
-FICHIER_GDELT_SITE = DOSSIER_SITE_DATA / "gdelt.json"
 FICHIER_ETAT = DOSSIER_SITE_DATA / "etat.json"
 FICHIER_PARALLELE = DOSSIER_SITE_DATA / "parallele.json"
 FICHIER_SYNTHESE = DOSSIER_SITE_DATA / "synthese.json"
@@ -447,35 +448,7 @@ def etape_parallele(journal: Journal, tableau: pd.DataFrame | None) -> None:
                   " ".join(textes.get(cfg["defaut_esg"], []))[:300] if ecrit else raison)
 
 
-def etape_gdelt(journal: Journal) -> None:
-    """Tonalité GDELT (contrôle facultatif) : un échec n'est qu'un avertissement."""
-    try:
-        series = controle_gdelt.collecter()
-    except Exception as erreur:  # noqa: BLE001
-        journal.noter("gdelt", "avertissement", f"GDELT indisponible cette nuit ({erreur}) — sans conséquence")
-        return
-    nouveau = pd.concat({g: s for g, s in series.items()}, axis=1).rename_axis("date").reset_index()
-    nouveau["date"] = nouveau["date"].astype(str)
-    if FICHIER_GDELT.exists():
-        ancien = pd.read_csv(FICHIER_GDELT, encoding="utf-8-sig", dtype={"date": str})
-        nouveau = pd.concat([ancien[~ancien["date"].isin(nouveau["date"])], nouveau]).sort_values("date")
-    nouveau.to_csv(FICHIER_GDELT, index=False, encoding="utf-8-sig")
-    donnees = {"genere_le_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-               "methode": "Tonalité moyenne GDELT (dictionnaire de mots, articles complets, presse mondiale). "
-                          "Méthode différente de FinBERT : à comparer en tendance uniquement.",
-               "requetes": controle_gdelt.REQUETES,
-               "series": nouveau.where(pd.notna(nouveau), None).to_dict(orient="records")}
-    ecrire_json_si_valide(FICHIER_GDELT_SITE, donnees, [(len(nouveau) > 0, "série vide")])
-    journal.noter("gdelt", "ok", f"{len(nouveau)} jours de tonalité GDELT")
-
-
-ETAPES = ["performance", "secteurs", "sentiment", "parallele", "synthese", "gdelt"]
-
-
-def gdelt_a_des_donnees() -> bool:
-    """Vrai seulement si le fichier GDELT du site existe et contient au moins une valeur."""
-    donnees = lire_json(FICHIER_GDELT_SITE) or {}
-    return any(v is not None for ligne in donnees.get("series", []) for k, v in ligne.items() if k != "date")
+ETAPES = ["performance", "secteurs", "sentiment", "parallele", "synthese"]
 
 
 def ecrire_etat(journal: Journal, maintenant: datetime | None = None) -> dict:
@@ -503,10 +476,10 @@ def ecrire_etat(journal: Journal, maintenant: datetime | None = None) -> dict:
         }
 
     # Alertes : cette exécution + journal des dernières 24 h (relevés de titres).
-    # GDELT est facultatif : ses incidents restent dans le journal mais ne sont
-    # pas affichés sur le site (point 10 : rien ne s'affiche si la série est vide).
+    # Les anciennes lignes « gdelt » du journal (étape retirée le 17/10/2026)
+    # ne sont pas des alertes à afficher.
     alertes = [{"horodatage_utc": l["horodatage_utc"], "etape": l["etape"], "statut": l["statut"], "message": l["message"]}
-               for l in journal.lignes if l["statut"] != "ok" and l["etape"] != "gdelt"]
+               for l in journal.lignes if l["statut"] != "ok"]
     if FICHIER_JOURNAL.exists():
         histo = pd.read_csv(FICHIER_JOURNAL, encoding="utf-8-sig", dtype=str).fillna("")
         limite = (maintenant - timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S")
@@ -528,10 +501,8 @@ def ecrire_etat(journal: Journal, maintenant: datetime | None = None) -> dict:
             "sentiment_derniere_journee": sent.get("derniere_seance"),
         },
         "etapes": etapes,
-        "tout_va_bien": all(e["statut"] == "ok" for k, e in etapes.items() if k != "gdelt"),
+        "tout_va_bien": all(e["statut"] == "ok" for e in etapes.values()),
         "alertes_24h": uniques,
-        # Le site n'affiche la série GDELT que si elle contient des valeurs.
-        "gdelt_disponible": gdelt_a_des_donnees(),
         # Crédits affichés dans le pied de page de chaque page du site.
         "credits": [
             CREDIT_FINBERT,
@@ -568,10 +539,6 @@ def main() -> int:
         site.main()
     except Exception as erreur:  # noqa: BLE001
         journal.noter("site", "avertissement", f"méthodologie non mise à jour : {erreur!r}")
-    try:
-        etape_gdelt(journal)
-    except Exception as erreur:  # noqa: BLE001
-        journal.noter("gdelt", "avertissement", f"erreur imprévue : {erreur!r}")
     try:
         ecrire_etat(journal)
     except Exception as erreur:  # noqa: BLE001

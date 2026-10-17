@@ -7,7 +7,7 @@
 # minutes : le site reste à jour avant 8 h.
 #
 # Enchaîne : vérification des calculs (tests) → performances → secteurs →
-# sentiment de la veille → contrôle GDELT → fichier d'état, puis enregistre les
+# sentiment de la veille → mise en parallèle → synthèse → fichier d'état, puis enregistre les
 # résultats dans le dépôt. Une étape en panne n'empêche pas les autres ; le site
 # garde alors les dernières données valides (avec leur date) et GitHub t'envoie
 # un e-mail, car la tâche apparaît en rouge.
@@ -51,7 +51,7 @@ jobs:
         # le site garde ses dernières données valides.
         run: python -m pytest -q
 
-      - name: Calculer (performances, secteurs, sentiment, GDELT, état)
+      - name: Calculer (performances, secteurs, sentiment, mise en parallèle, synthèse, état)
         id: calcul
         run: python -m pipeline.traitement_nuit
 

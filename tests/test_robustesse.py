@@ -19,7 +19,7 @@ from pipeline.sorties import ecrire_json_si_valide
 def chemins_temporaires(tmp_path, monkeypatch):
     """Redirige tous les fichiers écrits par le traitement vers un dossier de test."""
     for nom in ["FICHIER_PERFORMANCE", "FICHIER_PROVISOIRES", "FICHIER_SECTEURS", "FICHIER_SENTIMENT",
-                "FICHIER_HISTO_SENTIMENT", "FICHIER_GDELT", "FICHIER_GDELT_SITE", "FICHIER_ETAT", "FICHIER_JOURNAL",
+                "FICHIER_HISTO_SENTIMENT", "FICHIER_ETAT", "FICHIER_JOURNAL",
                 "FICHIER_PARALLELE", "FICHIER_SYNTHESE"]:
         monkeypatch.setattr(tn, nom, tmp_path / f"{nom.lower()}.json")
     import pipeline.journal as module_journal
@@ -49,9 +49,9 @@ def test_une_etape_qui_plante_n_empeche_pas_les_autres(chemins_temporaires, monk
     monkeypatch.setattr(tn, "etape_performance", plante)
     monkeypatch.setattr(tn, "etape_secteurs", lambda j, t: appels.append("secteurs"))
     monkeypatch.setattr(tn, "etape_sentiment", lambda j: (appels.append("sentiment"), j.noter("sentiment", "ok", "")))
-    monkeypatch.setattr(tn, "etape_gdelt", lambda j: appels.append("gdelt"))
+    monkeypatch.setattr(tn, "etape_parallele", lambda j, t: appels.append("parallele"))
     code = tn.main()
-    assert appels == ["secteurs", "sentiment", "gdelt"]
+    assert appels == ["secteurs", "sentiment", "parallele"]
     assert code == 1  # tâche marquée en échec : GitHub enverra un e-mail
     etat = json.loads(tn.FICHIER_ETAT.read_text(encoding="utf-8"))
     assert etat["etapes"]["performance"]["statut"] == "echec"

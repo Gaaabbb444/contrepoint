@@ -176,14 +176,6 @@ def test_le_resume_n_est_jamais_ecrit(tmp_path, monkeypatch):
         assert contenu.splitlines()[0].split(",") == ct.COLONNES_CSV
 
 
-def test_lecture_gdelt():
-    from pipeline.controle_gdelt import lire_tonalite
-    reponse = {"timeline": [{"series": "Average Tone", "data": [
-        {"date": "20261015T000000Z", "value": -1.25}, {"date": "20261016T000000Z", "value": -0.8}]}]}
-    s = lire_tonalite(reponse)
-    assert [str(d) for d in s.index] == ["2026-10-15", "2026-10-16"] and s.iloc[0] == -1.25
-
-
 # --- Agrégation de nuit, de bout en bout -------------------------------------------------
 
 def test_score_des_titres_extremes():
