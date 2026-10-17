@@ -294,6 +294,22 @@ Chaque jour, les **5 titres les plus positifs et les 5 plus négatifs** (titre, 
 - `journal_execution.csv` enregistre la date, l'étape, le statut et le message d'erreur. GitHub t'envoie aussi un e-mail si la tâche échoue.
 - Les deux tâches ne peuvent pas écrire en même temps : verrou GitHub `concurrency`.
 
+### 6.2 bis État de l'étape 3 (17/10/2026)
+- **Dépôt public** : https://github.com/Gaaabbb444/contrepoint. Les commits sont signés avec l'adresse anonyme de GitHub, donc aucun e-mail personnel n'est publié.
+- **Tâches automatiques**, actives depuis le 17/10/2026 :
+  - `collecte_titres.yml` : toutes les 3 heures, à la minute 23 ;
+  - `traitement_nuit.yml` : chaque nuit à 04 h 41 UTC. Elle lance d'abord les tests (un code cassé ne produit jamais de chiffres faux), puis les calculs, l'enregistrement et la réactivation des tâches.
+- **Testé sur GitHub** :
+  - collecte avec FinBERT : 2 min 26 s au premier passage (téléchargement du modèle), puis modèle repris du cache, hors ligne ;
+  - traitement de nuit : 4 étapes réussies, GDELT refusé (simple avertissement), commit automatique, réactivation des deux tâches réussie.
+- **Fichier d'état** (`docs/data/etat.json`) : il contient la date de la dernière exécution et des dernières données, le statut de chaque étape avec la date de sa dernière réussite (conservée d'une nuit sur l'autre), et les alertes des dernières 24 heures, relevés de titres compris.
+- **Tests de résistance** (`tests/test_robustesse.py`) :
+  - Yahoo en panne : le site garde ses données ;
+  - une étape qui plante n'empêche pas les suivantes, et la tâche passe en rouge, ce qui déclenche un e-mail de GitHub ;
+  - la date de dernière réussite est conservée ;
+  - des données plus anciennes n'écrasent jamais des données plus récentes.
+- **Filtre Google Actualités** : un titre d'agrégateur n'est retenu que s'il contient un mot-clé ESG (liste dans `config/flux_rss.yaml`). Les sigles en majuscules (ESG, COP…) doivent apparaître en majuscules. Les titres déjà collectés ont été nettoyés : 42 retirés.
+
 ### 6.3 La règle des 60 jours
 La documentation dit qu'en dépôt public, les tâches planifiées sont désactivées après 60 jours **sans activité du dépôt**, sans préciser si les commits du robot GitHub comptent. Ils comptent très probablement, mais ce n'est pas garanti. Double protection :
 1. Les commits automatiques quotidiens, plus les collectes toutes les 3 heures.

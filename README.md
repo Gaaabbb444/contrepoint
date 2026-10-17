@@ -13,6 +13,13 @@
 .venv\Scripts\python.exe -m analyses.resume_performance   # affiche le résultat
 ```
 
+## Vérifier que tout tourne
+
+- **Tâches automatiques** : onglet [Actions](https://github.com/Gaaabbb444/contrepoint/actions) du dépôt. Une coche verte signifie que tout va bien. Une croix rouge signifie qu'une étape a échoué : GitHub envoie alors un e-mail, et le site garde ses dernières données valides.
+- **Journal** : [data/journal_execution.csv](data/journal_execution.csv), avec une ligne par étape et par exécution.
+- **État affiché par le site** : [docs/data/etat.json](docs/data/etat.json).
+- **Lancer une tâche à la main** : onglet Actions, choisir la tâche, puis « Run workflow ».
+
 ## ⚠️ Mises à jour manuelles à faire
 
 Certaines informations ne peuvent pas être récupérées automatiquement : elles sont relevées à la main dans [config/etf.yaml](config/etf.yaml), avec leur source et leur date (`verifie_le`). Le site affiche ces dates.

@@ -51,7 +51,9 @@ def collecter(pause_secondes: int = 20, essais: int = 2) -> dict[str, pd.Series]
                 resultats[groupe] = telecharger(groupe)
                 break
             except Exception as erreur:  # noqa: BLE001
-                erreurs.append(f"{groupe} : {erreur}")
+                code = getattr(getattr(erreur, "response", None), "status_code", None)
+                erreurs.append(f"{groupe} : " + ("trop de requêtes (429)" if code == 429
+                                                  else f"erreur {code}" if code else type(erreur).__name__))
     if not resultats:
-        raise RuntimeError(" ; ".join(erreurs))
+        raise RuntimeError(", ".join(dict.fromkeys(erreurs)))  # sans répéter deux fois le même message
     return resultats
