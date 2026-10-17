@@ -43,7 +43,9 @@ flux:
   - { groupe: esg, nom: ESG Dive,                type: direct, actif: true, url: "https://www.esgdive.com/feeds/news/" }
   - { groupe: esg, nom: ESG News,                type: direct, actif: true, url: "https://esgnews.com/feed/" }
   - { groupe: esg, nom: Responsible Investor,    type: direct, actif: true, url: "https://www.responsible-investor.com/feed/" }
-  - { groupe: esg, nom: ImpactAlpha,             type: direct, actif: true, url: "https://impactalpha.com/feed/" }
+  # ImpactAlpha : fonctionne depuis un ordinateur personnel, mais refuse les serveurs
+  # de GitHub (erreur 403 constatée le 17/10/2026) → désactivé.
+  - { groupe: esg, nom: ImpactAlpha,             type: direct, actif: false, url: "https://impactalpha.com/feed/" }
   - { groupe: esg, nom: Trellis,                 type: direct, actif: true, url: "https://trellis.net/feed/" }
   - { groupe: esg, nom: FT Moral Money,          type: direct, actif: true, url: "https://www.ft.com/moral-money?format=rss" }
   - { groupe: esg, nom: FT Climate Capital,      type: direct, actif: true, url: "https://www.ft.com/climate-capital?format=rss" }

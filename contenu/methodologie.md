@@ -71,6 +71,8 @@ Version figée (Hugging Face, commit `0bc2ac10`, 12/10/2026) pour que les résul
 
 Pourquoi l'anglais : aucun modèle de sentiment financier en français n'a fait l'objet d'une validation comparable.
 
+**Limite du modèle, constatée dans nos propres données.** FinBERT juge la tonalité de la phrase, pas l'effet de la nouvelle sur les marchés. Exemple réel (16/10/2026) : « Wholesale prices jumped 6.3% annually in September, biggest gain since 2022 » est classé *positif* à 95 %, alors qu'une accélération de l'inflation est plutôt une mauvaise nouvelle pour les marchés (elle éloigne une baisse des taux). À l'inverse, « Dollar Index Falls 0.32% » est classé *négatif* alors que c'est une information neutre. Sur un grand nombre d'articles, ces erreurs se compensent en partie, mais l'indicateur mesure **le ton de l'actualité**, pas une prévision de marché. C'est pourquoi les titres les plus positifs et les plus négatifs sont affichés chaque jour : chacun peut juger de la cohérence du modèle.
+
 ### Indicateurs d'une journée
 - **Répartition** positif / neutre / négatif, en %.
 - **Solde net** = % positifs − % négatifs (de −100 à +100).
