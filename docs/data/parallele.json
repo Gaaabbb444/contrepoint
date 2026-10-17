@@ -11,17 +11,20 @@
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
      "n_positifs": 0,
      "requis_par_categorie": 15,
-     "disponible": false
+     "disponible": false,
+     "statut": "exploratoire"
     },
     "correlation_glissante": [],
     "journees": []
@@ -36,17 +39,20 @@
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
      "n_positifs": 0,
      "requis_par_categorie": 15,
-     "disponible": false
+     "disponible": false,
+     "statut": "exploratoire"
     },
     "correlation_glissante": [],
     "journees": []
@@ -63,17 +69,20 @@
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "principal"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
      "n_positifs": 0,
      "requis_par_categorie": 15,
-     "disponible": false
+     "disponible": false,
+     "statut": "exploratoire"
     },
     "correlation_glissante": [],
     "journees": []
@@ -88,17 +97,20 @@
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
      "n_positifs": 0,
      "requis_par_categorie": 15,
-     "disponible": false
+     "disponible": false,
+     "statut": "exploratoire"
     },
     "correlation_glissante": [],
     "journees": []
@@ -115,17 +127,20 @@
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
      "n_positifs": 0,
      "requis_par_categorie": 15,
-     "disponible": false
+     "disponible": false,
+     "statut": "exploratoire"
     },
     "correlation_glissante": [],
     "journees": []
@@ -140,17 +155,20 @@
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
      "n_positifs": 0,
      "requis_par_categorie": 15,
-     "disponible": false
+     "disponible": false,
+     "statut": "exploratoire"
     },
     "correlation_glissante": [],
     "journees": []
@@ -167,17 +185,20 @@
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
      "n_positifs": 0,
      "requis_par_categorie": 15,
-     "disponible": false
+     "disponible": false,
+     "statut": "exploratoire"
     },
     "correlation_glissante": [],
     "journees": []
@@ -192,17 +213,20 @@
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 0
+     "n": 0,
+     "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
      "n_positifs": 0,
      "requis_par_categorie": 15,
-     "disponible": false
+     "disponible": false,
+     "statut": "exploratoire"
     },
     "correlation_glissante": [],
     "journees": []
@@ -220,18 +244,52 @@
   },
   "correlation": {
    "disponible": false,
-   "n": 0
+   "n": 0,
+   "statut": "contrôle"
   }
  },
  "avertissements": [
   "Corrélation n'est pas causalité : un lien statistique ne prouve pas que le sentiment fait bouger les prix.",
-  "Plusieurs tests sont menés (4 ETF, 2 groupes, 3 tests) : sur 20 tests, environ un peut paraître « significatif » par pur hasard au seuil de 5 %."
+  "Un seul test principal a été fixé à l'avance (sentiment « marché » du jour J et performance relative de l'ETF SRI à J+1). Les autres tests sont exploratoires : leurs probabilités sont corrigées pour tests multiples (Holm) et ils servent à formuler des pistes, pas des conclusions."
  ],
- "genere_le_utc": "2026-10-17T00:44:44Z",
+ "test_principal": {
+  "description": "Sentiment « marché » du jour J et performance relative de l'ETF SRI (contre le MSCI World) à la séance suivante J+1. Seul test fixé à l'avance : il n'est pas corrigé pour tests multiples.",
+  "definition": {
+   "groupe": "marche",
+   "etf": "sri",
+   "test": "test_decalage_j1",
+   "fixe_le": "2026-10-17"
+  },
+  "resultat": {
+   "disponible": false,
+   "n": 0,
+   "statut": "principal"
+  },
+  "progression": {
+   "jours_exploitables": 0,
+   "jours_requis": 60,
+   "pourcentage": 0,
+   "date_estimee": "2027-01-14",
+   "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+  }
+ },
+ "nb_tests_exploratoires_disponibles": 0,
+ "zone_hasard_correlation_glissante": {
+  "fenetre": 30,
+  "seuil": 0.361,
+  "explication": "Sur 30 séances, une corrélation comprise entre −seuil et +seuil peut apparaître par pur hasard (95 % des cas) : la courbe ne dit rien tant qu'elle reste dans cette zone."
+ },
+ "genere_le_utc": "2026-10-17T00:59:23Z",
  "parametres": {
   "jours_min": 60,
   "jours_min_par_categorie": 15,
   "fenetre_glissante": 30,
-  "seuil_p": 0.05
+  "seuil_p": 0.05,
+  "test_principal": {
+   "groupe": "marche",
+   "etf": "sri",
+   "test": "test_decalage_j1",
+   "fixe_le": "2026-10-17"
+  }
  }
 }
