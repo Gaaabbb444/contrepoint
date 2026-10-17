@@ -88,18 +88,20 @@
     if (!el) return;
     el.textContent = format(cible);
     if (reduit || cible === null || cible === undefined || !isFinite(cible) || cible === 0) return;
-    const t0 = performance.now() + (delai || 0);
+    // Le chrono démarre à la première image affichée (et non à l'appel) : la première image montre donc 0.
+    let t0 = null;
     const jeton = (el._jeton = (el._jeton || 0) + 1);
-    const fin = () => { if (el._jeton === jeton) el.textContent = format(cible); };
+    // Pose la vraie valeur et arrête l'animation (le filet de sécurité ne peut pas être suivi d'une image intermédiaire).
+    const fin = () => { if (el._jeton === jeton) { el.textContent = format(cible); el._jeton++; } };
     function pas(t) {
       if (el._jeton !== jeton) return;
+      if (t0 === null) { t0 = t + (delai || 0); setTimeout(fin, duree + (delai || 0) + 800); } // filet de sécurité : si les images s'arrêtent en route
       const p = (t - t0) / duree;
       if (p >= 1) { fin(); return; }
       el.textContent = format(p <= 0 ? 0 : cible * adoucir(p));
       requestAnimationFrame(pas);
     }
     requestAnimationFrame(pas);
-    setTimeout(fin, duree + (delai || 0) + 800); // filet de sécurité
   }
   // Relance une animation CSS (barres qui repoussent depuis l'axe après un changement de période).
   function relancer(el, classe) {
