@@ -186,6 +186,49 @@ def test_lecture_gdelt():
 
 # --- Agrégation de nuit, de bout en bout -------------------------------------------------
 
+def test_score_des_titres_extremes():
+    articles = pd.DataFrame({
+        "classe": ["positif", "positif", "negatif", "negatif"], "titre": list("abcd"), "source": list("abcd"),
+        "media": list("abcd"), "lien": list("abcd"), "date_publication_utc": ["2026-10-16T10:00:00Z"] * 4,
+        "p_positif": [0.90, 0.95, 0.02, 0.10], "p_negatif": [0.01, 0.20, 0.96, 0.85], "p_neutre": [0.09, -0.15 + 0.2, 0.02, 0.05],
+    })
+    ind = sentiment.indicateurs_journee(articles, P)
+    # Score = p(positif) − p(négatif) : a = 0,89 passe devant b = 0,75 malgré une p(positif) plus faible.
+    assert [t["titre"] for t in ind["plus_positifs"]] == ["a", "b"]
+    assert ind["plus_positifs"][0]["score"] == pytest.approx(0.89)
+    assert [t["titre"] for t in ind["plus_negatifs"]] == ["c", "d"]
+    assert ind["plus_negatifs"][0]["score"] == pytest.approx(-0.94)
+
+
+def test_agregats_hebdomadaires_et_mensuels():
+    histo = pd.DataFrame([
+        {"seance": "2026-10-19", "groupe": "marche", "solde": -10.0, "etiquette": "neutre", "couverture_partielle": False},
+        {"seance": "2026-10-20", "groupe": "marche", "solde": -20.0, "etiquette": "négatif", "couverture_partielle": False},
+        {"seance": "2026-10-21", "groupe": "marche", "solde": 50.0, "etiquette": "signal insuffisant", "couverture_partielle": False},
+        {"seance": "2026-10-22", "groupe": "marche", "solde": 40.0, "etiquette": "positif", "couverture_partielle": True},
+        {"seance": "2026-10-26", "groupe": "marche", "solde": 6.0, "etiquette": "neutre", "couverture_partielle": False},
+        {"seance": "2026-10-16", "groupe": "esg", "solde": 7.0, "etiquette": "neutre", "couverture_partielle": True},
+    ])
+    semaines = sentiment.agreger_periodes(histo, "marche", "semaine")
+    assert semaines[0] == {"debut": "2026-10-19", "fin": "2026-10-25", "derniere_seance": "2026-10-22",
+                           "solde_moyen": -15.0, "nb_jours": 2, "nb_jours_ecartes": 2}
+    assert semaines[1]["solde_moyen"] == 6.0
+    mois = sentiment.agreger_periodes(histo, "marche", "mois")
+    assert len(mois) == 1 and mois[0]["solde_moyen"] == pytest.approx(-8.0) and mois[0]["nb_jours"] == 3
+    # Aucune journée exploitable : pas de moyenne (donc pas de barre).
+    assert sentiment.agreger_periodes(histo, "esg", "semaine")[0]["solde_moyen"] is None
+
+
+def test_methodologie_convertie_pour_le_site():
+    from pipeline.site import convertir
+    md = "# Titre\n\n*chapeau*\n\n---\n\n## Première partie\n\nTexte **gras**.\n\n| a | b |\n|---|---|\n| 1 | 2 |\n\n## Crédits\n\nFin."
+    res = convertir(md)
+    assert [s["numero"] for s in res["sommaire"]] == ["01", "02"]
+    assert res["sommaire"][0] == {"numero": "01", "titre": "Première partie", "id": "m-premiere-partie"}
+    assert '<h2 id="m-premiere-partie"><span class="k">01</span>Première partie</h2>' in res["html"]
+    assert "<table>" in res["html"] and "<hr" not in res["html"] and "Titre" not in res["html"]
+
+
 PC = {"intervalle_releves_heures": 3, "couverture_min_pct": 75, "couverture_ecart_max_heures": 12}
 DEBUT, FIN = pd.Timestamp("2026-10-15T15:30Z"), pd.Timestamp("2026-10-16T15:30Z")  # journée de 24 h
 

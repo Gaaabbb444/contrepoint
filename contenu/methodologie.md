@@ -7,7 +7,7 @@
 ## Performance des ETF
 
 ### Ce que l'on compare
-Quatre ETF ESG, tous construits à partir du MSCI World, sont comparés à un ETF qui réplique le MSCI World lui-même. Trois sont de la même famille (iShares : mêmes frais de 0,20 %, même gestion, même domicile), pour que l'écart observé vienne de la méthode ESG et non des frais. Un cinquième, BNP Paribas Easy MSCI World SRI PAB (labellisé ISR, 0,25 % de frais), est présenté en complément.
+Quatre ETF ESG, tous construits à partir du MSCI World, sont comparés à un ETF qui réplique le MSCI World lui-même. Trois sont de la même famille (iShares : mêmes frais de 0,20 %, même gestion, même domicile), pour que l'écart observé vienne de la méthode ESG et non des frais. Le quatrième, BNP Paribas Easy MSCI World SRI PAB (labellisé ISR, 0,25 % de frais), est présenté à part, en complément.
 
 ### Comment
 - **Rendement total** : tous les ETF sont capitalisants (les dividendes sont réinvestis dans le fonds) ; leur cours de bourse suffit donc à mesurer un rendement « dividendes réinvestis ».
@@ -81,6 +81,8 @@ Pourquoi l'anglais : aucun modèle de sentiment financier en français n'a fait 
 - **Solde net** = % positifs − % négatifs (de −100 à +100).
 - **Étiquette du jour** : le seuil n'est pas fixe, il dépend du nombre d'articles. C'est la **marge d'erreur statistique à 95 %** du solde : 1,96 × √((p + q − (p − q)²) / n), où *n* est le nombre d'articles, *p* la part de positifs et *q* la part de négatifs. L'étiquette est « positif » si le solde dépasse +marge, « négatif » s'il est inférieur à −marge, « neutre » sinon (impossible à distinguer du hasard de l'échantillon). Exemple : avec 30 % de positifs et 30 % de négatifs, la marge vaut ±9,6 points pour 250 articles, mais ±19,6 pour 60. Avec peu d'articles, il faut donc un écart beaucoup plus net pour conclure.
 - **Signal insuffisant** : moins de 30 articles, ou marge d'erreur supérieure à 25 points.
+- **Score d'un titre** (page « Titres du jour ») : probabilité « positif » moins probabilité « négatif » données par FinBERT, de −1 (très négatif) à +1 (très positif). Les cinq titres les plus positifs et les cinq plus négatifs de chaque groupe sont classés selon ce score.
+- **Barres du graphique** : pour 1 mois et 3 mois, une barre par journée de sentiment (contour en pointillé si la journée est partiellement relevée, pas de barre si le signal est insuffisant). Pour les périodes plus longues, une barre par semaine (depuis janvier, 1 an) ou par mois (3 et 5 ans) : c'est la **moyenne simple des soldes des journées exploitables** de la période (signal suffisant et couverture complète) ; l'infobulle indique combien de journées ont été retenues et écartées. Une période sans journée exploitable n'a pas de barre. Aucune barre n'existe avant le 16/10/2026, date de début de la collecte.
 - **Limite** : la formule suppose des articles indépendants ; or plusieurs médias couvrent souvent le même événement. Le dédoublonnage réduit ce problème sans le supprimer : la vraie marge est un peu plus large.
 
 ### La « journée » de sentiment

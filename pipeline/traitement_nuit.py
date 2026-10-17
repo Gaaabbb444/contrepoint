@@ -11,7 +11,7 @@ from datetime import date, datetime, timedelta, timezone
 
 import pandas as pd
 
-from pipeline import (collecte_prix, collecte_titres, controle_gdelt, fenetres, parallele, performance, secteurs,
+from pipeline import (collecte_prix, collecte_titres, controle_gdelt, fenetres, parallele, performance, secteurs, site,
                       sentiment, synthese)
 from pipeline.config import DOSSIER_DATA, DOSSIER_SITE_DATA, config_etf, lire_yaml, parametres
 from pipeline.journal import FICHIER_JOURNAL, Journal
@@ -397,6 +397,9 @@ def etape_sentiment(journal: Journal, maintenant: pd.Timestamp | None = None) ->
         "groupes": {g: details[(derniere, g)] for g in ("marche", "esg") if (derniere, g) in details},
         "historique": nouveau.where(pd.notna(nouveau), None).to_dict(orient="records"),
         "repartition_medias": repartition,
+        # Barres du graphique pour les périodes longues (voir sentiment.agreger_periodes).
+        "agregats": {g: {f: sentiment.agreger_periodes(nouveau, g, f) for f in ("semaine", "mois")}
+                     for g in ("marche", "esg")},
         "suivi_taux_neutre": suivi_neutres(nouveau),
         "modele": {"nom": p["modele"], "revision": p["revision"],
                    "licence": "CC BY-NC-SA 4.0 — © MIH AI B.V. (Prosus)"},
@@ -558,6 +561,11 @@ def main() -> int:
         etape_parallele(journal, tableau)
     except Exception as erreur:  # noqa: BLE001
         journal.noter("parallele", "echec", f"erreur imprévue : {erreur!r}")
+    try:
+        # Texte de la méthodologie pour le site (converti depuis contenu/methodologie.md).
+        site.main()
+    except Exception as erreur:  # noqa: BLE001
+        journal.noter("site", "avertissement", f"méthodologie non mise à jour : {erreur!r}")
     try:
         etape_gdelt(journal)
     except Exception as erreur:  # noqa: BLE001

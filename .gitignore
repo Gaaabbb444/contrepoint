@@ -9,3 +9,6 @@ __pycache__/
 
 # Cache du modèle FinBERT (géré par le cache de GitHub Actions, jamais dans le dépôt)
 .cache/
+
+# Maquette Claude Design et son contenu décompressé : jamais publiés
+design/

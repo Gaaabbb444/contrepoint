@@ -155,9 +155,19 @@ def indicateurs_journee(articles: pd.DataFrame, p_cfg: dict) -> dict:
     marge = marge_erreur(p, q, n, p_cfg["facteur_confiance"])
     k = p_cfg["titres_extremes"]
 
-    def extremes(classe: str, colonne: str) -> list[dict]:
-        choisis = articles[articles["classe"] == classe].nlargest(k, colonne)
-        return [{"titre": r.titre, "source": r.source, "lien": r.lien, "probabilite": round(float(getattr(r, colonne)), 3),
+    def extremes(classe: str) -> list[dict]:
+        """Titres les plus positifs (ou négatifs), classés par score = p(positif) − p(négatif), de −1 à +1.
+
+        Le score affiché sur le site est exactement celui-ci (arrondi à 3
+        décimales ici, 2 à l'affichage).
+        """
+        d = articles[articles["classe"] == classe].copy()
+        d["score"] = d["p_positif"].astype(float) - d["p_negatif"].astype(float)
+        choisis = d.nlargest(k, "score") if classe == "positif" else d.nsmallest(k, "score")
+        return [{"titre": r.titre, "source": r.source, "lien": r.lien,
+                 "score": round(float(r.score), 3),
+                 "p_positif": round(float(r.p_positif), 4), "p_negatif": round(float(r.p_negatif), 4),
+                 "probabilite": round(float(r.p_positif if classe == "positif" else r.p_negatif), 3),
                  "date_publication_utc": r.date_publication_utc} for r in choisis.itertuples()]
 
     if n and "date_approximative" in articles:
@@ -183,6 +193,37 @@ def indicateurs_journee(articles: pd.DataFrame, p_cfg: dict) -> dict:
         "solde": round(solde, 1),
         "marge_erreur": round(marge, 1) if math.isfinite(marge) else None,
         "etiquette": etiquette(solde, marge, n, p_cfg),
-        "plus_positifs": extremes("positif", "p_positif") if n else [],
-        "plus_negatifs": extremes("negatif", "p_negatif") if n else [],
+        "plus_positifs": extremes("positif") if n else [],
+        "plus_negatifs": extremes("negatif") if n else [],
     }
+
+
+def agreger_periodes(historique: pd.DataFrame, groupe: str, frequence: str) -> list[dict]:
+    """Solde moyen par semaine ou par mois, pour les barres du graphique (périodes longues).
+
+    Règle (documentée dans la méthodologie) : moyenne simple des soldes
+    quotidiens des journées EXPLOITABLES de la période (étiquette autre que
+    « signal insuffisant » et couverture complète). Le nombre de journées
+    retenues et écartées accompagne chaque moyenne. Une période sans journée
+    exploitable n'a pas de moyenne (pas de barre).
+    `frequence` : « semaine » (lundi → dimanche) ou « mois » (mois civil).
+    """
+    d = historique[historique["groupe"] == groupe].copy()
+    if d.empty:
+        return []
+    d["date"] = pd.to_datetime(d["seance"])
+    partielle = d["couverture_partielle"].astype(str).str.lower().eq("true")
+    d["exploitable"] = (d["etiquette"] != "signal insuffisant") & ~partielle
+    cle = d["date"].dt.to_period("W-SUN" if frequence == "semaine" else "M")
+    resultats = []
+    for periode, bloc in d.groupby(cle):
+        retenus = bloc[bloc["exploitable"]]
+        resultats.append({
+            "debut": periode.start_time.date().isoformat(),
+            "fin": periode.end_time.date().isoformat(),
+            "derniere_seance": bloc["date"].max().date().isoformat(),
+            "solde_moyen": round(float(pd.to_numeric(retenus["solde"]).mean()), 1) if len(retenus) else None,
+            "nb_jours": int(len(retenus)),
+            "nb_jours_ecartes": int(len(bloc) - len(retenus)),
+        })
+    return resultats
