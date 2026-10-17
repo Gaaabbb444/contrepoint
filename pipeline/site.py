@@ -29,8 +29,31 @@ def ancre(texte: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", t.lower()).strip("-")
 
 
+LISTE = re.compile(r"^\s*(\d+\.|[-*])\s")
+
+
+def preparer(md: str) -> str:
+    """Corrections avant conversion.
+
+    - Une liste qui suit directement un paragraphe (sans ligne vide) n'est pas
+      reconnue par Markdown : on insère la ligne vide manquante.
+    - Typographie française : espace insécable avant « : ; ! ? % » et après « « »,
+      pour qu'aucun signe ne se retrouve seul en début de ligne.
+    """
+    lignes, sortie = md.split("\n"), []
+    for i, ligne in enumerate(lignes):
+        precedente = sortie[-1] if sortie else ""
+        if LISTE.match(ligne) and precedente.strip() and not LISTE.match(precedente) and not precedente.startswith(("|", "#")):
+            sortie.append("")
+        sortie.append(ligne)
+    texte = "\n".join(sortie)
+    texte = re.sub(r" ([:;!?»%])(?=\s|$|[.,)])", " \\1", texte)
+    return texte.replace("« ", "« ")
+
+
 def convertir(md: str) -> dict:
     """Convertit le Markdown en HTML et numérote les grandes parties (01, 02…)."""
+    md = preparer(md)
     # Le titre de premier niveau et le chapeau en italique de la source ne sont pas repris :
     # le site affiche son propre titre « Méthodologie ».
     md = re.sub(r"\A# .*\n+(\*[^\n]*\*\n+)?", "", md)

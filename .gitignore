@@ -12,3 +12,6 @@ __pycache__/
 
 # Maquette Claude Design et son contenu décompressé : jamais publiés
 design/
+
+# Réglages locaux de l’aperçu (chemins propres à cet ordinateur)
+.claude/

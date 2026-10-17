@@ -155,7 +155,7 @@ def etape_performance(journal: Journal) -> pd.DataFrame | None:
         "periodes": periodes,
         "series": {
             "dates": [d.date().isoformat() for d in serie_100.index],
-            "base100": {col: [round(float(v), 3) for v in serie_100[col]] for col in serie_100.columns},
+            "base100": {col: [round(float(v), 6) for v in serie_100[col]] for col in serie_100.columns},
         },
     }
 

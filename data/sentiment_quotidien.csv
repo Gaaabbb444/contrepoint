@@ -1,5 +1,5 @@
 ﻿seance,groupe,nb_articles,nb_sources,positif_pct,neutre_pct,negatif_pct,solde,marge_erreur,etiquette,couverture_partielle,releves_reussis,releves_attendus,plus_long_trou_heures,nb_dates_approximatives,solde_dates_fiables,media_principal,part_media_principal_pct,solde_avec_plafond
 2026-10-15,esg,14,4,28.6,50.0,21.4,7.1,36.9,signal insuffisant,True,0.0,8.0,24.0,0.0,7.1,ESG News,50.0,-1.2
 2026-10-15,marche,20,7,20.0,20.0,60.0,-40.0,35.1,signal insuffisant,True,0.0,8.0,24.0,0.0,-40.0,New York Times,25.0,-40.0
-2026-10-16,esg,62,31,17.7,71.0,11.3,6.5,13.3,neutre,True,0.0,8.0,32.7,0.0,6.5,Edie,19.4,6.5
+2026-10-16,esg,63,31,17.5,71.4,11.1,6.3,13.1,neutre,True,0.0,8.0,32.7,0.0,6.3,Edie,19.0,6.3
 2026-10-16,marche,152,9,25.7,34.2,40.1,-14.5,12.7,négatif,True,0.0,8.0,32.7,0.0,-14.5,Financial Times,21.1,-14.5

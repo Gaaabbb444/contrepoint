@@ -1,5 +1,5 @@
 {
- "derniere_execution_utc": "2026-10-17T12:48:57Z",
+ "derniere_execution_utc": "2026-10-17T15:54:10Z",
  "donnees": {
   "performance_derniere_seance": "2026-10-16",
   "performance_provisoire": true,
@@ -9,27 +9,27 @@
   "performance": {
    "statut": "ok",
    "message": "5 ETF, séance du 2026-10-16, 1399 séances communes",
-   "derniere_reussite_utc": "2026-10-17T12:48:57Z"
+   "derniere_reussite_utc": "2026-10-17T15:54:10Z"
   },
   "secteurs": {
    "statut": "ok",
    "message": "4 compositions, 4 mesures d'effet sectoriel",
-   "derniere_reussite_utc": "2026-10-17T12:48:57Z"
+   "derniere_reussite_utc": "2026-10-17T15:54:10Z"
   },
   "sentiment": {
    "statut": "ok",
-   "message": "journée du 2026-10-16 : marche négatif (solde -14.5, n=152), esg neutre (solde 6.5, n=62)",
-   "derniere_reussite_utc": "2026-10-17T12:48:57Z"
+   "message": "journée du 2026-10-16 : marche négatif (solde -14.5, n=152), esg neutre (solde 6.3, n=63)",
+   "derniere_reussite_utc": "2026-10-17T15:54:10Z"
   },
   "parallele": {
    "statut": "ok",
    "message": "0 / 60 jours exploitables (estimation : 2027-01-14)",
-   "derniere_reussite_utc": "2026-10-17T12:48:57Z"
+   "derniere_reussite_utc": "2026-10-17T15:54:10Z"
   },
   "synthese": {
    "statut": "ok",
-   "message": "Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 152 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 62 articles) — journée partiellement relevé",
-   "derniere_reussite_utc": "2026-10-17T12:48:57Z"
+   "message": "Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 152 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 63 articles) — journée partiellement relevé",
+   "derniere_reussite_utc": "2026-10-17T15:54:10Z"
   },
   "gdelt": {
    "statut": "avertissement",

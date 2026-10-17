@@ -45,3 +45,9 @@
 2026-10-17 12:48:57,gdelt,avertissement,"GDELT indisponible cette nuit (marche : trop de requêtes (429), esg : trop de requêtes (429)) — sans conséquence"
 2026-10-17 12:59:15,collecte_titres,ok,"219 articles lus, 202 doublons, 17 nouveaux {'marche': 13, 'esg': 4}, 0 flux en panne"
 2026-10-17 15:48:59,collecte_titres,ok,"211 articles lus, 198 doublons, 13 nouveaux {'marche': 12, 'esg': 1}, 0 flux en panne"
+2026-10-17 15:52:35,performance,ok,"5 ETF, séance du 2026-10-16, 1399 séances communes"
+2026-10-17 15:52:36,secteurs,ok,"4 compositions, 4 mesures d'effet sectoriel"
+2026-10-17 15:52:37,sentiment,ok,"journée du 2026-10-16 : marche négatif (solde -14.5, n=152), esg neutre (solde 6.3, n=63)"
+2026-10-17 15:52:37,parallele,ok,0 / 60 jours exploitables (estimation : 2027-01-14)
+2026-10-17 15:52:37,synthese,ok,"Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 152 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 63 articles) — journée partiellement relevé"
+2026-10-17 15:54:10,gdelt,avertissement,"GDELT indisponible cette nuit (marche : trop de requêtes (429), esg : trop de requêtes (429)) — sans conséquence"

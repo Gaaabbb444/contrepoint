@@ -111,10 +111,14 @@
     if (E.retard) {
       const r = $('bandeau-retard');
       r.hidden = false;
+      // En cas d'échec, la « dernière mise à jour » est la dernière RÉUSSITE de l'étape en échec,
+      // pas l'heure de l'exécution ratée.
+      const et = e.etapes || {}, reussites = E.echecs.map((k) => et[k] && et[k].derniere_reussite_utc).filter(Boolean).sort();
+      const derniereReussite = reussites.length ? parisHorodatage(reussites[0]) : (E.echecs.length ? null : h);
       const raison = E.echecs.length
         ? 'Le traitement de cette nuit n’a pas pu aboutir (' + E.echecs.map((x) => x === 'performance' ? 'performances' : 'sentiment').join(' et ') + ')'
         : 'Aucune mise à jour depuis ' + Math.floor(E.heures) + ' heures';
-      $('bandeau-retard-texte').innerHTML = '<strong style="font-weight: 600; color: #15171C">Dernière mise à jour le ' + esc(h ? h.date + ' à ' + h.heure : '—') +
+      $('bandeau-retard-texte').innerHTML = '<strong style="font-weight: 600; color: #15171C">Dernière mise à jour réussie le ' + esc(derniereReussite ? derniereReussite.date + ' à ' + derniereReussite.heure : '—') +
         ' — séance du ' + esc(jjmm(seance)) + '.</strong> ' + esc(raison) + ' : les chiffres affichés sont les derniers disponibles. Prochaine mise à jour prévue la nuit prochaine.';
     } else {
       $('bandeau').hidden = false;
@@ -203,8 +207,8 @@
     const v = $('kx-valeur');
     v.textContent = fmt(rel, 2); v.style.color = couleurSigne(rel); v.setAttribute('aria-label', 'Écart ' + fmt(rel, 2) + ' point');
     $('kx-unite').textContent = Math.abs(rel) >= 2 ? 'points' : 'point';
-    const ks = $('kx-sri'); ks.textContent = fmt(sri, 2) + ' %'; ks.style.color = couleurSigne(sri, true);
-    const km = $('kx-msci'); km.textContent = fmt(msci, 2) + ' %'; km.style.color = couleurSigne(msci, true);
+    const ks = $('kx-sri'); ks.textContent = fmt(sri, 2) + ' %'; ks.style.color = couleurSigne(sri, true);
+    const km = $('kx-msci'); km.textContent = fmt(msci, 2) + ' %'; km.style.color = couleurSigne(msci, true);
   }
 
   /* -------------------------------------------------------------- Synthèse */
@@ -342,7 +346,7 @@
     const trou = $('b-trou');
     trou.hidden = !(G.unite === 'jour' && dernier && dernier.etiquette === 'signal insuffisant');
     if (!trou.hidden) trou.textContent = jjmm(dernier.seance) + ' : signal insuffisant, pas de barre';
-    $('g-ecart-fin').textContent = fmt(G.v[n - 1], 2) + ' pt';
+    $('g-ecart-fin').textContent = fmt(G.v[n - 1], 2) + ' pt';
     $('plot').setAttribute('aria-label', 'Graphique : écart cumulé ' + e.court + ' − MSCI World et solde de sentiment ' + grpLabel + '. Flèches gauche et droite pour parcourir les dates.');
     masquerInfobulle();
   }
@@ -376,7 +380,7 @@
     const { lo, hi } = G.dom, dy = (hi - val) / (hi - lo) * 260;
     const so = soldeA(k), d = G.ds[k];
     $('tt-date').textContent = (+d.slice(8, 10)) + ' ' + MOIS[+d.slice(5, 7) - 1] + ' ' + d.slice(0, 4);
-    const ec = $('tt-ecart'); ec.textContent = fmt(val, 2) + ' pt'; ec.style.color = val < 0 ? '#FF9C92' : '#8BE3B4';
+    const ec = $('tt-ecart'); ec.textContent = fmt(val, 2) + ' pt'; ec.style.color = val < 0 ? '#FF9C92' : '#8BE3B4';
     $('tt-solde-label').textContent = so.label;
     const sv = $('tt-solde'); sv.textContent = so.texte; sv.style.color = so.v === undefined ? '#C9C7C0' : (so.v < 0 ? '#FF9C92' : '#8BE3B4');
     const note = $('tt-note'); note.textContent = so.note; note.style.display = so.note ? 'block' : 'none';
@@ -435,12 +439,12 @@
       const cell = (pid) => {
         const v = val(pid, id);
         if (!v) return '—';
-        return ref ? fmt(v.perf_cumulee_pct, 2) + ' %' : fmt(v.perf_relative_pts, 2) + ' pt';
+        return ref ? fmt(v.perf_cumulee_pct, 2) + ' %' : fmt(v.perf_relative_pts, 2) + ' pt';
       };
       const v5 = val('5a', id), v1 = val('1a', id);
       const sharpe = v5 && v5.sharpe !== null ? nb(v5.sharpe, 2) : '—';
       const sharpeHtml = v5 && v5.risque_fiabilite_reduite ? '<span style="display: inline-flex; align-items: center; gap: 6px">' + sharpe + alerte('tip-' + id + '-5a', AIDE) + '</span>' : sharpe;
-      const te = ref ? '<span style="color: #5C6068">—</span>' : (v1 && v1.ecart_suivi_pct !== undefined ? nb(v1.ecart_suivi_pct, 1) + ' %' : '—');
+      const te = ref ? '<span style="color: #5C6068">—</span>' : (v1 && v1.ecart_suivi_pct !== undefined ? nb(v1.ecart_suivi_pct, 1) + ' %' : '—');
       const teHtml = !ref && v1 && v1.risque_fiabilite_reduite ? '<span style="display: inline-flex; align-items: center; gap: 6px">' + te + alerte('tip-' + id + '-1a', AIDE) + '</span>' : te;
       const nom = ref ? 'MSCI World <span style="font-weight: 400; color: #5C6068">(référence)</span>' : esc(ETF[id].label);
       const poids = ref ? ' style="font-weight: 600"' : '';
@@ -518,7 +522,7 @@
     const exclusInsuf = histo.filter((h) => h.etiquette === 'signal insuffisant').length;
     const exclusPart = histo.filter((h) => h.etiquette !== 'signal insuffisant' && (String(h.couverture_partielle) === 'true' || h.couverture_partielle === true)).length;
     const ligneT = (icone, couleur, lab, o) => '<tr style="border-bottom: 1px solid #E2E0DA"><th scope="row" style="text-align: left; padding: 11px 0; font-weight: 500"><span style="display: inline-flex; align-items: center; gap: 7px"><span aria-hidden="true" style="font-size: 9px; color: ' + couleur + '">' + icone + '</span>' + lab + '</span></th>' +
-      '<td style="text-align: right; padding: 11px 0 11px 12px">' + o.n + '</td><td style="text-align: right; padding: 11px 0 11px 12px; font-weight: 600; color: ' + (o.m === null ? '#5C6068' : couleurSigne(o.m, true)) + '">' + (o.m === null ? '—' : fmt(o.m, 2) + ' pt') + '</td></tr>';
+      '<td style="text-align: right; padding: 11px 0 11px 12px">' + o.n + '</td><td style="text-align: right; padding: 11px 0 11px 12px; font-weight: 600; color: ' + (o.m === null ? '#5C6068' : couleurSigne(o.m, true)) + '">' + (o.m === null ? '—' : fmt(o.m, 2) + ' pt') + '</td></tr>';
     const cp = bloc.comparaison_jours || {};
     const phrase = cp.disponible
       ? 'Différence entre jours positifs et négatifs : <strong style="color: ' + couleurSigne(cp.ecart_pts, true) + '">' + fmt(cp.ecart_pts, 2) + ' pt</strong> (p = ' + nb(cp.p, 2) + ', p corrigée = ' + nb(cp.p_holm, 2) + ') — ' + (cp.significatif_apres_correction ? 'différence significative après correction, à confirmer.' : 'pas de différence significative après correction.')
@@ -645,7 +649,7 @@
   }
 
   /* --- Répartition par secteur --- */
-  function pctS(v) { return (v === null || v === undefined) ? '—' : nb(v, 1) + ' %'; }
+  function pctS(v) { return (v === null || v === undefined) ? '—' : nb(v, 1) + ' %'; }
   function introSecteurs(sec) {
     const c = sec.compositions || {}, ref = c.msci_world;
     if (!ref) return '';
@@ -656,7 +660,7 @@
       if (!c[id]) return;
       const en = sp(id, EN), r = gt(id) / gt('msci_world');
       const energie = en < 0.5 ? 'ne détient presque pas d’énergie (' + pctS(en) + ')' : (en < sp('msci_world', EN) * 0.75 ? 'détient moins d’énergie (' + pctS(en) + ')' : 'détient autant d’énergie (' + pctS(en) + ')');
-      const geants = r < 0.7 ? 'pèse nettement moins sur les sept géants technologiques américains (' + pctS(gt(id)) + ')' : (r > 1.03 ? 'pèse un peu plus sur les sept géants technologiques américains (' + pctS(gt(id)) + ')' : 'pèse autant sur les sept géants technologiques américains (' + pctS(gt(id)) + ')');
+      const geants = r < 0.7 ? 'pèse nettement moins sur ces géants (' + pctS(gt(id)) + ')' : (r > 1.03 ? 'pèse un peu plus sur ces géants (' + pctS(gt(id)) + ')' : 'pèse autant sur ces géants (' + pctS(gt(id)) + ')');
       phrases.push(nom + ' ' + energie + ' et ' + geants + (id === 'sri' ? ', alors que sa part du secteur technologique reste proche de celle de l’indice (' + pctS(sp(id, IT)) + ' contre ' + pctS(sp('msci_world', IT)) + ')' : '') + '.');
     };
     decrit('sri', 'L’ETF ESG strict (SRI)');
@@ -668,8 +672,8 @@
     const ef = sec.effet_sectoriel || {}, s = ef.sri;
     if (!s || !s.parts_de_l_ecart_pct) return '';
     const parts = s.parts_de_l_ecart_pct;
-    let t = 'Mesure sur trois ans (du ' + jjmmaaaa(s.debut) + ' au ' + jjmmaaaa(s.fin) + ') : environ ' + parts.grandes_tech + ' % du retard relatif de l’ETF SRI (' + fmt(s.ecart_relatif_pct, 1) + ' %) s’explique par sa sous-pondération des géants technologiques ; l’énergie n’a presque pas compté (' + fmt(parts.energie, 0) + ' %).';
-    if (ef.bnp_sri_pab && ef.bnp_sri_pab.parts_de_l_ecart_pct) t += ' Pour le BNP Easy SRI PAB, la part est d’environ ' + ef.bnp_sri_pab.parts_de_l_ecart_pct.grandes_tech + ' %.';
+    let t = 'Mesure sur trois ans (du ' + jjmmaaaa(s.debut) + ' au ' + jjmmaaaa(s.fin) + ') : environ ' + parts.grandes_tech + ' % du retard relatif de l’ETF SRI (' + fmt(s.ecart_relatif_pct, 1) + ' %) s’explique par sa sous-pondération des géants technologiques ; l’énergie n’a presque pas compté (' + fmt(parts.energie, 0) + ' %).';
+    if (ef.bnp_sri_pab && ef.bnp_sri_pab.parts_de_l_ecart_pct) t += ' Pour le BNP Easy SRI PAB, la part est d’environ ' + ef.bnp_sri_pab.parts_de_l_ecart_pct.grandes_tech + ' %.';
     return t;
   }
   function contenuSecteurs() {
@@ -757,7 +761,7 @@
         '<td style="padding: 18px 16px' + (complement ? '; color: #4A4E57' : '') + '">' + sfdr(f.sfdr) + '</td>' +
         '<td style="padding: 18px 16px">' + pastille(isr(f)) + '</td>' +
         '<td style="padding: 18px 16px">' + note(f) + '</td>' +
-        '<td style="text-align: right; padding: 18px 0 18px 16px' + (complement ? '; color: #4A4E57' : '') + '">' + nb(f.frais_annuels_pct, 2) + ' %</td></tr>';
+        '<td style="text-align: right; padding: 18px 0 18px 16px' + (complement ? '; color: #4A4E57' : '') + '">' + nb(f.frais_annuels_pct, 2) + ' %</td></tr>';
     };
     const repere = (titre, texte) => '<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 16px; border-top: 1px solid #D8D6CF"><dt class="kicker">' + titre + '</dt><dd style="margin: 0; font-family: \'Newsreader\', Georgia, serif; font-size: 18px; line-height: 1.55; text-wrap: pretty">' + texte + '</dd></div>';
     return '<section aria-label="Présentation" class="presentation"><p class="kicker" style="margin: 10px 0 0">Fiches des fonds</p>' +
