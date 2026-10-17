@@ -51,6 +51,13 @@ def bornes(seance: str, code_calendrier: str = "XETR") -> tuple[pd.Timestamp, pd
             clotures.iloc[position].tz_convert("Europe/Paris"))
 
 
+def nieme_seance_suivante(apres: str, n: int, code_calendrier: str = "XETR") -> str | None:
+    """Date de la n-ième séance de bourse après `apres` (calendrier officiel), ou None si hors calendrier."""
+    clotures = _clotures(code_calendrier)
+    suivantes = clotures.index[clotures.index > pd.Timestamp(apres)]
+    return suivantes[n - 1].date().isoformat() if 0 < n <= len(suivantes) else None
+
+
 def seances_closes(maintenant_utc: pd.Timestamp, nombre: int, code_calendrier: str = "XETR") -> list[str]:
     """Les `nombre` dernières séances déjà clôturées à l'instant donné (de la plus ancienne à la plus récente)."""
     clotures = _clotures(code_calendrier)

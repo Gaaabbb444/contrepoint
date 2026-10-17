@@ -74,8 +74,80 @@ def etiquette(solde: float, marge: float, n: int, p_cfg: dict) -> str:
     return "neutre"
 
 
+def poids_plafonnes(parts: pd.Series, plafond: float) -> pd.Series:
+    """Poids par média après plafonnement (méthode des indices boursiers plafonnés).
+
+    Un média qui dépasse le plafond est ramené au plafond ; l'excédent est
+    redistribué aux autres médias au prorata de leur poids, et l'on recommence
+    tant qu'un média dépasse. Exemple : avec un plafond de 25 %, un média à
+    40 % est ramené à 25 %, et les 15 points libérés sont répartis entre les autres.
+    """
+    poids = parts / parts.sum()
+    if plafond * len(poids) < 1:  # impossible de tous les mettre sous le plafond
+        return poids
+    for _ in range(50):
+        au_dessus = poids > plafond + 1e-12
+        if not au_dessus.any():
+            break
+        excedent = (poids[au_dessus] - plafond).sum()
+        poids[au_dessus] = plafond
+        libres = ~au_dessus & (poids < plafond)
+        poids[libres] += excedent * poids[libres] / poids[libres].sum()
+    return poids
+
+
+def solde_avec_plafond(articles: pd.DataFrame, plafond_pct: float) -> float | None:
+    """Solde net si chaque média était plafonné à `plafond_pct` % du groupe (simulation)."""
+    if articles.empty or "media" not in articles:
+        return None
+    parts = articles["media"].value_counts(normalize=True)
+    poids_media = poids_plafonnes(parts.copy(), plafond_pct / 100)
+    poids_article = articles["media"].map(poids_media / articles["media"].value_counts())
+    signe = articles["classe"].map({"positif": 1, "negatif": -1, "neutre": 0})
+    return round(float((poids_article * signe).sum()) * 100, 1)
+
+
+def couverture(debut: pd.Timestamp, fin: pd.Timestamp, releves: list[pd.Timestamp], p_cfg: dict) -> dict:
+    """La journée de sentiment a-t-elle été correctement relevée ?
+
+    `releves` : heures des relevés de titres réussis (toutes dates). On compte
+    ceux tombés dans la journée, on exige un relevé APRÈS la clôture (pour les
+    derniers articles), et l'on mesure le plus long intervalle sans relevé
+    entre le début de la journée et ce premier relevé qui suit la clôture.
+    """
+    pas = pd.Timedelta(hours=p_cfg["intervalle_releves_heures"])
+    attendus = max(1, math.ceil((fin - debut) / pas))
+    dans_journee = sorted(r for r in releves if debut < r <= fin)
+    # Points de passage : début de journée, relevés, jusqu'au premier relevé après la clôture
+    # (cherché jusqu'à 12 h après, car les flux gardent leurs articles plus longtemps).
+    suite = sorted(r for r in releves if debut < r <= fin + pd.Timedelta(hours=p_cfg["couverture_ecart_max_heures"]))
+    points, apres_cloture = [debut], False
+    for r in suite:
+        points.append(r)
+        if r >= fin:
+            apres_cloture = True
+            break
+    ecart_max = max((b - a for a, b in zip(points, points[1:])), default=fin - debut)
+    if not apres_cloture:
+        ecart_max = max(ecart_max, fin - points[-1])
+    taux = min(1.0, len(dans_journee) / attendus)
+    complete = (taux * 100 >= p_cfg["couverture_min_pct"] and apres_cloture
+                and ecart_max <= pd.Timedelta(hours=p_cfg["couverture_ecart_max_heures"]))
+    return {
+        "releves_reussis": len(dans_journee),
+        "releves_attendus": attendus,
+        "plus_long_trou_heures": round(ecart_max.total_seconds() / 3600, 1),
+        "couverture_partielle": not complete,
+    }
+
+
 def indicateurs_journee(articles: pd.DataFrame, p_cfg: dict) -> dict:
-    """Calcule les indicateurs d'un groupe d'articles (une journée, un groupe)."""
+    """Calcule les indicateurs d'un groupe d'articles (une journée, un groupe).
+
+    Les articles sans date fiable (« date_approximative ») comptent dans
+    l'indicateur du jour, mais un second solde, calculé sans eux, sert aux
+    tests statistiques du volet 3.
+    """
     n = int(len(articles))
     parts = articles["classe"].value_counts(normalize=True) if n else pd.Series(dtype=float)
     p, q = float(parts.get("positif", 0)), float(parts.get("negatif", 0))
@@ -88,9 +160,23 @@ def indicateurs_journee(articles: pd.DataFrame, p_cfg: dict) -> dict:
         return [{"titre": r.titre, "source": r.source, "lien": r.lien, "probabilite": round(float(getattr(r, colonne)), 3),
                  "date_publication_utc": r.date_publication_utc} for r in choisis.itertuples()]
 
+    if n and "date_approximative" in articles:
+        approx = articles["date_approximative"].astype(str).str.lower().eq("true")
+    else:
+        approx = pd.Series(False, index=articles.index)
+    fiables = articles[~approx] if n else articles
+    parts_f = fiables["classe"].value_counts(normalize=True) if len(fiables) else pd.Series(dtype=float)
+    medias = articles["media"].value_counts(normalize=True) if (n and "media" in articles) else pd.Series(dtype=float)
+
     return {
         "nb_articles": n,
-        "nb_sources": int(articles["source"].nunique()) if n else 0,
+        "nb_sources": int(articles["media"].nunique()) if (n and "media" in articles) else (int(articles["source"].nunique()) if n else 0),
+        "nb_dates_approximatives": int(approx.sum()),
+        "solde_dates_fiables": round((float(parts_f.get("positif", 0)) - float(parts_f.get("negatif", 0))) * 100, 1)
+                               if len(fiables) else None,
+        "part_media_principal_pct": round(float(medias.iloc[0]) * 100, 1) if len(medias) else None,
+        "media_principal": str(medias.index[0]) if len(medias) else None,
+        "solde_avec_plafond": solde_avec_plafond(articles, p_cfg.get("plafond_media_pct", 25)) if n else None,
         "positif_pct": round(p * 100, 1),
         "neutre_pct": round(float(parts.get("neutre", 0)) * 100, 1),
         "negatif_pct": round(q * 100, 1),

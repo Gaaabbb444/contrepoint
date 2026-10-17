@@ -54,16 +54,12 @@ jobs:
         id: calcul
         run: python -m pipeline.traitement_nuit
 
-      - name: Enregistrer les résultats dans le dépôt
+      - name: Enregistrer les résultats (avec nouvelles tentatives en cas de conflit)
         if: always() && steps.calcul.outcome != 'skipped'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data docs/data || true
-          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
-          git commit -m "Traitement de nuit du $(date -u +'%Y-%m-%d')"
-          git pull --rebase
-          git push
+          python -m pipeline.enregistrer --message "Traitement de nuit du $(date -u +'%Y-%m-%d')" data docs/data
 
       - name: Empêcher la désactivation automatique (règle des 60 jours)
         # Sur un dépôt public, GitHub désactive les tâches planifiées après

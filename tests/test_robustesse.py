@@ -19,7 +19,8 @@ from pipeline.sorties import ecrire_json_si_valide
 def chemins_temporaires(tmp_path, monkeypatch):
     """Redirige tous les fichiers écrits par le traitement vers un dossier de test."""
     for nom in ["FICHIER_PERFORMANCE", "FICHIER_PROVISOIRES", "FICHIER_SECTEURS", "FICHIER_SENTIMENT",
-                "FICHIER_HISTO_SENTIMENT", "FICHIER_GDELT", "FICHIER_GDELT_SITE", "FICHIER_ETAT", "FICHIER_JOURNAL"]:
+                "FICHIER_HISTO_SENTIMENT", "FICHIER_GDELT", "FICHIER_GDELT_SITE", "FICHIER_ETAT", "FICHIER_JOURNAL",
+                "FICHIER_PARALLELE", "FICHIER_SYNTHESE"]:
         monkeypatch.setattr(tn, nom, tmp_path / f"{nom.lower()}.json")
     import pipeline.journal as module_journal
     monkeypatch.setattr(module_journal, "FICHIER_JOURNAL", tmp_path / "journal.csv")

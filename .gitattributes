@@ -1,3 +1,9 @@
 # Fins de ligne identiques sur Windows (ton PC) et Linux (GitHub Actions) :
 # évite que chaque fichier paraisse « modifié » entre les deux.
 * text=auto eol=lf
+
+# Fichiers qui ne font que s'allonger (une ligne ajoutée à chaque exécution) :
+# si deux enregistrements se croisent, Git garde les lignes des DEUX côtés au
+# lieu de bloquer sur un conflit (voir pipeline/enregistrer.py).
+data/journal_execution.csv merge=union
+data/titres/**/*.csv merge=union

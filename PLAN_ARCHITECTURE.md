@@ -319,6 +319,8 @@ La documentation dit qu'en dépôt public, les tâches planifiées sont désacti
 
 ## 7. Volet 3 — Mise en parallèle
 
+*Programmé le 17/10/2026 (`pipeline/parallele.py`, `pipeline/synthese.py`, sorties `docs/data/parallele.json` et `docs/data/synthese.json`). Le contrôle de validité (sentiment « marché » du jour J et MSCI World du même jour) a été ajouté. Il a été testé sur des données simulées, sur les vraies performances de l'ETF SRI avec un sentiment simulé (`python -m analyses.demo_volet3`), et en conditions réelles (2 journées pour l'instant, donc progression affichée).*
+
 - **Graphique principal** : performance relative cumulée de l'ETF ESG choisi face au MSCI World, superposée au solde de sentiment, avec option de colorer le fond selon l'étiquette du jour.
 - **Corrélation glissante sur 30 jours de bourse** entre le solde de sentiment et la performance relative quotidienne.
 - **Test de décalage** : sentiment du jour J comparé à la performance relative du jour de bourse suivant.
@@ -338,6 +340,15 @@ La documentation dit qu'en dépôt public, les tâches planifiées sont désacti
 - **Vue d'ensemble** : bandeau « humeur du marché » + « humeur ESG », puis la carte « l'ESG fait-il mieux ? » (performance relative selon la période choisie), le graphique de mise en parallèle et la synthèse. Le détail (tableau des indicateurs, titres du jour, notes, SFDR) est accessible en un clic.
 - **Interactivité** : choix de la période, choix de l'ETF ESG, infobulles. Rien d'autre.
 - **Direction visuelle** : je suivrai la maquette Claude Design si tu me la fournis. Sinon, je te proposerai 2 directions avant de coder.
+
+**Règles d'affichage déjà décidées** (à respecter quelle que soit la maquette) :
+- **Pied de page de chaque page** : crédits lus dans `etat.json`, dont FinBERT (© MIH AI B.V., CC BY-NC-SA 4.0), les sources de cours (Yahoo Finance, BCE) et les données ESG.
+- **Bandeau de mise à jour** : date des dernières données (`etat.json`), astérisque si la dernière clôture est provisoire, alertes des dernières 24 heures.
+- **GDELT** : rien n'est affiché si `etat.json` indique `gdelt_disponible: false`, ni graphique vide, ni alerte.
+- **Volet 3** : tant que l'échantillon est insuffisant, une barre de progression (« 12 / 60 jours de bourse ») et la date estimée, jamais un simple message d'attente.
+- **Journées partielles** : mention « journée partiellement relevée ».
+- **Explication des résultats** : rappel que le résultat dépend de la période observée (`secteurs.json`).
+- **Notes MSCI** : « non publiée » pour le MSCI World. **BNP** : affiché hors de la vue principale.
 
 **Noms proposés** : **Contrepoint** · **Écart** · **Boussole** · **Baromètre ISR** · **Humeur & Impact**
 *(ma préférence : Contrepoint, qui dit exactement la mise en parallèle de deux lignes, l'ESG et l'humeur)*

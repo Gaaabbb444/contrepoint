@@ -176,10 +176,59 @@ def test_lecture_gdelt():
 
 # --- Agrégation de nuit, de bout en bout -------------------------------------------------
 
+PC = {"intervalle_releves_heures": 3, "couverture_min_pct": 75, "couverture_ecart_max_heures": 12}
+DEBUT, FIN = pd.Timestamp("2026-10-15T15:30Z"), pd.Timestamp("2026-10-16T15:30Z")  # journée de 24 h
+
+
+def test_couverture_complete_avec_tous_les_releves():
+    releves = [pd.Timestamp("2026-10-15T15:23Z") + pd.Timedelta(hours=3 * i) for i in range(1, 10)]
+    c = sentiment.couverture(DEBUT, FIN, releves, PC)
+    assert c["releves_attendus"] == 8 and c["releves_reussis"] == 8
+    assert c["couverture_partielle"] is False and c["plus_long_trou_heures"] <= 3
+
+
+def test_couverture_tolere_deux_releves_manques_mais_pas_un_grand_trou():
+    tous = [pd.Timestamp("2026-10-15T15:23Z") + pd.Timedelta(hours=3 * i) for i in range(1, 10)]
+    # Deux relevés sautés par GitHub (6/8 = 75 %, trou de 9 h) : journée complète.
+    assert sentiment.couverture(DEBUT, FIN, tous[:3] + tous[5:], PC)["couverture_partielle"] is False
+    # Quatre relevés consécutifs manqués (trou de 15 h) : couverture partielle.
+    assert sentiment.couverture(DEBUT, FIN, tous[:2] + tous[6:], PC)["couverture_partielle"] is True
+    # Lancement du projet en cours de journée (premier relevé 9 h après le début) mais tous les suivants :
+    c = sentiment.couverture(DEBUT, FIN, tous[3:], PC)
+    assert c["releves_reussis"] == 5 and c["couverture_partielle"] is True
+
+
+def test_plafond_par_media():
+    parts = pd.Series({"CNBC": 0.40, "WSJ": 0.25, "FT": 0.15, "BBC": 0.10, "NYT": 0.10})
+    poids = sentiment.poids_plafonnes(parts.copy(), 0.25)
+    assert poids.max() == pytest.approx(0.25) and poids.sum() == pytest.approx(1)
+    # Les 15 points retirés à CNBC sont répartis au prorata entre FT, BBC et NYT.
+    assert poids["FT"] == pytest.approx(0.15 + 0.15 * 0.15 / 0.35)
+    assert poids["BBC"] == pytest.approx(poids["NYT"])
+    # Simulation : CNBC très négatif et surreprésenté → le plafond adoucit le solde.
+    articles = pd.DataFrame({"media": ["CNBC"] * 6 + ["WSJ", "FT", "BBC", "NYT"],
+                             "classe": ["negatif"] * 6 + ["positif"] * 4})
+    assert sentiment.solde_avec_plafond(articles, 100) == -20.0     # sans plafond effectif
+    assert sentiment.solde_avec_plafond(articles, 25) == pytest.approx(50.0)
+
+
+def test_dates_approximatives_exclues_du_solde_des_tests():
+    articles = pd.DataFrame({
+        "classe": ["positif", "positif", "negatif", "neutre"], "p_positif": [0.9, 0.8, 0.1, 0.1],
+        "p_negatif": [0.05, 0.1, 0.9, 0.1], "titre": list("abcd"), "source": list("abcd"), "media": list("abcd"),
+        "lien": list("abcd"), "date_publication_utc": ["2026-10-16T10:00:00Z"] * 4,
+        "date_approximative": [False, True, False, False]})
+    ind = sentiment.indicateurs_journee(articles, P)
+    assert ind["solde"] == 25.0                 # tous les articles comptent dans l'indicateur du jour
+    assert ind["solde_dates_fiables"] == 0.0    # sans l'article à date approximative
+    assert ind["nb_dates_approximatives"] == 1
+
+
 def test_etape_sentiment_de_bout_en_bout(tmp_path, monkeypatch):
     from pipeline import traitement_nuit as tn
     from pipeline.journal import Journal
     monkeypatch.setattr(ct, "DOSSIER_TITRES", tmp_path / "titres")
+    monkeypatch.setattr(tn, "FICHIER_JOURNAL", tmp_path / "journal.csv")
     monkeypatch.setattr(tn, "FICHIER_SENTIMENT", tmp_path / "sentiment.json")
     monkeypatch.setattr(tn, "FICHIER_HISTO_SENTIMENT", tmp_path / "sentiment_quotidien.csv")
     lignes = []

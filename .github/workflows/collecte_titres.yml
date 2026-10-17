@@ -68,13 +68,10 @@ jobs:
           HF_HUB_OFFLINE: ${{ steps.cache-modele.outputs.cache-hit == 'true' && '1' || '0' }}
         run: python -m pipeline.collecte_titres
 
-      - name: Enregistrer dans le dépôt
+      - name: Enregistrer dans le dépôt (avec nouvelles tentatives en cas de conflit)
         if: always()              # même si un flux a échoué, on garde ce qui a été collecté
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/titres data/journal_execution.csv || true
-          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
-          git commit -m "Titres du $(date -u +'%Y-%m-%d %H:%M') UTC"
-          git pull --rebase
-          git push
+          python -m pipeline.enregistrer --message "Titres du $(date -u +'%Y-%m-%d %H:%M') UTC" \
+            data/titres data/journal_execution.csv

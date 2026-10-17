@@ -59,6 +59,9 @@ Deux groupes de flux RSS gratuits, en anglais : la presse financière et économ
 
 Les flux sont relevés toutes les 3 heures : beaucoup ne gardent que leurs 10 à 30 derniers articles, et un relevé quotidien en manquerait la majorité.
 
+### Poids des médias
+Chaque article compte autant ; un média très prolifique pourrait donc peser trop lourd (CNBC fournit 5 flux sur 18 dans le groupe « marché »). La part de chaque **média** (et non de chaque flux) dans chaque groupe est calculée chaque nuit sur les 20 dernières séances et publiée sur le site ; une alerte est déclenchée si un média dépasse 25 % d'un groupe. Première mesure (17/10/2026, une seule collecte) : groupe « marché » — Wall Street Journal 20 %, CNBC 19 %, Bloomberg 18 %, Financial Times 16 %, New York Times 12 %, autres 15 % ; aucun média ne dépasse 25 %. Dans le groupe « ESG », les articles de Google Actualités proviennent de dizaines de médias différents, chacun pesant peu. Si le plafond venait à être dépassé durablement, une pondération plafonnée (chaque média ramené à 25 % au plus, l'excédent redistribué aux autres au prorata) est déjà calculée à titre de simulation.
+
 ### Traitement
 - Seuls le **titre** et le **début du résumé** sont analysés ; l'article complet n'est jamais récupéré.
 - **Doublons** : un article est ignoré s'il a le même lien, ou un titre quasi identique (similarité ≥ 90 %), qu'un article déjà retenu dans le même groupe au cours des 3 derniers jours. Quand un article apparaît à la fois dans un flux direct et dans Google Actualités, c'est la version du média lui-même qui est gardée.
@@ -88,7 +91,45 @@ Une journée de sentiment couvre les articles publiés **de la clôture de la s�
 - Le **test de décalage** (sentiment J et performance J+1) élimine cet effet : tous les articles de la journée J sont publiés **avant** le début de la séance J+1 ; un article ne peut pas commenter une variation qui n'a pas encore eu lieu. Il reste soumis à la règle « corrélation n'est pas causalité » : un troisième facteur peut agir sur les deux.
 - **Limite connue** : Wall Street reste ouverte jusqu'à 22 h (heure de Paris). Les articles publiés en soirée sur la séance américaine tombent dans la journée suivante ; ils ne faussent pas le test de décalage, car ils restent antérieurs à la clôture suivante.
 
-Un article sans date de publication reçoit l'heure de sa collecte (à 3 heures près) ; il compte dans l'indicateur du jour mais est exclu des tests statistiques.
+**Articles sans date fiable.** Quand un flux ne donne pas de date de publication, l'article reçoit l'heure de sa collecte (connue à 3 heures près) et il est marqué « date approximative ». Il compte dans l'indicateur du jour affiché, mais un second solde, calculé **sans** ces articles, est utilisé pour les tests statistiques, où l'heure exacte compte (un article mal daté pourrait sinon être rattaché à la mauvaise séance). Les articles datés de plus de 36 heures, ou de plus d'une heure dans le futur (date erronée), sont ignorés. Au 17/10/2026, aucun des articles collectés n'était sans date.
+
+**Couverture d'une journée.** Une journée de sentiment n'est fiable que si les flux ont été relevés assez souvent. Elle est marquée automatiquement « couverture partielle » si moins de 75 % des relevés attendus (un toutes les 3 heures) ont réussi, s'il n'y a pas eu de relevé après la clôture, ou si plus de 12 heures se sont écoulées entre deux relevés réussis. Le seuil de 12 heures vient d'une mesure : le flux qui renouvelle le plus vite ses articles (CNBC, 30 articles) en couvre environ 13 heures, donc un trou plus court ne fait perdre presque aucun article ; 75 % tolère les relevés que GitHub retarde ou saute parfois, sans accepter une journée majoritairement manquée. Une journée partielle reste affichée, avec cette mention, mais elle est exclue des tests statistiques.
+
+**Comment FinBERT traite l'actualité ESG.** Le groupe « ESG » est nettement plus souvent neutre (environ 70 %) que le groupe « marché » (environ 30 %). FinBERT a été entraîné à juger l'effet d'une phrase sur la situation financière d'une entreprise, du point de vue d'un investisseur ; or beaucoup de titres ESG sont informatifs (calendrier réglementaire, publication d'un rapport, lancement d'une initiative) sans conséquence financière explicite, et sont donc classés neutres. Sur les premiers titres collectés, les annonces d'entreprises (lancements, partenariats) ne sont jamais classées négatives, alors que les titres réglementaires le sont plus souvent (environ un quart : contraintes, reports, sanctions). Conséquence : le niveau du solde ESG ne se compare pas à celui du marché, mais à **son propre historique**. Ce taux de neutres est suivi chaque nuit (moyenne sur 20 journées).
 
 ### Contrôle externe : GDELT
 GDELT, projet universitaire gratuit, publie la « tonalité » moyenne de la presse mondiale, calculée en comptant les mots positifs et négatifs d'un dictionnaire sur les articles complets. C'est une méthode très différente de FinBERT ; les deux séries sont affichées séparément et ne se comparent qu'en tendance. Le service refuse souvent les requêtes : cette série peut donc présenter des trous.
+
+
+---
+
+## Mise en parallèle : sentiment et performance relative (volet 3)
+
+### Questions posées
+1. Le sentiment de l'actualité évolue-t-il en même temps que la performance relative des ETF ESG (ETF ESG − MSCI World) ? → **corrélation glissante sur 30 séances**.
+2. Le sentiment d'un jour est-il lié à la performance relative du **lendemain** ? → **test de décalage J / J+1**. Tous les articles de la journée J sont publiés avant le début de la séance J+1 : ce test écarte l'effet « l'actualité commente le marché ».
+3. Les ETF ESG font-ils mieux ou moins bien que le marché les jours de sentiment négatif que les jours de sentiment positif ? → **comparaison des moyennes** (test t de Welch, qui n'exige pas que les deux groupes de jours aient la même dispersion).
+
+Chaque test est mené pour chaque ETF ESG et pour les deux indicateurs de sentiment (marché, ESG).
+
+### Contrôle de validité de l'indicateur
+Avant de chercher un lien avec les ETF ESG, on vérifie que l'indicateur mesure bien quelque chose : le sentiment « marché » du jour J est comparé à la performance du MSCI World **le même jour**. Un lien positif signifie que les journées où les marchés montent sont aussi celles où l'actualité financière est plus positive — l'indicateur capte bien l'humeur du marché. **Ce n'est pas une prévision** : une partie de ce lien vient justement de ce que la presse commente la séance en cours.
+
+### Garde-fous
+- **Journées exploitables uniquement** : étiquette autre que « signal insuffisant », couverture complète, solde calculé sans les articles à date approximative.
+- **Pas de conclusion avant 60 journées exploitables** (environ trois mois de bourse) et, pour la comparaison, au moins 15 journées positives et 15 négatives. Avant ce seuil, le site affiche la progression (par exemple « 12 / 60 jours de bourse ») et la date estimée à laquelle les résultats deviendront interprétables, calculée sur le calendrier officiel de la Bourse de Francfort en supposant que chaque séance à venir soit exploitable.
+- **Seuil de significativité de 5 %** : un résultat n'est qualifié de « significatif » que s'il avait moins de 5 % de chances d'apparaître par pur hasard.
+- **Tests multiples** : avec 4 ETF, 2 indicateurs et 3 tests, environ un test sur vingt peut paraître significatif par hasard. Un résultat isolé doit donc être lu avec prudence.
+- **La corrélation glissante ne s'interprète pas seule** : sur 30 séances, elle varie beaucoup par simple hasard. Démonstration faite sur les vraies performances de l'ETF SRI avec un sentiment tiré au hasard : la corrélation glissante a oscillé entre +0,06 et +0,32 alors qu'il n'y avait, par construction, aucun lien.
+- **Corrélation n'est pas causalité** : un lien statistique ne prouve pas que le sentiment fait bouger les prix ; un troisième facteur peut agir sur les deux.
+
+### Synthèse automatique
+Le court texte affiché en haut du site est produit par des **règles fixes**, sans intelligence artificielle : des phrases à trous remplies avec les chiffres du jour (humeur du marché et de l'actualité ESG, bilan des 5 dernières journées, performance relative de l'ETF choisi sur 5 séances et sur un an, état du test J / J+1). Les règles sont écrites dans `pipeline/synthese.py`.
+
+### Contrôle externe GDELT
+Quand la série GDELT est indisponible ou vide, rien n'est affiché sur le site (ni graphique vide, ni message d'alerte) : c'est un complément facultatif.
+
+---
+
+## Crédits
+Analyse de sentiment : FinBERT (ProsusAI/finbert), © MIH AI B.V., licence CC BY-NC-SA 4.0 (usage non commercial) ; Araci (2019) ; Financial PhraseBank, Malo et al. (2014). Ce crédit figure dans le pied de page de chaque page du site.

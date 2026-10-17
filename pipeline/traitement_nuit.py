@@ -11,8 +11,9 @@ from datetime import date, datetime, timedelta, timezone
 
 import pandas as pd
 
-from pipeline import collecte_prix, collecte_titres, controle_gdelt, fenetres, performance, secteurs, sentiment
-from pipeline.config import DOSSIER_DATA, DOSSIER_SITE_DATA, config_etf, parametres
+from pipeline import (collecte_prix, collecte_titres, controle_gdelt, fenetres, parallele, performance, secteurs,
+                      sentiment, synthese)
+from pipeline.config import DOSSIER_DATA, DOSSIER_SITE_DATA, config_etf, lire_yaml, parametres
 from pipeline.journal import FICHIER_JOURNAL, Journal
 from pipeline.sorties import ecrire_json_si_valide, lire_json
 
@@ -24,6 +25,8 @@ FICHIER_HISTO_SENTIMENT = DOSSIER_DATA / "sentiment_quotidien.csv"
 FICHIER_GDELT = DOSSIER_DATA / "gdelt_ton.csv"
 FICHIER_GDELT_SITE = DOSSIER_SITE_DATA / "gdelt.json"
 FICHIER_ETAT = DOSSIER_SITE_DATA / "etat.json"
+FICHIER_PARALLELE = DOSSIER_SITE_DATA / "parallele.json"
+FICHIER_SYNTHESE = DOSSIER_SITE_DATA / "synthese.json"
 
 # Champs de config/etf.yaml recopiés tels quels dans le JSON du site.
 CHAMPS_FICHE = ["id", "nom_court", "nom", "nom_precedent", "role", "approche", "vue_principale", "isin",
@@ -275,7 +278,40 @@ def etape_secteurs(journal: Journal, tableau: pd.DataFrame | None) -> None:
 
 
 COLONNES_HISTO_SENTIMENT = ["seance", "groupe", "nb_articles", "nb_sources", "positif_pct", "neutre_pct",
-                            "negatif_pct", "solde", "marge_erreur", "etiquette", "couverture_partielle"]
+                            "negatif_pct", "solde", "marge_erreur", "etiquette", "couverture_partielle",
+                            "releves_reussis", "releves_attendus", "plus_long_trou_heures",
+                            "nb_dates_approximatives", "solde_dates_fiables",
+                            "media_principal", "part_media_principal_pct", "solde_avec_plafond"]
+
+CREDIT_FINBERT = ("Analyse de sentiment : FinBERT (ProsusAI/finbert), © MIH AI B.V., licence CC BY-NC-SA 4.0 "
+                  "(usage non commercial). Références : Araci (2019) ; Financial PhraseBank, Malo et al. (2014).")
+
+
+def releves_reussis() -> list[pd.Timestamp]:
+    """Heures des relevés de titres réussis, lues dans le journal d'exécution."""
+    if not FICHIER_JOURNAL.exists():
+        return []
+    j = pd.read_csv(FICHIER_JOURNAL, encoding="utf-8-sig", dtype=str)
+    ok = j[(j["etape"] == "collecte_titres") & (j["statut"] == "ok")]
+    return [pd.Timestamp(h, tz="UTC") for h in ok["horodatage_utc"]]
+
+
+def media_des_titres(titres: pd.DataFrame) -> pd.Series:
+    """Média de chaque titre : celui du flux (config) ou, pour Google Actualités, celui de l'article."""
+    flux = lire_yaml("flux_rss.yaml")["flux"]
+    media_du_flux = {f["nom"]: f.get("media", f["nom"]) for f in flux if f["type"] == "direct"}
+    return titres.apply(lambda r: media_du_flux.get(r["source"], r["source"]) if r["type"] == "direct"
+                        else r["source"], axis=1)
+
+
+def suivi_neutres(historique: pd.DataFrame, n: int = 20) -> dict:
+    """Part moyenne de titres neutres par groupe sur les n dernières journées complètes (point 11)."""
+    resultat = {}
+    for groupe, d in historique.groupby("groupe"):
+        d = d[~d["couverture_partielle"].astype(str).str.lower().eq("true")].tail(n)
+        if len(d):
+            resultat[groupe] = {"neutre_moyen_pct": round(float(d["neutre_pct"].mean()), 1), "nb_journees": int(len(d))}
+    return resultat
 
 
 def etape_sentiment(journal: Journal, maintenant: pd.Timestamp | None = None) -> None:
@@ -283,35 +319,57 @@ def etape_sentiment(journal: Journal, maintenant: pd.Timestamp | None = None) ->
 
     Les 10 dernières journées sont recalculées chaque nuit (le calcul est
     déterministe : refaire le calcul donne le même résultat), ce qui intègre
-    les articles collectés tardivement.
+    les articles collectés tardivement. La répartition par média est mesurée
+    sur les 20 dernières.
     """
     p = parametres()["sentiment"]
+    cal = p["calendrier_bourse"]
     maintenant = maintenant or pd.Timestamp.now(tz="UTC")
-    seances = fenetres.seances_closes(maintenant, 10, p["calendrier_bourse"])
-    debut = fenetres.bornes(seances[0], p["calendrier_bourse"])[0]
+    seances_repartition = fenetres.seances_closes(maintenant, p["repartition_seances"], cal)
+    seances = seances_repartition[-10:]
+    debut = fenetres.bornes(seances_repartition[0], cal)[0]
     jours = pd.date_range(debut.date() - timedelta(days=1), maintenant.date() + timedelta(days=1))
     fichiers = [f for f in (collecte_titres.chemin_fichier_jour(d.date().isoformat()) for d in jours) if f.exists()]
     if not fichiers:
         journal.noter("sentiment", "avertissement", "aucun titre collecté sur la période : fichier du site conservé")
         return
-    titres = pd.concat([pd.read_csv(f, encoding="utf-8-sig", dtype={"seance": str}) for f in fichiers], ignore_index=True)
-    titres = titres.drop_duplicates(subset="id")
-    premiere_collecte = pd.Timestamp(titres["collecte_utc"].min())
+    titres = pd.concat([pd.read_csv(f, encoding="utf-8-sig", dtype=str) for f in fichiers], ignore_index=True)
+    # Une fusion de deux enregistrements simultanés peut répéter la ligne d'en-tête : on l'écarte.
+    titres = titres[titres["id"] != "id"].drop_duplicates(subset="id")
+    for col in ("p_positif", "p_neutre", "p_negatif"):
+        titres[col] = pd.to_numeric(titres[col], errors="coerce")
+    titres["media"] = media_des_titres(titres)
+    # Relevés réussis : journal d'exécution, complété par les heures de collecte des titres.
+    releves = sorted(set(releves_reussis()) | {pd.Timestamp(c) for c in titres["collecte_utc"].unique()})
 
     lignes, details = [], {}
     for seance in seances:
-        debut_fenetre, _ = fenetres.bornes(seance, p["calendrier_bourse"])
+        debut_fenetre, fin_fenetre = fenetres.bornes(seance, cal)
+        couv = sentiment.couverture(debut_fenetre.tz_convert("UTC"), fin_fenetre.tz_convert("UTC"), releves, p)
         for groupe in ("marche", "esg"):
             sous = titres[(titres["seance"] == seance) & (titres["groupe"] == groupe)]
             if sous.empty:
                 continue
-            ind = sentiment.indicateurs_journee(sous, p)
-            # Journée commencée avant la toute première collecte (lancement du
-            # projet) : une partie de ses articles n'a pas pu être relevée.
-            ind["couverture_partielle"] = bool(premiere_collecte > debut_fenetre + pd.Timedelta(hours=3))
+            ind = sentiment.indicateurs_journee(sous, p) | couv
             details[(seance, groupe)] = ind
             lignes.append({c: ind.get(c) for c in COLONNES_HISTO_SENTIMENT if c not in ("seance", "groupe")}
                           | {"seance": seance, "groupe": groupe})
+
+    # Poids des médias sur les 20 dernières séances (point 3).
+    recents = titres[titres["seance"].isin(seances_repartition)]
+    repartition = {}
+    for groupe in ("marche", "esg"):
+        d = recents[recents["groupe"] == groupe]
+        if d.empty:
+            continue
+        parts = d["media"].value_counts(normalize=True).mul(100).round(1)
+        repartition[groupe] = {"nb_articles": int(len(d)), "nb_seances": int(d["seance"].nunique()),
+                               "parts_pct": parts.head(15).to_dict(),
+                               "autres_medias_pct": round(float(parts.iloc[15:].sum()), 1)}
+        if parts.iloc[0] > p["plafond_media_pct"]:
+            journal.noter("sentiment", "avertissement",
+                          f"{parts.index[0]} pèse {parts.iloc[0]} % du groupe {groupe} sur "
+                          f"{d['seance'].nunique()} séances (plafond de {p['plafond_media_pct']} % dépassé)")
 
     if not lignes:
         journal.noter("sentiment", "avertissement", "aucune journée close avec des titres : fichier du site conservé")
@@ -338,14 +396,50 @@ def etape_sentiment(journal: Journal, maintenant: pd.Timestamp | None = None) ->
                                   "au plus tard à la clôture de cette séance (heure de Paris)"},
         "groupes": {g: details[(derniere, g)] for g in ("marche", "esg") if (derniere, g) in details},
         "historique": nouveau.where(pd.notna(nouveau), None).to_dict(orient="records"),
+        "repartition_medias": repartition,
+        "suivi_taux_neutre": suivi_neutres(nouveau),
         "modele": {"nom": p["modele"], "revision": p["revision"],
                    "licence": "CC BY-NC-SA 4.0 — © MIH AI B.V. (Prosus)"},
+        # Crédit à afficher sur le site lui-même (pied de page), exigé par la licence.
+        "credit": CREDIT_FINBERT,
     }
     ecrit, raison = ecrire_json_si_valide(FICHIER_SENTIMENT, donnees, [(bool(donnees["groupes"]), "aucun groupe")])
     resume = ", ".join(f"{g} {d['etiquette']} (solde {d['solde']}, n={d['nb_articles']})"
                        for g, d in donnees["groupes"].items())
     journal.noter("sentiment", "ok" if ecrit else "echec",
                   f"journée du {derniere} : {resume}" if ecrit else f"fichier conservé : {raison}")
+
+
+def etape_parallele(journal: Journal, tableau: pd.DataFrame | None) -> None:
+    """Volet 3 (mise en parallèle) et synthèse automatique en français."""
+    cfg = config_etf()
+    p = parametres()
+    perf = lire_json(FICHIER_PERFORMANCE)
+    senti = lire_json(FICHIER_SENTIMENT)
+    resultats = None
+    if tableau is not None and FICHIER_HISTO_SENTIMENT.exists():
+        historique = pd.read_csv(FICHIER_HISTO_SENTIMENT, encoding="utf-8-sig", dtype={"seance": str})
+        resultats = parallele.analyser(tableau, cfg["reference"], historique, p["parallele"],
+                                       p["sentiment"]["calendrier_bourse"])
+        resultats["genere_le_utc"] = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        resultats["parametres"] = p["parallele"]
+        ecrire_json_si_valide(FICHIER_PARALLELE, resultats, [])
+        prog = resultats["etf"].get(cfg["defaut_esg"], {}).get("marche", {}).get("progression", {})
+        journal.noter("parallele", "ok", f"{prog.get('jours_exploitables', 0)} / {prog.get('jours_requis')} "
+                                         f"jours exploitables (estimation : {prog.get('date_estimee')})")
+    else:
+        journal.noter("parallele", "avertissement", "cours ou historique de sentiment indisponibles : volet 3 non recalculé")
+        resultats = lire_json(FICHIER_PARALLELE)
+
+    # Synthèse : une version par ETF ESG (le site affiche celle de l'ETF choisi).
+    textes = {e["id"]: synthese.generer(perf, senti, resultats, e["id"])
+              for e in cfg["etf"] if e["id"] != cfg["reference"]}
+    donnees = {"genere_le_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+               "methode": "Phrases générées par des règles fixes (aucune intelligence artificielle) : voir pipeline/synthese.py.",
+               "defaut": cfg["defaut_esg"], "par_etf": textes}
+    ecrit, raison = ecrire_json_si_valide(FICHIER_SYNTHESE, donnees, [(any(textes.values()), "aucune phrase")])
+    journal.noter("synthese", "ok" if ecrit else "avertissement",
+                  " ".join(textes.get(cfg["defaut_esg"], []))[:300] if ecrit else raison)
 
 
 def etape_gdelt(journal: Journal) -> None:
@@ -370,7 +464,13 @@ def etape_gdelt(journal: Journal) -> None:
     journal.noter("gdelt", "ok", f"{len(nouveau)} jours de tonalité GDELT")
 
 
-ETAPES = ["performance", "secteurs", "sentiment", "gdelt"]
+ETAPES = ["performance", "secteurs", "sentiment", "parallele", "synthese", "gdelt"]
+
+
+def gdelt_a_des_donnees() -> bool:
+    """Vrai seulement si le fichier GDELT du site existe et contient au moins une valeur."""
+    donnees = lire_json(FICHIER_GDELT_SITE) or {}
+    return any(v is not None for ligne in donnees.get("series", []) for k, v in ligne.items() if k != "date")
 
 
 def ecrire_etat(journal: Journal, maintenant: datetime | None = None) -> dict:
@@ -398,12 +498,14 @@ def ecrire_etat(journal: Journal, maintenant: datetime | None = None) -> dict:
         }
 
     # Alertes : cette exécution + journal des dernières 24 h (relevés de titres).
+    # GDELT est facultatif : ses incidents restent dans le journal mais ne sont
+    # pas affichés sur le site (point 10 : rien ne s'affiche si la série est vide).
     alertes = [{"horodatage_utc": l["horodatage_utc"], "etape": l["etape"], "statut": l["statut"], "message": l["message"]}
-               for l in journal.lignes if l["statut"] != "ok"]
+               for l in journal.lignes if l["statut"] != "ok" and l["etape"] != "gdelt"]
     if FICHIER_JOURNAL.exists():
         histo = pd.read_csv(FICHIER_JOURNAL, encoding="utf-8-sig", dtype=str).fillna("")
         limite = (maintenant - timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S")
-        recents = histo[(histo["horodatage_utc"] >= limite) & (histo["statut"] != "ok")]
+        recents = histo[(histo["horodatage_utc"] >= limite) & (histo["statut"] != "ok") & (histo["etape"] != "gdelt")]
         alertes += recents.to_dict(orient="records")
     vues, uniques = set(), []
     for a in alertes:  # une même alerte répétée à chaque relevé n'apparaît qu'une fois
@@ -423,6 +525,15 @@ def ecrire_etat(journal: Journal, maintenant: datetime | None = None) -> dict:
         "etapes": etapes,
         "tout_va_bien": all(e["statut"] == "ok" for k, e in etapes.items() if k != "gdelt"),
         "alertes_24h": uniques,
+        # Le site n'affiche la série GDELT que si elle contient des valeurs.
+        "gdelt_disponible": gdelt_a_des_donnees(),
+        # Crédits affichés dans le pied de page de chaque page du site.
+        "credits": [
+            CREDIT_FINBERT,
+            "Cours : Yahoo Finance (usage personnel, non commercial). Taux de change et €STR : Banque centrale européenne.",
+            "Données ESG et réglementaires : fiches officielles des émetteurs (iShares, BNP Paribas AM), "
+            "liste officielle du label ISR, liste Greenfin. Notes ESG : MSCI ESG Research, via les fiches iShares.",
+        ],
     }
     ecrire_json_si_valide(FICHIER_ETAT, etat, [])
     return etat
@@ -443,6 +554,10 @@ def main() -> int:
         etape_sentiment(journal)
     except Exception as erreur:  # noqa: BLE001
         journal.noter("sentiment", "echec", f"erreur imprévue : {erreur!r}")
+    try:
+        etape_parallele(journal, tableau)
+    except Exception as erreur:  # noqa: BLE001
+        journal.noter("parallele", "echec", f"erreur imprévue : {erreur!r}")
     try:
         etape_gdelt(journal)
     except Exception as erreur:  # noqa: BLE001

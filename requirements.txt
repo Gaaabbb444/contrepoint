@@ -11,3 +11,4 @@ tzdata==2026.5
 feedparser==6.0.14
 rapidfuzz==3.14.6
 exchange_calendars==4.13.2
+scipy==1.18.1

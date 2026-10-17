@@ -75,10 +75,43 @@ sentiment:
   # Nombre de titres les plus positifs / négatifs conservés par jour et par groupe.
   titres_extremes: 5
 
+  # Poids des médias : part de chaque média dans un groupe, mesurée sur les N
+  # dernières séances. Au-delà du plafond, une alerte est notée dans le journal
+  # et une simulation « avec plafond » est calculée (non utilisée tant que la
+  # décision n'est pas prise).
+  repartition_seances: 20
+  plafond_media_pct: 25
+
+  # Couverture d'une journée de sentiment (correction 5) : une journée est
+  # « complète » si (1) au moins 75 % des relevés attendus (un toutes les 3 h)
+  # ont réussi ET (2) aucun intervalle entre deux relevés réussis ne dépasse
+  # 12 h. Justification : le flux qui renouvelle le plus vite ses articles
+  # (CNBC Top News, 30 articles) couvre environ 13 h (mesuré le 17/10/2026) ;
+  # un trou de 12 h au plus ne fait donc perdre presque aucun article. Le seuil
+  # de 75 % tolère les relevés que GitHub retarde ou saute parfois (2 sur 8 un
+  # jour normal), sans accepter une journée majoritairement non relevée.
+  couverture_min_pct: 75
+  couverture_ecart_max_heures: 12
+  intervalle_releves_heures: 3
+
   # Heure de clôture des séances (heure de Paris) : borne des journées de
   # sentiment (correction B). Les jours de clôture anticipée, l'heure réelle
   # du calendrier Xetra est utilisée.
   calendrier_bourse: XETR
+
+parallele:
+  # Volet 3 : aucun résultat statistique n'est présenté avant ce nombre de
+  # journées de bourse « exploitables » (étiquette autre que « signal
+  # insuffisant » et couverture complète). 60 séances ≈ 3 mois : en dessous,
+  # une corrélation de 0,25 n'est pas distinguable du hasard.
+  jours_min: 60
+  # Comparaison jours positifs / jours négatifs : au moins N journées de chaque.
+  jours_min_par_categorie: 15
+  # Corrélation glissante : nombre de séances de la fenêtre.
+  fenetre_glissante: 30
+  # Seuil de significativité statistique (probabilité d'un résultat aussi net
+  # par pur hasard). 5 % est la convention.
+  seuil_p: 0.05
 
 secteurs:
   # Composition des fonds : fichier officiel iShares (« latest-holdings.csv »).
