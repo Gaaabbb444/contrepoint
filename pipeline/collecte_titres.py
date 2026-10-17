@@ -109,11 +109,13 @@ def texte_a_analyser(titre: str, resume: str, mots_max: int) -> str:
 # -----------------------------------------------------------------------------
 
 def lire_flux(contenu: bytes | str, flux: dict, maintenant: datetime, age_max_heures: int,
-              filtre: re.Pattern | None = None) -> list[dict]:
+              filtre: re.Pattern | None = None, medias_exclus: set[str] | None = None) -> list[dict]:
     """Transforme le contenu d'un flux RSS en liste d'articles (avec résumé, en mémoire seulement).
 
     `filtre` : pour un agrégateur, motif de mots-clés que le titre doit contenir.
+    `medias_exclus` : pour un agrégateur, médias de la liste noire (noms en minuscules).
     """
+    medias_exclus = medias_exclus or set()
     analyse = feedparser.parse(contenu)
     articles = []
     for entree in analyse.entries:
@@ -125,6 +127,8 @@ def lire_flux(contenu: bytes | str, flux: dict, maintenant: datetime, age_max_he
         if flux["type"] == "agregateur":
             # Le vrai média est indiqué dans <source> ; le résumé n'est qu'une copie du titre.
             source = nettoyer_texte(entree.get("source", {}).get("title")) or flux["nom"]
+            if source.casefold() in medias_exclus:
+                continue  # média de la liste noire (voir config/flux_rss.yaml)
             titre = titre_sans_source(titre, source)
             resume = ""
             if filtre is not None and not filtre.search(titre):
@@ -268,13 +272,15 @@ def collecter(modele, journal: Journal, ecrire: bool = True, maintenant: datetim
     p = parametres()["sentiment"]
 
     filtres = {g: motif_mots_cles(m) for g, m in (cfg_flux.get("mots_cles_agregateurs") or {}).items()}
+    exclus = {str(e["media"]).casefold() for e in (cfg_flux.get("medias_exclus_agregateurs") or [])}
     bruts, bilan_flux = [], {}
     for flux in cfg_flux["flux"]:
         if not flux.get("actif", True) or (flux["type"] == "agregateur" and not cfg_flux.get("agregateurs_actifs", True)):
             continue
         try:
             filtre = filtres.get(flux["groupe"]) if flux["type"] == "agregateur" else None
-            articles = lire_flux(telecharger_flux(flux), flux, maintenant, p["age_max_heures"], filtre)
+            articles = lire_flux(telecharger_flux(flux), flux, maintenant, p["age_max_heures"], filtre,
+                                 exclus if flux["type"] == "agregateur" else None)
             bruts.extend(articles)
             bilan_flux[flux["nom"]] = len(articles)
         except Exception as erreur:  # noqa: BLE001 — un flux en panne n'arrête pas les autres

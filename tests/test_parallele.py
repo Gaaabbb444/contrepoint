@@ -119,7 +119,46 @@ def test_phrase_performance_et_lien():
             "periodes": [{"id": "1a", "disponible": True, "etf": {"sri": {"perf_relative_pts": -1.57}}}]}
     assert synthese.phrase_performance(perf, "sri") == ("Sur 5 séances, l'ETF World SRI sous-performe le MSCI World "
                                                        "de 0,4 point (+1,2 % contre +1,6 %) ; sur un an, l'écart est de −1,6 point.")
-    par = {"etf": {"sri": {"marche": {"progression": {"jours_exploitables": 12, "jours_requis": 60, "date_estimee": "2026-12-29"},
-                                      "test_decalage_j1": {"disponible": False, "n": 12}}}}}
-    assert synthese.phrase_lien(par, "sri") == ("Lien entre sentiment et performance relative : pas encore interprétable "
-                                               "(12 / 60 jours de bourse exploitables ; résultats attendus vers le 29/12/2026).")
+    par = {"test_principal": {"progression": {"jours_exploitables": 12, "jours_requis": 60, "date_estimee": "2026-12-29"},
+                              "resultat": {"disponible": False, "n": 12}}}
+    assert synthese.phrase_lien(par) == (
+        "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : "
+        "pas encore interprétable (12 / 60 jours de bourse exploitables ; résultats attendus vers le 29/12/2026).")
+
+
+# --- Test principal et tests exploratoires -------------------------------------------
+
+def test_correction_de_holm():
+    corrigees = parallele.holm([0.01, 0.04, 0.03, 0.005])
+    assert corrigees == pytest.approx([0.03, 0.06, 0.06, 0.02])
+
+
+def test_zone_du_hasard_sur_30_seances():
+    # Avec 30 séances, une corrélation de ±0,36 peut apparaître par pur hasard (seuil 5 %).
+    assert parallele.seuil_correlation_hasard(30) == pytest.approx(0.361, abs=0.001)
+
+
+def test_test_principal_et_tests_exploratoires():
+    cours, histo = donnees_simulees(150, lien_lendemain=0.0, graine=3)
+    cours["paris"] = cours["sri"] * 1.001
+    p = P | {"test_principal": {"groupe": "marche", "etf": "sri", "test": "test_decalage_j1"}}
+    res = parallele.analyser(cours, "ref", histo, p)
+    principal = res["etf"]["sri"]["marche"]["test_decalage_j1"]
+    assert principal["statut"] == "principal" and "p_holm" not in principal   # pas de correction : fixé à l'avance
+    assert res["test_principal"]["resultat"] is principal
+    autre = res["etf"]["paris"]["esg"]["correlation_meme_jour"]
+    assert autre["statut"] == "exploratoire" and autre["p_holm"] >= autre["p"]
+    assert res["nb_tests_exploratoires_disponibles"] == 2 * 2 * 3 - 1
+    assert res["validation"]["correlation"]["statut"] == "contrôle"
+
+
+def test_la_synthese_ne_cite_jamais_un_test_exploratoire():
+    # Test principal non significatif, mais un test exploratoire « significatif » :
+    # la synthèse ne doit parler que du test principal.
+    par = {"test_principal": {"progression": {"jours_exploitables": 80, "jours_requis": 60, "date_estimee": None},
+                              "resultat": {"disponible": True, "n": 80, "r": 0.05, "p": 0.66, "significatif": False, "sens": "positif"}},
+           "etf": {"paris": {"esg": {"correlation_meme_jour": {"disponible": True, "n": 80, "r": 0.4, "p": 0.0002,
+                                                               "significatif": True, "statut": "exploratoire"}}}}}
+    phrase = synthese.phrase_lien(par)
+    assert "aucun lien statistiquement significatif" in phrase and "0,05" in phrase
+    assert "0,4" not in phrase and "ESG" not in phrase

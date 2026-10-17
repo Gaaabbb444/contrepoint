@@ -346,6 +346,8 @@ La documentation dit qu'en dépôt public, les tâches planifiées sont désacti
 - **Bandeau de mise à jour** : date des dernières données (`etat.json`), astérisque si la dernière clôture est provisoire, alertes des dernières 24 heures.
 - **GDELT** : rien n'est affiché si `etat.json` indique `gdelt_disponible: false`, ni graphique vide, ni alerte.
 - **Volet 3** : tant que l'échantillon est insuffisant, une barre de progression (« 12 / 60 jours de bourse ») et la date estimée, jamais un simple message d'attente.
+- **Corrélation glissante** : toujours affichée avec une **zone du hasard** (bande grisée de −0,36 à +0,36 sur 30 séances, valeur lue dans `parallele.json` → `zone_hasard_correlation_glissante`), accompagnée d'une phrase expliquant qu'à l'intérieur de cette zone, la courbe ne dit rien.
+- **Test principal et tests exploratoires** : le test principal est mis en avant. Les tests exploratoires sont présentés à part, sous ce nom, avec leur probabilité corrigée (Holm), et jamais formulés comme des conclusions.
 - **Journées partielles** : mention « journée partiellement relevée ».
 - **Explication des résultats** : rappel que le résultat dépend de la période observée (`secteurs.json`).
 - **Notes MSCI** : « non publiée » pour le MSCI World. **BNP** : affiché hors de la vue principale.

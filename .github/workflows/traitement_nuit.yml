@@ -22,6 +22,7 @@ on:
 permissions:
   contents: write      # enregistrer les résultats dans le dépôt
   actions: write       # réactiver les tâches planifiées (règle des 60 jours)
+  issues: write        # créer un ticket d'alerte (GitHub envoie alors un e-mail)
 
 concurrency:
   group: ecriture-depot
@@ -60,6 +61,12 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           python -m pipeline.enregistrer --message "Traitement de nuit du $(date -u +'%Y-%m-%d')" data docs/data
+
+      - name: Prévenir par ticket si un média dépasse 25 % d'un groupe
+        if: always() && steps.calcul.outcome != 'skipped'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -m pipeline.alertes
 
       - name: Empêcher la désactivation automatique (règle des 60 jours)
         # Sur un dépôt public, GitHub désactive les tâches planifiées après

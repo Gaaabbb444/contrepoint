@@ -115,6 +115,16 @@ def test_filtre_mots_cles_agregateur():
     <source url="y">Bloomberg</source><pubDate>Fri, 16 Oct 2026 14:00:00 GMT</pubDate></item></channel></rss>"""
     arts = ct.lire_flux(gn, flux, datetime(2026, 10, 16, 20, tzinfo=timezone.utc), 36, motif)
     assert [(a["titre"], a["source"]) for a in arts] == [("Green bonds hit record", "FT")]
+    # Liste noire : le même article est ignoré si son média est exclu (majuscules indifférentes).
+    assert ct.lire_flux(gn, flux, datetime(2026, 10, 16, 20, tzinfo=timezone.utc), 36, motif, {"ft"}) == []
+
+
+def test_liste_noire_dans_la_configuration():
+    from pipeline.config import lire_yaml
+    cfg = lire_yaml("flux_rss.yaml")
+    exclus = cfg["medias_exclus_agregateurs"]
+    assert all(e.get("raison") and e.get("depuis") for e in exclus)   # raison et date obligatoires
+    assert "kalkine india" in {e["media"].casefold() for e in exclus}
 
 
 RSS = """<?xml version="1.0"?><rss version="2.0"><channel><title>Test</title>

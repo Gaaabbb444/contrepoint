@@ -13,9 +13,11 @@ Règles :
 4. Performance relative de l'ETF ESG choisi sur 5 séances, puis sur 1 an :
    « surperforme » / « sous-performe » si l'écart atteint 0,1 point,
    sinon « fait jeu égal avec ».
-5. Lien sentiment / performance : progression tant que l'échantillon est
-   insuffisant ; sinon résultat du test de décalage (J → J+1), avec le
-   rappel que corrélation n'est pas causalité.
+5. Lien sentiment / performance : uniquement le TEST PRINCIPAL fixé à
+   l'avance (sentiment « marché » de J → performance relative du SRI à J+1).
+   Progression tant que l'échantillon est insuffisant ; sinon son résultat,
+   avec le rappel que corrélation n'est pas causalité. Les tests
+   exploratoires ne sont jamais cités.
 """
 
 from datetime import date
@@ -100,23 +102,29 @@ def phrase_performance(perf: dict, id_esg: str) -> str | None:
     return texte + "."
 
 
-def phrase_lien(parallele: dict, id_esg: str, groupe: str = "marche") -> str | None:
-    bloc = parallele.get("etf", {}).get(id_esg, {}).get(groupe)
-    if not bloc:
+def phrase_lien(parallele: dict) -> str | None:
+    """Résultat du SEUL test principal, fixé à l'avance.
+
+    Règle : la synthèse ne cite JAMAIS un test exploratoire (autres ETF, groupe
+    ESG, même jour, comparaison des jours), même « significatif » : ces tests
+    servent à formuler des pistes, pas des conclusions.
+    """
+    principal = parallele.get("test_principal")
+    if not principal or not principal.get("progression"):
         return None
-    prog, test = bloc["progression"], bloc["test_decalage_j1"]
+    prog, test = principal["progression"], principal["resultat"]
+    intitule = "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain)"
     if not test.get("disponible"):
-        texte = (f"Lien entre sentiment et performance relative : pas encore interprétable "
+        texte = (f"{intitule} : pas encore interprétable "
                  f"({prog['jours_exploitables']} / {prog['jours_requis']} jours de bourse exploitables")
         if prog.get("date_estimee"):
             texte += f" ; résultats attendus vers le {date_fr(prog['date_estimee'])}"
         return texte + ")."
     if test["significatif"]:
-        return (f"Sur {test['n']} jours de bourse, un lien {test['sens']} statistiquement significatif apparaît entre "
-                f"le sentiment du jour et la performance relative du lendemain (corrélation {nombre(test['r'], 2)}). "
-                f"Corrélation n'est pas causalité.")
-    return (f"Sur {test['n']} jours de bourse, aucun lien statistiquement significatif entre le sentiment du jour "
-            f"et la performance relative du lendemain (corrélation {nombre(test['r'], 2)}).")
+        return (f"{intitule} : sur {test['n']} jours de bourse, lien {test['sens']} statistiquement significatif "
+                f"(corrélation {nombre(test['r'], 2)}). Corrélation n'est pas causalité.")
+    return (f"{intitule} : sur {test['n']} jours de bourse, aucun lien statistiquement significatif "
+            f"(corrélation {nombre(test['r'], 2)}).")
 
 
 def generer(perf: dict | None, sentiment: dict | None, parallele: dict | None, id_esg: str) -> list[str]:
@@ -136,7 +144,7 @@ def generer(perf: dict | None, sentiment: dict | None, parallele: dict | None, i
         if p:
             phrases.append(p)
     if parallele:
-        p = phrase_lien(parallele, id_esg)
+        p = phrase_lien(parallele)  # toujours le test principal, quel que soit l'ETF affiché
         if p:
             phrases.append(p)
     return phrases

@@ -70,12 +70,25 @@ mots_cles_agregateurs:
     - human rights
     - diversity
 
+# Liste noire des médias pour les agrégateurs (Google Actualités) : les articles
+# de ces médias sont ignorés. Chaque exclusion indique sa raison et sa date.
+# Le nom doit être écrit comme Google l'affiche (majuscules indifférentes).
+medias_exclus_agregateurs:
+  - media: Kalkine India
+    raison: >-
+      Fiches de notes ESG générées en série, sur un même modèle (« Zydus Wellness ESG
+      Rating 72 FY2026 », « NHPC ESG Rating 75 by NSE Sustainability… ») : aucune
+      information de marché, et 9 des 97 titres ESG à lui seul le 16/10/2026.
+    depuis: 2026-10-17
+
 # media : nom du média, utilisé pour mesurer le poids de chaque média dans un
 # groupe (CNBC a 5 flux mais reste UN média). Pour Google Actualités, le média
 # est celui de chaque article (indiqué par Google).
 flux:
   # --- Groupe « marché » -------------------------------------------------------
-  - { groupe: marche, nom: CNBC Top News,        media: "CNBC", type: direct, actif: true, url: "https://www.cnbc.com/id/100003114/device/rss/rss.html" }
+  # CNBC Top News : retiré le 17/10/2026. Malgré son nom, c'est l'actualité générale
+  # américaine (politique, élections), pas une rubrique économique.
+  - { groupe: marche, nom: CNBC Top News,        media: "CNBC", type: direct, actif: false, url: "https://www.cnbc.com/id/100003114/device/rss/rss.html" }
   - { groupe: marche, nom: CNBC Finance,         media: "CNBC", type: direct, actif: true, url: "https://www.cnbc.com/id/10000664/device/rss/rss.html" }
   - { groupe: marche, nom: CNBC Economy,         media: "CNBC", type: direct, actif: true, url: "https://www.cnbc.com/id/20910258/device/rss/rss.html" }
   - { groupe: marche, nom: CNBC Investing,       media: "CNBC", type: direct, actif: true, url: "https://www.cnbc.com/id/15839069/device/rss/rss.html" }

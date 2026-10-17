@@ -29,9 +29,40 @@ from pipeline import fenetres
 
 AVERTISSEMENTS = [
     "Corrélation n'est pas causalité : un lien statistique ne prouve pas que le sentiment fait bouger les prix.",
-    "Plusieurs tests sont menés (4 ETF, 2 groupes, 3 tests) : sur 20 tests, environ un peut paraître "
-    "« significatif » par pur hasard au seuil de 5 %.",
+    "Un seul test principal a été fixé à l'avance (sentiment « marché » du jour J et performance relative de "
+    "l'ETF SRI à J+1). Les autres tests sont exploratoires : leurs probabilités sont corrigées pour tests "
+    "multiples (Holm) et ils servent à formuler des pistes, pas des conclusions.",
 ]
+TESTS = ("correlation_meme_jour", "test_decalage_j1", "comparaison_jours")
+
+
+def holm(valeurs_p: list[float]) -> list[float]:
+    """Correction de Holm-Bonferroni pour tests multiples.
+
+    On classe les m probabilités de la plus petite à la plus grande ; la k-ième
+    est multipliée par (m − k + 1), et l'on impose que les probabilités
+    corrigées ne décroissent pas. Plus prudente que l'absence de correction,
+    moins sévère que Bonferroni (qui multiplie tout par m).
+    """
+    m = len(valeurs_p)
+    ordre = sorted(range(m), key=lambda i: valeurs_p[i])
+    corrigees, maximum = [0.0] * m, 0.0
+    for rang, i in enumerate(ordre):
+        maximum = max(maximum, min(1.0, (m - rang) * valeurs_p[i]))
+        corrigees[i] = maximum
+    return corrigees
+
+
+def seuil_correlation_hasard(n: int, seuil_p: float = 0.05) -> float | None:
+    """Corrélation au-delà de laquelle un résultat sur n journées n'est plus attribuable au hasard (test bilatéral).
+
+    Sert à tracer, autour de la corrélation glissante, la « zone du hasard » :
+    tant que la courbe reste dans [−seuil ; +seuil], elle ne dit rien.
+    """
+    if n < 4:
+        return None
+    t = stats.t.ppf(1 - seuil_p / 2, n - 2)
+    return round(float(t / math.sqrt(n - 2 + t * t)), 3)
 
 
 # -----------------------------------------------------------------------------
@@ -151,6 +182,38 @@ def analyser(cours: pd.DataFrame, id_ref: str, historique: pd.DataFrame, p: dict
                              for s, r in table.iterrows()],
             }
 
+    # Test principal (fixé à l'avance) et tests exploratoires (corrigés par Holm).
+    principal = p.get("test_principal", {"groupe": "marche", "etf": "sri", "test": "test_decalage_j1"})
+    exploratoires = []
+    for id_etf, groupes in resultats["etf"].items():
+        for groupe, bloc in groupes.items():
+            for nom in TESTS:
+                test = bloc[nom]
+                if (id_etf, groupe, nom) == (principal["etf"], principal["groupe"], principal["test"]):
+                    test["statut"] = "principal"
+                    continue
+                test["statut"] = "exploratoire"
+                if test.get("disponible"):
+                    exploratoires.append(test)
+    for test, p_corrige in zip(exploratoires, holm([t["p"] for t in exploratoires])):
+        test["p_holm"] = round(p_corrige, 4)
+        test["significatif_apres_correction"] = bool(p_corrige < p["seuil_p"])
+    bloc_principal = resultats["etf"].get(principal["etf"], {}).get(principal["groupe"], {})
+    resultats["test_principal"] = {
+        "description": "Sentiment « marché » du jour J et performance relative de l'ETF SRI (contre le MSCI World) "
+                       "à la séance suivante J+1. Seul test fixé à l'avance : il n'est pas corrigé pour tests multiples.",
+        "definition": principal,
+        "resultat": bloc_principal.get(principal["test"], {"disponible": False}),
+        "progression": bloc_principal.get("progression"),
+    }
+    resultats["nb_tests_exploratoires_disponibles"] = len(exploratoires)
+    resultats["zone_hasard_correlation_glissante"] = {
+        "fenetre": p["fenetre_glissante"],
+        "seuil": seuil_correlation_hasard(p["fenetre_glissante"], p["seuil_p"]),
+        "explication": f"Sur {p['fenetre_glissante']} séances, une corrélation comprise entre −seuil et +seuil peut "
+                       "apparaître par pur hasard (95 % des cas) : la courbe ne dit rien tant qu'elle reste dans cette zone.",
+    }
+
     # Contrôle de validité : sentiment « marché » du jour J et performance du MSCI World le même jour.
     table_ref = table_jointe(rendements[id_ref], journees_exploitables(historique, "marche"))
     n_ref = int(table_ref["rendement_j"].notna().sum()) if len(table_ref) else 0
@@ -160,6 +223,6 @@ def analyser(cours: pd.DataFrame, id_ref: str, historique: pd.DataFrame, p: dict
                        "C'est un contrôle de validité, pas une prévision.",
         "progression": progression(n_ref, derniere, p, code_calendrier),
         "correlation": correlation(table_ref.get("solde", pd.Series(dtype=float)),
-                                   table_ref.get("rendement_j", pd.Series(dtype=float)), p),
+                                   table_ref.get("rendement_j", pd.Series(dtype=float)), p) | {"statut": "contrôle"},
     }
     return resultats

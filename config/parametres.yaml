@@ -85,9 +85,10 @@ sentiment:
   # Couverture d'une journée de sentiment (correction 5) : une journée est
   # « complète » si (1) au moins 75 % des relevés attendus (un toutes les 3 h)
   # ont réussi ET (2) aucun intervalle entre deux relevés réussis ne dépasse
-  # 12 h. Justification : le flux qui renouvelle le plus vite ses articles
-  # (CNBC Top News, 30 articles) couvre environ 13 h (mesuré le 17/10/2026) ;
-  # un trou de 12 h au plus ne fait donc perdre presque aucun article. Le seuil
+  # 12 h. Justification : le flux qui renouvelait le plus vite ses articles
+  # (CNBC Top News, retiré depuis) couvrait environ 13 h, et le plus rapide des
+  # flux actuels (Edie) environ 23 h (mesures du 17/10/2026) ; un trou de 12 h
+  # au plus ne fait donc perdre presque aucun article. Le seuil
   # de 75 % tolère les relevés que GitHub retarde ou saute parfois (2 sur 8 un
   # jour normal), sans accepter une journée majoritairement non relevée.
   couverture_min_pct: 75
@@ -112,6 +113,18 @@ parallele:
   # Seuil de significativité statistique (probabilité d'un résultat aussi net
   # par pur hasard). 5 % est la convention.
   seuil_p: 0.05
+
+  # TEST PRINCIPAL, fixé le 17/10/2026, AVANT de disposer d'une seule journée
+  # exploitable : c'est la seule question à laquelle le projet s'engage à
+  # répondre. Les autres tests (autres ETF, groupe ESG, même jour, comparaison
+  # des jours) sont EXPLORATOIRES : leurs probabilités sont corrigées pour tests
+  # multiples (méthode de Holm) et la synthèse automatique ne les cite jamais.
+  # Ne pas modifier après l'arrivée des données (sinon, le noter dans la méthodologie).
+  test_principal:
+    groupe: marche
+    etf: sri
+    test: test_decalage_j1
+    fixe_le: 2026-10-17
 
 secteurs:
   # Composition des fonds : fichier officiel iShares (« latest-holdings.csv »).

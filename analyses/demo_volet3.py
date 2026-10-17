@@ -50,7 +50,7 @@ def main() -> None:
             print(f"  comparaison : non disponible ({c['n_positifs']} jours positifs, {c['n_negatifs']} négatifs)")
         gl = bloc["correlation_glissante"]
         print(f"  corrélation glissante 30 j : {len(gl)} valeurs, de {gl[0]['r']:+.2f} à {gl[-1]['r']:+.2f}")
-        print("  synthèse :", synthese.phrase_lien(res, "sri"))
+        print("  synthèse :", synthese.phrase_lien(res))
 
 
 if __name__ == "__main__":
