@@ -99,6 +99,24 @@ def test_dedoublonnage():
     assert liens == ["https://cnbc.com/fed", "https://ft.com/oil", "https://ft.com/oil"]
 
 
+def test_filtre_mots_cles_agregateur():
+    motif = ct.motif_mots_cles(["ESG", "sustainab*", "green", "net zero", "COP", "COP3*", "impact invest*"])
+    gardes = ["EU softens ESG rules", "Sustainability reporting delayed", "Green bonds hit record",
+              "Banks miss net zero targets", "Deals struck at COP30", "Rise of impact investing in Asia"]
+    rejetes = ["Greenback heads for weekly fall", "What UniCredit Buyers Were Betting On",
+               "Monthly Asset Allocation Update", "Copper prices climb", "Police cop suspended"]
+    assert all(motif.search(t) for t in gardes)
+    assert not any(motif.search(t) for t in rejetes)
+    flux = {"nom": "GN", "groupe": "esg", "type": "agregateur"}
+    gn = """<?xml version="1.0"?><rss version="2.0"><channel><title>GN</title>
+    <item><title>Green bonds hit record - FT</title><link>https://news.google.com/a</link><source url="x">FT</source>
+    <pubDate>Fri, 16 Oct 2026 14:00:00 GMT</pubDate></item>
+    <item><title>What UniCredit Buyers Were Betting On - Bloomberg</title><link>https://news.google.com/b</link>
+    <source url="y">Bloomberg</source><pubDate>Fri, 16 Oct 2026 14:00:00 GMT</pubDate></item></channel></rss>"""
+    arts = ct.lire_flux(gn, flux, datetime(2026, 10, 16, 20, tzinfo=timezone.utc), 36, motif)
+    assert [(a["titre"], a["source"]) for a in arts] == [("Green bonds hit record", "FT")]
+
+
 RSS = """<?xml version="1.0"?><rss version="2.0"><channel><title>Test</title>
 <item><title>Stocks rally on earnings</title><link>https://ex.com/a?utm_medium=rss</link>
 <description>SECRET-RESUME-123 Investors cheered strong quarterly results.</description>

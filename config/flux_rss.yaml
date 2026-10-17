@@ -17,6 +17,59 @@
 # Interrupteur général des agrégateurs (Google Actualités).
 agregateurs_actifs: true
 
+# Filtre des agrégateurs : Google Actualités retient un article dès que le mot
+# cherché apparaît quelque part dans son texte. Constaté le 17/10/2026 : 43 %
+# des titres obtenus n'avaient aucun rapport visible avec l'ESG. On ne garde
+# donc un article d'agrégateur que si son TITRE contient au moins un de ces
+# mots-clés (mot entier). Une étoile * signifie « suivi de n'importe quelles
+# lettres » : sustainab* couvre sustainable, sustainability…
+# Majuscules : indifférentes (green = Green = GREEN), SAUF pour les sigles écrits
+# tout en majuscules ici (ESG, SRI, COP…), qui doivent l'être aussi dans le titre
+# (sinon « cop », le policier, passerait pour la conférence climat COP).
+# Les flux spécialisés (type: direct) ne sont pas filtrés.
+mots_cles_agregateurs:
+  esg:
+    - ESG
+    - SRI
+    - sustainab*
+    - climate
+    - carbon
+    - decarboni*
+    - emission*
+    - net zero
+    - net-zero
+    - green               # mot entier : « greenback » (le dollar) n'est pas retenu
+    - greenwash*
+    - renewable*
+    - clean energy
+    - solar
+    - wind power
+    - wind farm*
+    - transition
+    - biodiversity
+    - deforestation
+    - methane
+    - fossil
+    - Paris Agreement
+    - COP                 # conférences climat de l'ONU : « COP », « COP30 », « COP31 »…
+    - COP2*
+    - COP3*
+    - taxonomy
+    - SFDR
+    - CSRD
+    - ISSB
+    - TCFD
+    - impact invest*
+    - responsible invest*
+    - ethical
+    - stewardship
+    - proxy vot*
+    - shareholder resolution*
+    - social bond*
+    - governance
+    - human rights
+    - diversity
+
 flux:
   # --- Groupe « marché » -------------------------------------------------------
   - { groupe: marche, nom: CNBC Top News,        type: direct, actif: true, url: "https://www.cnbc.com/id/100003114/device/rss/rss.html" }

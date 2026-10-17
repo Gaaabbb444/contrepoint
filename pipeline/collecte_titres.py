@@ -74,6 +74,28 @@ def titre_sans_source(titre: str, source: str) -> str:
     return titre[: -len(suffixe)].strip() if source and titre.endswith(suffixe) else titre
 
 
+def motif_mots_cles(mots_cles: list[str]) -> re.Pattern | None:
+    """Construit le filtre « le titre contient au moins un mot-clé » (mot entier).
+
+    - Une étoile * à la fin d'un mot-clé signifie « suivi de n'importe quelles lettres ».
+    - Les majuscules ne comptent pas (« green » trouve « Green »)…
+    - … SAUF pour les sigles écrits tout en majuscules (ESG, SRI, COP…) : ils
+      doivent apparaître en majuscules, sinon « cop » (policier) serait pris
+      pour « COP » (conférence climat).
+    """
+    if not mots_cles:
+        return None
+    morceaux = []
+    for mot in (str(m).strip() for m in mots_cles):
+        morceau = re.escape(mot).replace(r"\*", r"\w*").replace(r"\ ", r"\s+").replace(r"\-", "-")
+        morceau = rf"\b{morceau}" + ("" if mot.endswith("*") else r"\b")
+        racine = mot.rstrip("*")
+        if any(c.isalpha() for c in racine) and racine == racine.upper():
+            morceau = f"(?-i:{morceau})"  # sigle : respect des majuscules
+        morceaux.append(morceau)
+    return re.compile("|".join(morceaux), re.IGNORECASE)
+
+
 def texte_a_analyser(titre: str, resume: str, mots_max: int) -> str:
     """Texte donné à FinBERT : le titre, suivi du début du résumé s'il apporte autre chose."""
     resume = " ".join(resume.split()[:mots_max])
@@ -86,8 +108,12 @@ def texte_a_analyser(titre: str, resume: str, mots_max: int) -> str:
 # Lecture des flux
 # -----------------------------------------------------------------------------
 
-def lire_flux(contenu: bytes | str, flux: dict, maintenant: datetime, age_max_heures: int) -> list[dict]:
-    """Transforme le contenu d'un flux RSS en liste d'articles (avec résumé, en mémoire seulement)."""
+def lire_flux(contenu: bytes | str, flux: dict, maintenant: datetime, age_max_heures: int,
+              filtre: re.Pattern | None = None) -> list[dict]:
+    """Transforme le contenu d'un flux RSS en liste d'articles (avec résumé, en mémoire seulement).
+
+    `filtre` : pour un agrégateur, motif de mots-clés que le titre doit contenir.
+    """
     analyse = feedparser.parse(contenu)
     articles = []
     for entree in analyse.entries:
@@ -101,6 +127,8 @@ def lire_flux(contenu: bytes | str, flux: dict, maintenant: datetime, age_max_he
             source = nettoyer_texte(entree.get("source", {}).get("title")) or flux["nom"]
             titre = titre_sans_source(titre, source)
             resume = ""
+            if filtre is not None and not filtre.search(titre):
+                continue  # titre sans aucun mot-clé du groupe : probablement hors sujet
         else:
             resume = nettoyer_texte(entree.get("summary"))
         date_struct = entree.get("published_parsed") or entree.get("updated_parsed")
@@ -239,12 +267,14 @@ def collecter(modele, journal: Journal, ecrire: bool = True, maintenant: datetim
     cfg_flux = lire_yaml("flux_rss.yaml")
     p = parametres()["sentiment"]
 
+    filtres = {g: motif_mots_cles(m) for g, m in (cfg_flux.get("mots_cles_agregateurs") or {}).items()}
     bruts, bilan_flux = [], {}
     for flux in cfg_flux["flux"]:
         if not flux.get("actif", True) or (flux["type"] == "agregateur" and not cfg_flux.get("agregateurs_actifs", True)):
             continue
         try:
-            articles = lire_flux(telecharger_flux(flux), flux, maintenant, p["age_max_heures"])
+            filtre = filtres.get(flux["groupe"]) if flux["type"] == "agregateur" else None
+            articles = lire_flux(telecharger_flux(flux), flux, maintenant, p["age_max_heures"], filtre)
             bruts.extend(articles)
             bilan_flux[flux["nom"]] = len(articles)
         except Exception as erreur:  # noqa: BLE001 — un flux en panne n'arrête pas les autres
