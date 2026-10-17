@@ -96,7 +96,7 @@ def phrase_performance(perf: dict, id_esg: str) -> str | None:
         rel = un_an["etf"][id_esg]["perf_relative_pts"]
         texte += f" ; sur un an, l'écart est de {nombre(rel, 1, True)} point{'s' if abs(rel) >= 2 else ''}"
     if perf.get("derniere_seance_provisoire"):
-        texte += " (dernière clôture provisoire)"
+        texte += " — dernière clôture encore provisoire"
     return texte + "."
 
 
