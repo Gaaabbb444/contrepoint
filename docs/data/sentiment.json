@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-10-17T00:59:23Z",
+ "genere_le_utc": "2026-10-17T01:07:56Z",
  "derniere_seance": "2026-10-16",
  "fenetre": {
   "debut": "2026-10-15T17:30:00+02:00",
@@ -8,19 +8,19 @@
  },
  "groupes": {
   "marche": {
-   "nb_articles": 129,
+   "nb_articles": 151,
    "nb_sources": 9,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": -12.4,
-   "part_media_principal_pct": 24.8,
+   "solde_dates_fiables": -13.9,
+   "part_media_principal_pct": 21.2,
    "media_principal": "Financial Times",
-   "solde_avec_plafond": -12.4,
-   "positif_pct": 29.5,
-   "neutre_pct": 28.7,
-   "negatif_pct": 41.9,
-   "solde": -12.4,
-   "marge_erreur": 14.4,
-   "etiquette": "neutre",
+   "solde_avec_plafond": -13.9,
+   "positif_pct": 25.8,
+   "neutre_pct": 34.4,
+   "negatif_pct": 39.7,
+   "solde": -13.9,
+   "marge_erreur": 12.7,
+   "etiquette": "négatif",
    "plus_positifs": [
     {
      "titre": "Wholesale prices jumped 6.3% annually in September, biggest gain since 2022",
@@ -74,6 +74,13 @@
      "date_publication_utc": "2026-10-15T21:47:00Z"
     },
     {
+     "titre": "British food and drink exports to EU collapse by more than a third since Brexit",
+     "source": "Guardian Business",
+     "lien": "https://www.theguardian.com/business/2026/oct/16/british-food-drink-exports-to-eu-collapse-brexit",
+     "probabilite": 0.972,
+     "date_publication_utc": "2026-10-16T12:34:37Z"
+    },
+    {
      "titre": "Investors dump data centre bonds as AI borrowers face ‘Darwin moment’",
      "source": "FT Markets",
      "lien": "https://www.ft.com/content/678bcd31-6c2a-447b-a68c-ce6dec220bbc?syn-25a6b1a6=1",
@@ -86,13 +93,6 @@
      "lien": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-16-2026",
      "probabilite": 0.972,
      "date_publication_utc": "2026-10-16T08:08:29Z"
-    },
-    {
-     "titre": "S&P 500 Suffers Worst Week Since June as AI Fears Hit Chipmakers",
-     "source": "Bloomberg Markets",
-     "lien": "https://www.bloomberg.com/news/articles/2026-10-16/s-p-500-steady-as-warsh-boosts-expectations-of-rate-hold",
-     "probabilite": 0.972,
-     "date_publication_utc": "2026-10-16T14:01:24Z"
     }
    ],
    "releves_reussis": 0,
@@ -101,18 +101,18 @@
    "couverture_partielle": true
   },
   "esg": {
-   "nb_articles": 65,
-   "nb_sources": 31,
+   "nb_articles": 60,
+   "nb_sources": 30,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": 9.2,
-   "part_media_principal_pct": 18.5,
+   "solde_dates_fiables": 5.0,
+   "part_media_principal_pct": 20.0,
    "media_principal": "Edie",
-   "solde_avec_plafond": 9.2,
-   "positif_pct": 20.0,
-   "neutre_pct": 69.2,
-   "negatif_pct": 10.8,
-   "solde": 9.2,
-   "marge_erreur": 13.3,
+   "solde_avec_plafond": 5.0,
+   "positif_pct": 16.7,
+   "neutre_pct": 71.7,
+   "negatif_pct": 11.7,
+   "solde": 5.0,
+   "marge_erreur": 13.4,
    "etiquette": "neutre",
    "plus_positifs": [
     {
@@ -121,13 +121,6 @@
      "lien": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQdmN6TFR4VGk0UXBGZVN3N3htOGhWUVE3VGFuU1d2a0pTamVpN0RUNm5VbFZLanZBb3Rvek1uczExdGdJczNKMnRiN1hZYlZQb0ExWUE0VFpzYzZsaXdaem1RUGhJcTJhSm54N0VCY1BMdXBtRElPZ1lseW8wRUFrbkVGWFowdF90REJjX2kxNVM1ODB0Q3V0RWU5bU10TjRDRGJ4U0tHS21udW43WHd6YkhibWJmZmhxZEFKLVNDTlBENy1EN3hIUDBLUmlSdnVMTTVv?oc=5",
      "probabilite": 0.95,
      "date_publication_utc": "2026-10-16T11:32:57Z"
-    },
-    {
-     "titre": "Yes Bank ESG rating rises to 79 for FY26 from 77 in prior year",
-     "source": "scanx.trade",
-     "lien": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPaG5fejhPLWZNWjhRQndXRE5HVEVaVE5oaVBsM1hkN3BacUNBQ2NzeEg4T2hLQUFOZ184Q0hWRGk2SGVtZlljZ092d1pHcGhzbTUtTTdmRlQ0SkcyVzNkc3N1dElONXlaMm9hMDcwclRCVXFzUXhiVks0S2tmMVRBMF9mbDR0djl4Yi16aUtJU25zYVJ5eUJDbWk4UmU4Yk1SbURPeXdoZw?oc=5",
-     "probabilite": 0.939,
-     "date_publication_utc": "2026-10-16T11:00:01Z"
     },
     {
      "titre": "UK Government unveils action plan to boost organic farming",
@@ -144,11 +137,18 @@
      "date_publication_utc": "2026-10-16T13:47:59Z"
     },
     {
-     "titre": "V-Guard Industries secures ESG rating of 73 for FY26",
-     "source": "scanx.trade",
-     "lien": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQTDExR2hFZ19POXI4UnpJUEtzX2d6Y0trMDVfOHpyQmI4VURNMEFVazlZUE1Kbkk5UWhjWUtEUzFYN0tocHRSR05tNUtRR3BnT2JMa1paaU1GTUxUNjRobmFSTThfSFBRYW5lT2ZfWTZCTE51SVcwUlhJVTdQWkU1TEJULTIzNi1BV09qekhINl9IeVVJQlR1OThHeXNrR2lUQXJzOA?oc=5",
-     "probabilite": 0.75,
-     "date_publication_utc": "2026-10-16T11:00:01Z"
+     "titre": "News in brief: UK FRC expects ‘clear’ disclosures on carbon credits",
+     "source": "Responsible Investor",
+     "lien": "https://www.responsible-investor.com/news-in-brief-uk-frc-expects-clear-disclosures-on-carbon-credits/",
+     "probabilite": 0.733,
+     "date_publication_utc": "2026-10-16T14:51:40Z"
+    },
+    {
+     "titre": "ZERO13 named World’s Best Venue for Sustainability in Euromoney Markets Awards 2026",
+     "source": "The Manila Times",
+     "lien": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxOQ0lIMm5FVmM2c2xEei1USjZRMkZKNjJOOHAxRmZ0MGloalJncjhlOEJ3QU9rUk1HdWJMaEl4OVNncFRHYXVOSm14Ynd5VXFZREhfVHVVaVRTZXN4TXZtdW81RDhiQnZZby1mbWxrZ0JpbmNNZEo5V0hpUmtYb1NmNkNwUDdqSG1iTWN2WF9BbFZoaUZBeE02SmdLSENaaFQwQTZDcUZkdVFnNTRiU0twQ2xTSmRqeVZWVm85ZC0ydmpZdXdUV2Q2bTdhOUhkSnpmNExBWU9Fc0QxSjhyaVo0dHljNFVkaF9FZDR3cTFkd2xlZ9IB8gFBVV95cUxOQ0lIMm5FVmM2c2xEei1USjZRMkZKNjJOOHAxRmZ0MGloalJncjhlOEJ3QU9rUk1HdWJMaEl4OVNncFRHYXVOSm14Ynd5VXFZREhfVHVVaVRTZXN4TXZtdW81RDhiQnZZby1mbWxrZ0JpbmNNZEo5V0hpUmtYb1NmNkNwUDdqSG1iTWN2WF9BbFZoaUZBeE02SmdLSENaaFQwQTZDcUZkdVFnNTRiU0twQ2xTSmRqeVZWVm85ZC0ydmpZdXdUV2Q2bTdhOUhkSnpmNExBWU9Fc0QxSjhyaVo0dHljNFVkaF9FZDR3cTFkd2xlZw?oc=5",
+     "probabilite": 0.712,
+     "date_publication_utc": "2026-10-16T08:17:48Z"
     }
    ],
    "plus_negatifs": [
@@ -219,105 +219,105 @@
   {
    "seance": "2026-10-15",
    "groupe": "marche",
-   "nb_articles": 19,
+   "nb_articles": 20,
    "nb_sources": 7,
-   "positif_pct": 21.1,
-   "neutre_pct": 21.1,
-   "negatif_pct": 57.9,
-   "solde": -36.8,
-   "marge_erreur": 36.4,
+   "positif_pct": 20.0,
+   "neutre_pct": 20.0,
+   "negatif_pct": 60.0,
+   "solde": -40.0,
+   "marge_erreur": 35.1,
    "etiquette": "signal insuffisant",
    "couverture_partielle": true,
    "releves_reussis": 0.0,
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 24.0,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": -36.8,
+   "solde_dates_fiables": -40.0,
    "media_principal": "New York Times",
-   "part_media_principal_pct": 26.3,
-   "solde_avec_plafond": -36.4
+   "part_media_principal_pct": 25.0,
+   "solde_avec_plafond": -40.0
   },
   {
    "seance": "2026-10-16",
    "groupe": "esg",
-   "nb_articles": 65,
-   "nb_sources": 31,
-   "positif_pct": 20.0,
-   "neutre_pct": 69.2,
-   "negatif_pct": 10.8,
-   "solde": 9.2,
-   "marge_erreur": 13.3,
+   "nb_articles": 60,
+   "nb_sources": 30,
+   "positif_pct": 16.7,
+   "neutre_pct": 71.7,
+   "negatif_pct": 11.7,
+   "solde": 5.0,
+   "marge_erreur": 13.4,
    "etiquette": "neutre",
    "couverture_partielle": true,
    "releves_reussis": 0.0,
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 32.7,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": 9.2,
+   "solde_dates_fiables": 5.0,
    "media_principal": "Edie",
-   "part_media_principal_pct": 18.5,
-   "solde_avec_plafond": 9.2
+   "part_media_principal_pct": 20.0,
+   "solde_avec_plafond": 5.0
   },
   {
    "seance": "2026-10-16",
    "groupe": "marche",
-   "nb_articles": 129,
+   "nb_articles": 151,
    "nb_sources": 9,
-   "positif_pct": 29.5,
-   "neutre_pct": 28.7,
-   "negatif_pct": 41.9,
-   "solde": -12.4,
-   "marge_erreur": 14.4,
-   "etiquette": "neutre",
+   "positif_pct": 25.8,
+   "neutre_pct": 34.4,
+   "negatif_pct": 39.7,
+   "solde": -13.9,
+   "marge_erreur": 12.7,
+   "etiquette": "négatif",
    "couverture_partielle": true,
    "releves_reussis": 0.0,
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 32.7,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": -12.4,
+   "solde_dates_fiables": -13.9,
    "media_principal": "Financial Times",
-   "part_media_principal_pct": 24.8,
-   "solde_avec_plafond": -12.4
+   "part_media_principal_pct": 21.2,
+   "solde_avec_plafond": -13.9
   }
  ],
  "repartition_medias": {
   "marche": {
-   "nb_articles": 148,
+   "nb_articles": 171,
    "nb_seances": 2,
    "parts_pct": {
-    "Financial Times": 23.6,
-    "Wall Street Journal": 20.3,
-    "Bloomberg": 14.9,
-    "New York Times": 12.8,
-    "BBC": 7.4,
-    "CNBC": 7.4,
-    "The Guardian": 6.8,
-    "Euronews": 6.1,
-    "Deutsche Welle": 0.7
+    "Financial Times": 20.5,
+    "The Guardian": 18.1,
+    "Wall Street Journal": 17.5,
+    "Bloomberg": 12.9,
+    "New York Times": 11.1,
+    "CNBC": 7.6,
+    "BBC": 6.4,
+    "Euronews": 5.3,
+    "Deutsche Welle": 0.6
    },
    "autres_medias_pct": 0.0
   },
   "esg": {
-   "nb_articles": 79,
+   "nb_articles": 74,
    "nb_seances": 2,
    "parts_pct": {
-    "ESG News": 17.7,
-    "Edie": 15.2,
-    "Responsible Investor": 11.4,
-    "ESG Today": 6.3,
-    "scanx.trade": 6.3,
-    "Trellis": 5.1,
-    "ESG Dive": 3.8,
-    "Financial Times": 3.8,
-    "Africa Sustainability Matters": 2.5,
-    "NextBillion": 1.3,
-    "T. Rowe Price": 1.3,
-    "Vietnam.vn": 1.3,
-    "OdishaBytes": 1.3,
-    "Indonesia Expat": 1.3,
-    "Energetica India Magazine": 1.3
+    "ESG News": 18.9,
+    "Edie": 16.2,
+    "Responsible Investor": 12.2,
+    "ESG Today": 6.8,
+    "Trellis": 5.4,
+    "ESG Dive": 4.1,
+    "Financial Times": 4.1,
+    "Africa Sustainability Matters": 2.7,
+    "NextBillion": 1.4,
+    "T. Rowe Price": 1.4,
+    "Vietnam.vn": 1.4,
+    "OdishaBytes": 1.4,
+    "Indonesia Expat": 1.4,
+    "Energetica India Magazine": 1.4,
+    "Yahoo Finance UK": 1.4
    },
-   "autres_medias_pct": 20.8
+   "autres_medias_pct": 21.0
   }
  },
  "suivi_taux_neutre": {},

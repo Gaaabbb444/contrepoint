@@ -279,7 +279,7 @@
   "seuil": 0.361,
   "explication": "Sur 30 séances, une corrélation comprise entre −seuil et +seuil peut apparaître par pur hasard (95 % des cas) : la courbe ne dit rien tant qu'elle reste dans cette zone."
  },
- "genere_le_utc": "2026-10-17T00:59:23Z",
+ "genere_le_utc": "2026-10-17T01:07:56Z",
  "parametres": {
   "jours_min": 60,
   "jours_min_par_categorie": 15,

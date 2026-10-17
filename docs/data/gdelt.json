@@ -1,0 +1,50 @@
+{
+ "genere_le_utc": "2026-10-17T01:09:09Z",
+ "methode": "Tonalité moyenne GDELT (dictionnaire de mots, articles complets, presse mondiale). Méthode différente de FinBERT : à comparer en tendance uniquement.",
+ "requetes": {
+  "marche": "(\"stock market\" OR stocks OR \"wall street\") sourcelang:english",
+  "esg": "(ESG OR \"sustainable finance\" OR \"sustainable investing\") sourcelang:english"
+ },
+ "series": [
+  {
+   "date": "2026-10-16",
+   "marche": -1.7344
+  },
+  {
+   "date": "2026-10-16",
+   "marche": -1.7726
+  },
+  {
+   "date": "2026-10-16",
+   "marche": 0.1392
+  },
+  {
+   "date": "2026-10-16",
+   "marche": -0.5829
+  },
+  {
+   "date": "2026-10-16",
+   "marche": -1.4695
+  },
+  {
+   "date": "2026-10-16",
+   "marche": 0.3047
+  },
+  {
+   "date": "2026-10-16",
+   "marche": -1.0144
+  },
+  {
+   "date": "2026-10-17",
+   "marche": -1.2454
+  },
+  {
+   "date": "2026-10-17",
+   "marche": -0.8701
+  },
+  {
+   "date": "2026-10-17",
+   "marche": 0.0128
+  }
+ ]
+}
