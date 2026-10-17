@@ -1,3 +1,5 @@
 ﻿horodatage_utc,etape,statut,message
 2026-10-17 00:10:03,flux:ImpactAlpha,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://impactalpha.com/feed/
 2026-10-17 00:10:51,collecte_titres,ok,"392 articles lus, 30 doublons, 362 nouveaux {'marche': 226, 'esg': 136}, 1 flux en panne"
+2026-10-17 00:12:31,flux:ImpactAlpha,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://impactalpha.com/feed/
+2026-10-17 00:12:37,collecte_titres,ok,"392 articles lus, 392 doublons, 0 nouveaux {}, 1 flux en panne"
