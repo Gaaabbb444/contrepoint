@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-10-17T00:20:33Z",
+ "genere_le_utc": "2026-10-17T00:44:44Z",
  "derniere_seance": "2026-10-16",
  "fenetre": {
   "debut": "2026-10-15T17:30:00+02:00",
@@ -9,7 +9,12 @@
  "groupes": {
   "marche": {
    "nb_articles": 139,
-   "nb_sources": 17,
+   "nb_sources": 9,
+   "nb_dates_approximatives": 0,
+   "solde_dates_fiables": -12.9,
+   "part_media_principal_pct": 23.0,
+   "media_principal": "Financial Times",
+   "solde_avec_plafond": -12.9,
    "positif_pct": 28.1,
    "neutre_pct": 30.9,
    "negatif_pct": 41.0,
@@ -90,16 +95,24 @@
      "date_publication_utc": "2026-10-16T14:01:24Z"
     }
    ],
+   "releves_reussis": 0,
+   "releves_attendus": 8,
+   "plus_long_trou_heures": 32.7,
    "couverture_partielle": true
   },
   "esg": {
-   "nb_articles": 72,
-   "nb_sources": 33,
-   "positif_pct": 18.1,
-   "neutre_pct": 70.8,
-   "negatif_pct": 11.1,
-   "solde": 6.9,
-   "marge_erreur": 12.4,
+   "nb_articles": 74,
+   "nb_sources": 32,
+   "nb_dates_approximatives": 0,
+   "solde_dates_fiables": 6.8,
+   "part_media_principal_pct": 16.2,
+   "media_principal": "Edie",
+   "solde_avec_plafond": 6.8,
+   "positif_pct": 17.6,
+   "neutre_pct": 71.6,
+   "negatif_pct": 10.8,
+   "solde": 6.8,
+   "marge_erreur": 12.0,
    "etiquette": "neutre",
    "plus_positifs": [
     {
@@ -175,6 +188,9 @@
      "date_publication_utc": "2026-10-16T10:21:00Z"
     }
    ],
+   "releves_reussis": 0,
+   "releves_attendus": 8,
+   "plus_long_trou_heures": 32.7,
    "couverture_partielle": true
   }
  },
@@ -190,51 +206,125 @@
    "solde": 7.1,
    "marge_erreur": 36.9,
    "etiquette": "signal insuffisant",
-   "couverture_partielle": true
+   "couverture_partielle": true,
+   "releves_reussis": 0.0,
+   "releves_attendus": 8.0,
+   "plus_long_trou_heures": 24.0,
+   "nb_dates_approximatives": 0.0,
+   "solde_dates_fiables": 7.1,
+   "media_principal": "ESG News",
+   "part_media_principal_pct": 50.0,
+   "solde_avec_plafond": -1.2
   },
   {
    "seance": "2026-10-15",
    "groupe": "marche",
    "nb_articles": 19,
-   "nb_sources": 8,
+   "nb_sources": 7,
    "positif_pct": 21.1,
    "neutre_pct": 21.1,
    "negatif_pct": 57.9,
    "solde": -36.8,
    "marge_erreur": 36.4,
    "etiquette": "signal insuffisant",
-   "couverture_partielle": true
+   "couverture_partielle": true,
+   "releves_reussis": 0.0,
+   "releves_attendus": 8.0,
+   "plus_long_trou_heures": 24.0,
+   "nb_dates_approximatives": 0.0,
+   "solde_dates_fiables": -36.8,
+   "media_principal": "New York Times",
+   "part_media_principal_pct": 26.3,
+   "solde_avec_plafond": -36.4
   },
   {
    "seance": "2026-10-16",
    "groupe": "esg",
-   "nb_articles": 72,
-   "nb_sources": 33,
-   "positif_pct": 18.1,
-   "neutre_pct": 70.8,
-   "negatif_pct": 11.1,
-   "solde": 6.9,
-   "marge_erreur": 12.4,
+   "nb_articles": 74,
+   "nb_sources": 32,
+   "positif_pct": 17.6,
+   "neutre_pct": 71.6,
+   "negatif_pct": 10.8,
+   "solde": 6.8,
+   "marge_erreur": 12.0,
    "etiquette": "neutre",
-   "couverture_partielle": true
+   "couverture_partielle": true,
+   "releves_reussis": 0.0,
+   "releves_attendus": 8.0,
+   "plus_long_trou_heures": 32.7,
+   "nb_dates_approximatives": 0.0,
+   "solde_dates_fiables": 6.8,
+   "media_principal": "Edie",
+   "part_media_principal_pct": 16.2,
+   "solde_avec_plafond": 6.8
   },
   {
    "seance": "2026-10-16",
    "groupe": "marche",
    "nb_articles": 139,
-   "nb_sources": 17,
+   "nb_sources": 9,
    "positif_pct": 28.1,
    "neutre_pct": 30.9,
    "negatif_pct": 41.0,
    "solde": -12.9,
    "marge_erreur": 13.6,
    "etiquette": "neutre",
-   "couverture_partielle": true
+   "couverture_partielle": true,
+   "releves_reussis": 0.0,
+   "releves_attendus": 8.0,
+   "plus_long_trou_heures": 32.7,
+   "nb_dates_approximatives": 0.0,
+   "solde_dates_fiables": -12.9,
+   "media_principal": "Financial Times",
+   "part_media_principal_pct": 23.0,
+   "solde_avec_plafond": -12.9
   }
  ],
+ "repartition_medias": {
+  "marche": {
+   "nb_articles": 158,
+   "nb_seances": 2,
+   "parts_pct": {
+    "Financial Times": 22.2,
+    "Wall Street Journal": 19.0,
+    "Bloomberg": 13.9,
+    "CNBC": 13.3,
+    "New York Times": 12.0,
+    "BBC": 7.0,
+    "The Guardian": 6.3,
+    "Euronews": 5.7,
+    "Deutsche Welle": 0.6
+   },
+   "autres_medias_pct": 0.0
+  },
+  "esg": {
+   "nb_articles": 88,
+   "nb_seances": 2,
+   "parts_pct": {
+    "ESG News": 15.9,
+    "Edie": 13.6,
+    "Responsible Investor": 10.2,
+    "Kalkine India": 10.2,
+    "ESG Today": 5.7,
+    "scanx.trade": 5.7,
+    "Trellis": 4.5,
+    "ESG Dive": 3.4,
+    "Financial Times": 3.4,
+    "Africa Sustainability Matters": 2.3,
+    "NextBillion": 1.1,
+    "T. Rowe Price": 1.1,
+    "Vietnam.vn": 1.1,
+    "OdishaBytes": 1.1,
+    "Indonesia Expat": 1.1
+   },
+   "autres_medias_pct": 18.7
+  }
+ },
+ "suivi_taux_neutre": {},
  "modele": {
   "nom": "ProsusAI/finbert",
   "revision": "0bc2ac10dda6929bcb1f77ccc43c7ec5c424f031",
   "licence": "CC BY-NC-SA 4.0 — © MIH AI B.V. (Prosus)"
- }
+ },
+ "credit": "Analyse de sentiment : FinBERT (ProsusAI/finbert), © MIH AI B.V., licence CC BY-NC-SA 4.0 (usage non commercial). Références : Araci (2019) ; Financial PhraseBank, Malo et al. (2014)."
 }

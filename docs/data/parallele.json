@@ -1,0 +1,237 @@
+{
+ "etf": {
+  "screened": {
+   "marche": {
+    "progression": {
+     "jours_exploitables": 0,
+     "jours_requis": 60,
+     "pourcentage": 0,
+     "date_estimee": "2027-01-14",
+     "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+    },
+    "correlation_meme_jour": {
+     "disponible": false,
+     "n": 0
+    },
+    "test_decalage_j1": {
+     "disponible": false,
+     "n": 0
+    },
+    "comparaison_jours": {
+     "n_negatifs": 0,
+     "n_positifs": 0,
+     "requis_par_categorie": 15,
+     "disponible": false
+    },
+    "correlation_glissante": [],
+    "journees": []
+   },
+   "esg": {
+    "progression": {
+     "jours_exploitables": 0,
+     "jours_requis": 60,
+     "pourcentage": 0,
+     "date_estimee": "2027-01-14",
+     "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+    },
+    "correlation_meme_jour": {
+     "disponible": false,
+     "n": 0
+    },
+    "test_decalage_j1": {
+     "disponible": false,
+     "n": 0
+    },
+    "comparaison_jours": {
+     "n_negatifs": 0,
+     "n_positifs": 0,
+     "requis_par_categorie": 15,
+     "disponible": false
+    },
+    "correlation_glissante": [],
+    "journees": []
+   }
+  },
+  "sri": {
+   "marche": {
+    "progression": {
+     "jours_exploitables": 0,
+     "jours_requis": 60,
+     "pourcentage": 0,
+     "date_estimee": "2027-01-14",
+     "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+    },
+    "correlation_meme_jour": {
+     "disponible": false,
+     "n": 0
+    },
+    "test_decalage_j1": {
+     "disponible": false,
+     "n": 0
+    },
+    "comparaison_jours": {
+     "n_negatifs": 0,
+     "n_positifs": 0,
+     "requis_par_categorie": 15,
+     "disponible": false
+    },
+    "correlation_glissante": [],
+    "journees": []
+   },
+   "esg": {
+    "progression": {
+     "jours_exploitables": 0,
+     "jours_requis": 60,
+     "pourcentage": 0,
+     "date_estimee": "2027-01-14",
+     "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+    },
+    "correlation_meme_jour": {
+     "disponible": false,
+     "n": 0
+    },
+    "test_decalage_j1": {
+     "disponible": false,
+     "n": 0
+    },
+    "comparaison_jours": {
+     "n_negatifs": 0,
+     "n_positifs": 0,
+     "requis_par_categorie": 15,
+     "disponible": false
+    },
+    "correlation_glissante": [],
+    "journees": []
+   }
+  },
+  "paris": {
+   "marche": {
+    "progression": {
+     "jours_exploitables": 0,
+     "jours_requis": 60,
+     "pourcentage": 0,
+     "date_estimee": "2027-01-14",
+     "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+    },
+    "correlation_meme_jour": {
+     "disponible": false,
+     "n": 0
+    },
+    "test_decalage_j1": {
+     "disponible": false,
+     "n": 0
+    },
+    "comparaison_jours": {
+     "n_negatifs": 0,
+     "n_positifs": 0,
+     "requis_par_categorie": 15,
+     "disponible": false
+    },
+    "correlation_glissante": [],
+    "journees": []
+   },
+   "esg": {
+    "progression": {
+     "jours_exploitables": 0,
+     "jours_requis": 60,
+     "pourcentage": 0,
+     "date_estimee": "2027-01-14",
+     "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+    },
+    "correlation_meme_jour": {
+     "disponible": false,
+     "n": 0
+    },
+    "test_decalage_j1": {
+     "disponible": false,
+     "n": 0
+    },
+    "comparaison_jours": {
+     "n_negatifs": 0,
+     "n_positifs": 0,
+     "requis_par_categorie": 15,
+     "disponible": false
+    },
+    "correlation_glissante": [],
+    "journees": []
+   }
+  },
+  "bnp_sri_pab": {
+   "marche": {
+    "progression": {
+     "jours_exploitables": 0,
+     "jours_requis": 60,
+     "pourcentage": 0,
+     "date_estimee": "2027-01-14",
+     "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+    },
+    "correlation_meme_jour": {
+     "disponible": false,
+     "n": 0
+    },
+    "test_decalage_j1": {
+     "disponible": false,
+     "n": 0
+    },
+    "comparaison_jours": {
+     "n_negatifs": 0,
+     "n_positifs": 0,
+     "requis_par_categorie": 15,
+     "disponible": false
+    },
+    "correlation_glissante": [],
+    "journees": []
+   },
+   "esg": {
+    "progression": {
+     "jours_exploitables": 0,
+     "jours_requis": 60,
+     "pourcentage": 0,
+     "date_estimee": "2027-01-14",
+     "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+    },
+    "correlation_meme_jour": {
+     "disponible": false,
+     "n": 0
+    },
+    "test_decalage_j1": {
+     "disponible": false,
+     "n": 0
+    },
+    "comparaison_jours": {
+     "n_negatifs": 0,
+     "n_positifs": 0,
+     "requis_par_categorie": 15,
+     "disponible": false
+    },
+    "correlation_glissante": [],
+    "journees": []
+   }
+  }
+ },
+ "validation": {
+  "description": "Lien entre le sentiment « marché » du jour et la performance du MSCI World le même jour. Un lien positif indique que l'indicateur capte bien l'humeur du marché. C'est un contrôle de validité, pas une prévision.",
+  "progression": {
+   "jours_exploitables": 0,
+   "jours_requis": 60,
+   "pourcentage": 0,
+   "date_estimee": "2027-01-14",
+   "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
+  },
+  "correlation": {
+   "disponible": false,
+   "n": 0
+  }
+ },
+ "avertissements": [
+  "Corrélation n'est pas causalité : un lien statistique ne prouve pas que le sentiment fait bouger les prix.",
+  "Plusieurs tests sont menés (4 ETF, 2 groupes, 3 tests) : sur 20 tests, environ un peut paraître « significatif » par pur hasard au seuil de 5 %."
+ ],
+ "genere_le_utc": "2026-10-17T00:44:44Z",
+ "parametres": {
+  "jours_min": 60,
+  "jours_min_par_categorie": 15,
+  "fenetre_glissante": 30,
+  "seuil_p": 0.05
+ }
+}
