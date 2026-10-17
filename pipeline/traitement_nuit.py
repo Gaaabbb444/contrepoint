@@ -439,7 +439,9 @@ def etape_parallele(journal: Journal, tableau: pd.DataFrame | None) -> None:
               for e in cfg["etf"] if e["id"] != cfg["reference"]}
     donnees = {"genere_le_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
                "methode": "Phrases générées par des règles fixes (aucune intelligence artificielle) : voir pipeline/synthese.py.",
-               "defaut": cfg["defaut_esg"], "par_etf": textes}
+               "defaut": cfg["defaut_esg"], "par_etf": textes,
+               # Version courte pour l'accueil (humeur du jour et écart de performance).
+               "essentiel_par_etf": {k: synthese.essentiel(v) for k, v in textes.items()}}
     ecrit, raison = ecrire_json_si_valide(FICHIER_SYNTHESE, donnees, [(any(textes.values()), "aucune phrase")])
     journal.noter("synthese", "ok" if ecrit else "avertissement",
                   " ".join(textes.get(cfg["defaut_esg"], []))[:300] if ecrit else raison)

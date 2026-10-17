@@ -58,9 +58,17 @@ select:hover { background-color: #ECEBE6 !important; }
 /* Dévoilement de gauche à droite : seules des valeurs vraies apparaissent. */
 .rvo { overflow: hidden; animation: rvo 340ms cubic-bezier(0.22, 1, 0.36, 1) 250ms both; }
 .rvi { animation: rvi 340ms cubic-bezier(0.22, 1, 0.36, 1) 250ms both; }
-/* Remplacements des animations « growy » et « fillx » de la maquette (valeurs fausses en cours de route) : fondu, mêmes durée et délai. */
-.rvo-barres { animation: fade 340ms cubic-bezier(0.22, 1, 0.36, 1) 250ms both; }
-.fade-remplissage { animation: fade 450ms cubic-bezier(0.22, 1, 0.36, 1) 150ms both; }
+/* Barres qui grandissent depuis l'axe (maquette : « growy » et « fillx »). Elles partent de zéro et
+   s'arrêtent net sur la vraie valeur : la courbe cubic-bezier(0.22, 1, 0.36, 1) ne dépasse jamais la cible.
+   Durée totale (délai compris) inférieure à 600 ms. */
+@keyframes growy { from { transform: scaleY(0); } to { transform: none; } }
+@keyframes growy-maj { from { transform: scaleY(0); } to { transform: none; } }  /* même effet, autre nom : permet de la relancer */
+@keyframes fillx { from { transform: scaleX(0); } }
+@keyframes croitre-x { from { transform: scaleX(0); } }
+.croissance-y { animation: growy 340ms cubic-bezier(0.22, 1, 0.36, 1) 250ms both; }
+.croissance-y.croissance-y-maj { animation: growy-maj 420ms cubic-bezier(0.22, 1, 0.36, 1) both; }
+.croissance-x { transform-origin: 0 50%; animation: fillx 450ms cubic-bezier(0.22, 1, 0.36, 1) 100ms both; }
+.barre-x { animation: croitre-x 380ms cubic-bezier(0.22, 1, 0.36, 1) both; }
 /* Changement de période, d'ETF ou de groupe : la zone s'efface puis réapparaît avec les nouvelles valeurs. */
 .fondu-zone { transition: opacity 240ms cubic-bezier(0.22, 1, 0.36, 1); }
 .fondu-zone.sortie { opacity: 0; transition: opacity 120ms cubic-bezier(0.32, 0, 0.67, 0); }
@@ -83,7 +91,7 @@ select:hover { background-color: #ECEBE6 !important; }
 
 @media (prefers-reduced-motion: reduce) {
   .rise { animation: fade 150ms ease-out both !important; animation-delay: 0ms !important; }
-  .rvo, .rvi, .rvo-barres, .fade-remplissage { animation: none !important; }
+  .rvo, .rvi, .croissance-y, .croissance-y-maj, .croissance-x, .barre-x { animation: none !important; }
   .thumb { transition: none !important; }
   .tag { transition-duration: 120ms !important; }
   .press:active { transform: none; }
@@ -168,6 +176,19 @@ html.panneau-ouvert { overflow: hidden; }
 /* Les animations d'apparition attendent que les données soient affichées :
    aucun cadre vide ne s'anime, aucune valeur provisoire n'apparaît. */
 body:not(.pret) .rise { animation: none; opacity: 0; }
-body:not(.pret) .rvo, body:not(.pret) .rvi, body:not(.pret) .rvo-barres { animation: none; }
+body:not(.pret) .rvo, body:not(.pret) .rvi, body:not(.pret) .croissance-y, body:not(.pret) .croissance-x { animation: none; }
 
-.synthese-texte.synthese-longue { font-size: 21px; line-height: 1.42; }
+
+/* --- Synthèse : 1 ou 2 phrases sur l'accueil, le reste se déplie au clic --- */
+.depliable { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows 340ms cubic-bezier(0.22, 1, 0.36, 1), opacity 240ms cubic-bezier(0.22, 1, 0.36, 1); }
+.depliable.ouvert { grid-template-rows: 1fr; opacity: 1; }
+.depliable-interieur { overflow: hidden; min-height: 0; }
+.synthese-suite { margin: 0; padding-top: 2px; font-family: 'Newsreader', Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.42; color: #3D4048; max-width: 1000px; text-wrap: pretty; }
+.lien-synthese { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+.lien-synthese .chevron { transition: transform 260ms cubic-bezier(0.32, 0.72, 0, 1); }
+.lien-synthese[aria-expanded="true"] .chevron { transform: rotate(180deg); }
+#synthese-commande[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .depliable { transition: opacity 150ms ease-out !important; }
+  .lien-synthese .chevron { transition: none !important; }
+}

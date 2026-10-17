@@ -162,3 +162,14 @@ def test_la_synthese_ne_cite_jamais_un_test_exploratoire():
     phrase = synthese.phrase_lien(par)
     assert "aucun lien statistiquement significatif" in phrase and "0,05" in phrase
     assert "0,4" not in phrase and "ESG" not in phrase
+
+
+def test_synthese_essentielle_pour_l_accueil():
+    phrases = ["Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 152 articles).",
+               "Sur les 5 dernières journées de bourse : 2 négatives, 3 neutres.",
+               "Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 63 articles).",
+               "Sur 5 séances, l'ETF World SRI sous-performe le MSCI World de 0,3 point (−1,1 % contre −0,8 %).",
+               "Test principal (…) : pas encore interprétable (0 / 60 jours de bourse exploitables)."]
+    assert synthese.essentiel(phrases) == [phrases[0], phrases[3]]
+    # Signal insuffisant : la phrase d'humeur garde la même entrée en matière.
+    assert synthese.essentiel(["Humeur du marché le vendredi 16/10 : signal insuffisant (24 articles)."])

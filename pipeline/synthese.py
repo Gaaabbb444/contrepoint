@@ -148,3 +148,13 @@ def generer(perf: dict | None, sentiment: dict | None, parallele: dict | None, i
         if p:
             phrases.append(p)
     return phrases
+
+
+def essentiel(phrases: list[str]) -> list[str]:
+    """Phrases affichées sur l'accueil (1 ou 2) : l'humeur du marché du jour et l'écart de performance.
+
+    Règle fixe : on garde la phrase qui commence par « Humeur du marché » et celle
+    qui commence par « Sur 5 séances ». Les autres (bilan de la semaine, actualité
+    ESG, test principal) restent accessibles par « Lire la synthèse complète ».
+    """
+    return [p for p in phrases if p.startswith(("Humeur du marché", "Sur 5 séances"))]

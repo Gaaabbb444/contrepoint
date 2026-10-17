@@ -61,6 +61,52 @@
     const p = Object.fromEntries(f.formatToParts(d).map((x) => [x.type, x.value]));
     return { date: p.day + '/' + p.month + '/' + p.year, heure: (+p.hour) + ' h ' + p.minute };
   }
+  /* ------------------------------------------------- Chiffres qui défilent */
+  // Courbe d'accélération de la maquette, cubic-bezier(0.22, 1, 0.36, 1) : monte vite puis ralentit,
+  // sans jamais dépasser la cible (ses points de contrôle verticaux valent 1).
+  function bezier(x1, y1, x2, y2) {
+    const cx = 3 * x1, bx = 3 * (x2 - x1) - cx, ax = 1 - cx - bx;
+    const cy = 3 * y1, by = 3 * (y2 - y1) - cy, ay = 1 - cy - by;
+    const sx = (t) => ((ax * t + bx) * t + cx) * t, sy = (t) => ((ay * t + by) * t + cy) * t;
+    const dx = (t) => (3 * ax * t + 2 * bx) * t + cx;
+    return (x) => {
+      if (x <= 0) return 0;
+      if (x >= 1) return 1;
+      let t = x;
+      for (let i = 0; i < 8; i++) { const e = sx(t) - x, d = dx(t); if (Math.abs(e) < 1e-6 || Math.abs(d) < 1e-6) break; t -= e / d; }
+      if (t < 0 || t > 1 || Math.abs(sx(t) - x) > 1e-4) {
+        let lo = 0, hi = 1; t = x;
+        for (let i = 0; i < 40; i++) { const v = sx(t); if (Math.abs(v - x) < 1e-6) break; if (v < x) lo = t; else hi = t; t = (lo + hi) / 2; }
+      }
+      return Math.min(1, Math.max(0, sy(t)));
+    };
+  }
+  const adoucir = bezier(0.22, 1, 0.36, 1);
+  // Fait défiler un chiffre de 0 jusqu'à sa vraie valeur. La vraie valeur est posée d'emblée :
+  // si le navigateur suspend l'animation (onglet en arrière-plan), c'est elle qui reste affichée.
+  function compter(el, cible, format, duree, delai) {
+    if (!el) return;
+    el.textContent = format(cible);
+    if (reduit || cible === null || cible === undefined || !isFinite(cible) || cible === 0) return;
+    const t0 = performance.now() + (delai || 0);
+    const jeton = (el._jeton = (el._jeton || 0) + 1);
+    const fin = () => { if (el._jeton === jeton) el.textContent = format(cible); };
+    function pas(t) {
+      if (el._jeton !== jeton) return;
+      const p = (t - t0) / duree;
+      if (p >= 1) { fin(); return; }
+      el.textContent = format(p <= 0 ? 0 : cible * adoucir(p));
+      requestAnimationFrame(pas);
+    }
+    requestAnimationFrame(pas);
+    setTimeout(fin, duree + (delai || 0) + 800); // filet de sécurité
+  }
+  // Relance une animation CSS (barres qui repoussent depuis l'axe après un changement de période).
+  function relancer(el, classe) {
+    if (!el || reduit) return;
+    el.classList.remove(classe); void el.offsetWidth; el.classList.add(classe);
+  }
+
   function pluriel(n, mot) { return n + ' ' + mot + (Math.abs(n) >= 2 ? 's' : ''); }
   function couleurSigne(v, fonce) { return v < 0 ? (fonce ? C.rougeF : C.rouge) : (fonce ? C.vertF : C.vert); }
 
@@ -179,6 +225,7 @@
         '<div class="num" style="display: flex; justify-content: space-between; font-size: 12px; color: #5C6068"><span>0</span><span>seuil de publication : 30 articles et marge ≤ 25 points</span></div></div>' +
         '<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #4A4E57">Pas de solde publiable pour cette journée : il faut au moins 30 articles et une marge d’erreur d’au plus 25 points. ' + esc(detail) + '</p>' +
         (g.couverture_partielle ? ligneCouverture(g) : '');
+      compter(el.querySelector('.chiffre'), n, (v) => String(Math.round(v)), 450, groupe === 'esg' ? 50 : 0);
       return;
     }
     const t = ETIQUETTES[g.etiquette] || ETIQUETTES['neutre'];
@@ -190,6 +237,7 @@
       '<div style="display: flex; flex-direction: column; gap: 6px">' +
       '<p class="num" style="margin: 0; font-size: 13px; color: #5C6068">Solde de sentiment sur ' + g.nb_articles + ' articles · journée du ' + jjmm(D.sentiment.derniere_seance) + '</p>' +
       (g.couverture_partielle ? ligneCouverture(g) : '') + '</div>';
+    compter(el.querySelector('.chiffre'), g.solde, (v) => fmt(v, 1), 450, groupe === 'esg' ? 50 : 0);
   }
 
   /* --------------------------------------------- Carte « Écart ESG strict » */
@@ -205,7 +253,7 @@
     }
     const rel = p.etf.sri.perf_relative_pts, sri = p.etf.sri.perf_cumulee_pct, msci = p.etf.msci_world.perf_cumulee_pct;
     const v = $('kx-valeur');
-    v.textContent = fmt(rel, 2); v.style.color = couleurSigne(rel); v.setAttribute('aria-label', 'Écart ' + fmt(rel, 2) + ' point');
+    compter(v, rel, (x) => fmt(x, 2), 450, 100); v.style.color = couleurSigne(rel); v.setAttribute('aria-label', 'Écart ' + fmt(rel, 2) + ' point');
     $('kx-unite').textContent = Math.abs(rel) >= 2 ? 'points' : 'point';
     const ks = $('kx-sri'); ks.textContent = fmt(sri, 2) + ' %'; ks.style.color = couleurSigne(sri, true);
     const km = $('kx-msci'); km.textContent = fmt(msci, 2) + ' %'; km.style.color = couleurSigne(msci, true);
@@ -214,21 +262,40 @@
   /* -------------------------------------------------------------- Synthèse */
   // Texte produit par le module de synthèse du pipeline (règles fixes). Ici, on ne fait que colorer
   // l'étiquette du jour et le verbe de performance, sans modifier un seul mot.
-  function rendreSynthese(E) {
-    $('synthese-kicker').textContent = E.retard ? 'L’essentiel du ' + jjmm(E.seance) : 'L’essentiel du jour';
-    const sy = D.synthese && D.synthese.par_etf ? (D.synthese.par_etf[S.etf] || D.synthese.par_etf[D.synthese.defaut]) : null;
-    if (!sy || !sy.length) { $('synthese-texte').textContent = 'Synthèse indisponible.'; return; }
-    let h = esc(sy.join(' '));
+  function colorer(texte) {
+    let h = esc(texte);
     h = h.replace(/(Humeur du marché|Actualité ESG)( : )(positive|négative|neutre)/g, (m, a, b, c) => {
       const col = c === 'positive' ? C.vert : c === 'négative' ? C.rouge : C.neutre;
       return a + b + '<span style="color: ' + col + '">' + c + '</span>';
     });
     h = h.replace(/(sous-performe le MSCI World de [\d,]+ points?)/g, '<span style="color: ' + C.rouge + '">$1</span>');
     h = h.replace(/(surperforme le MSCI World de [\d,]+ points?)/g, '<span style="color: ' + C.vert + '">$1</span>');
-    const el = $('synthese-texte');
-    el.innerHTML = h;
-    // Synthèse longue (plusieurs phrases du module) : corps réduit pour garder la vue d'ensemble légère.
-    el.classList.toggle('synthese-longue', sy.join(' ').length > 260);
+    return h;
+  }
+  // Accueil : 1 ou 2 phrases choisies par le pipeline (humeur du jour, écart de performance) ;
+  // le reste de la synthèse est accessible par « Lire la synthèse complète ».
+  function rendreSynthese(E) {
+    $('synthese-kicker').textContent = E.retard ? 'L’essentiel du ' + jjmm(E.seance) : 'L’essentiel du jour';
+    const sy = D.synthese || {}, id = (sy.par_etf && sy.par_etf[S.etf]) ? S.etf : sy.defaut;
+    const toutes = (sy.par_etf && sy.par_etf[id]) || [];
+    if (!toutes.length) { $('synthese-texte').textContent = 'Synthèse indisponible.'; $('synthese-commande').hidden = true; return; }
+    const courtes = (sy.essentiel_par_etf && sy.essentiel_par_etf[id]) ||
+      toutes.filter((p) => p.startsWith('Humeur du marché') || p.startsWith('Sur 5 séances'));
+    const autres = toutes.filter((p) => courtes.indexOf(p) < 0);
+    $('synthese-texte').innerHTML = colorer((courtes.length ? courtes : toutes).join(' '));
+    $('synthese-suite').innerHTML = colorer(autres.join(' '));
+    $('synthese-commande').hidden = !(courtes.length && autres.length);
+  }
+  function brancherSynthese() {
+    const b = $('synthese-bouton'), d = $('synthese-depliable');
+    b.addEventListener('click', () => {
+      const ouvrir = b.getAttribute('aria-expanded') !== 'true';
+      b.setAttribute('aria-expanded', String(ouvrir));
+      $('synthese-bouton-texte').textContent = ouvrir ? 'Masquer la synthèse complète' : 'Lire la synthèse complète';
+      d.classList.toggle('ouvert', ouvrir);
+      d.setAttribute('aria-hidden', String(!ouvrir));
+      if (ouvrir) d.removeAttribute('inert'); else d.setAttribute('inert', '');
+    });
   }
 
   /* ------------------------------------------------- Graphique principal */
@@ -468,12 +535,13 @@
       const n = pr.jours_exploitables, total = pr.jours_requis;
       aside.hidden = false; section.hidden = true; bas.classList.remove('pleine-largeur');
       aside.innerHTML = '<h2 class="kicker">Analyse en cours de constitution</h2>' +
-        '<div style="display: flex; align-items: baseline; gap: 8px"><span class="num" style="font-family: \'Newsreader\', Georgia, serif; font-size: 48px; line-height: 1; font-weight: 500">' + n + '</span>' +
+        '<div style="display: flex; align-items: baseline; gap: 8px"><span class="num compteur-progression" style="font-family: \'Newsreader\', Georgia, serif; font-size: 48px; line-height: 1; font-weight: 500">' + n + '</span>' +
         '<span class="num" style="font-size: 16px; color: #4A4E57">/ ' + total + ' jours de bourse exploitables</span></div>' +
         '<div role="progressbar" aria-label="Jours de bourse exploitables" aria-valuemin="0" aria-valuemax="' + total + '" aria-valuenow="' + n + '" style="height: 6px; background: #E2E0DA; border-radius: 3px; overflow: hidden">' +
-        '<div class="fade-remplissage" style="width: ' + Math.min(100, n / total * 100).toFixed(2) + '%; height: 100%; background: #15171C"></div></div>' +
+        '<div class="croissance-x" style="width: ' + Math.min(100, n / total * 100).toFixed(2) + '%; height: 100%; background: #15171C"></div></div>' +
         '<p style="margin: 0; font-size: 14px; line-height: 1.5; color: #4A4E57">Premiers résultats estimés : <strong style="color: #15171C">' + (pr.date_estimee ? 'vers le ' + dateLongue(pr.date_estimee) : '—') + '</strong></p>' +
         '<p style="margin: 0; font-size: 12px; line-height: 1.5; color: #5C6068">Une journée est exploitable si son signal est suffisant et ses relevés complets. Estimation calculée sur le calendrier de la Bourse de Francfort, ' + esc(pr.hypothese || '') + '.</p>';
+      compter(aside.querySelector('.compteur-progression'), n, (v) => String(Math.round(v)), 450, 100);
       return;
     }
     aside.hidden = true; section.hidden = false; bas.classList.add('pleine-largeur');
@@ -578,12 +646,13 @@
     Object.assign(S, patch);
     if (avant.periode === S.periode && avant.etf === S.etf && avant.grp === S.grp) return;
     const E = etatEcran();
-    const zones = [$('zone-courbe'), $('g-axe'), $('zone-barres'), $('g-dates')];
-    if (avant.periode !== S.periode) zones.push($('kx-zone'));
-    if (avant.etf !== S.etf) zones.push($('synthese-texte'));
+    const zones = [$('zone-courbe'), $('g-axe'), $('g-dates')];
+    if (avant.etf !== S.etf) zones.push($('synthese-texte'), $('synthese-suite'));
     masquerInfobulle();
     basculer(zones, () => {
       rendreGraphique(E);
+      // Les barres ne dépendent que de la période et du groupe (comme dans la maquette).
+      if (avant.periode !== S.periode || avant.grp !== S.grp) relancer($('barres-croissance'), 'croissance-y-maj');
       if (avant.periode !== S.periode) rendreCarteEcart(E);
       if (avant.etf !== S.etf) rendreSynthese(E);
     });
@@ -697,8 +766,8 @@
           '<span role="cell" class="num" style="text-align: right; font-size: 15px">' + pctS(ve) + '</span>' +
           '<span role="cell" class="num" style="text-align: right; font-size: 15px; color: #4A4E57">' + pctS(vr) + '</span>' +
           '<div role="cell" aria-label="Écart de pondération ' + gap + ' point" style="position: relative; height: 44px"><div style="position: absolute; left: 50%; top: 8px; bottom: 8px; width: 1px; background: #8E8C85"></div>' +
-          '<div style="position: absolute; top: 15px; height: 14px; right: 50%; width: 50%; background: #15171C; transform-origin: 100% 50%; transform: scaleX(' + (d < 0 ? sc : 0) + ')"></div>' +
-          '<div style="position: absolute; top: 15px; height: 14px; left: 50%; width: 50%; background: #9A9890; transform-origin: 0 50%; transform: scaleX(' + (d > 0 ? sc : 0) + ')"></div></div>' +
+          '<div style="position: absolute; top: 15px; height: 14px; right: 50%; width: 50%; background: #15171C; transform-origin: 100% 50%; transform: scaleX(' + (d < 0 ? sc : 0) + ')" class="barre-x"></div>' +
+          '<div style="position: absolute; top: 15px; height: 14px; left: 50%; width: 50%; background: #9A9890; transform-origin: 0 50%; transform: scaleX(' + (d > 0 ? sc : 0) + ')" class="barre-x"></div></div>' +
           '<span role="cell" class="num" style="text-align: right; font-size: 15px; font-weight: ' + (cle ? 600 : 400) + '">' + gap + '</span></div>';
       }).join('');
       corps = '<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1px solid #15171C; border-bottom: 1px solid #D8D6CF">' +
@@ -727,13 +796,11 @@
     if (!sel) return;
     sel.addEventListener('change', () => {
       S.secEtf = sel.value;
-      basculer([$('zone-secteurs')], () => {
-        const cont = $('panneau-contenu'), y = $('panneau').scrollTop;
-        cont.innerHTML = contenuSecteurs();
-        brancherSecteurs();
-        $('panneau').scrollTop = y;
-        $('etf-sp').focus({ preventScroll: true });
-      });
+      const cont = $('panneau-contenu'), y = $('panneau').scrollTop;
+      cont.innerHTML = contenuSecteurs();
+      brancherSecteurs();
+      $('panneau').scrollTop = y;
+      $('etf-sp').focus({ preventScroll: true });
     });
   }
 
@@ -898,6 +965,7 @@
     rendreTableau(E);
     rendreVolet3();
     brancherGraphique();
+    brancherSynthese();
     brancherSelecteurs();
     majCurseurs();
     // Les animations d'apparition démarrent maintenant que tout est rempli.
