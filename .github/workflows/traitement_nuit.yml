@@ -62,7 +62,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           python -m pipeline.enregistrer --message "Traitement de nuit du $(date -u +'%Y-%m-%d')" data docs/data
 
-      - name: Prévenir par ticket si un média dépasse 25 % d'un groupe
+      - name: Prévenir par ticket (média au-dessus de 25 % d'un groupe, flux en panne durable)
         if: always() && steps.calcul.outcome != 'skipped'
         env:
           GH_TOKEN: ${{ github.token }}

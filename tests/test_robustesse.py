@@ -50,6 +50,7 @@ def test_une_etape_qui_plante_n_empeche_pas_les_autres(chemins_temporaires, monk
     monkeypatch.setattr(tn, "etape_secteurs", lambda j, t: appels.append("secteurs"))
     monkeypatch.setattr(tn, "etape_sentiment", lambda j: (appels.append("sentiment"), j.noter("sentiment", "ok", "")))
     monkeypatch.setattr(tn, "etape_parallele", lambda j, t: appels.append("parallele"))
+    monkeypatch.setattr(tn.site, "main", lambda: None)  # ne pas réécrire la vraie page Méthodologie
     code = tn.main()
     assert appels == ["secteurs", "sentiment", "parallele"]
     assert code == 1  # tâche marquée en échec : GitHub enverra un e-mail

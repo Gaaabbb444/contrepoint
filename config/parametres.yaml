@@ -82,6 +82,12 @@ sentiment:
   repartition_seances: 20
   plafond_media_pct: 25
 
+  # Flux en panne durable : un ticket GitHub est ouvert si un flux actif a
+  # échoué au moins une fois sur N jours différents parmi les M derniers jours.
+  # Un échec isolé (serveur momentanément indisponible) ne déclenche rien.
+  flux_panne_jours_min: 3
+  flux_panne_fenetre_jours: 5
+
   # Couverture d'une journée de sentiment (correction 5) : une journée est
   # « complète » si (1) au moins 75 % des relevés attendus (un toutes les 3 h)
   # ont réussi ET (2) aucun intervalle entre deux relevés réussis ne dépasse
