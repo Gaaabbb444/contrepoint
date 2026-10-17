@@ -124,7 +124,7 @@ def test_liste_noire_dans_la_configuration():
     cfg = lire_yaml("flux_rss.yaml")
     exclus = cfg["medias_exclus_agregateurs"]
     assert all(e.get("raison") and e.get("depuis") for e in exclus)   # raison et date obligatoires
-    assert "kalkine india" in {e["media"].casefold() for e in exclus}
+    assert {"kalkine india", "scanx.trade"} <= {e["media"].casefold() for e in exclus}
 
 
 RSS = """<?xml version="1.0"?><rss version="2.0"><channel><title>Test</title>

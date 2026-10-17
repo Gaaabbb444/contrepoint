@@ -80,6 +80,12 @@ medias_exclus_agregateurs:
       Rating 72 FY2026 », « NHPC ESG Rating 75 by NSE Sustainability… ») : aucune
       information de marché, et 9 des 97 titres ESG à lui seul le 16/10/2026.
     depuis: 2026-10-17
+  - media: scanx.trade
+    raison: >-
+      Même type de contenu : fiches de notes ESG d'entreprises indiennes sur un modèle
+      unique (« V-Guard Industries secures ESG rating of 73 for FY26 », « EID Parry
+      receives ESG rating of 63 (Adequate) from NSE Sustainability ») ; 5 titres le 16/10/2026.
+    depuis: 2026-10-17
 
 # media : nom du média, utilisé pour mesurer le poids de chaque média dans un
 # groupe (CNBC a 5 flux mais reste UN média). Pour Google Actualités, le média

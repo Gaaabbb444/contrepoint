@@ -110,6 +110,7 @@ Toute modification de la liste des sources change ce que mesure l'indicateur ; e
 | 17/10/2026 | Filtre par mots-clés ESG sur les titres de Google Actualités (42 titres déjà collectés retirés) | 43 % des titres obtenus étaient hors sujet |
 | 17/10/2026 | CNBC Top News retiré (titres déjà collectés retirés) | Malgré son nom, actualité générale américaine (politique, élections), pas une rubrique économique |
 | 17/10/2026 | Liste noire des médias pour Google Actualités : Kalkine India (titres déjà collectés retirés) | Fiches de notes ESG générées en série (« Zydus Wellness ESG Rating 72 FY2026 ») ; 9 des 97 titres ESG à lui seul |
+| 17/10/2026 | Liste noire : scanx.trade ajouté (titres déjà collectés retirés) | Même type de contenu (« V-Guard Industries secures ESG rating of 73 for FY26 ») ; 5 titres |
 
 
 ---
