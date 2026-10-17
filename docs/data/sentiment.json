@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-10-17T05:07:05Z",
+ "genere_le_utc": "2026-10-17T12:47:22Z",
  "derniere_seance": "2026-10-16",
  "fenetre": {
   "debut": "2026-10-15T17:30:00+02:00",
@@ -23,9 +23,22 @@
    "etiquette": "négatif",
    "plus_positifs": [
     {
+     "titre": "In AI-dominated markets, LatAm debt is a diversifier",
+     "source": "FT Markets",
+     "lien": "https://www.ft.com/content/086b7a80-acdd-48d2-bd5c-a04bad812264",
+     "score": 0.932,
+     "p_positif": 0.9474,
+     "p_negatif": 0.0152,
+     "probabilite": 0.947,
+     "date_publication_utc": "2026-10-15T15:51:35Z"
+    },
+    {
      "titre": "Wholesale prices jumped 6.3% annually in September, biggest gain since 2022",
      "source": "CNBC Economy",
      "lien": "https://www.cnbc.com/2026/10/15/september-producer-price-index-retail-sales-data.html",
+     "score": 0.93,
+     "p_positif": 0.9527,
+     "p_negatif": 0.0223,
      "probabilite": 0.953,
      "date_publication_utc": "2026-10-15T16:15:44Z"
     },
@@ -33,6 +46,9 @@
      "titre": "U.S. Import Prices Rose in September",
      "source": "WSJ Economy",
      "lien": "https://www.wsj.com/economy/u-s-import-prices-rose-in-september-5ee51f36",
+     "score": 0.927,
+     "p_positif": 0.9524,
+     "p_negatif": 0.0249,
      "probabilite": 0.952,
      "date_publication_utc": "2026-10-16T13:09:00Z"
     },
@@ -40,43 +56,31 @@
      "titre": "Bank of Italy Lifts Growth Outlook, Matching Government Forecast",
      "source": "Bloomberg Economics",
      "lien": "https://www.bloomberg.com/news/articles/2026-10-16/bank-of-italy-lifts-growth-outlook-matching-government-forecast",
+     "score": 0.925,
+     "p_positif": 0.9504,
+     "p_negatif": 0.0249,
      "probabilite": 0.95,
      "date_publication_utc": "2026-10-16T13:00:00Z"
     },
     {
-     "titre": "Kganyago Says Rand Helping Cushion South Africa From Shocks",
-     "source": "Bloomberg Economics",
-     "lien": "https://www.bloomberg.com/news/articles/2026-10-16/kganyago-says-rand-resilience-cushioning-south-africa-from-shock",
-     "probabilite": 0.949,
-     "date_publication_utc": "2026-10-16T04:57:45Z"
-    },
-    {
-     "titre": "In AI-dominated markets, LatAm debt is a diversifier",
-     "source": "FT Markets",
-     "lien": "https://www.ft.com/content/086b7a80-acdd-48d2-bd5c-a04bad812264",
-     "probabilite": 0.947,
-     "date_publication_utc": "2026-10-15T15:51:35Z"
+     "titre": "People in China are spending nearly as much of their income as Americans on healthcare",
+     "source": "CNBC Finance",
+     "lien": "https://www.cnbc.com/2026/10/15/chinese-spending-nearly-as-much-of-income-as-americans-on-healthcare.html",
+     "score": 0.922,
+     "p_positif": 0.9397,
+     "p_negatif": 0.0177,
+     "probabilite": 0.94,
+     "date_publication_utc": "2026-10-15T23:00:01Z"
     }
    ],
    "plus_negatifs": [
     {
-     "titre": "Indonesia Stocks Log Worst Day Since 1998 on MSCI Downgrade Warning",
-     "source": "WSJ Markets",
-     "lien": "https://www.wsj.com/finance/investing/indonesian-stocks-dive-as-msci-weighs-downgrade-to-standalone-market-406133fc",
-     "probabilite": 0.974,
-     "date_publication_utc": "2026-10-16T07:18:00Z"
-    },
-    {
-     "titre": "WSJ Dollar Index Falls 0.32% to 97.26",
-     "source": "WSJ Markets",
-     "lien": "https://www.wsj.com/finance/currencies/asian-currencies-mixed-but-may-be-weighed-by-higher-prospects-of-fed-rate-hikes-31f584a1",
-     "probabilite": 0.973,
-     "date_publication_utc": "2026-10-15T21:47:00Z"
-    },
-    {
      "titre": "British food and drink exports to EU collapse by more than a third since Brexit",
      "source": "Guardian Business",
      "lien": "https://www.theguardian.com/business/2026/oct/16/british-food-drink-exports-to-eu-collapse-brexit",
+     "score": -0.964,
+     "p_positif": 0.0083,
+     "p_negatif": 0.9723,
      "probabilite": 0.972,
      "date_publication_utc": "2026-10-16T12:34:37Z"
     },
@@ -84,6 +88,9 @@
      "titre": "Investors dump data centre bonds as AI borrowers face ‘Darwin moment’",
      "source": "FT Markets",
      "lien": "https://www.ft.com/content/678bcd31-6c2a-447b-a68c-ce6dec220bbc?syn-25a6b1a6=1",
+     "score": -0.964,
+     "p_positif": 0.0082,
+     "p_negatif": 0.9722,
      "probabilite": 0.972,
      "date_publication_utc": "2026-10-15T18:27:55Z"
     },
@@ -91,8 +98,31 @@
      "titre": "Stock Market Today: Nasdaq Slump Worsens as AI Anxieties Mount",
      "source": "WSJ Markets",
      "lien": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-10-16-2026",
+     "score": -0.963,
+     "p_positif": 0.0089,
+     "p_negatif": 0.9722,
      "probabilite": 0.972,
      "date_publication_utc": "2026-10-16T08:08:29Z"
+    },
+    {
+     "titre": "Indonesia Stocks Log Worst Day Since 1998 on MSCI Downgrade Warning",
+     "source": "WSJ Markets",
+     "lien": "https://www.wsj.com/finance/investing/indonesian-stocks-dive-as-msci-weighs-downgrade-to-standalone-market-406133fc",
+     "score": -0.963,
+     "p_positif": 0.0105,
+     "p_negatif": 0.9735,
+     "probabilite": 0.974,
+     "date_publication_utc": "2026-10-16T07:18:00Z"
+    },
+    {
+     "titre": "S&P 500 Suffers Worst Week Since June as AI Fears Hit Chipmakers",
+     "source": "Bloomberg Markets",
+     "lien": "https://www.bloomberg.com/news/articles/2026-10-16/s-p-500-steady-as-warsh-boosts-expectations-of-rate-hold",
+     "score": -0.963,
+     "p_positif": 0.0089,
+     "p_negatif": 0.9718,
+     "probabilite": 0.972,
+     "date_publication_utc": "2026-10-16T14:01:24Z"
     }
    ],
    "releves_reussis": 0,
@@ -101,24 +131,27 @@
    "couverture_partielle": true
   },
   "esg": {
-   "nb_articles": 61,
-   "nb_sources": 30,
+   "nb_articles": 62,
+   "nb_sources": 31,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": 4.9,
-   "part_media_principal_pct": 19.7,
+   "solde_dates_fiables": 6.5,
+   "part_media_principal_pct": 19.4,
    "media_principal": "Edie",
-   "solde_avec_plafond": 4.9,
-   "positif_pct": 16.4,
-   "neutre_pct": 72.1,
-   "negatif_pct": 11.5,
-   "solde": 4.9,
-   "marge_erreur": 13.2,
+   "solde_avec_plafond": 6.5,
+   "positif_pct": 17.7,
+   "neutre_pct": 71.0,
+   "negatif_pct": 11.3,
+   "solde": 6.5,
+   "marge_erreur": 13.3,
    "etiquette": "neutre",
    "plus_positifs": [
     {
      "titre": "African financial markets improve as liquidity constraints threaten sustainable investment growth",
      "source": "Africa Sustainability Matters",
      "lien": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQdmN6TFR4VGk0UXBGZVN3N3htOGhWUVE3VGFuU1d2a0pTamVpN0RUNm5VbFZLanZBb3Rvek1uczExdGdJczNKMnRiN1hZYlZQb0ExWUE0VFpzYzZsaXdaem1RUGhJcTJhSm54N0VCY1BMdXBtRElPZ1lseW8wRUFrbkVGWFowdF90REJjX2kxNVM1ODB0Q3V0RWU5bU10TjRDRGJ4U0tHS21udW43WHd6YkhibWJmZmhxZEFKLVNDTlBENy1EN3hIUDBLUmlSdnVMTTVv?oc=5",
+     "score": 0.925,
+     "p_positif": 0.9498,
+     "p_negatif": 0.025,
      "probabilite": 0.95,
      "date_publication_utc": "2026-10-16T11:32:57Z"
     },
@@ -126,6 +159,9 @@
      "titre": "UK Government unveils action plan to boost organic farming",
      "source": "Edie",
      "lien": "https://www.edie.net/uk-government-unveils-action-plan-to-boost-organic-farming/",
+     "score": 0.919,
+     "p_positif": 0.9315,
+     "p_negatif": 0.0122,
      "probabilite": 0.931,
      "date_publication_utc": "2026-10-15T15:54:09Z"
     },
@@ -133,20 +169,29 @@
      "titre": "LanzaTech Boosts Stake in SAF Business LanzaJet in New Financing Round",
      "source": "ESG Today",
      "lien": "https://www.esgtoday.com/lanzajet-secures-20-million-financing-to-scale-sustainable-aviation-fuel-production/",
+     "score": 0.907,
+     "p_positif": 0.9187,
+     "p_negatif": 0.0118,
      "probabilite": 0.919,
      "date_publication_utc": "2026-10-16T13:47:59Z"
     },
     {
-     "titre": "News in brief: UK FRC expects ‘clear’ disclosures on carbon credits",
-     "source": "Responsible Investor",
-     "lien": "https://www.responsible-investor.com/news-in-brief-uk-frc-expects-clear-disclosures-on-carbon-credits/",
-     "probabilite": 0.733,
-     "date_publication_utc": "2026-10-16T14:51:40Z"
+     "titre": "Snam wins UN methane reporting Gold Standard for sixth straight year",
+     "source": "Trend News Agency",
+     "lien": "https://news.google.com/rss/articles/CBMiWkFVX3lxTFAtNUJoRFFHRXo1SHM2YVBhYTU0el9JZkRaM1dSU242aGNfLUxsVmpMSmYwUlV5ZFltYVNWd2Q0ZzRNdGtycUNsd2hhdnNlR3BqMjJ2XzU4ZkdkQQ?oc=5",
+     "score": 0.743,
+     "p_positif": 0.7844,
+     "p_negatif": 0.041,
+     "probabilite": 0.784,
+     "date_publication_utc": "2026-10-16T11:41:00Z"
     },
     {
      "titre": "ZERO13 named World’s Best Venue for Sustainability in Euromoney Markets Awards 2026",
      "source": "The Manila Times",
      "lien": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxOQ0lIMm5FVmM2c2xEei1USjZRMkZKNjJOOHAxRmZ0MGloalJncjhlOEJ3QU9rUk1HdWJMaEl4OVNncFRHYXVOSm14Ynd5VXFZREhfVHVVaVRTZXN4TXZtdW81RDhiQnZZby1mbWxrZ0JpbmNNZEo5V0hpUmtYb1NmNkNwUDdqSG1iTWN2WF9BbFZoaUZBeE02SmdLSENaaFQwQTZDcUZkdVFnNTRiU0twQ2xTSmRqeVZWVm85ZC0ydmpZdXdUV2Q2bTdhOUhkSnpmNExBWU9Fc0QxSjhyaVo0dHljNFVkaF9FZDR3cTFkd2xlZ9IB8gFBVV95cUxOQ0lIMm5FVmM2c2xEei1USjZRMkZKNjJOOHAxRmZ0MGloalJncjhlOEJ3QU9rUk1HdWJMaEl4OVNncFRHYXVOSm14Ynd5VXFZREhfVHVVaVRTZXN4TXZtdW81RDhiQnZZby1mbWxrZ0JpbmNNZEo5V0hpUmtYb1NmNkNwUDdqSG1iTWN2WF9BbFZoaUZBeE02SmdLSENaaFQwQTZDcUZkdVFnNTRiU0twQ2xTSmRqeVZWVm85ZC0ydmpZdXdUV2Q2bTdhOUhkSnpmNExBWU9Fc0QxSjhyaVo0dHljNFVkaF9FZDR3cTFkd2xlZw?oc=5",
+     "score": 0.702,
+     "p_positif": 0.7124,
+     "p_negatif": 0.0108,
      "probabilite": 0.712,
      "date_publication_utc": "2026-10-16T08:17:48Z"
     }
@@ -156,6 +201,9 @@
      "titre": "Is Britain sliding into a subsidence crisis?",
      "source": "FT Climate Capital",
      "lien": "https://www.ft.com/content/3ace7245-3505-474c-9518-b3d5ae5d1a33",
+     "score": -0.946,
+     "p_positif": 0.0126,
+     "p_negatif": 0.9585,
      "probabilite": 0.959,
      "date_publication_utc": "2026-10-16T11:00:10Z"
     },
@@ -163,6 +211,9 @@
      "titre": "EU proposes one-year delay to methane rules for fossil fuel imports",
      "source": "Edie",
      "lien": "https://www.edie.net/eu-proposes-one-year-delay-to-methane-rules-for-fossil-fuel-imports/",
+     "score": -0.914,
+     "p_positif": 0.0085,
+     "p_negatif": 0.9221,
      "probabilite": 0.922,
      "date_publication_utc": "2026-10-15T21:19:42Z"
     },
@@ -170,6 +221,9 @@
      "titre": "ESMA cracks down on underreporting of negative sustainability impacts",
      "source": "Responsible Investor",
      "lien": "https://www.responsible-investor.com/esma-cracks-down-on-underreporting-of-negative-sustainability-impacts/",
+     "score": -0.904,
+     "p_positif": 0.0155,
+     "p_negatif": 0.9199,
      "probabilite": 0.92,
      "date_publication_utc": "2026-10-16T12:30:42Z"
     },
@@ -177,6 +231,9 @@
      "titre": "How Africa’s ‘wall’ to hold back the desert unravelled",
      "source": "FT Climate Capital",
      "lien": "https://www.ft.com/content/13cbc4f0-6c8f-4b95-bbe8-7eb03a547727",
+     "score": -0.802,
+     "p_positif": 0.0435,
+     "p_negatif": 0.8454,
      "probabilite": 0.845,
      "date_publication_utc": "2026-10-16T11:02:32Z"
     },
@@ -184,6 +241,9 @@
      "titre": "EU Greenwashing Rules Take Effect With Fines Exceeding 4% of Turnover",
      "source": "ESG News",
      "lien": "https://esgnews.com/eu-greenwashing-rules-take-effect-with-fines-exceeding-4-of-turnover/",
+     "score": -0.671,
+     "p_positif": 0.0422,
+     "p_negatif": 0.7137,
      "probabilite": 0.714,
      "date_publication_utc": "2026-10-16T12:30:00Z"
     }
@@ -240,23 +300,23 @@
   {
    "seance": "2026-10-16",
    "groupe": "esg",
-   "nb_articles": 61,
-   "nb_sources": 30,
-   "positif_pct": 16.4,
-   "neutre_pct": 72.1,
-   "negatif_pct": 11.5,
-   "solde": 4.9,
-   "marge_erreur": 13.2,
+   "nb_articles": 62,
+   "nb_sources": 31,
+   "positif_pct": 17.7,
+   "neutre_pct": 71.0,
+   "negatif_pct": 11.3,
+   "solde": 6.5,
+   "marge_erreur": 13.3,
    "etiquette": "neutre",
    "couverture_partielle": true,
    "releves_reussis": 0.0,
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 32.7,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": 4.9,
+   "solde_dates_fiables": 6.5,
    "media_principal": "Edie",
-   "part_media_principal_pct": 19.7,
-   "solde_avec_plafond": 4.9
+   "part_media_principal_pct": 19.4,
+   "solde_avec_plafond": 6.5
   },
   {
    "seance": "2026-10-16",
@@ -298,18 +358,18 @@
    "autres_medias_pct": 0.0
   },
   "esg": {
-   "nb_articles": 75,
+   "nb_articles": 76,
    "nb_seances": 2,
    "parts_pct": {
-    "ESG News": 18.7,
-    "Edie": 16.0,
-    "Responsible Investor": 12.0,
-    "ESG Today": 6.7,
+    "ESG News": 18.4,
+    "Edie": 15.8,
+    "Responsible Investor": 11.8,
+    "ESG Today": 6.6,
     "Trellis": 5.3,
-    "ESG Dive": 4.0,
-    "Financial Times": 4.0,
-    "Africa Sustainability Matters": 2.7,
-    "Serrari Group": 2.7,
+    "ESG Dive": 3.9,
+    "Financial Times": 3.9,
+    "Africa Sustainability Matters": 2.6,
+    "Serrari Group": 2.6,
     "NextBillion": 1.3,
     "T. Rowe Price": 1.3,
     "Vietnam.vn": 1.3,
@@ -317,7 +377,53 @@
     "Indonesia Expat": 1.3,
     "Energetica India Magazine": 1.3
    },
-   "autres_medias_pct": 19.5
+   "autres_medias_pct": 20.8
+  }
+ },
+ "agregats": {
+  "marche": {
+   "semaine": [
+    {
+     "debut": "2026-10-12",
+     "fin": "2026-10-18",
+     "derniere_seance": "2026-10-16",
+     "solde_moyen": null,
+     "nb_jours": 0,
+     "nb_jours_ecartes": 2
+    }
+   ],
+   "mois": [
+    {
+     "debut": "2026-10-01",
+     "fin": "2026-10-31",
+     "derniere_seance": "2026-10-16",
+     "solde_moyen": null,
+     "nb_jours": 0,
+     "nb_jours_ecartes": 2
+    }
+   ]
+  },
+  "esg": {
+   "semaine": [
+    {
+     "debut": "2026-10-12",
+     "fin": "2026-10-18",
+     "derniere_seance": "2026-10-16",
+     "solde_moyen": null,
+     "nb_jours": 0,
+     "nb_jours_ecartes": 2
+    }
+   ],
+   "mois": [
+    {
+     "debut": "2026-10-01",
+     "fin": "2026-10-31",
+     "derniere_seance": "2026-10-16",
+     "solde_moyen": null,
+     "nb_jours": 0,
+     "nb_jours_ecartes": 2
+    }
+   ]
   }
  },
  "suivi_taux_neutre": {},

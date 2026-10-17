@@ -37,3 +37,9 @@
 2026-10-17 05:08:50,gdelt,ok,12 jours de tonalité GDELT
 2026-10-17 07:05:22,collecte_titres,ok,"242 articles lus, 223 doublons, 19 nouveaux {'marche': 15, 'esg': 4}, 0 flux en panne"
 2026-10-17 09:51:44,collecte_titres,ok,"229 articles lus, 215 doublons, 14 nouveaux {'marche': 11, 'esg': 3}, 0 flux en panne"
+2026-10-17 12:47:21,performance,ok,"5 ETF, séance du 2026-10-16, 1399 séances communes"
+2026-10-17 12:47:22,secteurs,ok,"4 compositions, 4 mesures d'effet sectoriel"
+2026-10-17 12:47:23,sentiment,ok,"journée du 2026-10-16 : marche négatif (solde -14.5, n=152), esg neutre (solde 6.5, n=62)"
+2026-10-17 12:47:23,parallele,ok,0 / 60 jours exploitables (estimation : 2027-01-14)
+2026-10-17 12:47:23,synthese,ok,"Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 152 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 62 articles) — journée partiellement relevé"
+2026-10-17 12:48:57,gdelt,avertissement,"GDELT indisponible cette nuit (marche : trop de requêtes (429), esg : trop de requêtes (429)) — sans conséquence"
