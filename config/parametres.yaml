@@ -1,0 +1,110 @@
+# =============================================================================
+# Paramètres de calcul de Contrepoint
+# =============================================================================
+# Tout ce qui est un « choix de méthode » est regroupé ici, pour pouvoir être
+# expliqué (et modifié) sans toucher au code.
+
+performance:
+  # Nombre de séances de bourse dans une année : sert à « annualiser » la
+  # volatilité et l'écart de suivi (convention de marché : 252).
+  seances_par_an: 252
+
+  # Périodes affichées. « mois » et « ans » sont comptés en calendrier :
+  # 1 mois = du dernier cours connu il y a 1 mois jusqu'au dernier cours.
+  periodes:
+    - { id: 1m,  libelle: "1 mois",      mois: 1 }
+    - { id: 3m,  libelle: "3 mois",      mois: 3 }
+    - { id: ytd, libelle: "Depuis le 1er janvier", depuis_debut_annee: true }
+    - { id: 1a,  libelle: "1 an",        mois: 12 }
+    - { id: 3a,  libelle: "3 ans",       mois: 36 }
+    - { id: 5a,  libelle: "5 ans",       mois: 60 }
+
+  # En dessous d'un an, un rendement annualisé (et donc un ratio de Sharpe)
+  # n'a pas de sens : quelques bonnes séances suffisent à l'extrapoler à 50 %.
+  sharpe_duree_min_mois: 12
+
+  # Le rendement est annualisé à partir de cette durée (en mois).
+  annualisation_duree_min_mois: 36
+
+  # Contrôle qualité : au-delà de ce nombre de séances consécutives avec un
+  # cours identique, on signale un cours « figé » (absence d'échanges).
+  cours_fige_seances: 3
+
+  # Une variation quotidienne au-delà de ce seuil (en %) est signalée comme
+  # « aberrante » à vérifier. Le MSCI World a rarement bougé de plus de 10 %
+  # en une séance (mars 2020).
+  variation_aberrante_pct: 12
+
+  # Détection des cours erronés (« pics isolés ») : écart avec la médiane des
+  # autres ETF, dans un sens puis dans l'autre le lendemain (en %).
+  # Exemple réel : le 24/10/2025, Yahoo a donné pour SNAW.DE le cours en dollars
+  # de la cotation de Londres (+17 % puis −13 %).
+  pic_isole_seuil_pct: 5
+
+  # Le taux EUR/USD de la BCE n'est pas publié les jours fériés TARGET.
+  # On reprend alors le dernier taux connu, au maximum ce nombre de jours.
+  change_report_max_jours: 4
+
+sentiment:
+  # Modèle FinBERT, version figée (commit Hugging Face du 12/10/2026, publié
+  # par ProsusAI : ajout des conditions de licence et des poids « safetensors »).
+  modele: ProsusAI/finbert
+  revision: 0bc2ac10dda6929bcb1f77ccc43c7ec5c424f031
+
+  # Texte analysé = titre + début du résumé, limité à ce nombre de mots
+  # (FinBERT a été entraîné sur des phrases courtes).
+  mots_max_resume: 60
+
+  # On ignore les articles publiés il y a plus de N heures au moment de la
+  # collecte (ils appartiennent à des journées déjà closes). Certains flux
+  # gardent des articles vieux de plusieurs mois.
+  age_max_heures: 36
+
+  # Deux titres sont considérés comme le même article au-delà de cette
+  # similarité (0 à 100), par exemple la même dépêche reprise par deux médias.
+  seuil_doublon: 90
+
+  # Le dédoublonnage compare aussi aux titres des N derniers jours.
+  doublons_jours: 3
+
+  # Étiquette du jour (correction A) : seuil = 1,96 × marge d'erreur du solde.
+  facteur_confiance: 1.96
+  articles_min: 30            # en dessous : « signal insuffisant »
+  marge_max_points: 25        # marge d'erreur au-delà : « signal insuffisant »
+
+  # Nombre de titres les plus positifs / négatifs conservés par jour et par groupe.
+  titres_extremes: 5
+
+  # Heure de clôture des séances (heure de Paris) : borne des journées de
+  # sentiment (correction B). Les jours de clôture anticipée, l'heure réelle
+  # du calendrier Xetra est utilisée.
+  calendrier_bourse: XETR
+
+secteurs:
+  # Composition des fonds : fichier officiel iShares (« latest-holdings.csv »).
+  # Rafraîchie au plus une fois tous les N jours (les portefeuilles bougent peu).
+  rafraichir_tous_les_jours: 7
+
+  # Grandes valeurs technologiques américaines (« Magnificent 7 »), repérées
+  # par leur code boursier dans les fichiers de composition.
+  grandes_tech: [AAPL, MSFT, NVDA, AMZN, GOOGL, GOOG, META, TSLA]
+
+  # Cotation de ces 7 actions sur Xetra (en euros, clôture à 17 h 30 comme nos
+  # ETF : pas de décalage horaire). Elles forment le facteur « grandes tech »,
+  # pondéré selon leur poids actuel dans le MSCI World.
+  grandes_tech_xetra:
+    AAPL: APC.DE
+    MSFT: MSF.DE
+    NVDA: NVD.DE
+    AMZN: AMZ.DE
+    GOOGL: ABEA.DE   # Alphabet (classes A et C regroupées)
+    META: FB2A.DE
+    TSLA: TL0.DE
+
+  # ETF sectoriels MSCI World (Xtrackers, cotés sur Xetra comme nos ETF).
+  # Seul le secteur de l'énergie entre dans la mesure (hypothèse à tester).
+  etf_sectoriels:
+    energie: XDW0.DE
+
+  # Période de mesure de l'effet sectoriel (en mois).
+  periode_mois: 36

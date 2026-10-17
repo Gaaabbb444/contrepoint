@@ -1,0 +1,11 @@
+# Environnement Python local (recréé par « pip install -r requirements.txt »)
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+
+# Fichiers temporaires d'écriture
+*.tmp
+
+# Cache du modèle FinBERT (géré par le cache de GitHub Actions, jamais dans le dépôt)
+.cache/

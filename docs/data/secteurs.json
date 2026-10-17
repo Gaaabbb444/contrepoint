@@ -1,0 +1,287 @@
+{
+ "genere_le_utc": "2026-10-16T23:59:21Z",
+ "avertissement_periode": "Ces résultats dépendent fortement de la période observée. De 2023 à 2026, les grandes valeurs technologiques américaines ont porté le marché : un indice qui les sous-pondère a mécaniquement fait moins bien. Sur une autre période (par exemple une baisse de la technologie ou une hausse de l'énergie), le classement peut s'inverser.",
+ "compositions": {
+  "msci_world": {
+   "date_composition": "2026-10-15",
+   "releve_le_utc": "2026-10-16T23:50:15Z",
+   "source": "https://www.ishares.com/uk/individual/en/products/251882/ishares-core-msci-world-ucits-etf/latest-holdings.csv",
+   "nb_lignes": 1296,
+   "secteurs_pct": {
+    "Technologies de l'information": 30.56,
+    "Finance": 15.76,
+    "Industrie": 10.67,
+    "Santé": 9.51,
+    "Consommation discrétionnaire": 8.62,
+    "Services de communication": 8.22,
+    "Consommation de base": 5.17,
+    "Énergie": 4.3,
+    "Matériaux": 3.09,
+    "Services aux collectivités": 2.33,
+    "Immobilier": 1.51,
+    "Liquidités et autres": 0.45
+   },
+   "grandes_tech": {
+    "total_pct": 24.76,
+    "detail": {
+     "APPLE": 5.5,
+     "NVIDIA": 5.47,
+     "MICROSOFT": 4.17,
+     "AMAZON.COM INC": 2.7,
+     "ALPHABET CLASS A": 2.24,
+     "ALPHABET CLASS C": 1.77,
+     "META PLATFORMS CLASS A": 1.77,
+     "TESLA INC": 1.14
+    }
+   }
+  },
+  "screened": {
+   "date_composition": "2026-10-15",
+   "releve_le_utc": "2026-10-16T23:50:15Z",
+   "source": "https://www.ishares.com/uk/individual/en/products/305419/ishares-msci-world-screened-ucits-etf/latest-holdings.csv",
+   "nb_lignes": 1179,
+   "secteurs_pct": {
+    "Technologies de l'information": 33.21,
+    "Finance": 16.86,
+    "Santé": 10.23,
+    "Industrie": 10.1,
+    "Consommation discrétionnaire": 9.07,
+    "Services de communication": 8.83,
+    "Matériaux": 3.06,
+    "Consommation de base": 2.82,
+    "Énergie": 2.02,
+    "Services aux collectivités": 1.63,
+    "Immobilier": 1.62,
+    "Liquidités et autres": 0.5
+   },
+   "grandes_tech": {
+    "total_pct": 26.82,
+    "detail": {
+     "APPLE": 5.96,
+     "NVIDIA": 5.92,
+     "MICROSOFT": 4.52,
+     "AMAZON.COM INC": 2.93,
+     "ALPHABET CLASS A": 2.43,
+     "META PLATFORMS CLASS A": 1.92,
+     "ALPHABET CLASS C": 1.91,
+     "TESLA INC": 1.23
+    }
+   }
+  },
+  "sri": {
+   "date_composition": "2026-10-15",
+   "releve_le_utc": "2026-10-16T23:50:16Z",
+   "source": "https://www.ishares.com/uk/individual/en/products/290846/ishares-msci-world-sri-ucits-etf/latest-holdings.csv",
+   "nb_lignes": 373,
+   "secteurs_pct": {
+    "Technologies de l'information": 29.86,
+    "Finance": 17.27,
+    "Industrie": 12.2,
+    "Santé": 9.95,
+    "Consommation discrétionnaire": 9.65,
+    "Services de communication": 8.04,
+    "Consommation de base": 5.69,
+    "Matériaux": 3.6,
+    "Immobilier": 1.77,
+    "Services aux collectivités": 1.47,
+    "Liquidités et autres": 0.37
+   },
+   "grandes_tech": {
+    "total_pct": 12.36,
+    "detail": {
+     "NVIDIA": 8.58,
+     "TESLA INC": 3.78
+    }
+   }
+  },
+  "paris": {
+   "date_composition": "2026-10-15",
+   "releve_le_utc": "2026-10-16T23:50:16Z",
+   "source": "https://www.ishares.com/uk/individual/en/products/318383/ishares-msci-world-paris-aligned-climate-ucits-etf/latest-holdings.csv",
+   "nb_lignes": 1037,
+   "secteurs_pct": {
+    "Technologies de l'information": 32.27,
+    "Finance": 17.98,
+    "Santé": 10.2,
+    "Industrie": 9.95,
+    "Services de communication": 8.65,
+    "Consommation discrétionnaire": 8.1,
+    "Matériaux": 4.01,
+    "Immobilier": 3.24,
+    "Consommation de base": 2.86,
+    "Services aux collectivités": 2.43,
+    "Liquidités et autres": 0.61,
+    "Énergie": 0.23
+   },
+   "grandes_tech": {
+    "total_pct": 26.91,
+    "detail": {
+     "APPLE": 6.12,
+     "NVIDIA": 5.68,
+     "MICROSOFT": 4.71,
+     "AMAZON.COM INC": 2.84,
+     "ALPHABET CLASS C": 2.78,
+     "ALPHABET CLASS A": 1.7,
+     "META PLATFORMS CLASS A": 1.66,
+     "TESLA INC": 1.42
+    }
+   }
+  }
+ },
+ "effet_sectoriel": {
+  "screened": {
+   "debut": "2023-10-16",
+   "fin": "2026-10-15",
+   "nb_seances": 759,
+   "r2_pct": 49.2,
+   "sensibilites": {
+    "grandes_tech": 0.034,
+    "energie": -0.027
+   },
+   "ecart_relatif_pct": 1.25,
+   "ecart_somme_quotidienne_pts": 1.5,
+   "contributions_pts": {
+    "grandes_tech": 1.52,
+    "energie": 0.1,
+    "autres_facteurs": -0.12
+   },
+   "parts_de_l_ecart_pct": {
+    "grandes_tech": 101,
+    "energie": 6,
+    "autres_facteurs": -8
+   }
+  },
+  "sri": {
+   "debut": "2023-10-16",
+   "fin": "2026-10-15",
+   "nb_seances": 759,
+   "r2_pct": 19.6,
+   "sensibilites": {
+    "grandes_tech": -0.119,
+    "energie": -0.053
+   },
+   "ecart_relatif_pct": -10.42,
+   "ecart_somme_quotidienne_pts": -10.76,
+   "contributions_pts": {
+    "grandes_tech": -5.34,
+    "energie": 0.19,
+    "autres_facteurs": -5.61
+   },
+   "parts_de_l_ecart_pct": {
+    "grandes_tech": 50,
+    "energie": -2,
+    "autres_facteurs": 52
+   }
+  },
+  "paris": {
+   "debut": "2023-10-16",
+   "fin": "2026-10-15",
+   "nb_seances": 759,
+   "r2_pct": 2.2,
+   "sensibilites": {
+    "grandes_tech": 0.034,
+    "energie": -0.03
+   },
+   "ecart_relatif_pct": -4.6,
+   "ecart_somme_quotidienne_pts": -4.3,
+   "contributions_pts": {
+    "grandes_tech": 1.52,
+    "energie": 0.11,
+    "autres_facteurs": -5.92
+   },
+   "parts_de_l_ecart_pct": {
+    "grandes_tech": -35,
+    "energie": -2,
+    "autres_facteurs": 138
+   },
+   "fiabilite_reduite": "cours quotidiens bruités avant le 2025-08-25 (cotation d'Amsterdam convertie) : mesure peu fiable"
+  },
+  "bnp_sri_pab": {
+   "debut": "2023-10-16",
+   "fin": "2026-10-15",
+   "nb_seances": 759,
+   "r2_pct": 30.3,
+   "sensibilites": {
+    "grandes_tech": -0.228,
+    "energie": -0.053
+   },
+   "ecart_relatif_pct": -13.83,
+   "ecart_somme_quotidienne_pts": -14.93,
+   "contributions_pts": {
+    "grandes_tech": -10.28,
+    "energie": 0.19,
+    "autres_facteurs": -4.83
+   },
+   "parts_de_l_ecart_pct": {
+    "grandes_tech": 69,
+    "energie": -1,
+    "autres_facteurs": 32
+   }
+  }
+ },
+ "ecarts_secteurs_pts": {
+  "screened": {
+   "Consommation de base": -2.35,
+   "Consommation discrétionnaire": 0.45,
+   "Finance": 1.1,
+   "Immobilier": 0.11,
+   "Industrie": -0.57,
+   "Liquidités et autres": 0.05,
+   "Matériaux": -0.03,
+   "Santé": 0.72,
+   "Services aux collectivités": -0.7,
+   "Services de communication": 0.61,
+   "Technologies de l'information": 2.65,
+   "Énergie": -2.28
+  },
+  "sri": {
+   "Consommation de base": 0.52,
+   "Consommation discrétionnaire": 1.03,
+   "Finance": 1.51,
+   "Immobilier": 0.26,
+   "Industrie": 1.53,
+   "Liquidités et autres": -0.08,
+   "Matériaux": 0.51,
+   "Santé": 0.44,
+   "Services aux collectivités": -0.86,
+   "Services de communication": -0.18,
+   "Technologies de l'information": -0.7,
+   "Énergie": -4.3
+  },
+  "paris": {
+   "Consommation de base": -2.31,
+   "Consommation discrétionnaire": -0.52,
+   "Finance": 2.22,
+   "Immobilier": 1.73,
+   "Industrie": -0.72,
+   "Liquidités et autres": 0.16,
+   "Matériaux": 0.92,
+   "Santé": 0.69,
+   "Services aux collectivités": 0.1,
+   "Services de communication": 0.43,
+   "Technologies de l'information": 1.71,
+   "Énergie": -4.07
+  }
+ },
+ "poids_facteur_grandes_tech": {
+  "AAPL": 5.5,
+  "MSFT": 4.17,
+  "NVDA": 5.47,
+  "AMZN": 2.7,
+  "META": 1.77,
+  "TSLA": 1.14,
+  "GOOGL": 4.01
+ },
+ "effet_sectoriel_source": {
+  "grandes_tech": {
+   "AAPL": "APC.DE",
+   "MSFT": "MSF.DE",
+   "NVDA": "NVD.DE",
+   "AMZN": "AMZ.DE",
+   "GOOGL": "ABEA.DE",
+   "META": "FB2A.DE",
+   "TSLA": "TL0.DE"
+  },
+  "energie": "XDW0.DE"
+ }
+}

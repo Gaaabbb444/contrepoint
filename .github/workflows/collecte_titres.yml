@@ -1,0 +1,80 @@
+# =============================================================================
+# Collecte et notation des titres d'actualité — toutes les 3 heures
+# =============================================================================
+# Lit les flux RSS, supprime les doublons, note chaque nouveau titre avec
+# FinBERT, puis enregistre titre / source / lien / date / score dans data/titres.
+# Les résumés ne sont jamais enregistrés (droit d'auteur).
+#
+# FinBERT est conservé dans le cache de GitHub Actions : il n'est téléchargé
+# qu'une seule fois (environ 440 Mo), puis restauré à chaque exécution. La clé
+# du cache contient la version figée du modèle : changer de version dans
+# config/parametres.yaml provoque automatiquement un nouveau téléchargement.
+# =============================================================================
+name: Collecte des titres
+
+on:
+  schedule:
+    - cron: "23 */3 * * *"     # minute 23 (les heures rondes sont saturées chez GitHub)
+  workflow_dispatch:            # bouton « Run workflow » pour un lancement manuel
+
+permissions:
+  contents: write               # nécessaire pour enregistrer les titres dans le dépôt
+
+concurrency:
+  group: ecriture-depot         # jamais deux tâches qui écrivent en même temps
+  cancel-in-progress: false
+
+jobs:
+  collecte:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      PYTHONUTF8: "1"
+      HF_HOME: ${{ github.workspace }}/.cache/huggingface   # dossier du modèle (mis en cache)
+      HF_HUB_DISABLE_TELEMETRY: "1"
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip              # les bibliothèques (dont PyTorch) sont aussi mises en cache
+          cache-dependency-path: |
+            requirements.txt
+            requirements-sentiment.txt
+
+      - name: Installer les bibliothèques
+        run: pip install -r requirements.txt -r requirements-sentiment.txt
+
+      - name: Lire la version figée de FinBERT
+        id: version
+        run: echo "revision=$(python -c "import yaml; print(yaml.safe_load(open('config/parametres.yaml'))['sentiment']['revision'])")" >> "$GITHUB_OUTPUT"
+
+      - name: Restaurer FinBERT depuis le cache
+        id: cache-modele
+        uses: actions/cache@v6
+        with:
+          path: .cache/huggingface
+          key: finbert-${{ steps.version.outputs.revision }}
+
+      - name: Télécharger FinBERT (seulement s'il n'est pas dans le cache)
+        if: steps.cache-modele.outputs.cache-hit != 'true'
+        run: python -c "from pipeline.sentiment import FinBERT; FinBERT()"
+
+      - name: Collecter et noter les titres
+        env:
+          # Modèle trouvé dans le cache : on interdit tout accès réseau à
+          # Hugging Face, ce qui garantit qu'il n'est pas retéléchargé.
+          HF_HUB_OFFLINE: ${{ steps.cache-modele.outputs.cache-hit == 'true' && '1' || '0' }}
+        run: python -m pipeline.collecte_titres
+
+      - name: Enregistrer dans le dépôt
+        if: always()              # même si un flux a échoué, on garde ce qui a été collecté
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/titres data/journal_execution.csv || true
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "Titres du $(date -u +'%Y-%m-%d %H:%M') UTC"
+          git pull --rebase
+          git push

@@ -1,0 +1,6 @@
+# Bibliothèques du modèle de sentiment, installées UNIQUEMENT dans GitHub Actions
+# (FinBERT ne tourne jamais sur l'ordinateur personnel).
+# Version « CPU » de PyTorch : beaucoup plus légère (pas de pilotes de carte graphique).
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.14.1+cpu
+transformers==5.18.0

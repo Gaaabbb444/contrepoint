@@ -1,0 +1,13 @@
+# Bibliothèques Python utilisées par Contrepoint.
+# Les versions sont figées pour que GitHub Actions installe exactement
+# la même chose qu'au moment des tests.
+numpy==2.5.4
+pandas==3.0.6
+PyYAML==6.0.3
+requests==2.34.2
+yfinance==1.7.0
+pytest==9.1.1
+tzdata==2026.5
+feedparser==6.0.14
+rapidfuzz==3.14.6
+exchange_calendars==4.13.2

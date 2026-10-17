@@ -1,0 +1,63 @@
+# =============================================================================
+# Flux RSS analysés par Contrepoint
+# =============================================================================
+# Chaque flux appartient à un groupe :
+#   - marche : actualité financière et économique générale (anglais) ;
+#   - esg    : actualité de la finance durable / ESG (anglais).
+# Pour désactiver un flux : actif: false. Pour en ajouter un : copier un bloc.
+# type: direct      → flux publié par le média lui-même ;
+# type: agregateur  → recherche Google Actualités (reprend d'autres médias).
+#   Les articles d'agrégateur sont dédoublonnés par rapport aux flux directs :
+#   si le même article existe déjà dans un flux direct, on garde le direct.
+#
+# Tous ces flux ont été testés le 17/10/2026 (nombre d'articles, présence d'un
+# résumé, fraîcheur). Les flux écartés et leur raison sont listés en bas.
+# =============================================================================
+
+# Interrupteur général des agrégateurs (Google Actualités).
+agregateurs_actifs: true
+
+flux:
+  # --- Groupe « marché » -------------------------------------------------------
+  - { groupe: marche, nom: CNBC Top News,        type: direct, actif: true, url: "https://www.cnbc.com/id/100003114/device/rss/rss.html" }
+  - { groupe: marche, nom: CNBC Finance,         type: direct, actif: true, url: "https://www.cnbc.com/id/10000664/device/rss/rss.html" }
+  - { groupe: marche, nom: CNBC Economy,         type: direct, actif: true, url: "https://www.cnbc.com/id/20910258/device/rss/rss.html" }
+  - { groupe: marche, nom: CNBC Investing,       type: direct, actif: true, url: "https://www.cnbc.com/id/15839069/device/rss/rss.html" }
+  - { groupe: marche, nom: CNBC Europe,          type: direct, actif: true, url: "https://www.cnbc.com/id/19794221/device/rss/rss.html" }
+  - { groupe: marche, nom: WSJ Markets,          type: direct, actif: true, url: "https://feeds.content.dowjones.io/public/rss/RSSMarketsMain" }
+  - { groupe: marche, nom: WSJ Economy,          type: direct, actif: true, url: "https://feeds.content.dowjones.io/public/rss/socialeconomyfeed" }
+  - { groupe: marche, nom: FT Markets,           type: direct, actif: true, url: "https://www.ft.com/markets?format=rss" }
+  - { groupe: marche, nom: FT Global Economy,    type: direct, actif: true, url: "https://www.ft.com/global-economy?format=rss" }
+  - { groupe: marche, nom: Bloomberg Markets,    type: direct, actif: true, url: "https://feeds.bloomberg.com/markets/news.rss" }
+  - { groupe: marche, nom: Bloomberg Economics,  type: direct, actif: true, url: "https://feeds.bloomberg.com/economics/news.rss" }
+  - { groupe: marche, nom: BBC Business,         type: direct, actif: true, url: "https://feeds.bbci.co.uk/news/business/rss.xml" }
+  - { groupe: marche, nom: Guardian Business,    type: direct, actif: true, url: "https://www.theguardian.com/business/rss" }
+  - { groupe: marche, nom: Guardian Economics,   type: direct, actif: true, url: "https://www.theguardian.com/business/economics/rss" }
+  - { groupe: marche, nom: NYT Business,         type: direct, actif: true, url: "https://rss.nytimes.com/services/xml/rss/nyt/Business.xml" }
+  - { groupe: marche, nom: NYT Economy,          type: direct, actif: true, url: "https://rss.nytimes.com/services/xml/rss/nyt/Economy.xml" }
+  - { groupe: marche, nom: Euronews Business,    type: direct, actif: true, url: "https://www.euronews.com/rss?level=vertical&name=business" }
+  - { groupe: marche, nom: DW Business,          type: direct, actif: true, url: "https://rss.dw.com/rdf/rss-en-bus" }
+
+  # --- Groupe « ESG / finance durable » ------------------------------------------
+  - { groupe: esg, nom: ESG Today,               type: direct, actif: true, url: "https://www.esgtoday.com/feed/" }
+  - { groupe: esg, nom: ESG Dive,                type: direct, actif: true, url: "https://www.esgdive.com/feeds/news/" }
+  - { groupe: esg, nom: ESG News,                type: direct, actif: true, url: "https://esgnews.com/feed/" }
+  - { groupe: esg, nom: Responsible Investor,    type: direct, actif: true, url: "https://www.responsible-investor.com/feed/" }
+  - { groupe: esg, nom: ImpactAlpha,             type: direct, actif: true, url: "https://impactalpha.com/feed/" }
+  - { groupe: esg, nom: Trellis,                 type: direct, actif: true, url: "https://trellis.net/feed/" }
+  - { groupe: esg, nom: FT Moral Money,          type: direct, actif: true, url: "https://www.ft.com/moral-money?format=rss" }
+  - { groupe: esg, nom: FT Climate Capital,      type: direct, actif: true, url: "https://www.ft.com/climate-capital?format=rss" }
+  - { groupe: esg, nom: Edie,                    type: direct, actif: true, url: "https://www.edie.net/feed/" }
+  - { groupe: esg, nom: GreenMoney,              type: direct, actif: true, url: "https://greenmoney.com/feed/" }
+  - { groupe: esg, nom: TriplePundit,            type: direct, actif: true, url: "https://www.triplepundit.com/feed" }
+  - { groupe: esg, nom: "Google Actualités : ESG investing",      type: agregateur, actif: true, url: "https://news.google.com/rss/search?q=ESG+investing+when:1d&hl=en-US&gl=US&ceid=US:en" }
+  - { groupe: esg, nom: "Google Actualités : sustainable finance", type: agregateur, actif: true, url: "https://news.google.com/rss/search?q=%22sustainable+finance%22+when:1d&hl=en-US&gl=US&ceid=US:en" }
+
+# Flux testés et écartés (17/10/2026) :
+# - Yahoo Finance, Fortune, Bloomberg Green, IPE ESG, Sustainable Brands : flux morts (erreur 404)
+# - Environmental Finance : accès refusé (403) ; UN PRI : connexion coupée
+# - Investing.com, Seeking Alpha : pas de résumé et renouvellement trop rapide
+# - MarketWatch, Nasdaq, Business Insider : 10 à 15 articles couvrant 1 à 2 h seulement
+# - Fed, BCE : communiqués officiels, pas de la presse
+# - Carbon Brief, Inside Climate News, Climate Home, Guardian Climat : actualité
+#   climatique et non finance durable (une canicule serait classée « négative »)

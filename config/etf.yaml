@@ -1,0 +1,187 @@
+# =============================================================================
+# Liste des ETF comparés par Contrepoint
+# =============================================================================
+# Ce fichier contient deux types d'informations :
+#   1. techniques : code Yahoo, place de cotation, devise (servent au calcul) ;
+#   2. réglementaires et ESG : SFDR, labels, frais, note MSCI. Ces données sont
+#      STATIQUES : elles sont relevées à la main dans les documents officiels,
+#      avec leur source et leur date de vérification.
+#
+# ⚠️ À METTRE À JOUR À LA MAIN (voir le README) :
+#   - les notes MSCI ESG changent environ chaque mois ;
+#   - la liste du label ISR est publiée chaque mois ;
+#   - la classification SFDR et les frais peuvent changer.
+# =============================================================================
+
+reference: msci_world   # identifiant de l'ETF qui sert de point de comparaison
+defaut_esg: sri         # ETF ESG affiché par défaut sur le site
+
+etf:
+  # ---------------------------------------------------------------------------
+  - id: msci_world
+    nom_court: MSCI World
+    nom: iShares Core MSCI World UCITS ETF (Acc)
+    role: reference            # reference | esg_large | esg_strict | esg_climat | complement
+    approche: Référence (marché classique)
+    vue_principale: true
+    isin: IE00B4L5Y983
+    ticker_yahoo: EUNL.DE
+    place: Xetra (Francfort)
+    devise_cotation: EUR
+    indice: MSCI World Index (Net)
+    emetteur: iShares (BlackRock)
+    replication: Physique (optimisée)
+    distribution: Capitalisation
+    lancement_part: 2009-09-25
+    frais_annuels_pct: 0.20
+    sfdr: Autre (article 6)      # mention exacte de la fiche : « SFDR Classification : Other »
+    labels: []
+    composition_csv: https://www.ishares.com/uk/individual/en/products/251882/ishares-core-msci-world-ucits-etf/latest-holdings.csv
+    note_msci: null              # non publiée par l'émetteur pour ce fonds (voir README)
+    note_msci_commentaire: "iShares ne publie pas de note MSCI ESG pour ce fonds, et l'outil de recherche public de MSCI est désormais réservé à ses clients."
+    sources:
+      - "Fiche iShares (factsheet) SWDA, données au 30/09/2026 : https://www.ishares.com/ch/professionals/en/literature/fact-sheet/swda-ishares-core-msci-world-ucits-etf-fund-fact-sheet-en-ch.pdf"
+      - "Page produit iShares : https://www.ishares.com/uk/individual/en/products/251882/"
+    verifie_le: 2026-10-17
+
+  # ---------------------------------------------------------------------------
+  - id: screened
+    nom_court: World Screened
+    nom: iShares MSCI World Screened UCITS ETF (Acc)
+    nom_precedent: iShares MSCI World ESG Screened UCITS ETF   # renommé (règles ESMA sur les noms de fonds)
+    role: esg_large
+    approche: ESG large (exclusions)
+    vue_principale: true
+    isin: IE00BFNM3J75
+    ticker_yahoo: SNAW.DE
+    place: Xetra (Francfort)
+    devise_cotation: EUR
+    indice: MSCI World Screened Index
+    emetteur: iShares (BlackRock)
+    replication: Physique (optimisée)
+    distribution: Capitalisation
+    lancement_part: 2018-10-19
+    frais_annuels_pct: 0.20
+    sfdr: Article 8
+    labels: []
+    composition_csv: https://www.ishares.com/uk/individual/en/products/305419/ishares-msci-world-screened-ucits-etf/latest-holdings.csv
+    note_msci:
+      note: A
+      score_qualite: 6.88          # sur 10
+      percentile_pairs: 36.83      # % des fonds comparables moins bien notés
+      date: 2026-09-18             # date des notes MSCI (portefeuille au 31/08/2026)
+      source: "Fiche iShares SAWD (factsheet), section « ESG Metrics » : https://www.ishares.com/ch/professionals/en/literature/fact-sheet/sawd-ishares-msci-world-screened-ucits-etf-fund-fact-sheet-en-ch.pdf"
+    sources:
+      - "Fiche iShares SAWD, données au 30/09/2026 : https://www.ishares.com/ch/professionals/en/literature/fact-sheet/sawd-ishares-msci-world-screened-ucits-etf-fund-fact-sheet-en-ch.pdf"
+      - "Liste officielle du label ISR au 30/09/2026 (fonds absent) : https://www.lelabelisr.fr/fonds-labellises/"
+      - "Liste officielle Greenfin (fonds absent) : https://www.ecologie.gouv.fr/politiques-publiques/label-greenfin"
+    verifie_le: 2026-10-17
+
+  # ---------------------------------------------------------------------------
+  - id: sri
+    nom_court: World SRI
+    nom: iShares MSCI World SRI UCITS ETF EUR (Acc)
+    role: esg_strict
+    approche: ESG strict (best-in-class, SRI)
+    vue_principale: true
+    isin: IE00BYX2JD69
+    ticker_yahoo: 2B7K.DE
+    place: Xetra (Francfort)
+    devise_cotation: EUR
+    indice: MSCI World SRI Select Reduced Fossil Fuel Index
+    emetteur: iShares (BlackRock)
+    replication: Physique (complète)
+    distribution: Capitalisation
+    lancement_part: 2017-10-12
+    frais_annuels_pct: 0.20
+    sfdr: Article 8
+    labels: []
+    composition_csv: https://www.ishares.com/uk/individual/en/products/290846/ishares-msci-world-sri-ucits-etf/latest-holdings.csv
+    note_msci:
+      note: AA
+      score_qualite: 8.54
+      percentile_pairs: 99.75
+      date: 2026-09-18
+      source: "Fiche iShares SUSW (factsheet), section « ESG Metrics » : https://www.ishares.com/ch/professionals/en/literature/fact-sheet/susw-ishares-msci-world-sri-ucits-etf-fund-fact-sheet-en-ch.pdf"
+    sources:
+      - "Fiche iShares SUSW, données au 30/09/2026 : https://www.ishares.com/ch/professionals/en/literature/fact-sheet/susw-ishares-msci-world-sri-ucits-etf-fund-fact-sheet-en-ch.pdf"
+      - "Liste officielle du label ISR au 30/09/2026 (fonds absent) : https://www.lelabelisr.fr/fonds-labellises/"
+      - "Liste officielle Greenfin (fonds absent) : https://www.ecologie.gouv.fr/politiques-publiques/label-greenfin"
+    verifie_le: 2026-10-17
+
+  # ---------------------------------------------------------------------------
+  - id: paris
+    nom_court: World Paris-Aligned
+    nom: iShares MSCI World Paris-Aligned Climate UCITS ETF (Acc)
+    role: esg_climat
+    approche: Climat (aligné sur l'accord de Paris)
+    vue_principale: true
+    isin: IE00BMXC7W70
+    ticker_yahoo: WPAB.DE
+    place: Xetra (Francfort)
+    devise_cotation: EUR
+    # Raccordement : la cotation en euros sur Xetra n'existe sur Yahoo que depuis
+    # le 25/08/2025. Avant cette date, on utilise la cotation en dollars
+    # d'Amsterdam, convertie au taux BCE. Mesuré le 17/10/2026 : cette cotation
+    # est peu échangée et bruitée (écart de suivi 5,9 % contre 2,0 % en direct),
+    # d'où le choix de ne l'utiliser que pour l'historique ancien.
+    # Pour revenir à la cotation d'Amsterdam seule : supprimer ce bloc et
+    # remettre ticker_yahoo: WPAB.AS et devise_cotation: USD.
+    historique_avant:
+      ticker_yahoo: WPAB.AS
+      place: Euronext Amsterdam
+      devise_cotation: USD
+    indice: MSCI World Climate Paris Aligned Benchmark Select Index
+    emetteur: iShares (BlackRock)
+    replication: Physique (complète)
+    distribution: Capitalisation
+    lancement_part: 2021-04-22
+    frais_annuels_pct: 0.20
+    sfdr: Article 8
+    labels: []
+    composition_csv: https://www.ishares.com/uk/individual/en/products/318383/ishares-msci-world-paris-aligned-climate-ucits-etf/latest-holdings.csv
+    note_msci:
+      note: A
+      score_qualite: 7.03
+      percentile_pairs: 54.17
+      date: 2026-09-18
+      source: "Fiche iShares WPAB (factsheet), section « ESG Metrics » : https://www.blackrock.com/gls-download/literature/fact-sheet/wpab-ishares-msci-world-paris-aligned-climate-ucits-etf-fund-fact-sheet-en-no.pdf"
+    sources:
+      - "Fiche iShares WPAB, données au 30/09/2026 : https://www.blackrock.com/gls-download/literature/fact-sheet/wpab-ishares-msci-world-paris-aligned-climate-ucits-etf-fund-fact-sheet-en-no.pdf"
+      - "Liste officielle du label ISR au 30/09/2026 (fonds absent) : https://www.lelabelisr.fr/fonds-labellises/"
+      - "Liste officielle Greenfin (fonds absent) : https://www.ecologie.gouv.fr/politiques-publiques/label-greenfin"
+    verifie_le: 2026-10-17
+
+  # ---------------------------------------------------------------------------
+  # Complément : affiché hors de la vue principale (autre émetteur, autres frais).
+  - id: bnp_sri_pab
+    nom_court: BNP Easy SRI PAB
+    nom: BNP Paribas Easy MSCI World SRI PAB UCITS ETF EUR Capitalisation
+    role: complement
+    approche: ESG strict + climat (SRI et Paris-Aligned), labellisé ISR
+    vue_principale: false
+    isin: LU1615092217
+    ticker_yahoo: EMWE.PA
+    place: Euronext Paris
+    devise_cotation: EUR
+    indice: MSCI World SRI Select PAB Index (USD) NR
+    emetteur: BNP Paribas Asset Management
+    replication: Physique
+    distribution: Capitalisation
+    lancement_part: null           # le fonds date du 26/02/2016 ; date de la part EUR non relevée
+    frais_annuels_pct: 0.25        # « frais courants réels » au 31/12/2025, soit 0,05 point de plus que les iShares
+    sfdr: Article 8
+    labels:
+      - nom: Label ISR
+        preuve: "Fonds présent dans la liste officielle du label ISR au 30/09/2026 (part LU1291108642 ; la liste précise que le label vaut pour le fonds entier, toutes parts comprises)."
+      - nom: Towards Sustainability (Belgique)
+        preuve: "Affiché sur la page officielle du fonds chez BNP Paribas AM."
+      - nom: FNG (Allemagne)
+        preuve: "Affiché sur la page officielle du fonds chez BNP Paribas AM."
+    composition_csv: null          # pas de fichier de composition récupérable automatiquement
+    note_msci: null
+    note_msci_commentaire: "Note MSCI non affichée sur la page officielle du fonds au 17/10/2026."
+    sources:
+      - "Page officielle BNP Paribas AM : https://www.bnpparibas-am.com/fr-fr/investisseur-particulier/fundsheet/actions/bnp-paribas-easy-msci-world-sri-pab-ucits-etf-eur-c-lu1615092217/"
+      - "Liste officielle du label ISR au 30/09/2026 : https://www.lelabelisr.fr/wp-content/uploads/260930_Liste_fonds_label_ISR.xlsx"
+    verifie_le: 2026-10-17

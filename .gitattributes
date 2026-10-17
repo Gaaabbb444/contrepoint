@@ -1,0 +1,3 @@
+# Fins de ligne identiques sur Windows (ton PC) et Linux (GitHub Actions) :
+# évite que chaque fichier paraisse « modifié » entre les deux.
+* text=auto eol=lf
