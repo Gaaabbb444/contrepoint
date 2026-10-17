@@ -1,5 +1,5 @@
 {
- "derniere_execution_utc": "2026-10-17T01:09:09Z",
+ "derniere_execution_utc": "2026-10-17T05:08:50Z",
  "donnees": {
   "performance_derniere_seance": "2026-10-16",
   "performance_provisoire": true,
@@ -9,32 +9,32 @@
   "performance": {
    "statut": "ok",
    "message": "5 ETF, séance du 2026-10-16, 1399 séances communes",
-   "derniere_reussite_utc": "2026-10-17T01:09:09Z"
+   "derniere_reussite_utc": "2026-10-17T05:08:50Z"
   },
   "secteurs": {
    "statut": "ok",
    "message": "4 compositions, 4 mesures d'effet sectoriel",
-   "derniere_reussite_utc": "2026-10-17T01:09:09Z"
+   "derniere_reussite_utc": "2026-10-17T05:08:50Z"
   },
   "sentiment": {
    "statut": "ok",
-   "message": "journée du 2026-10-16 : marche négatif (solde -13.9, n=151), esg neutre (solde 5.0, n=60)",
-   "derniere_reussite_utc": "2026-10-17T01:09:09Z"
+   "message": "journée du 2026-10-16 : marche négatif (solde -14.5, n=152), esg neutre (solde 4.9, n=61)",
+   "derniere_reussite_utc": "2026-10-17T05:08:50Z"
   },
   "parallele": {
    "statut": "ok",
    "message": "0 / 60 jours exploitables (estimation : 2027-01-14)",
-   "derniere_reussite_utc": "2026-10-17T01:09:09Z"
+   "derniere_reussite_utc": "2026-10-17T05:08:50Z"
   },
   "synthese": {
    "statut": "ok",
-   "message": "Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 151 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +5, marge ±13, 60 articles) — journée partiellement relevé",
-   "derniere_reussite_utc": "2026-10-17T01:09:09Z"
+   "message": "Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 152 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +5, marge ±13, 61 articles) — journée partiellement relevé",
+   "derniere_reussite_utc": "2026-10-17T05:08:50Z"
   },
   "gdelt": {
    "statut": "ok",
-   "message": "10 jours de tonalité GDELT",
-   "derniere_reussite_utc": "2026-10-17T01:09:09Z"
+   "message": "12 jours de tonalité GDELT",
+   "derniere_reussite_utc": "2026-10-17T05:08:50Z"
   }
  },
  "tout_va_bien": true,
