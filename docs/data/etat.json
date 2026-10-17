@@ -1,0 +1,45 @@
+{
+ "derniere_execution_utc": "2026-10-17T00:22:24Z",
+ "donnees": {
+  "performance_derniere_seance": "2026-10-16",
+  "performance_provisoire": true,
+  "sentiment_derniere_journee": "2026-10-16"
+ },
+ "etapes": {
+  "performance": {
+   "statut": "ok",
+   "message": "5 ETF, séance du 2026-10-16, 1399 séances communes",
+   "derniere_reussite_utc": "2026-10-17T00:22:24Z"
+  },
+  "secteurs": {
+   "statut": "ok",
+   "message": "4 compositions, 4 mesures d'effet sectoriel",
+   "derniere_reussite_utc": "2026-10-17T00:22:24Z"
+  },
+  "sentiment": {
+   "statut": "ok",
+   "message": "journée du 2026-10-16 : marche neutre (solde -12.9, n=139), esg neutre (solde 6.9, n=72)",
+   "derniere_reussite_utc": "2026-10-17T00:22:24Z"
+  },
+  "gdelt": {
+   "statut": "avertissement",
+   "message": "GDELT indisponible cette nuit (marche : 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22stock+market%22+OR+stocks+OR+%22wall+street%22%29+sourcelang%3Aenglish&mode=timelinetone&timespan=3months&format=json ; marche : 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22stock+market%22+OR+stocks+OR+%22wall+street%22%29+sourcelang%3Aenglish&mode=timelinetone&timespan=3months&format=json ; esg : 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28ESG+OR+%22sustainable+finance%22+OR+%22sustainable+investing%22%29+sourcelang%3Aenglish&mode=timelinetone&timespan=3months&format=json ; esg : 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28ESG+OR+%22sustainable+finance%22+OR+%22sustainable+investing%22%29+sourcelang%3Aenglish&mode=timelinetone&timespan=3months&format=json) — sans conséquence",
+   "derniere_reussite_utc": null
+  }
+ },
+ "tout_va_bien": true,
+ "alertes_24h": [
+  {
+   "horodatage_utc": "2026-10-17 00:22:24",
+   "etape": "gdelt",
+   "statut": "avertissement",
+   "message": "GDELT indisponible cette nuit (marche : 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22stock+market%22+OR+stocks+OR+%22wall+street%22%29+sourcelang%3Aenglish&mode=timelinetone&timespan=3months&format=json ; marche : 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28%22stock+market%22+OR+stocks+OR+%22wall+street%22%29+sourcelang%3Aenglish&mode=timelinetone&timespan=3months&format=json ; esg : 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28ESG+OR+%22sustainable+finance%22+OR+%22sustainable+investing%22%29+sourcelang%3Aenglish&mode=timelinetone&timespan=3months&format=json ; esg : 429 Client Error: Too Many Requests for url: https://api.gdeltproject.org/api/v2/doc/doc?query=%28ESG+OR+%22sustainable+finance%22+OR+%22sustainable+investing%22%29+sourcelang%3Aenglish&mode=timelinetone&timespan=3months&format=json) — sans conséquence"
+  },
+  {
+   "horodatage_utc": "2026-10-17 00:10:03",
+   "etape": "flux:ImpactAlpha",
+   "statut": "avertissement",
+   "message": "flux indisponible : 403 Client Error: Forbidden for url: https://impactalpha.com/feed/"
+  }
+ ]
+}

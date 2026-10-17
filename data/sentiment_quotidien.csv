@@ -1,0 +1,5 @@
+﻿seance,groupe,nb_articles,nb_sources,positif_pct,neutre_pct,negatif_pct,solde,marge_erreur,etiquette,couverture_partielle
+2026-10-15,esg,14,4,28.6,50.0,21.4,7.1,36.9,signal insuffisant,True
+2026-10-15,marche,19,8,21.1,21.1,57.9,-36.8,36.4,signal insuffisant,True
+2026-10-16,esg,72,33,18.1,70.8,11.1,6.9,12.4,neutre,True
+2026-10-16,marche,139,17,28.1,30.9,41.0,-12.9,13.6,neutre,True
