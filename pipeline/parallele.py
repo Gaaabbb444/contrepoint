@@ -178,6 +178,7 @@ def analyser(cours: pd.DataFrame, id_ref: str, historique: pd.DataFrame, p: dict
                 "comparaison_jours": comparaison(table.get("rendement_j", pd.Series(dtype=float)), etiquettes, p),
                 "correlation_glissante": correlation_glissante(table, p["fenetre_glissante"]) if len(table) else [],
                 "journees": [{"seance": s.date().isoformat(), "solde": r.solde,
+                              "etiquette": etiquettes.get(s),
                               "relatif_j_pts": None if pd.isna(r.rendement_j) else round(float(r.rendement_j) * 100, 3)}
                              for s, r in table.iterrows()],
             }

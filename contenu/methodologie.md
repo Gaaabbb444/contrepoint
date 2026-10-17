@@ -4,6 +4,8 @@
 
 ---
 
+Cette page explique d'où viennent les chiffres de Contrepoint, comment ils sont calculés, et ce qu'ils ne permettent pas de conclure. Chaque choix de méthode y est justifié ; les paramètres correspondants sont modifiables dans le dossier `config/` du dépôt.
+
 ## Performance des ETF
 
 ### Ce que l'on compare

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contrepoint — Performance ESG et sentiment de marché</title>
+<meta name="description" content="Tableau de bord mis à jour chaque nuit : performance des ETF ESG mondiaux face au MSCI World et sentiment de l'actualité financière.">
+<link rel="preload" href="assets/polices/newsreader-romain-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/polices/ibm-plex-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/contrepoint.css">
+<script src="assets/js/contrepoint.js" defer></script>
+</head>
+<body>
+<!--
+  Contrepoint — page unique. Le contenu chiffré est rempli par assets/js/contrepoint.js
+  à partir des fichiers docs/data/*.json, recalculés chaque nuit par le pipeline Python.
+  Mise en page reprise de la maquette Claude Design (styles identiques).
+-->
+<div class="page">
+<div class="colonne">
+
+<div id="bandeau" class="rise bandeau" hidden><span class="num" id="bandeau-texte">Chargement des données…</span></div>
+<div id="bandeau-retard" class="rise bandeau-retard" role="status" hidden>
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#3D4048" stroke-width="1.4" aria-hidden="true" style="flex: none; margin-top: 3px"><circle cx="8" cy="8" r="6.5"></circle><path d="M8 4.5V8l2.5 1.5"></path></svg>
+<p class="num" style="margin: 0" id="bandeau-retard-texte"></p>
+</div>
+
+<header class="rise entete">
+<div style="display: flex; flex-direction: column; gap: 8px">
+<h1 class="titre-site">Contrepoint</h1>
+<p style="margin: 0; font-size: 15px; color: #4A4E57; letter-spacing: 0.01em">Performance ESG et sentiment de marché</p>
+</div>
+<nav aria-label="Rubriques" class="nav">
+<button type="button" class="navlink" aria-haspopup="dialog" data-ouvrir="titres">Titres du jour</button>
+<button type="button" class="navlink" aria-haspopup="dialog" data-ouvrir="secteurs">Répartition par secteur</button>
+<button type="button" class="navlink" aria-haspopup="dialog" data-ouvrir="reglementaire">Données réglementaires</button>
+<button type="button" class="navlink" aria-haspopup="dialog" data-ouvrir="methodologie">Méthodologie</button>
+</nav>
+</header>
+
+<noscript><p class="avis">Cette page a besoin de JavaScript pour afficher les données.</p></noscript>
+<p id="erreur-chargement" class="avis" role="alert" hidden></p>
+
+<section aria-label="Indicateurs clés" class="indicateurs">
+<article class="rise carte carte-gauche" style="animation-delay: 50ms" id="carte-marche"></article>
+<article class="rise carte carte-milieu" style="animation-delay: 100ms" id="carte-esg"></article>
+<article class="rise carte carte-droite" style="animation-delay: 150ms" id="carte-ecart">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; min-height: 30px">
+<h2 class="kicker">Écart ESG strict (SRI) · <span id="kx-periode"></span><span class="suffixe-date"></span></h2>
+</div>
+<div class="fondu-zone" id="kx-zone">
+<div style="display: flex; align-items: baseline; gap: 10px">
+<span class="num chiffre" id="kx-valeur"></span>
+<span style="font-size: 15px; color: #4A4E57"><span id="kx-unite"></span> contre le MSCI World</span>
+</div>
+<div class="num detail-ecart">
+<span>ETF ESG strict (SRI), <span class="kx-p"></span></span><span style="text-align: right" id="kx-sri"></span>
+<span>MSCI World, <span class="kx-p"></span></span><span style="text-align: right" id="kx-msci"></span>
+</div>
+</div>
+</article>
+</section>
+
+<section class="rise synthese" aria-label="Synthèse" style="animation-delay: 200ms">
+<h2 class="num kicker" style="margin: 6px 0 0" id="synthese-kicker">L’essentiel du jour</h2>
+<p aria-live="polite" class="synthese-texte" id="synthese-texte"></p>
+</section>
+
+<section class="rise" aria-label="Graphique principal" style="animation-delay: 250ms; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 class="titre-section"><span id="g-etf-label">ESG strict (SRI)</span> face au MSCI World</h2>
+<p style="margin: 0; font-size: 14px; color: #4A4E57" id="g-sous-titre"></p>
+</div>
+<div style="display: flex; align-items: center; gap: 18px; flex-wrap: wrap">
+<div style="display: flex; align-items: center; gap: 8px">
+<label for="etf-a" style="font-size: 13px; color: #4A4E57">ETF</label>
+<select id="etf-a" class="choix">
+<option value="sri">ESG strict (SRI)</option>
+<option value="screened">ESG large (Screened)</option>
+<option value="paris">Climat (Paris-Aligned)</option>
+<option value="bnp_sri_pab">BNP Easy SRI PAB (complément)</option>
+</select>
+</div>
+<div class="seg" role="group" aria-label="Groupe de sentiment" id="seg-groupe" data-seg="grp">
+<button type="button" class="press" aria-pressed="true" data-valeur="marche">Marché</button>
+<button type="button" class="press" aria-pressed="false" data-valeur="esg">ESG</button>
+</div>
+<div class="seg" role="group" aria-label="Période" id="seg-periode" data-seg="periode">
+<button type="button" class="press" aria-pressed="false" data-valeur="1m">1 mois</button>
+<button type="button" class="press" aria-pressed="false" data-valeur="3m">3 mois</button>
+<button type="button" class="press" aria-pressed="false" data-valeur="ytd">Depuis janvier</button>
+<button type="button" class="press" aria-pressed="true" data-valeur="1a">1 an</button>
+<button type="button" class="press" aria-pressed="false" data-valeur="3a">3 ans</button>
+<button type="button" class="press" aria-pressed="false" data-valeur="5a">5 ans</button>
+</div>
+</div>
+</div>
+
+<div style="display: flex; gap: 14px">
+<div class="plot" id="plot" tabindex="0" role="group" aria-label="Graphique">
+<div style="position: relative; height: 260px" class="fondu-zone" id="zone-courbe">
+<div id="g-grille"></div>
+<div class="rvo" style="position: absolute; top: -8px; bottom: -8px; left: 0; right: -8px"><div class="rvi" style="position: absolute; inset: 0">
+<svg viewBox="0 0 1000 260" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; top: 8px; left: 0; width: calc(100% - 8px); height: calc(100% - 16px); overflow: visible">
+<path id="g-aire" d="M0 0" fill="rgba(21, 23, 28, 0.06)"></path>
+<path id="g-courbe" d="M0 0" fill="none" stroke="#15171C" stroke-width="2" stroke-linejoin="round" vector-effect="non-scaling-stroke"></path>
+</svg>
+<div id="g-point-fin" class="point-fin"></div>
+</div></div>
+</div>
+
+<div style="position: relative; height: 96px; border-top: 1px solid #D8D6CF" class="fondu-zone" id="zone-barres">
+<div style="position: absolute; left: 0; right: 0; top: 48px; height: 1px; background: #8E8C85"></div>
+<div class="rvo-barres" style="position: absolute; inset: 0">
+<svg viewBox="0 0 1000 96" preserveAspectRatio="none" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%">
+<path id="b-pos" d="M0 0" fill="#2A7D4F"></path>
+<path id="b-neg" d="M0 0" fill="#C23A2E"></path>
+<path id="b-part-pos" d="M0 0" fill="none" stroke="#2A7D4F" stroke-width="1.5" stroke-dasharray="3 2" vector-effect="non-scaling-stroke"></path>
+<path id="b-part-neg" d="M0 0" fill="none" stroke="#C23A2E" stroke-width="1.5" stroke-dasharray="3 2" vector-effect="non-scaling-stroke"></path>
+</svg>
+</div>
+<span id="b-debut-collecte" class="mention-barres" style="left: 0" hidden>Collecte du sentiment démarrée le 16/10/2026</span>
+<span id="b-trou" class="mention-barres" style="right: 0" hidden></span>
+</div>
+
+<div style="position: relative; height: 18px; font-size: 12px; color: #5C6068" id="g-dates"></div>
+
+<div class="tt" aria-hidden="true" id="tt-ligne" style="position: absolute; top: 0; left: 0; width: 1px; height: 370px; background: rgba(21, 23, 28, 0.35); opacity: 0"></div>
+<div class="tt" aria-hidden="true" id="tt-point" style="position: absolute; top: 0; left: 0; width: 10px; height: 10px; margin: -5px 0 0 -5px; box-sizing: border-box; border-radius: 50%; background: #15171C; border: 2px solid #F5F4F0; opacity: 0"></div>
+<div class="tt infobulle" aria-hidden="true" id="tt-boite" style="opacity: 0">
+<div class="num" style="font-weight: 600; margin-bottom: 4px" id="tt-date"></div>
+<div class="num ligne-tt"><span style="color: #C9C7C0">Écart <span class="g-etf-court">SRI</span> − MSCI</span><span style="font-weight: 600" id="tt-ecart"></span></div>
+<div class="num ligne-tt"><span style="color: #C9C7C0" id="tt-solde-label"></span><span style="font-weight: 600" id="tt-solde"></span></div>
+<div class="num" style="color: #C9C7C0; margin-top: 2px" id="tt-note"></div>
+</div>
+<p class="lecteur-seul" aria-live="polite" id="tt-annonce"></p>
+</div>
+
+<div style="flex: 0 0 56px; display: flex; flex-direction: column; gap: 14px">
+<div style="position: relative; height: 260px" class="fondu-zone" id="g-axe"></div>
+<div class="num" style="position: relative; height: 96px; font-size: 12px; color: #5C6068">
+<span style="position: absolute; left: 0; top: 2px">+50</span>
+<span style="position: absolute; left: 0; top: 48px; transform: translateY(-50%)">0</span>
+<span style="position: absolute; left: 0; bottom: 0">−50</span>
+</div>
+<div style="height: 18px"></div>
+</div>
+</div>
+
+<div class="legende">
+<span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 22px; height: 2px; background: #15171C"></span>Écart cumulé <span class="g-etf-court">SRI</span> − MSCI World</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; background: #2A7D4F"></span>Sentiment positif (au-dessus de 0)</span>
+<span style="display: inline-flex; align-items: center; gap: 8px"><span style="width: 10px; height: 10px; background: #C23A2E"></span>Sentiment négatif (sous 0)</span>
+<span style="display: inline-flex; align-items: center; gap: 8px" id="legende-partielle" hidden><span style="width: 10px; height: 10px; box-sizing: border-box; border: 1.5px dashed #4A4E57"></span>Couverture partielle</span>
+<span style="margin-left: auto">Écart sur la période : <strong class="num" style="color: #15171C" id="g-ecart-fin"></strong></span>
+</div>
+</section>
+
+<section class="rise analyse" aria-label="Sentiment et performance" style="animation-delay: 250ms" id="analyse" hidden></section>
+
+<div class="rise bas" style="animation-delay: 250ms" id="bas">
+<section aria-label="Tableau des performances" style="display: flex; flex-direction: column; gap: 14px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<h2 class="titre-section">Performances comparées</h2>
+<p class="num" style="margin: 0; font-size: 13px; color: #5C6068"><span id="table-prefixe"></span>MSCI World en performance cumulée ; ETF ESG en écart par rapport au MSCI World, en points.</p>
+</div>
+<table class="num tableau-perf">
+<thead>
+<tr style="border-bottom: 1px solid #15171C">
+<th scope="col" class="th-g">Indice ou ETF</th>
+<th scope="col" class="th-d">1 an</th>
+<th scope="col" class="th-d">3 ans</th>
+<th scope="col" class="th-d">5 ans</th>
+<th scope="col" class="th-d">Sharpe 5 ans</th>
+<th scope="col" class="th-d">Écart de suivi 1 an</th>
+</tr>
+</thead>
+<tbody id="table-perf"></tbody>
+</table>
+</section>
+<aside aria-label="Analyse en cours de constitution" class="encart-progression" id="progression" hidden></aside>
+</div>
+
+<footer class="rise pied" style="animation-delay: 250ms">
+<p style="margin: 0; max-width: 760px">Sources : cours des ETF et de l'indice MSCI World — Yahoo Finance (usage personnel, non commercial) ; taux de change et €STR — Banque centrale européenne ; titres de presse — flux RSS publics de la presse financière et de la finance durable (liste dans la <button type="button" class="navlink lien-pied" data-ouvrir="methodologie">méthodologie</button>). Calculs refaits chaque nuit ; titres relevés toutes les 3 heures.</p>
+<p style="margin: 0" class="credit-modele">Modèle de sentiment : FinBERT (ProsusAI) — © MIH AI B.V., licence CC BY-NC-SA 4.0<br>Polices Newsreader et IBM Plex Sans — <a href="assets/polices/OFL-Newsreader.txt">licence SIL OFL 1.1</a></p>
+</footer>
+
+</div>
+
+<!-- Panneau latéral (titres, secteurs, données réglementaires, méthodologie) -->
+<div id="voile" class="voile" aria-hidden="true" hidden></div>
+<section id="panneau" class="panneau" role="dialog" aria-modal="true" aria-label="" hidden>
+<div style="padding: 0 56px 48px; display: flex; flex-direction: column; gap: 36px">
+<div class="barre-panneau">
+<span class="num" style="font-size: 13px; color: #5C6068" id="panneau-bandeau"></span>
+<button type="button" data-fermer="1" class="press closebtn bouton-fermer" aria-keyshortcuts="Escape"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 2l8 8M10 2l-8 8"></path></svg>Fermer</button>
+</div>
+<div id="panneau-contenu" style="display: flex; flex-direction: column; gap: 36px"></div>
+</div>
+</section>
+
+</div>
+</body>
+</html>

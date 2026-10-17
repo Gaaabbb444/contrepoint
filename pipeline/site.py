@@ -46,6 +46,9 @@ def convertir(md: str) -> dict:
         return f'<h2 id="{identifiant}"><span class="k">{numero}</span>{titre}</h2>'
 
     html = re.sub(r"<h2>(.*?)</h2>", remplacer, html)
+    # Le premier paragraphe, avant la première partie, sert de chapeau.
+    if html.lstrip().startswith("<p>"):
+        html = html.lstrip().replace("<p>", '<p class="chapeau">', 1)
     # Les tableaux larges défilent horizontalement au lieu de déborder.
     html = html.replace("<table>", '<div class="tableau-defilant"><table>').replace("</table>", "</table></div>")
     return {"html": html, "sommaire": sommaire}

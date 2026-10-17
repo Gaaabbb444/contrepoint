@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "site-contrepoint",
+      "runtimeExecutable": "C:/Users/gabri/Desktop/Projet/.venv/Scripts/python.exe",
+      "runtimeArgs": ["-m", "http.server", "8765", "--bind", "127.0.0.1", "--directory", "C:/Users/gabri/AppData/Local/Temp/claude/C--Users-gabri-Desktop-Projet/41db6d13-5952-4024-b92a-2db529cee720/scratchpad/apercu"],
+      "port": 8765
+    }
+  ]
+}
