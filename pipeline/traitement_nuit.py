@@ -13,7 +13,7 @@ import pandas as pd
 
 from pipeline import collecte_prix, collecte_titres, controle_gdelt, fenetres, performance, secteurs, sentiment
 from pipeline.config import DOSSIER_DATA, DOSSIER_SITE_DATA, config_etf, parametres
-from pipeline.journal import Journal
+from pipeline.journal import FICHIER_JOURNAL, Journal
 from pipeline.sorties import ecrire_json_si_valide, lire_json
 
 FICHIER_PERFORMANCE = DOSSIER_SITE_DATA / "performance.json"
@@ -23,6 +23,7 @@ FICHIER_SENTIMENT = DOSSIER_SITE_DATA / "sentiment.json"
 FICHIER_HISTO_SENTIMENT = DOSSIER_DATA / "sentiment_quotidien.csv"
 FICHIER_GDELT = DOSSIER_DATA / "gdelt_ton.csv"
 FICHIER_GDELT_SITE = DOSSIER_SITE_DATA / "gdelt.json"
+FICHIER_ETAT = DOSSIER_SITE_DATA / "etat.json"
 
 # Champs de config/etf.yaml recopiés tels quels dans le JSON du site.
 CHAMPS_FICHE = ["id", "nom_court", "nom", "nom_precedent", "role", "approche", "vue_principale", "isin",
@@ -369,6 +370,64 @@ def etape_gdelt(journal: Journal) -> None:
     journal.noter("gdelt", "ok", f"{len(nouveau)} jours de tonalité GDELT")
 
 
+ETAPES = ["performance", "secteurs", "sentiment", "gdelt"]
+
+
+def ecrire_etat(journal: Journal, maintenant: datetime | None = None) -> dict:
+    """Écrit docs/data/etat.json : ce que le site affiche dans son bandeau de mise à jour.
+
+    - date de la dernière exécution et des dernières données valides ;
+    - pour chaque étape : statut de cette nuit et date de sa dernière réussite
+      (conservée d'une nuit sur l'autre : si une étape échoue, le site sait
+      depuis quand ses données datent) ;
+    - alertes des dernières 24 heures (sources en panne, cours écartés…),
+      y compris celles des relevés de titres faits toutes les 3 heures.
+    """
+    maintenant = maintenant or datetime.now(timezone.utc)
+    horodatage = maintenant.strftime("%Y-%m-%dT%H:%M:%SZ")
+    ancien = lire_json(FICHIER_ETAT) or {}
+    etapes = {}
+    for etape in ETAPES:
+        lignes = [l for l in journal.lignes if l["etape"] == etape]
+        precedent = ancien.get("etapes", {}).get(etape, {})
+        statut = lignes[-1]["statut"] if lignes else "non exécutée"
+        etapes[etape] = {
+            "statut": statut,
+            "message": lignes[-1]["message"] if lignes else "",
+            "derniere_reussite_utc": horodatage if statut == "ok" else precedent.get("derniere_reussite_utc"),
+        }
+
+    # Alertes : cette exécution + journal des dernières 24 h (relevés de titres).
+    alertes = [{"horodatage_utc": l["horodatage_utc"], "etape": l["etape"], "statut": l["statut"], "message": l["message"]}
+               for l in journal.lignes if l["statut"] != "ok"]
+    if FICHIER_JOURNAL.exists():
+        histo = pd.read_csv(FICHIER_JOURNAL, encoding="utf-8-sig", dtype=str).fillna("")
+        limite = (maintenant - timedelta(hours=24)).strftime("%Y-%m-%d %H:%M:%S")
+        recents = histo[(histo["horodatage_utc"] >= limite) & (histo["statut"] != "ok")]
+        alertes += recents.to_dict(orient="records")
+    vues, uniques = set(), []
+    for a in alertes:  # une même alerte répétée à chaque relevé n'apparaît qu'une fois
+        cle = (a["etape"], a["message"][:80])
+        if cle not in vues:
+            vues.add(cle)
+            uniques.append(a)
+
+    perf, sent = lire_json(FICHIER_PERFORMANCE) or {}, lire_json(FICHIER_SENTIMENT) or {}
+    etat = {
+        "derniere_execution_utc": horodatage,
+        "donnees": {
+            "performance_derniere_seance": perf.get("derniere_seance"),
+            "performance_provisoire": perf.get("derniere_seance_provisoire", False),
+            "sentiment_derniere_journee": sent.get("derniere_seance"),
+        },
+        "etapes": etapes,
+        "tout_va_bien": all(e["statut"] == "ok" for k, e in etapes.items() if k != "gdelt"),
+        "alertes_24h": uniques,
+    }
+    ecrire_json_si_valide(FICHIER_ETAT, etat, [])
+    return etat
+
+
 def main() -> int:
     journal = Journal()
     tableau = None
@@ -388,6 +447,10 @@ def main() -> int:
         etape_gdelt(journal)
     except Exception as erreur:  # noqa: BLE001
         journal.noter("gdelt", "avertissement", f"erreur imprévue : {erreur!r}")
+    try:
+        ecrire_etat(journal)
+    except Exception as erreur:  # noqa: BLE001
+        journal.noter("etat", "echec", f"erreur imprévue : {erreur!r}")
     journal.enregistrer()
     # Code de sortie 1 si une étape a échoué : GitHub Actions affichera la
     # tâche en rouge et t'enverra un e-mail.

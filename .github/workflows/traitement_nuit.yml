@@ -1,0 +1,81 @@
+# =============================================================================
+# Traitement de nuit — chaque jour à 04 h 41 UTC
+# =============================================================================
+# 06 h 41 à Paris en été, 05 h 41 en hiver. À cette heure, les clôtures de la
+# veille sont disponibles (Francfort, Paris, Amsterdam à 17 h 30 ; Wall Street à
+# 22 h, heure de Paris). GitHub peut retarder une tâche planifiée de 10 à 60
+# minutes : le site reste à jour avant 8 h.
+#
+# Enchaîne : vérification des calculs (tests) → performances → secteurs →
+# sentiment de la veille → contrôle GDELT → fichier d'état, puis enregistre les
+# résultats dans le dépôt. Une étape en panne n'empêche pas les autres ; le site
+# garde alors les dernières données valides (avec leur date) et GitHub t'envoie
+# un e-mail, car la tâche apparaît en rouge.
+# =============================================================================
+name: Traitement de nuit
+
+on:
+  schedule:
+    - cron: "41 4 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write      # enregistrer les résultats dans le dépôt
+  actions: write       # réactiver les tâches planifiées (règle des 60 jours)
+
+concurrency:
+  group: ecriture-depot
+  cancel-in-progress: false
+
+jobs:
+  traitement:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    env:
+      PYTHONUTF8: "1"
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: requirements.txt
+
+      - name: Installer les bibliothèques
+        run: pip install -r requirements.txt     # FinBERT n'est pas utile ici
+
+      - name: Vérifier les calculs (tests automatiques)
+        # Si le code a été cassé, on s'arrête AVANT de produire des chiffres faux :
+        # le site garde ses dernières données valides.
+        run: python -m pytest -q
+
+      - name: Calculer (performances, secteurs, sentiment, GDELT, état)
+        id: calcul
+        run: python -m pipeline.traitement_nuit
+
+      - name: Enregistrer les résultats dans le dépôt
+        if: always() && steps.calcul.outcome != 'skipped'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data docs/data || true
+          if git diff --cached --quiet; then echo "Rien de nouveau."; exit 0; fi
+          git commit -m "Traitement de nuit du $(date -u +'%Y-%m-%d')"
+          git pull --rebase
+          git push
+
+      - name: Empêcher la désactivation automatique (règle des 60 jours)
+        # Sur un dépôt public, GitHub désactive les tâches planifiées après
+        # 60 jours sans « activité ». Les commits quotidiens suffisent très
+        # probablement ; par précaution, on réactive aussi officiellement les
+        # deux tâches par l'interface de GitHub (sans effet si elles sont actives).
+        if: always()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          for tache in collecte_titres.yml traitement_nuit.yml; do
+            gh api -X PUT "repos/${{ github.repository }}/actions/workflows/$tache/enable" \
+              && echo "$tache : active" \
+              || echo "::warning::Réactivation de $tache impossible"
+          done
