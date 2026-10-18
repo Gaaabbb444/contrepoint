@@ -77,3 +77,4 @@
 2026-10-18 09:51:47,collecte_titres,ok,"100 articles lus, 88 doublons, 12 nouveaux {'marche': 9, 'esg': 3}, 0 flux en panne"
 2026-10-18 12:59:02,collecte_titres,ok,"98 articles lus, 86 doublons, 12 nouveaux {'marche': 11, 'esg': 1}, 0 flux en panne"
 2026-10-18 15:49:37,collecte_titres,ok,"98 articles lus, 83 doublons, 15 nouveaux {'marche': 13, 'esg': 2}, 0 flux en panne"
+2026-10-18 18:53:49,collecte_titres,ok,"89 articles lus, 86 doublons, 3 nouveaux {'marche': 2, 'esg': 1}, 0 flux en panne"
