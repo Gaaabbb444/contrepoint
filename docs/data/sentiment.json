@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-10-17T16:36:27Z",
+ "genere_le_utc": "2026-10-18T05:07:47Z",
  "derniere_seance": "2026-10-16",
  "fenetre": {
   "debut": "2026-10-15T17:30:00+02:00",
@@ -8,18 +8,18 @@
  },
  "groupes": {
   "marche": {
-   "nb_articles": 152,
+   "nb_articles": 153,
    "nb_sources": 9,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": -14.5,
-   "part_media_principal_pct": 21.1,
+   "solde_dates_fiables": -14.4,
+   "part_media_principal_pct": 20.9,
    "media_principal": "Financial Times",
-   "solde_avec_plafond": -14.5,
-   "positif_pct": 25.7,
-   "neutre_pct": 34.2,
-   "negatif_pct": 40.1,
-   "solde": -14.5,
-   "marge_erreur": 12.7,
+   "solde_avec_plafond": -14.4,
+   "positif_pct": 25.5,
+   "neutre_pct": 34.6,
+   "negatif_pct": 39.9,
+   "solde": -14.4,
+   "marge_erreur": 12.6,
    "etiquette": "négatif",
    "plus_positifs": [
     {
@@ -321,36 +321,36 @@
   {
    "seance": "2026-10-16",
    "groupe": "marche",
-   "nb_articles": 152,
+   "nb_articles": 153,
    "nb_sources": 9,
-   "positif_pct": 25.7,
-   "neutre_pct": 34.2,
-   "negatif_pct": 40.1,
-   "solde": -14.5,
-   "marge_erreur": 12.7,
+   "positif_pct": 25.5,
+   "neutre_pct": 34.6,
+   "negatif_pct": 39.9,
+   "solde": -14.4,
+   "marge_erreur": 12.6,
    "etiquette": "négatif",
    "couverture_partielle": true,
    "releves_reussis": 0.0,
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 32.7,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": -14.5,
+   "solde_dates_fiables": -14.4,
    "media_principal": "Financial Times",
-   "part_media_principal_pct": 21.1,
-   "solde_avec_plafond": -14.5
+   "part_media_principal_pct": 20.9,
+   "solde_avec_plafond": -14.4
   }
  ],
  "repartition_medias": {
   "marche": {
-   "nb_articles": 172,
+   "nb_articles": 173,
    "nb_seances": 2,
    "parts_pct": {
-    "Financial Times": 20.3,
-    "The Guardian": 18.0,
-    "Wall Street Journal": 17.4,
-    "Bloomberg": 13.4,
+    "Financial Times": 20.2,
+    "Wall Street Journal": 17.9,
+    "The Guardian": 17.9,
+    "Bloomberg": 13.3,
     "New York Times": 11.0,
-    "CNBC": 7.6,
+    "CNBC": 7.5,
     "BBC": 6.4,
     "Euronews": 5.2,
     "Deutsche Welle": 0.6

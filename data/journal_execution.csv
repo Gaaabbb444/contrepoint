@@ -68,3 +68,8 @@
 2026-10-18 01:06:12,collecte_titres,ok,"121 articles lus, 117 doublons, 4 nouveaux {'marche': 4}, 2 flux en panne"
 2026-10-18 03:55:40,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
 2026-10-18 03:55:49,collecte_titres,ok,"113 articles lus, 104 doublons, 9 nouveaux {'marche': 5, 'esg': 4}, 1 flux en panne"
+2026-10-18 05:07:45,performance,ok,"5 ETF, séance du 2026-10-16, 1399 séances communes"
+2026-10-18 05:07:47,secteurs,ok,"4 compositions, 4 mesures d'effet sectoriel"
+2026-10-18 05:07:48,sentiment,ok,"journée du 2026-10-16 : marche négatif (solde -14.4, n=153), esg neutre (solde 6.3, n=63)"
+2026-10-18 05:07:48,parallele,ok,0 / 60 jours exploitables (estimation : 2027-01-14)
+2026-10-18 05:07:48,synthese,ok,"Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 153 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 63 articles) — journée partiellement relevé"
