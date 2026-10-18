@@ -63,3 +63,6 @@
 2026-10-17 16:36:27,synthese,ok,"Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 152 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 63 articles) — journée partiellement relevé"
 2026-10-17 18:52:57,collecte_titres,ok,"190 articles lus, 185 doublons, 5 nouveaux {'marche': 4, 'esg': 1}, 0 flux en panne"
 2026-10-17 21:48:04,collecte_titres,ok,"171 articles lus, 167 doublons, 4 nouveaux {'marche': 4}, 0 flux en panne"
+2026-10-18 01:06:04,flux:Google Actualités : ESG investing,avertissement,flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=ESG+investing+when:1d&hl=en-US&gl=US&ceid=US:en
+2026-10-18 01:06:11,flux:Google Actualités : sustainable finance,avertissement,flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%22sustainable+finance%22+when:1d&hl=en-US&gl=US&ceid=US:en
+2026-10-18 01:06:12,collecte_titres,ok,"121 articles lus, 117 doublons, 4 nouveaux {'marche': 4}, 2 flux en panne"
