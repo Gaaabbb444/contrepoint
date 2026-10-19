@@ -86,3 +86,5 @@
 2026-10-19 05:16:59,sentiment,ok,"journée du 2026-10-16 : marche négatif (solde -14.4, n=153), esg neutre (solde 6.3, n=63)"
 2026-10-19 05:16:59,parallele,ok,0 / 60 jours exploitables (estimation : 2027-01-14)
 2026-10-19 05:16:59,synthese,ok,"Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 153 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 63 articles) — journée partiellement relevé"
+2026-10-19 07:19:18,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
+2026-10-19 07:19:33,collecte_titres,ok,"121 articles lus, 88 doublons, 33 nouveaux {'marche': 29, 'esg': 4}, 1 flux en panne"
