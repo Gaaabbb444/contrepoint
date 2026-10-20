@@ -1,39 +1,52 @@
 {
- "derniere_execution_utc": "2026-10-19T05:16:59Z",
+ "derniere_execution_utc": "2026-10-20T05:12:01Z",
  "donnees": {
-  "performance_derniere_seance": "2026-10-16",
-  "performance_provisoire": false,
-  "sentiment_derniere_journee": "2026-10-16"
+  "performance_derniere_seance": "2026-10-19",
+  "performance_provisoire": true,
+  "sentiment_derniere_journee": "2026-10-19"
  },
  "etapes": {
   "performance": {
    "statut": "ok",
-   "message": "5 ETF, séance du 2026-10-16, 1399 séances communes",
-   "derniere_reussite_utc": "2026-10-19T05:16:59Z"
+   "message": "5 ETF, séance du 2026-10-19, 1400 séances communes",
+   "derniere_reussite_utc": "2026-10-20T05:12:01Z"
   },
   "secteurs": {
    "statut": "ok",
    "message": "4 compositions, 4 mesures d'effet sectoriel",
-   "derniere_reussite_utc": "2026-10-19T05:16:59Z"
+   "derniere_reussite_utc": "2026-10-20T05:12:01Z"
   },
   "sentiment": {
    "statut": "ok",
-   "message": "journée du 2026-10-16 : marche négatif (solde -14.4, n=153), esg neutre (solde 6.3, n=63)",
-   "derniere_reussite_utc": "2026-10-19T05:16:59Z"
+   "message": "journée du 2026-10-19 : marche négatif (solde -18.8, n=357), esg positif (solde 26.0, n=100)",
+   "derniere_reussite_utc": "2026-10-20T05:12:01Z"
   },
   "parallele": {
    "statut": "ok",
-   "message": "0 / 60 jours exploitables (estimation : 2027-01-14)",
-   "derniere_reussite_utc": "2026-10-19T05:16:59Z"
+   "message": "1 / 60 jours exploitables (estimation : 2027-01-14)",
+   "derniere_reussite_utc": "2026-10-20T05:12:01Z"
   },
   "synthese": {
    "statut": "ok",
-   "message": "Humeur du marché : négative le vendredi 16/10 (solde −14, marge ±13, 153 articles) — journée partiellement relevée. Sur les 2 dernières journées de bourse : 1 négative, 1 sans signal suffisant. Actualité ESG : neutre le vendredi 16/10 (solde +6, marge ±13, 63 articles) — journée partiellement relevé",
-   "derniere_reussite_utc": "2026-10-19T05:16:59Z"
+   "message": "Humeur du marché : négative le lundi 19/10 (solde −19, marge ±8, 357 articles). Sur les 3 dernières journées de bourse : 2 négatives, 1 sans signal suffisant. Actualité ESG : positive le lundi 19/10 (solde +26, marge ±10, 100 articles). Sur 5 séances, l'ETF World SRI fait jeu égal avec le MSCI World",
+   "derniere_reussite_utc": "2026-10-20T05:12:01Z"
   }
  },
  "tout_va_bien": true,
- "alertes_24h": [],
+ "alertes_24h": [
+  {
+   "horodatage_utc": "2026-10-20 05:12:01",
+   "etape": "sentiment",
+   "statut": "avertissement",
+   "message": "Bloomberg pèse 36.4 % du groupe marche sur 3 séances (plafond de 25 % dépassé)"
+  },
+  {
+   "horodatage_utc": "2026-10-19 07:19:18",
+   "etape": "flux:Euronews Business",
+   "statut": "avertissement",
+   "message": "flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business"
+  }
+ ],
  "credits": [
   "Analyse de sentiment : FinBERT (ProsusAI/finbert), © MIH AI B.V., licence CC BY-NC-SA 4.0 (usage non commercial). Références : Araci (2019) ; Financial PhraseBank, Malo et al. (2014).",
   "Cours : Yahoo Finance (usage personnel, non commercial). Taux de change et €STR : Banque centrale européenne.",
