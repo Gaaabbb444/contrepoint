@@ -1,8 +1,8 @@
 {
- "genere_le_utc": "2026-10-20T05:11:58Z",
- "derniere_seance": "2026-10-19",
+ "genere_le_utc": "2026-10-21T05:12:43Z",
+ "derniere_seance": "2026-10-20",
  "premiere_seance_commune": "2021-04-22",
- "nb_seances_communes": 1400,
+ "nb_seances_communes": 1401,
  "devise": "EUR",
  "reference": "msci_world",
  "defaut_esg": "sri",
@@ -12,27 +12,27 @@
   {
    "etf": "msci_world",
    "ticker": "EUNL.DE",
-   "date": "2026-10-19"
+   "date": "2026-10-20"
   },
   {
    "etf": "screened",
    "ticker": "SNAW.DE",
-   "date": "2026-10-19"
+   "date": "2026-10-20"
   },
   {
    "etf": "sri",
    "ticker": "2B7K.DE",
-   "date": "2026-10-19"
+   "date": "2026-10-20"
   },
   {
    "etf": "paris",
    "ticker": "WPAB.DE",
-   "date": "2026-10-19"
+   "date": "2026-10-20"
   },
   {
    "etf": "bnp_sri_pab",
    "ticker": "EMWE.PA",
-   "date": "2026-10-19"
+   "date": "2026-10-20"
   }
  ],
  "derniere_seance_provisoire": true,
@@ -67,8 +67,8 @@
    "disponible": true,
    "qualite": {
     "premier_cours": "2021-04-22",
-    "dernier_cours": "2026-10-19",
-    "nb_cours": 1400,
+    "dernier_cours": "2026-10-20",
+    "nb_cours": 1401,
     "episodes_cours_figes": 1,
     "variations_aberrantes": []
    },
@@ -111,8 +111,8 @@
    "disponible": true,
    "qualite": {
     "premier_cours": "2021-04-22",
-    "dernier_cours": "2026-10-19",
-    "nb_cours": 1400,
+    "dernier_cours": "2026-10-20",
+    "nb_cours": 1401,
     "episodes_cours_figes": 1,
     "variations_aberrantes": []
    },
@@ -155,8 +155,8 @@
    "disponible": true,
    "qualite": {
     "premier_cours": "2021-04-22",
-    "dernier_cours": "2026-10-19",
-    "nb_cours": 1400,
+    "dernier_cours": "2026-10-20",
+    "nb_cours": 1401,
     "episodes_cours_figes": 1,
     "variations_aberrantes": []
    },
@@ -199,8 +199,8 @@
    "disponible": true,
    "qualite": {
     "premier_cours": "2021-04-22",
-    "dernier_cours": "2026-10-19",
-    "nb_cours": 1400,
+    "dernier_cours": "2026-10-20",
+    "nb_cours": 1401,
     "episodes_cours_figes": 0,
     "variations_aberrantes": []
    },
@@ -253,8 +253,8 @@
    "disponible": true,
    "qualite": {
     "premier_cours": "2021-04-22",
-    "dernier_cours": "2026-10-19",
-    "nb_cours": 1400,
+    "dernier_cours": "2026-10-20",
+    "nb_cours": 1401,
     "episodes_cours_figes": 0,
     "variations_aberrantes": []
    },
@@ -265,325 +265,325 @@
   {
    "id": "1m",
    "libelle": "1 mois",
-   "fin": "2026-10-19",
+   "fin": "2026-10-20",
    "disponible": true,
    "debut": "2026-09-18",
-   "nb_seances": 21,
+   "nb_seances": 22,
    "taux_sans_risque_pct": null,
    "etf": {
     "msci_world": {
-     "perf_cumulee_pct": 2.9,
+     "perf_cumulee_pct": 2.67,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 8.46,
-     "perte_max_pct": -1.29,
+     "volatilite_pct": 8.35,
+     "perte_max_pct": -1.37,
      "sharpe": null
     },
     "screened": {
-     "perf_cumulee_pct": 2.66,
+     "perf_cumulee_pct": 2.43,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 9.47,
-     "perte_max_pct": -1.61,
+     "volatilite_pct": 9.32,
+     "perte_max_pct": -1.69,
      "sharpe": null,
-     "perf_relative_pts": -0.23,
-     "ecart_suivi_pct": 1.34
+     "perf_relative_pts": -0.24,
+     "ecart_suivi_pct": 1.3
     },
     "sri": {
-     "perf_cumulee_pct": 3.54,
+     "perf_cumulee_pct": 3.48,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 8.41,
+     "volatilite_pct": 8.24,
      "perte_max_pct": -1.31,
      "sharpe": null,
-     "perf_relative_pts": 0.64,
-     "ecart_suivi_pct": 4.19
+     "perf_relative_pts": 0.81,
+     "ecart_suivi_pct": 4.11
     },
     "paris": {
-     "perf_cumulee_pct": 2.58,
+     "perf_cumulee_pct": 2.55,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 8.82,
+     "volatilite_pct": 8.62,
      "perte_max_pct": -1.2,
      "sharpe": null,
-     "perf_relative_pts": -0.31,
-     "ecart_suivi_pct": 1.21
+     "perf_relative_pts": -0.12,
+     "ecart_suivi_pct": 1.37
     },
     "bnp_sri_pab": {
-     "perf_cumulee_pct": 4.05,
+     "perf_cumulee_pct": 4.22,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 9.35,
+     "volatilite_pct": 9.13,
      "perte_max_pct": -1.32,
      "sharpe": null,
-     "perf_relative_pts": 1.15,
-     "ecart_suivi_pct": 4.45
+     "perf_relative_pts": 1.55,
+     "ecart_suivi_pct": 4.48
     }
    }
   },
   {
    "id": "3m",
    "libelle": "3 mois",
-   "fin": "2026-10-19",
+   "fin": "2026-10-20",
    "disponible": true,
-   "debut": "2026-07-17",
+   "debut": "2026-07-20",
    "nb_seances": 66,
    "taux_sans_risque_pct": null,
    "etf": {
     "msci_world": {
-     "perf_cumulee_pct": 4.68,
+     "perf_cumulee_pct": 4.15,
      "perf_annualisee_pct": null,
      "volatilite_pct": 9.21,
      "perte_max_pct": -3.05,
      "sharpe": null
     },
     "screened": {
-     "perf_cumulee_pct": 4.5,
+     "perf_cumulee_pct": 3.93,
      "perf_annualisee_pct": null,
      "volatilite_pct": 9.94,
      "perte_max_pct": -3.11,
      "sharpe": null,
-     "perf_relative_pts": -0.17,
+     "perf_relative_pts": -0.22,
      "ecart_suivi_pct": 1.17
     },
     "sri": {
-     "perf_cumulee_pct": 4.01,
+     "perf_cumulee_pct": 4.02,
      "perf_annualisee_pct": null,
      "volatilite_pct": 9.6,
      "perte_max_pct": -3.93,
      "sharpe": null,
-     "perf_relative_pts": -0.67,
-     "ecart_suivi_pct": 4.18
+     "perf_relative_pts": -0.12,
+     "ecart_suivi_pct": 4.14
     },
     "paris": {
-     "perf_cumulee_pct": 4.31,
+     "perf_cumulee_pct": 3.9,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 9.77,
+     "volatilite_pct": 9.75,
      "perte_max_pct": -3.32,
      "sharpe": null,
-     "perf_relative_pts": -0.37,
-     "ecart_suivi_pct": 1.39
+     "perf_relative_pts": -0.24,
+     "ecart_suivi_pct": 1.43
     },
     "bnp_sri_pab": {
-     "perf_cumulee_pct": 4.76,
+     "perf_cumulee_pct": 4.68,
      "perf_annualisee_pct": null,
      "volatilite_pct": 9.92,
      "perte_max_pct": -4.15,
      "sharpe": null,
-     "perf_relative_pts": 0.08,
-     "ecart_suivi_pct": 5.02
+     "perf_relative_pts": 0.53,
+     "ecart_suivi_pct": 5.07
     }
    }
   },
   {
    "id": "ytd",
    "libelle": "Depuis le 1er janvier",
-   "fin": "2026-10-19",
+   "fin": "2026-10-20",
    "disponible": true,
    "debut": "2025-12-30",
-   "nb_seances": 203,
+   "nb_seances": 204,
    "taux_sans_risque_pct": null,
    "etf": {
     "msci_world": {
-     "perf_cumulee_pct": 16.95,
+     "perf_cumulee_pct": 16.69,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 10.75,
+     "volatilite_pct": 10.73,
      "perte_max_pct": -6.5,
      "sharpe": null
     },
     "screened": {
-     "perf_cumulee_pct": 16.21,
+     "perf_cumulee_pct": 15.95,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 11.68,
+     "volatilite_pct": 11.66,
      "perte_max_pct": -7.69,
      "sharpe": null,
-     "perf_relative_pts": -0.73,
-     "ecart_suivi_pct": 1.36
+     "perf_relative_pts": -0.75,
+     "ecart_suivi_pct": 1.35
     },
     "sri": {
-     "perf_cumulee_pct": 16.57,
+     "perf_cumulee_pct": 16.51,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 12.62,
+     "volatilite_pct": 12.59,
      "perte_max_pct": -7.81,
      "sharpe": null,
-     "perf_relative_pts": -0.38,
-     "ecart_suivi_pct": 4.87
+     "perf_relative_pts": -0.19,
+     "ecart_suivi_pct": 4.86
     },
     "paris": {
-     "perf_cumulee_pct": 12.83,
+     "perf_cumulee_pct": 12.8,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 11.43,
+     "volatilite_pct": 11.41,
      "perte_max_pct": -8.94,
      "sharpe": null,
-     "perf_relative_pts": -4.11,
+     "perf_relative_pts": -3.89,
      "ecart_suivi_pct": 2.12
     },
     "bnp_sri_pab": {
-     "perf_cumulee_pct": 15.99,
+     "perf_cumulee_pct": 16.18,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 11.86,
+     "volatilite_pct": 11.83,
      "perte_max_pct": -8.44,
      "sharpe": null,
-     "perf_relative_pts": -0.96,
-     "ecart_suivi_pct": 4.79
+     "perf_relative_pts": -0.52,
+     "ecart_suivi_pct": 4.8
     }
    }
   },
   {
    "id": "1a",
    "libelle": "1 an",
-   "fin": "2026-10-19",
+   "fin": "2026-10-20",
    "disponible": true,
-   "debut": "2025-10-17",
+   "debut": "2025-10-20",
    "nb_seances": 251,
    "taux_sans_risque_pct": 2.09,
    "etf": {
     "msci_world": {
-     "perf_cumulee_pct": 21.48,
+     "perf_cumulee_pct": 19.12,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 10.92,
+     "volatilite_pct": 10.79,
      "perte_max_pct": -6.5,
-     "sharpe": 1.77
+     "sharpe": 1.58
     },
     "screened": {
-     "perf_cumulee_pct": 20.87,
+     "perf_cumulee_pct": 18.4,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 11.77,
+     "volatilite_pct": 11.64,
      "perte_max_pct": -7.69,
-     "sharpe": 1.59,
-     "perf_relative_pts": -0.61,
+     "sharpe": 1.4,
+     "perf_relative_pts": -0.72,
      "ecart_suivi_pct": 1.28
     },
     "sri": {
-     "perf_cumulee_pct": 19.65,
+     "perf_cumulee_pct": 17.62,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 12.48,
+     "volatilite_pct": 12.38,
      "perte_max_pct": -7.81,
-     "sharpe": 1.4,
-     "perf_relative_pts": -1.83,
+     "sharpe": 1.26,
+     "perf_relative_pts": -1.5,
      "ecart_suivi_pct": 4.56
     },
     "paris": {
-     "perf_cumulee_pct": 16.26,
+     "perf_cumulee_pct": 14.23,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 11.59,
+     "volatilite_pct": 11.47,
      "perte_max_pct": -8.94,
-     "sharpe": 1.21,
-     "perf_relative_pts": -5.22,
-     "ecart_suivi_pct": 2.02
+     "sharpe": 1.06,
+     "perf_relative_pts": -4.89,
+     "ecart_suivi_pct": 2.03
     },
     "bnp_sri_pab": {
-     "perf_cumulee_pct": 18.4,
+     "perf_cumulee_pct": 17.06,
      "perf_annualisee_pct": null,
-     "volatilite_pct": 11.54,
+     "volatilite_pct": 11.47,
      "perte_max_pct": -8.44,
-     "sharpe": 1.41,
-     "perf_relative_pts": -3.08,
-     "ecart_suivi_pct": 4.92
+     "sharpe": 1.31,
+     "perf_relative_pts": -2.06,
+     "ecart_suivi_pct": 4.91
     }
    }
   },
   {
    "id": "3a",
    "libelle": "3 ans",
-   "fin": "2026-10-19",
+   "fin": "2026-10-20",
    "disponible": true,
-   "debut": "2023-10-19",
+   "debut": "2023-10-20",
    "nb_seances": 758,
    "taux_sans_risque_pct": 2.83,
    "etf": {
     "msci_world": {
-     "perf_cumulee_pct": 70.43,
-     "perf_annualisee_pct": 19.44,
-     "volatilite_pct": 13.14,
+     "perf_cumulee_pct": 73.1,
+     "perf_annualisee_pct": 20.06,
+     "volatilite_pct": 13.1,
      "perte_max_pct": -21.73,
-     "sharpe": 1.26
+     "sharpe": 1.32
     },
     "screened": {
-     "perf_cumulee_pct": 72.69,
-     "perf_annualisee_pct": 19.97,
-     "volatilite_pct": 13.77,
+     "perf_cumulee_pct": 75.64,
+     "perf_annualisee_pct": 20.65,
+     "volatilite_pct": 13.73,
      "perte_max_pct": -22.37,
-     "sharpe": 1.24,
-     "perf_relative_pts": 2.27,
+     "sharpe": 1.3,
+     "perf_relative_pts": 2.54,
      "ecart_suivi_pct": 1.23
     },
     "sri": {
-     "perf_cumulee_pct": 53.54,
-     "perf_annualisee_pct": 15.36,
-     "volatilite_pct": 13.72,
+     "perf_cumulee_pct": 56.31,
+     "perf_annualisee_pct": 16.05,
+     "volatilite_pct": 13.68,
      "perte_max_pct": -21.29,
-     "sharpe": 0.91,
-     "perf_relative_pts": -16.89,
+     "sharpe": 0.97,
+     "perf_relative_pts": -16.79,
      "ecart_suivi_pct": 3.81
     },
     "paris": {
-     "perf_cumulee_pct": 63.3,
-     "perf_annualisee_pct": 17.75,
-     "volatilite_pct": 14.13,
+     "perf_cumulee_pct": 66.65,
+     "perf_annualisee_pct": 18.56,
+     "volatilite_pct": 14.08,
      "perte_max_pct": -21.58,
-     "sharpe": 1.06,
+     "sharpe": 1.12,
      "risque_fiabilite_reduite": true,
-     "perf_relative_pts": -7.13,
+     "perf_relative_pts": -6.44,
      "ecart_suivi_pct": 6.04
     },
     "bnp_sri_pab": {
-     "perf_cumulee_pct": 47.68,
-     "perf_annualisee_pct": 13.88,
-     "volatilite_pct": 13.04,
+     "perf_cumulee_pct": 50.42,
+     "perf_annualisee_pct": 14.57,
+     "volatilite_pct": 13.0,
      "perte_max_pct": -20.15,
-     "sharpe": 0.85,
-     "perf_relative_pts": -22.74,
-     "ecart_suivi_pct": 5.55
+     "sharpe": 0.9,
+     "perf_relative_pts": -22.68,
+     "ecart_suivi_pct": 5.56
     }
    }
   },
   {
    "id": "5a",
    "libelle": "5 ans",
-   "fin": "2026-10-19",
+   "fin": "2026-10-20",
    "disponible": true,
-   "debut": "2021-10-19",
+   "debut": "2021-10-20",
    "nb_seances": 1272,
    "taux_sans_risque_pct": 2.17,
    "etf": {
     "msci_world": {
-     "perf_cumulee_pct": 75.9,
-     "perf_annualisee_pct": 11.96,
+     "perf_cumulee_pct": 74.9,
+     "perf_annualisee_pct": 11.83,
      "volatilite_pct": 14.11,
      "perte_max_pct": -21.73,
      "sharpe": 0.69
     },
     "screened": {
-     "perf_cumulee_pct": 77.26,
-     "perf_annualisee_pct": 12.13,
+     "perf_cumulee_pct": 76.32,
+     "perf_annualisee_pct": 12.01,
      "volatilite_pct": 14.57,
      "perte_max_pct": -22.37,
      "sharpe": 0.68,
-     "perf_relative_pts": 1.36,
+     "perf_relative_pts": 1.42,
      "ecart_suivi_pct": 1.25
     },
     "sri": {
-     "perf_cumulee_pct": 55.59,
-     "perf_annualisee_pct": 9.24,
+     "perf_cumulee_pct": 55.04,
+     "perf_annualisee_pct": 9.17,
      "volatilite_pct": 14.63,
      "perte_max_pct": -21.29,
      "sharpe": 0.48,
-     "perf_relative_pts": -20.31,
+     "perf_relative_pts": -19.86,
      "ecart_suivi_pct": 3.63
     },
     "paris": {
-     "perf_cumulee_pct": 62.59,
-     "perf_annualisee_pct": 10.21,
+     "perf_cumulee_pct": 62.1,
+     "perf_annualisee_pct": 10.14,
      "volatilite_pct": 15.43,
      "perte_max_pct": -21.58,
      "sharpe": 0.52,
      "risque_fiabilite_reduite": true,
-     "perf_relative_pts": -13.31,
+     "perf_relative_pts": -12.8,
      "ecart_suivi_pct": 8.59
     },
     "bnp_sri_pab": {
-     "perf_cumulee_pct": 43.08,
-     "perf_annualisee_pct": 7.43,
+     "perf_cumulee_pct": 43.02,
+     "perf_annualisee_pct": 7.42,
      "volatilite_pct": 14.23,
      "perte_max_pct": -20.46,
      "sharpe": 0.37,
-     "perf_relative_pts": -32.82,
+     "perf_relative_pts": -31.88,
      "ecart_suivi_pct": 5.13
     }
    }
@@ -1990,7 +1990,8 @@
    "2026-10-14",
    "2026-10-15",
    "2026-10-16",
-   "2026-10-19"
+   "2026-10-19",
+   "2026-10-20"
   ],
   "base100": {
    "msci_world": [
@@ -3393,7 +3394,8 @@
     196.298778,
     194.794467,
     194.429542,
-    194.697648
+    194.69765,
+    194.273162
    ],
    "screened": [
     100.0,
@@ -4795,7 +4797,8 @@
     198.492127,
     196.88803,
     196.310547,
-    196.599288
+    196.599281,
+    196.150138
    ],
    "sri": [
     100.0,
@@ -6197,7 +6200,8 @@
     173.41604,
     172.880948,
     172.564761,
-    172.978241
+    172.97824,
+    172.880953
    ],
    "paris": [
     100.0,
@@ -7599,7 +7603,8 @@
     182.093725,
     180.794765,
     180.458001,
-    180.602333
+    180.60233,
+    180.554223
    ],
    "bnp_sri_pab": [
     100.0,
@@ -9001,7 +9006,8 @@
     159.625706,
     159.269544,
     159.052619,
-    159.232636
+    159.232639,
+    159.494252
    ]
   }
  }
