@@ -120,3 +120,6 @@
 2026-10-21 09:59:17,collecte_titres,ok,"311 articles lus, 263 doublons, 48 nouveaux {'marche': 40, 'esg': 8}, 0 flux en panne"
 2026-10-21 13:13:36,collecte_titres,ok,"310 articles lus, 256 doublons, 54 nouveaux {'marche': 38, 'esg': 16}, 0 flux en panne"
 2026-10-21 16:01:02,collecte_titres,ok,"330 articles lus, 278 doublons, 52 nouveaux {'marche': 32, 'esg': 20}, 0 flux en panne"
+2026-10-21 19:07:23,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
+2026-10-21 19:07:49,flux:Responsible Investor,avertissement,"flux indisponible : HTTPSConnectionPool(host='www.responsible-investor.com', port=443): Read timed out. (read timeout=25)"
+2026-10-21 19:07:58,collecte_titres,ok,"295 articles lus, 263 doublons, 32 nouveaux {'marche': 26, 'esg': 6}, 2 flux en panne"
