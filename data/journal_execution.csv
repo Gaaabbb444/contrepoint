@@ -164,3 +164,4 @@
 2026-10-24 05:10:18,synthese,ok,"Humeur du marché : négative le vendredi 23/10 (solde −26, marge ±10, 247 articles). Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre. Actualité ESG : neutre le vendredi 23/10 (solde +3, marge ±16, 61 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 1,0 point (+0,5"
 2026-10-24 07:08:47,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
 2026-10-24 07:08:57,collecte_titres,ok,"234 articles lus, 225 doublons, 9 nouveaux {'marche': 7, 'esg': 2}, 1 flux en panne"
+2026-10-24 09:54:04,collecte_titres,ok,"228 articles lus, 214 doublons, 14 nouveaux {'marche': 12, 'esg': 2}, 0 flux en panne"
