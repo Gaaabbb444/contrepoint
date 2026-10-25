@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-10-24T05:10:17Z",
+ "genere_le_utc": "2026-10-25T05:12:26Z",
  "derniere_seance": "2026-10-23",
  "fenetre": {
   "debut": "2026-10-22T17:30:00+02:00",
@@ -131,18 +131,18 @@
    "couverture_partielle": false
   },
   "esg": {
-   "nb_articles": 61,
-   "nb_sources": 38,
+   "nb_articles": 62,
+   "nb_sources": 39,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": 3.3,
-   "part_media_principal_pct": 11.5,
+   "solde_dates_fiables": 3.2,
+   "part_media_principal_pct": 11.3,
    "media_principal": "ESG News",
-   "solde_avec_plafond": 3.3,
-   "positif_pct": 21.3,
-   "neutre_pct": 60.7,
-   "negatif_pct": 18.0,
-   "solde": 3.3,
-   "marge_erreur": 15.7,
+   "solde_avec_plafond": 3.2,
+   "positif_pct": 21.0,
+   "neutre_pct": 61.3,
+   "negatif_pct": 17.7,
+   "solde": 3.2,
+   "marge_erreur": 15.5,
    "etiquette": "neutre",
    "plus_positifs": [
     {
@@ -510,23 +510,23 @@
   {
    "seance": "2026-10-23",
    "groupe": "esg",
-   "nb_articles": 61,
-   "nb_sources": 38,
-   "positif_pct": 21.3,
-   "neutre_pct": 60.7,
-   "negatif_pct": 18.0,
-   "solde": 3.3,
-   "marge_erreur": 15.7,
+   "nb_articles": 62,
+   "nb_sources": 39,
+   "positif_pct": 21.0,
+   "neutre_pct": 61.3,
+   "negatif_pct": 17.7,
+   "solde": 3.2,
+   "marge_erreur": 15.5,
    "etiquette": "neutre",
    "couverture_partielle": false,
    "releves_reussis": 16.0,
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 3.3,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": 3.3,
+   "solde_dates_fiables": 3.2,
    "media_principal": "ESG News",
-   "part_media_principal_pct": 11.5,
-   "solde_avec_plafond": 3.3
+   "part_media_principal_pct": 11.3,
+   "solde_avec_plafond": 3.2
   },
   {
    "seance": "2026-10-23",
@@ -568,7 +568,7 @@
    "autres_medias_pct": 0.0
   },
   "esg": {
-   "nb_articles": 485,
+   "nb_articles": 486,
    "nb_seances": 7,
    "parts_pct": {
     "ESG News": 10.1,
@@ -579,12 +579,12 @@
     "Vietnam.vn": 3.1,
     "ESG Dive": 2.9,
     "Trellis": 2.3,
+    "Sustainability Online": 1.0,
     "Africa Sustainability Matters": 1.0,
     "Yahoo Finance": 1.0,
     "Finextra Research": 1.0,
     "New Private Markets": 1.0,
     "Yahoo Finance UK": 0.8,
-    "Sustainability Online": 0.8,
     "Seeking Alpha": 0.8
    },
    "autres_medias_pct": 47.8
@@ -635,7 +635,7 @@
      "debut": "2026-10-19",
      "fin": "2026-10-25",
      "derniere_seance": "2026-10-23",
-     "solde_moyen": 21.2,
+     "solde_moyen": 21.1,
      "nb_jours": 5,
      "nb_jours_ecartes": 0
     }
@@ -645,7 +645,7 @@
      "debut": "2026-10-01",
      "fin": "2026-10-31",
      "derniere_seance": "2026-10-23",
-     "solde_moyen": 21.2,
+     "solde_moyen": 21.1,
      "nb_jours": 5,
      "nb_jours_ecartes": 2
     }
@@ -654,7 +654,7 @@
  },
  "suivi_taux_neutre": {
   "esg": {
-   "neutre_moyen_pct": 64.2,
+   "neutre_moyen_pct": 64.3,
    "nb_journees": 5
   },
   "marche": {
