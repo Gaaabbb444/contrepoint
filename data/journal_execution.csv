@@ -222,3 +222,4 @@
 2026-10-28 05:21:06,parallele,ok,7 / 60 jours exploitables (estimation : 2027-01-14)
 2026-10-28 05:21:06,synthese,ok,"Humeur du marché : neutre le mardi 27/10 (solde −5, marge ±11, 216 articles). Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres. Actualité ESG : positive le mardi 27/10 (solde +18, marge ±15, 60 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,8 point (+1,7 % co"
 2026-10-28 07:29:14,collecte_titres,ok,"263 articles lus, 215 doublons, 48 nouveaux {'marche': 43, 'esg': 5}, 0 flux en panne"
+2026-10-28 10:11:59,collecte_titres,ok,"273 articles lus, 222 doublons, 51 nouveaux {'marche': 41, 'esg': 10}, 0 flux en panne"
