@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-10-27T05:15:23Z",
+ "genere_le_utc": "2026-10-28T05:21:04Z",
  "avertissement_periode": "Ces résultats dépendent fortement de la période observée. De 2023 à 2026, les grandes valeurs technologiques américaines ont porté le marché : un indice qui les sous-pondère a mécaniquement fait moins bien. Sur une autre période (par exemple une baisse de la technologie ou une hausse de l'énergie), le classement peut s'inverser.",
  "compositions": {
   "msci_world": {
@@ -130,92 +130,92 @@
  },
  "effet_sectoriel": {
   "screened": {
-   "debut": "2023-10-26",
-   "fin": "2026-10-23",
+   "debut": "2023-10-27",
+   "fin": "2026-10-26",
    "nb_seances": 757,
-   "r2_pct": 48.6,
+   "r2_pct": 48.5,
    "sensibilites": {
     "grandes_tech": 0.034,
     "energie": -0.027
    },
-   "ecart_relatif_pct": 1.35,
-   "ecart_somme_quotidienne_pts": 1.59,
+   "ecart_relatif_pct": 1.23,
+   "ecart_somme_quotidienne_pts": 1.48,
    "contributions_pts": {
-    "grandes_tech": 1.6,
-    "energie": 0.0,
-    "autres_facteurs": -0.01
+    "grandes_tech": 1.53,
+    "energie": -0.01,
+    "autres_facteurs": -0.04
    },
    "parts_de_l_ecart_pct": {
-    "grandes_tech": 101,
-    "energie": 0,
-    "autres_facteurs": -1
+    "grandes_tech": 103,
+    "energie": -1,
+    "autres_facteurs": -3
    }
   },
   "sri": {
-   "debut": "2023-10-26",
-   "fin": "2026-10-23",
+   "debut": "2023-10-27",
+   "fin": "2026-10-26",
    "nb_seances": 757,
-   "r2_pct": 18.8,
+   "r2_pct": 18.7,
    "sensibilites": {
     "grandes_tech": -0.116,
     "energie": -0.052
    },
-   "ecart_relatif_pct": -9.64,
-   "ecart_somme_quotidienne_pts": -9.91,
+   "ecart_relatif_pct": -9.5,
+   "ecart_somme_quotidienne_pts": -9.75,
    "contributions_pts": {
-    "grandes_tech": -5.48,
-    "energie": 0.01,
-    "autres_facteurs": -4.44
+    "grandes_tech": -5.25,
+    "energie": -0.02,
+    "autres_facteurs": -4.48
    },
    "parts_de_l_ecart_pct": {
-    "grandes_tech": 55,
+    "grandes_tech": 54,
     "energie": 0,
-    "autres_facteurs": 45
+    "autres_facteurs": 46
    }
   },
   "paris": {
-   "debut": "2023-10-26",
-   "fin": "2026-10-23",
+   "debut": "2023-10-27",
+   "fin": "2026-10-26",
    "nb_seances": 757,
-   "r2_pct": 2.2,
+   "r2_pct": 2.1,
    "sensibilites": {
-    "grandes_tech": 0.033,
+    "grandes_tech": 0.03,
     "energie": -0.03
    },
-   "ecart_relatif_pct": -3.82,
-   "ecart_somme_quotidienne_pts": -3.5,
+   "ecart_relatif_pct": -4.71,
+   "ecart_somme_quotidienne_pts": -4.43,
    "contributions_pts": {
-    "grandes_tech": 1.55,
-    "energie": 0.0,
-    "autres_facteurs": -5.04
+    "grandes_tech": 1.37,
+    "energie": -0.01,
+    "autres_facteurs": -5.79
    },
    "parts_de_l_ecart_pct": {
-    "grandes_tech": -44,
+    "grandes_tech": -31,
     "energie": 0,
-    "autres_facteurs": 144
+    "autres_facteurs": 131
    },
    "fiabilite_reduite": "cours quotidiens bruités avant le 2025-08-25 (cotation d'Amsterdam convertie) : mesure peu fiable"
   },
   "bnp_sri_pab": {
-   "debut": "2023-10-26",
-   "fin": "2026-10-23",
+   "debut": "2023-10-27",
+   "fin": "2026-10-26",
    "nb_seances": 757,
-   "r2_pct": 29.9,
+   "r2_pct": 30.0,
    "sensibilites": {
-    "grandes_tech": -0.229,
+    "grandes_tech": -0.23,
     "energie": -0.051
    },
-   "ecart_relatif_pct": -12.39,
-   "ecart_somme_quotidienne_pts": -13.27,
+   "ecart_relatif_pct": -12.31,
+   "ecart_somme_quotidienne_pts": -13.18,
    "contributions_pts": {
-    "grandes_tech": -10.79,
-    "energie": 0.01,
-    "autres_facteurs": -2.49
+    "grandes_tech": -10.38,
+    "energie": -0.02,
+    "autres_facteurs": -2.79
    },
    "parts_de_l_ecart_pct": {
-    "grandes_tech": 81,
+    "grandes_tech": 79,
     "energie": 0,
-    "autres_facteurs": 19
+    "autres_facteurs": 21
    }
   }
  },
