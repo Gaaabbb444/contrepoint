@@ -237,3 +237,4 @@
 2026-10-29 05:24:25,synthese,ok,"Humeur du marché : neutre le mercredi 28/10 (solde −4, marge ±9, 279 articles). Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres. Actualité ESG : positive le mercredi 28/10 (solde +29, marge ±14, 77 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,3 point (+0,7"
 2026-10-29 07:30:38,collecte_titres,ok,"311 articles lus, 275 doublons, 36 nouveaux {'marche': 33, 'esg': 3}, 0 flux en panne"
 2026-10-29 10:14:13,collecte_titres,ok,"331 articles lus, 285 doublons, 46 nouveaux {'marche': 38, 'esg': 8}, 0 flux en panne"
+2026-10-29 13:29:10,collecte_titres,ok,"352 articles lus, 280 doublons, 72 nouveaux {'marche': 59, 'esg': 13}, 0 flux en panne"
