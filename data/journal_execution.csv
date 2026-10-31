@@ -263,3 +263,4 @@
 2026-10-31 05:20:46,sentiment,ok,"journée du 2026-10-30 : marche neutre (solde -8.0, n=275), esg positif (solde 27.9, n=61)"
 2026-10-31 05:20:46,parallele,ok,10 / 60 jours exploitables (estimation : 2027-01-14)
 2026-10-31 05:20:46,synthese,ok,"Humeur du marché : neutre le vendredi 30/10 (solde −8, marge ±10, 275 articles). Sur les 5 dernières journées de bourse : 2 négatives, 3 neutres. Actualité ESG : positive le vendredi 30/10 (solde +28, marge ±15, 61 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,5 point (+0,"
+2026-10-31 07:23:34,collecte_titres,ok,"252 articles lus, 241 doublons, 11 nouveaux {'marche': 9, 'esg': 2}, 0 flux en panne"
