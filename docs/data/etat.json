@@ -1,50 +1,50 @@
 {
- "derniere_execution_utc": "2026-10-30T05:23:33Z",
+ "derniere_execution_utc": "2026-10-31T05:20:46Z",
  "donnees": {
-  "performance_derniere_seance": "2026-10-29",
+  "performance_derniere_seance": "2026-10-30",
   "performance_provisoire": true,
-  "sentiment_derniere_journee": "2026-10-29"
+  "sentiment_derniere_journee": "2026-10-30"
  },
  "etapes": {
   "performance": {
    "statut": "ok",
-   "message": "5 ETF, séance du 2026-10-29, 1408 séances communes",
-   "derniere_reussite_utc": "2026-10-30T05:23:33Z"
+   "message": "5 ETF, séance du 2026-10-30, 1409 séances communes",
+   "derniere_reussite_utc": "2026-10-31T05:20:46Z"
   },
   "secteurs": {
    "statut": "ok",
    "message": "4 compositions, 4 mesures d'effet sectoriel",
-   "derniere_reussite_utc": "2026-10-30T05:23:33Z"
+   "derniere_reussite_utc": "2026-10-31T05:20:46Z"
   },
   "sentiment": {
    "statut": "ok",
-   "message": "journée du 2026-10-29 : marche négatif (solde -12.5, n=297), esg neutre (solde 5.4, n=74)",
-   "derniere_reussite_utc": "2026-10-30T05:23:33Z"
+   "message": "journée du 2026-10-30 : marche neutre (solde -8.0, n=275), esg positif (solde 27.9, n=61)",
+   "derniere_reussite_utc": "2026-10-31T05:20:46Z"
   },
   "parallele": {
    "statut": "ok",
-   "message": "9 / 60 jours exploitables (estimation : 2027-01-14)",
-   "derniere_reussite_utc": "2026-10-30T05:23:33Z"
+   "message": "10 / 60 jours exploitables (estimation : 2027-01-14)",
+   "derniere_reussite_utc": "2026-10-31T05:20:46Z"
   },
   "synthese": {
    "statut": "ok",
-   "message": "Humeur du marché : négative le jeudi 29/10 (solde −12, marge ±9, 297 articles). Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres. Actualité ESG : neutre le jeudi 29/10 (solde +5, marge ±13, 74 articles). Sur 5 séances, l'ETF World SRI fait jeu égal avec le MSCI World (+1,2 % contre +1",
-   "derniere_reussite_utc": "2026-10-30T05:23:33Z"
+   "message": "Humeur du marché : neutre le vendredi 30/10 (solde −8, marge ±10, 275 articles). Sur les 5 dernières journées de bourse : 2 négatives, 3 neutres. Actualité ESG : positive le vendredi 30/10 (solde +28, marge ±15, 61 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,5 point (+0,",
+   "derniere_reussite_utc": "2026-10-31T05:20:46Z"
   }
  },
  "tout_va_bien": true,
  "alertes_24h": [
   {
+   "horodatage_utc": "2026-10-31 05:20:46",
+   "etape": "sentiment",
+   "statut": "avertissement",
+   "message": "Bloomberg pèse 49.6 % du groupe marche sur 12 séances (plafond de 25 % dépassé)"
+  },
+  {
    "horodatage_utc": "2026-10-30 05:23:33",
    "etape": "sentiment",
    "statut": "avertissement",
    "message": "Bloomberg pèse 48.8 % du groupe marche sur 11 séances (plafond de 25 % dépassé)"
-  },
-  {
-   "horodatage_utc": "2026-10-29 05:24:25",
-   "etape": "sentiment",
-   "statut": "avertissement",
-   "message": "Bloomberg pèse 48.7 % du groupe marche sur 10 séances (plafond de 25 % dépassé)"
   }
  ],
  "credits": [

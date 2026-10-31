@@ -257,3 +257,9 @@
 2026-10-30 21:58:33,collecte_titres,ok,"325 articles lus, 294 doublons, 31 nouveaux {'marche': 28, 'esg': 3}, 0 flux en panne"
 2026-10-31 01:28:33,collecte_titres,ok,"322 articles lus, 292 doublons, 30 nouveaux {'marche': 17, 'esg': 13}, 0 flux en panne"
 2026-10-31 04:06:46,collecte_titres,ok,"285 articles lus, 279 doublons, 6 nouveaux {'marche': 5, 'esg': 1}, 0 flux en panne"
+2026-10-31 05:20:42,performance,ok,"5 ETF, séance du 2026-10-30, 1409 séances communes"
+2026-10-31 05:20:46,secteurs,ok,"4 compositions, 4 mesures d'effet sectoriel"
+2026-10-31 05:20:46,sentiment,avertissement,Bloomberg pèse 49.6 % du groupe marche sur 12 séances (plafond de 25 % dépassé)
+2026-10-31 05:20:46,sentiment,ok,"journée du 2026-10-30 : marche neutre (solde -8.0, n=275), esg positif (solde 27.9, n=61)"
+2026-10-31 05:20:46,parallele,ok,10 / 60 jours exploitables (estimation : 2027-01-14)
+2026-10-31 05:20:46,synthese,ok,"Humeur du marché : neutre le vendredi 30/10 (solde −8, marge ±10, 275 articles). Sur les 5 dernières journées de bourse : 2 négatives, 3 neutres. Actualité ESG : positive le vendredi 30/10 (solde +28, marge ±15, 61 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,5 point (+0,"
