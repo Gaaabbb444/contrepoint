@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-10-31T05:20:46Z",
+ "genere_le_utc": "2026-11-01T05:27:32Z",
  "derniere_seance": "2026-10-30",
  "fenetre": {
   "debut": "2026-10-29T17:30:00+01:00",
@@ -8,17 +8,17 @@
  },
  "groupes": {
   "marche": {
-   "nb_articles": 275,
+   "nb_articles": 276,
    "nb_sources": 9,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": -8.0,
-   "part_media_principal_pct": 57.5,
+   "solde_dates_fiables": -8.3,
+   "part_media_principal_pct": 57.6,
    "media_principal": "Bloomberg",
-   "solde_avec_plafond": -18.9,
-   "positif_pct": 29.8,
-   "neutre_pct": 32.4,
-   "negatif_pct": 37.8,
-   "solde": -8.0,
+   "solde_avec_plafond": -19.1,
+   "positif_pct": 29.7,
+   "neutre_pct": 32.2,
+   "negatif_pct": 38.0,
+   "solde": -8.3,
    "marge_erreur": 9.7,
    "etiquette": "neutre",
    "plus_positifs": [
@@ -741,12 +741,12 @@
   {
    "seance": "2026-10-30",
    "groupe": "marche",
-   "nb_articles": 275,
+   "nb_articles": 276,
    "nb_sources": 9,
-   "positif_pct": 29.8,
-   "neutre_pct": 32.4,
-   "negatif_pct": 37.8,
-   "solde": -8.0,
+   "positif_pct": 29.7,
+   "neutre_pct": 32.2,
+   "negatif_pct": 38.0,
+   "solde": -8.3,
    "marge_erreur": 9.7,
    "etiquette": "neutre",
    "couverture_partielle": false,
@@ -754,15 +754,15 @@
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 3.4,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": -8.0,
+   "solde_dates_fiables": -8.3,
    "media_principal": "Bloomberg",
-   "part_media_principal_pct": 57.5,
-   "solde_avec_plafond": -18.9
+   "part_media_principal_pct": 57.6,
+   "solde_avec_plafond": -19.1
   }
  ],
  "repartition_medias": {
   "marche": {
-   "nb_articles": 2897,
+   "nb_articles": 2898,
    "nb_seances": 12,
    "parts_pct": {
     "Bloomberg": 49.6,

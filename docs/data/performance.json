@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-10-31T05:20:42Z",
+ "genere_le_utc": "2026-11-01T05:27:30Z",
  "derniere_seance": "2026-10-30",
  "premiere_seance_commune": "2021-04-22",
  "nb_seances_communes": 1409,
@@ -8,34 +8,8 @@
  "defaut_esg": "sri",
  "etf_indisponibles": [],
  "cours_errones_ecartes": [],
- "valeurs_provisoires": [
-  {
-   "etf": "msci_world",
-   "ticker": "EUNL.DE",
-   "date": "2026-10-30"
-  },
-  {
-   "etf": "screened",
-   "ticker": "SNAW.DE",
-   "date": "2026-10-30"
-  },
-  {
-   "etf": "sri",
-   "ticker": "2B7K.DE",
-   "date": "2026-10-30"
-  },
-  {
-   "etf": "paris",
-   "ticker": "WPAB.DE",
-   "date": "2026-10-30"
-  },
-  {
-   "etf": "bnp_sri_pab",
-   "ticker": "EMWE.PA",
-   "date": "2026-10-30"
-  }
- ],
- "derniere_seance_provisoire": true,
+ "valeurs_provisoires": [],
+ "derniere_seance_provisoire": false,
  "etf": [
   {
    "id": "msci_world",
@@ -3411,7 +3385,7 @@
     196.015783,
     196.187075,
     195.799833,
-    193.156094
+    193.15609
    ],
    "screened": [
     100.0,
@@ -4822,7 +4796,7 @@
     197.94674,
     198.107154,
     197.561751,
-    194.449785
+    194.449781
    ],
    "sri": [
     100.0,
@@ -6233,7 +6207,7 @@
     175.7996,
     175.7996,
     175.7996,
-    173.999766
+    173.999761
    ],
    "paris": [
     100.0,
@@ -7644,7 +7618,7 @@
     182.358319,
     182.502648,
     182.382372,
-    179.640147
+    179.640145
    ],
    "bnp_sri_pab": [
     100.0,
@@ -9055,7 +9029,7 @@
     163.160103,
     162.482758,
     162.286546,
-    159.919053
+    159.91905
    ]
   }
  }
