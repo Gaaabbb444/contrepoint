@@ -299,3 +299,4 @@
 2026-11-02 13:37:29,collecte_titres,ok,"202 articles lus, 140 doublons, 62 nouveaux {'marche': 43, 'esg': 19}, 0 flux en panne"
 2026-11-02 16:25:34,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
 2026-11-02 16:25:45,collecte_titres,ok,"217 articles lus, 175 doublons, 42 nouveaux {'marche': 25, 'esg': 17}, 1 flux en panne"
+2026-11-02 19:21:57,collecte_titres,ok,"228 articles lus, 200 doublons, 28 nouveaux {'marche': 19, 'esg': 9}, 0 flux en panne"
