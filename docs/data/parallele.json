@@ -3,20 +3,20 @@
   "screened": {
    "marche": {
     "progression": {
-     "jours_exploitables": 11,
+     "jours_exploitables": 12,
      "jours_requis": 60,
-     "pourcentage": 18,
+     "pourcentage": 20,
      "date_estimee": "2027-01-14",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 11,
+     "n": 12,
      "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 10,
+     "n": 11,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -93,30 +93,36 @@
       "solde": -19.5,
       "etiquette": "négatif",
       "relatif_j_pts": 0.092
+     },
+     {
+      "seance": "2026-11-03",
+      "solde": -6.2,
+      "etiquette": "neutre",
+      "relatif_j_pts": 0.028
      }
     ]
    },
    "esg": {
     "progression": {
-     "jours_exploitables": 11,
+     "jours_exploitables": 12,
      "jours_requis": 60,
-     "pourcentage": 18,
+     "pourcentage": 20,
      "date_estimee": "2027-01-14",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 11,
+     "n": 12,
      "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 10,
+     "n": 11,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
-     "n_positifs": 8,
+     "n_positifs": 10,
      "requis_par_categorie": 15,
      "disponible": false,
      "statut": "exploratoire"
@@ -185,9 +191,15 @@
      },
      {
       "seance": "2026-11-02",
-      "solde": 10.3,
-      "etiquette": "neutre",
+      "solde": 11.6,
+      "etiquette": "positif",
       "relatif_j_pts": 0.092
+     },
+     {
+      "seance": "2026-11-03",
+      "solde": 21.2,
+      "etiquette": "positif",
+      "relatif_j_pts": 0.028
      }
     ]
    }
@@ -195,20 +207,20 @@
   "sri": {
    "marche": {
     "progression": {
-     "jours_exploitables": 11,
+     "jours_exploitables": 12,
      "jours_requis": 60,
-     "pourcentage": 18,
+     "pourcentage": 20,
      "date_estimee": "2027-01-14",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 11,
+     "n": 12,
      "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 10,
+     "n": 11,
      "statut": "principal"
     },
     "comparaison_jours": {
@@ -285,30 +297,36 @@
       "solde": -19.5,
       "etiquette": "négatif",
       "relatif_j_pts": 0.328
+     },
+     {
+      "seance": "2026-11-03",
+      "solde": -6.2,
+      "etiquette": "neutre",
+      "relatif_j_pts": 0.04
      }
     ]
    },
    "esg": {
     "progression": {
-     "jours_exploitables": 11,
+     "jours_exploitables": 12,
      "jours_requis": 60,
-     "pourcentage": 18,
+     "pourcentage": 20,
      "date_estimee": "2027-01-14",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 11,
+     "n": 12,
      "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 10,
+     "n": 11,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
-     "n_positifs": 8,
+     "n_positifs": 10,
      "requis_par_categorie": 15,
      "disponible": false,
      "statut": "exploratoire"
@@ -377,9 +395,15 @@
      },
      {
       "seance": "2026-11-02",
-      "solde": 10.3,
-      "etiquette": "neutre",
+      "solde": 11.6,
+      "etiquette": "positif",
       "relatif_j_pts": 0.328
+     },
+     {
+      "seance": "2026-11-03",
+      "solde": 21.2,
+      "etiquette": "positif",
+      "relatif_j_pts": 0.04
      }
     ]
    }
@@ -387,20 +411,20 @@
   "paris": {
    "marche": {
     "progression": {
-     "jours_exploitables": 11,
+     "jours_exploitables": 12,
      "jours_requis": 60,
-     "pourcentage": 18,
+     "pourcentage": 20,
      "date_estimee": "2027-01-14",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 11,
+     "n": 12,
      "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 10,
+     "n": 11,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -477,30 +501,36 @@
       "solde": -19.5,
       "etiquette": "négatif",
       "relatif_j_pts": 0.119
+     },
+     {
+      "seance": "2026-11-03",
+      "solde": -6.2,
+      "etiquette": "neutre",
+      "relatif_j_pts": 0.041
      }
     ]
    },
    "esg": {
     "progression": {
-     "jours_exploitables": 11,
+     "jours_exploitables": 12,
      "jours_requis": 60,
-     "pourcentage": 18,
+     "pourcentage": 20,
      "date_estimee": "2027-01-14",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 11,
+     "n": 12,
      "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 10,
+     "n": 11,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
-     "n_positifs": 8,
+     "n_positifs": 10,
      "requis_par_categorie": 15,
      "disponible": false,
      "statut": "exploratoire"
@@ -569,9 +599,15 @@
      },
      {
       "seance": "2026-11-02",
-      "solde": 10.3,
-      "etiquette": "neutre",
+      "solde": 11.6,
+      "etiquette": "positif",
       "relatif_j_pts": 0.119
+     },
+     {
+      "seance": "2026-11-03",
+      "solde": 21.2,
+      "etiquette": "positif",
+      "relatif_j_pts": 0.041
      }
     ]
    }
@@ -579,20 +615,20 @@
   "bnp_sri_pab": {
    "marche": {
     "progression": {
-     "jours_exploitables": 11,
+     "jours_exploitables": 12,
      "jours_requis": 60,
-     "pourcentage": 18,
+     "pourcentage": 20,
      "date_estimee": "2027-01-14",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 11,
+     "n": 12,
      "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 10,
+     "n": 11,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -669,30 +705,36 @@
       "solde": -19.5,
       "etiquette": "négatif",
       "relatif_j_pts": 0.379
+     },
+     {
+      "seance": "2026-11-03",
+      "solde": -6.2,
+      "etiquette": "neutre",
+      "relatif_j_pts": 0.323
      }
     ]
    },
    "esg": {
     "progression": {
-     "jours_exploitables": 11,
+     "jours_exploitables": 12,
      "jours_requis": 60,
-     "pourcentage": 18,
+     "pourcentage": 20,
      "date_estimee": "2027-01-14",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
      "disponible": false,
-     "n": 11,
+     "n": 12,
      "statut": "exploratoire"
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 10,
+     "n": 11,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
      "n_negatifs": 0,
-     "n_positifs": 8,
+     "n_positifs": 10,
      "requis_par_categorie": 15,
      "disponible": false,
      "statut": "exploratoire"
@@ -761,9 +803,15 @@
      },
      {
       "seance": "2026-11-02",
-      "solde": 10.3,
-      "etiquette": "neutre",
+      "solde": 11.6,
+      "etiquette": "positif",
       "relatif_j_pts": 0.379
+     },
+     {
+      "seance": "2026-11-03",
+      "solde": 21.2,
+      "etiquette": "positif",
+      "relatif_j_pts": 0.323
      }
     ]
    }
@@ -772,15 +820,15 @@
  "validation": {
   "description": "Lien entre le sentiment « marché » du jour et la performance du MSCI World le même jour. Un lien positif indique que l'indicateur capte bien l'humeur du marché. C'est un contrôle de validité, pas une prévision.",
   "progression": {
-   "jours_exploitables": 11,
+   "jours_exploitables": 12,
    "jours_requis": 60,
-   "pourcentage": 18,
+   "pourcentage": 20,
    "date_estimee": "2027-01-14",
    "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
   },
   "correlation": {
    "disponible": false,
-   "n": 11,
+   "n": 12,
    "statut": "contrôle"
   }
  },
@@ -798,13 +846,13 @@
   },
   "resultat": {
    "disponible": false,
-   "n": 10,
+   "n": 11,
    "statut": "principal"
   },
   "progression": {
-   "jours_exploitables": 11,
+   "jours_exploitables": 12,
    "jours_requis": 60,
-   "pourcentage": 18,
+   "pourcentage": 20,
    "date_estimee": "2027-01-14",
    "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
   }
@@ -815,7 +863,7 @@
   "seuil": 0.361,
   "explication": "Sur 30 séances, une corrélation comprise entre −seuil et +seuil peut apparaître par pur hasard (95 % des cas) : la courbe ne dit rien tant qu'elle reste dans cette zone."
  },
- "genere_le_utc": "2026-11-03T05:33:11Z",
+ "genere_le_utc": "2026-11-04T05:38:37Z",
  "parametres": {
   "jours_min": 60,
   "jours_min_par_categorie": 15,
