@@ -361,3 +361,5 @@
 2026-11-06 05:39:21,parallele,ok,14 / 60 jours exploitables (estimation : 2027-01-14)
 2026-11-06 05:39:21,synthese,ok,"Humeur du marché : neutre le jeudi 05/11 (solde −2, marge ±11, 236 articles). Sur les 5 dernières journées de bourse : 2 négatives, 3 neutres. Actualité ESG : neutre le jeudi 05/11 (solde +12, marge ±16, 57 articles). Sur 5 séances, l'ETF World SRI sous-performe le MSCI World de 0,2 point (−3,0 % co"
 2026-11-06 07:42:51,collecte_titres,ok,"277 articles lus, 250 doublons, 27 nouveaux {'marche': 25, 'esg': 2}, 0 flux en panne"
+2026-11-06 10:24:44,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
+2026-11-06 10:24:56,collecte_titres,ok,"267 articles lus, 226 doublons, 41 nouveaux {'marche': 32, 'esg': 9}, 1 flux en panne"
