@@ -360,3 +360,4 @@
 2026-11-06 05:39:21,sentiment,ok,"journée du 2026-11-05 : marche neutre (solde -1.7, n=236), esg neutre (solde 12.3, n=57)"
 2026-11-06 05:39:21,parallele,ok,14 / 60 jours exploitables (estimation : 2027-01-14)
 2026-11-06 05:39:21,synthese,ok,"Humeur du marché : neutre le jeudi 05/11 (solde −2, marge ±11, 236 articles). Sur les 5 dernières journées de bourse : 2 négatives, 3 neutres. Actualité ESG : neutre le jeudi 05/11 (solde +12, marge ±16, 57 articles). Sur 5 séances, l'ETF World SRI sous-performe le MSCI World de 0,2 point (−3,0 % co"
+2026-11-06 07:42:51,collecte_titres,ok,"277 articles lus, 250 doublons, 27 nouveaux {'marche': 25, 'esg': 2}, 0 flux en panne"
