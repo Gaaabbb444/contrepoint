@@ -380,3 +380,4 @@
 2026-11-07 10:09:50,collecte_titres,ok,"250 articles lus, 244 doublons, 6 nouveaux {'marche': 4, 'esg': 2}, 0 flux en panne"
 2026-11-07 13:19:35,collecte_titres,ok,"236 articles lus, 221 doublons, 15 nouveaux {'marche': 8, 'esg': 7}, 0 flux en panne"
 2026-11-07 15:59:22,collecte_titres,ok,"226 articles lus, 205 doublons, 21 nouveaux {'marche': 17, 'esg': 4}, 0 flux en panne"
+2026-11-07 19:13:33,collecte_titres,ok,"221 articles lus, 209 doublons, 12 nouveaux {'esg': 6, 'marche': 6}, 0 flux en panne"
