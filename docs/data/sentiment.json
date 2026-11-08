@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-11-07T05:28:54Z",
+ "genere_le_utc": "2026-11-08T05:30:04Z",
  "derniere_seance": "2026-11-06",
  "fenetre": {
   "debut": "2026-11-05T17:30:00+01:00",
@@ -131,18 +131,18 @@
    "couverture_partielle": false
   },
   "esg": {
-   "nb_articles": 59,
-   "nb_sources": 31,
+   "nb_articles": 61,
+   "nb_sources": 32,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": 22.0,
-   "part_media_principal_pct": 18.6,
+   "solde_dates_fiables": 21.3,
+   "part_media_principal_pct": 18.0,
    "media_principal": "Edie",
-   "solde_avec_plafond": 22.0,
-   "positif_pct": 33.9,
-   "neutre_pct": 54.2,
-   "negatif_pct": 11.9,
-   "solde": 22.0,
-   "marge_erreur": 16.3,
+   "solde_avec_plafond": 21.3,
+   "positif_pct": 32.8,
+   "neutre_pct": 55.7,
+   "negatif_pct": 11.5,
+   "solde": 21.3,
+   "marge_erreur": 15.8,
    "etiquette": "positif",
    "plus_positifs": [
     {
@@ -930,23 +930,23 @@
   {
    "seance": "2026-11-06",
    "groupe": "esg",
-   "nb_articles": 59,
-   "nb_sources": 31,
-   "positif_pct": 33.9,
-   "neutre_pct": 54.2,
-   "negatif_pct": 11.9,
-   "solde": 22.0,
-   "marge_erreur": 16.3,
+   "nb_articles": 61,
+   "nb_sources": 32,
+   "positif_pct": 32.8,
+   "neutre_pct": 55.7,
+   "negatif_pct": 11.5,
+   "solde": 21.3,
+   "marge_erreur": 15.8,
    "etiquette": "positif",
    "couverture_partielle": false,
    "releves_reussis": 16.0,
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 3.5,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": 22.0,
+   "solde_dates_fiables": 21.3,
    "media_principal": "Edie",
-   "part_media_principal_pct": 18.6,
-   "solde_avec_plafond": 22.0
+   "part_media_principal_pct": 18.0,
+   "solde_avec_plafond": 21.3
   },
   {
    "seance": "2026-11-06",
@@ -988,17 +988,17 @@
    "autres_medias_pct": 0.0
   },
   "esg": {
-   "nb_articles": 1256,
+   "nb_articles": 1258,
    "nb_seances": 17,
    "parts_pct": {
     "ESG News": 8.6,
     "Edie": 7.6,
     "Responsible Investor": 7.4,
     "ESG Today": 7.3,
-    "ESG Dive": 2.9,
+    "ESG Dive": 3.0,
     "Financial Times": 2.9,
     "Vietnam.vn": 2.3,
-    "Trellis": 1.8,
+    "Trellis": 1.7,
     "GreenMoney": 1.1,
     "Yahoo Finance": 1.0,
     "New Private Markets": 1.0,
@@ -1007,7 +1007,7 @@
     "Reuters": 0.8,
     "ImpactAlpha": 0.7
    },
-   "autres_medias_pct": 60.8
+   "autres_medias_pct": 60.9
   }
  },
  "agregats": {
@@ -1095,7 +1095,7 @@
      "debut": "2026-11-02",
      "fin": "2026-11-08",
      "derniere_seance": "2026-11-06",
-     "solde_moyen": 16.7,
+     "solde_moyen": 16.6,
      "nb_jours": 5,
      "nb_jours_ecartes": 0
     }
@@ -1113,7 +1113,7 @@
      "debut": "2026-11-01",
      "fin": "2026-11-30",
      "derniere_seance": "2026-11-06",
-     "solde_moyen": 16.7,
+     "solde_moyen": 16.6,
      "nb_jours": 5,
      "nb_jours_ecartes": 0
     }
@@ -1122,7 +1122,7 @@
  },
  "suivi_taux_neutre": {
   "esg": {
-   "neutre_moyen_pct": 61.3,
+   "neutre_moyen_pct": 61.4,
    "nb_journees": 15
   },
   "marche": {
