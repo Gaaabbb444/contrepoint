@@ -401,3 +401,4 @@
 2026-11-08 15:58:21,collecte_titres,ok,"92 articles lus, 74 doublons, 18 nouveaux {'marche': 14, 'esg': 4}, 1 flux en panne"
 2026-11-08 19:13:27,flux:Responsible Investor,avertissement,flux indisponible : 401 Client Error: Unauthorized for url: https://www.responsible-investor.com/feed/
 2026-11-08 19:13:35,collecte_titres,ok,"91 articles lus, 80 doublons, 11 nouveaux {'marche': 10, 'esg': 1}, 1 flux en panne"
+2026-11-08 21:59:09,collecte_titres,ok,"88 articles lus, 86 doublons, 2 nouveaux {'marche': 2}, 0 flux en panne"
