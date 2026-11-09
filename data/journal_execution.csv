@@ -414,3 +414,4 @@
 2026-11-09 07:52:52,flux:Google Actualités : ESG investing,avertissement,flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=ESG+investing+when:1d&hl=en-US&gl=US&ceid=US:en
 2026-11-09 07:52:58,flux:Google Actualités : sustainable finance,avertissement,flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%22sustainable+finance%22+when:1d&hl=en-US&gl=US&ceid=US:en
 2026-11-09 07:53:03,collecte_titres,ok,"121 articles lus, 68 doublons, 53 nouveaux {'marche': 40, 'esg': 13}, 2 flux en panne"
+2026-11-09 10:20:41,collecte_titres,ok,"146 articles lus, 109 doublons, 37 nouveaux {'marche': 27, 'esg': 10}, 0 flux en panne"
