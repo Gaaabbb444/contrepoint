@@ -451,3 +451,4 @@
 2026-11-11 10:23:24,collecte_titres,ok,"283 articles lus, 242 doublons, 41 nouveaux {'marche': 31, 'esg': 10}, 1 flux en panne"
 2026-11-11 13:39:18,collecte_titres,ok,"312 articles lus, 253 doublons, 59 nouveaux {'marche': 42, 'esg': 17}, 0 flux en panne"
 2026-11-11 16:24:54,collecte_titres,ok,"321 articles lus, 283 doublons, 38 nouveaux {'marche': 28, 'esg': 10}, 0 flux en panne"
+2026-11-11 19:27:54,collecte_titres,ok,"313 articles lus, 280 doublons, 33 nouveaux {'marche': 25, 'esg': 8}, 0 flux en panne"
