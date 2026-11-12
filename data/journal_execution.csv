@@ -467,3 +467,4 @@
 2026-11-12 10:27:10,flux:Responsible Investor,avertissement,"flux indisponible : HTTPSConnectionPool(host='www.responsible-investor.com', port=443): Read timed out. (read timeout=25)"
 2026-11-12 10:27:19,collecte_titres,ok,"255 articles lus, 222 doublons, 33 nouveaux {'marche': 27, 'esg': 6}, 2 flux en panne"
 2026-11-12 13:42:19,collecte_titres,ok,"268 articles lus, 220 doublons, 48 nouveaux {'marche': 37, 'esg': 11}, 0 flux en panne"
+2026-11-12 16:27:47,collecte_titres,ok,"297 articles lus, 251 doublons, 46 nouveaux {'marche': 28, 'esg': 18}, 0 flux en panne"
