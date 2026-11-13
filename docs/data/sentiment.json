@@ -1,256 +1,226 @@
 {
- "genere_le_utc": "2026-11-12T05:41:03Z",
- "derniere_seance": "2026-11-11",
+ "genere_le_utc": "2026-11-13T05:40:17Z",
+ "derniere_seance": "2026-11-12",
  "fenetre": {
-  "debut": "2026-11-10T17:30:00+01:00",
-  "fin": "2026-11-11T17:30:00+01:00",
+  "debut": "2026-11-11T17:30:00+01:00",
+  "fin": "2026-11-12T17:30:00+01:00",
   "definition": "articles publiés après la clôture de la séance précédente et au plus tard à la clôture de cette séance (heure de Paris)"
  },
  "groupes": {
   "marche": {
-   "nb_articles": 236,
+   "nb_articles": 233,
    "nb_sources": 9,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": -19.1,
-   "part_media_principal_pct": 53.0,
+   "solde_dates_fiables": -7.3,
+   "part_media_principal_pct": 55.8,
    "media_principal": "Bloomberg",
-   "solde_avec_plafond": -22.3,
-   "positif_pct": 26.7,
-   "neutre_pct": 27.5,
-   "negatif_pct": 45.8,
-   "solde": -19.1,
-   "marge_erreur": 10.6,
-   "etiquette": "négatif",
-   "plus_positifs": [
-    {
-     "titre": "German Economic Advisers More Than Double 2026 Growth Forecast",
-     "source": "Bloomberg Economics",
-     "lien": "https://www.bloomberg.com/news/articles/2026-11-11/german-economic-advisers-more-than-double-2026-growth-forecast",
-     "score": 0.934,
-     "p_positif": 0.9497,
-     "p_negatif": 0.016,
-     "probabilite": 0.95,
-     "date_publication_utc": "2026-11-11T13:30:00Z"
-    },
-    {
-     "titre": "Turkey Appliances Giant Sees Edge Over China With New EU Rules",
-     "source": "Bloomberg Markets",
-     "lien": "https://www.bloomberg.com/news/articles/2026-11-11/turkey-appliances-giant-sees-edge-over-china-with-new-eu-rules",
-     "score": 0.933,
-     "p_positif": 0.9475,
-     "p_negatif": 0.0145,
-     "probabilite": 0.948,
-     "date_publication_utc": "2026-11-11T10:01:48Z"
-    },
-    {
-     "titre": "Peloton Draws $6.8 Billion of Demand for Debut Junk-Bond Sale",
-     "source": "Bloomberg Markets",
-     "lien": "https://www.bloomberg.com/news/articles/2026-11-10/peloton-draws-6-8-billion-of-demand-for-debut-junk-bond-sale",
-     "score": 0.933,
-     "p_positif": 0.9529,
-     "p_negatif": 0.0203,
-     "probabilite": 0.953,
-     "date_publication_utc": "2026-11-10T17:02:51Z"
-    },
-    {
-     "titre": "Anthropic bankers prepare to increase IPO valuation to $1.5tn or more",
-     "source": "FT Markets",
-     "lien": "https://www.ft.com/content/68bcba57-0575-44ee-80f4-2e5ea23a431e?syn-25a6b1a6=1",
-     "score": 0.932,
-     "p_positif": 0.9497,
-     "p_negatif": 0.0181,
-     "probabilite": 0.95,
-     "date_publication_utc": "2026-11-11T00:27:38Z"
-    },
-    {
-     "titre": "How GLP-1 Drugs and a Revamp Revived Ro’s Business",
-     "source": "NYT Business",
-     "lien": "https://www.nytimes.com/2026/11/11/business/dealbook/ro-revenue-glp1.html",
-     "score": 0.93,
-     "p_positif": 0.942,
-     "p_negatif": 0.0122,
-     "probabilite": 0.942,
-     "date_publication_utc": "2026-11-11T13:15:53Z"
-    }
-   ],
-   "plus_negatifs": [
-    {
-     "titre": "SEC Fines, Cases Plunge in Trump-Era ‘Return to Basics’",
-     "source": "Bloomberg Markets",
-     "lien": "https://www.bloomberg.com/news/articles/2026-11-10/sec-fines-cases-plunge-in-trump-era-return-to-basics",
-     "score": -0.967,
-     "p_positif": 0.0082,
-     "p_negatif": 0.9752,
-     "probabilite": 0.975,
-     "date_publication_utc": "2026-11-10T19:12:41Z"
-    },
-    {
-     "titre": "AI Malaise, Midterms Cloud 2027 Profits After Blowout Quarter",
-     "source": "Bloomberg Economics",
-     "lien": "https://www.bloomberg.com/news/articles/2026-11-11/ai-malaise-midterms-cloud-2027-profits-after-blowout-quarter",
-     "score": -0.966,
-     "p_positif": 0.0071,
-     "p_negatif": 0.9728,
-     "probabilite": 0.973,
-     "date_publication_utc": "2026-11-11T13:05:07Z"
-    },
-    {
-     "titre": "SoftBank Group Shares Drop 11% After Booking $7 Billion Loss",
-     "source": "Bloomberg Markets",
-     "lien": "https://www.bloomberg.com/news/articles/2026-11-11/softbank-group-shares-drop-10-after-booking-7-billion-loss",
-     "score": -0.966,
-     "p_positif": 0.0078,
-     "p_negatif": 0.9733,
-     "probabilite": 0.973,
-     "date_publication_utc": "2026-11-11T00:30:53Z"
-    },
-    {
-     "titre": "Australia’s Home Loans Fall by Record After Rapid RBA Rate Hikes",
-     "source": "Bloomberg Markets",
-     "lien": "https://www.bloomberg.com/news/articles/2026-11-11/australia-s-home-loans-fall-by-record-after-rapid-rba-rate-hikes",
-     "score": -0.965,
-     "p_positif": 0.0096,
-     "p_negatif": 0.9745,
-     "probabilite": 0.975,
-     "date_publication_utc": "2026-11-11T00:49:42Z"
-    },
-    {
-     "titre": "SEC Enforcement Penalties Fall to 18-Year Low",
-     "source": "WSJ Markets",
-     "lien": "https://www.wsj.com/finance/regulation/sec-enforcement-penalties-fall-to-18-year-low-2aa5d9d3",
-     "score": -0.964,
-     "p_positif": 0.0069,
-     "p_negatif": 0.9706,
-     "probabilite": 0.971,
-     "date_publication_utc": "2026-11-10T22:51:00Z"
-    }
-   ],
-   "releves_reussis": 16,
-   "releves_attendus": 8,
-   "plus_long_trou_heures": 3.5,
-   "couverture_partielle": false
-  },
-  "esg": {
-   "nb_articles": 64,
-   "nb_sources": 38,
-   "nb_dates_approximatives": 0,
-   "solde_dates_fiables": 14.1,
-   "part_media_principal_pct": 14.1,
-   "media_principal": "Edie",
-   "solde_avec_plafond": 14.1,
-   "positif_pct": 25.0,
-   "neutre_pct": 64.1,
-   "negatif_pct": 10.9,
-   "solde": 14.1,
-   "marge_erreur": 14.3,
+   "solde_avec_plafond": -16.7,
+   "positif_pct": 34.3,
+   "neutre_pct": 24.0,
+   "negatif_pct": 41.6,
+   "solde": -7.3,
+   "marge_erreur": 11.2,
    "etiquette": "neutre",
    "plus_positifs": [
     {
-     "titre": "Celltrion wins first MSCI AAA as Celltrion Pharm jumps to A in Korea ESG",
-     "source": "Chosunbiz",
-     "lien": "https://news.google.com/rss/articles/CBMigAFBVV95cUxPQlRERVlpclRST1A2NWszWUpZQllxQ21iUXEtcGpyZGhqU1c1UnhSQ2lJN042ODRNbHY1NGRCSVRSQTJMbklNdEhRb1hEaklTM0UtbC00RjY1SzRjVDVZQnlIUnBFZlZBdk1GVzVYa2lHTEUyNDlEM1ktMXBHb19hYtIBlAFBVV95cUxOMDVMTmRjd2hFMjhEdGRoSG0waXVXTHE5UFZpNnI4OVRVYlBFRGk2eGxwdDRJRjgtazJvYjB6anRvYkJYd2xaOTlMSVhTM1VXakNYS3NyUE02Z2Q3cXlUcVYwSTJlRnA4cmRFaTBuZ3dBelVnRDRYS1NCczZWTmtPdHJTTmpMamtPcElsenhEUXJaYWhC?oc=5",
-     "score": 0.921,
-     "p_positif": 0.9355,
-     "p_negatif": 0.0144,
-     "probabilite": 0.935,
-     "date_publication_utc": "2026-11-11T08:33:00Z"
+     "titre": "Brookfield Earnings Buoyed by Fund Raising, Wealth Solutions Growth",
+     "source": "WSJ Markets",
+     "lien": "https://www.wsj.com/finance/investing/brookfield-earnings-buoyed-by-fund-raising-wealth-solutions-growth-05a27297",
+     "score": 0.939,
+     "p_positif": 0.9582,
+     "p_negatif": 0.0197,
+     "probabilite": 0.958,
+     "date_publication_utc": "2026-11-12T12:57:00Z"
     },
     {
-     "titre": "Tsao Family Office aims to lift ESG allocation above 60%",
-     "source": "Citywire",
-     "lien": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOdWp5VWVOQUdVTmxyNmVlNElKQWVrU2FOd0VoNG13LUlDdk81NVJKWGo4OWxkQTFhbEVNRFJ5RmlRZWk2NEhmSXJBV0dLOVo1eG9zY1lKMmJMOUR1MkZuSEdOVHZzTnFNQzc4a3Bncm1xU0NkckJPT2s2ZnUyMVg0UEVWZlhCNUNRNmNMSlhPQ3NlS1pSUnU5MGFsYw?oc=5",
-     "score": 0.921,
-     "p_positif": 0.9389,
+     "titre": "BofA Says India’s Foreign Inflow Revival Has Further Room to Run",
+     "source": "Bloomberg Markets",
+     "lien": "https://www.bloomberg.com/news/articles/2026-11-12/bofa-says-india-s-foreign-inflow-revival-has-further-room-to-run",
+     "score": 0.934,
+     "p_positif": 0.9518,
      "p_negatif": 0.018,
-     "probabilite": 0.939,
-     "date_publication_utc": "2026-11-11T01:27:39Z"
+     "probabilite": 0.952,
+     "date_publication_utc": "2026-11-12T08:44:28Z"
     },
     {
-     "titre": "Indonesia's Carbon Market Ready to Attract Global Investment",
-     "source": "Kompas.id",
-     "lien": "https://news.google.com/rss/articles/CBMitgFBVV95cUxQMnJxb01RcVQ2azRWTk9lRk1LSzRjZzl1X2hBQ2pVdmN2TmN3QkVJZ0lEZnc3ZGllUFZQTzZvdjZwSWtydG5WSGFlZGZuWjhINkVCNmhkbkp1SUhyMk1rLW04QzVKMmR0a3dCd19aX2dXTTJRN0tpM0dHNkhTUmhzajNVRVpCZV9QaS0zWFc0ejJ0TkRtYmVXczZHUU8xSnpHc2tvTmdWYmFJMGphWUhZWW93VExTZw?oc=5",
-     "score": 0.91,
-     "p_positif": 0.9197,
-     "p_negatif": 0.0099,
-     "probabilite": 0.92,
-     "date_publication_utc": "2026-11-11T03:47:31Z"
+     "titre": "Citgo Reports Record Profits as Wartime Refining Margins Boom",
+     "source": "Bloomberg Markets",
+     "lien": "https://www.bloomberg.com/news/articles/2026-11-12/citgo-reports-record-profits-as-wartime-refining-margins-boom",
+     "score": 0.932,
+     "p_positif": 0.9531,
+     "p_negatif": 0.0212,
+     "probabilite": 0.953,
+     "date_publication_utc": "2026-11-12T14:11:10Z"
     },
     {
-     "titre": "Global Sustainable Fund Inflows Reach Highest Level Since 2024: Morningstar",
-     "source": "ESG Today",
-     "lien": "https://www.esgtoday.com/global-sustainable-fund-inflows-reach-highest-level-since-2024-morningstar/",
-     "score": 0.909,
-     "p_positif": 0.9413,
-     "p_negatif": 0.0326,
-     "probabilite": 0.941,
-     "date_publication_utc": "2026-11-11T12:31:02Z"
+     "titre": "Santander Sweetens Offer for Brazil Unit Stake With 5% Increase",
+     "source": "Bloomberg Markets",
+     "lien": "https://www.bloomberg.com/news/articles/2026-11-12/santander-sweetens-offer-for-brazil-unit-stake-with-5-increase",
+     "score": 0.932,
+     "p_positif": 0.9497,
+     "p_negatif": 0.018,
+     "probabilite": 0.95,
+     "date_publication_utc": "2026-11-12T08:12:41Z"
     },
     {
-     "titre": "Scatec secures $217m for Dandara solar project in Egypt",
-     "source": "Africa Business Communities",
-     "lien": "https://news.google.com/rss/articles/CBMisgFBVV95cUxNTFhjUEZMR0gzYllBNUJxa2dGTlBadEpyaFdQYTI0S1YxRGNtc0EwNGRmYmJDcGhBUWZtN1pCZURZMzhqTXhtVG52Sjh0V3J5TzI2YkZCVEpENFYzelhnS25fRFd6eGJpNnFvNjYyV3lpd1htNVZnWWptWTNXNVRMZG5SbHpmUXowNkpjUGlESFR4Z3k5eVVfOWJmVWt3elVhclJfd094LUlYVVdIdHI0REF3?oc=5",
-     "score": 0.869,
-     "p_positif": 0.8774,
-     "p_negatif": 0.0087,
-     "probabilite": 0.877,
-     "date_publication_utc": "2026-11-11T06:08:04Z"
+     "titre": "Brazil, Venezuela Vow to Upgrade Ties With Oil Investment Talks",
+     "source": "Bloomberg Markets",
+     "lien": "https://www.bloomberg.com/news/articles/2026-11-11/brazil-venezuela-vow-to-upgrade-ties-with-oil-investment-talks",
+     "score": 0.932,
+     "p_positif": 0.9495,
+     "p_negatif": 0.0179,
+     "probabilite": 0.95,
+     "date_publication_utc": "2026-11-11T20:32:57Z"
     }
    ],
    "plus_negatifs": [
     {
-     "titre": "Who Gives A Crap, ProCook and Grind have ads banned for misleading carbon-neutral delivery claims",
-     "source": "Edie",
-     "lien": "https://www.edie.net/who-gives-a-crap-procook-and-grind-have-ads-banned-for-misleading-carbon-neutral-delivery-claims/",
-     "score": -0.858,
-     "p_positif": 0.02,
-     "p_negatif": 0.8781,
-     "probabilite": 0.878,
-     "date_publication_utc": "2026-11-11T00:01:50Z"
+     "titre": "Home sales declined in October to their lowest level since 2010, a new trough for a housing market that has been hovering near rock bottom for more than four years",
+     "source": "WSJ Economy",
+     "lien": "https://www.wsj.com/economy/housing/home-sales-in-october-plummet-to-16-year-low-16adebc0",
+     "score": -0.968,
+     "p_positif": 0.0074,
+     "p_negatif": 0.9757,
+     "probabilite": 0.976,
+     "date_publication_utc": "2026-11-12T15:00:00Z"
     },
     {
-     "titre": "Pulling back on climate action now is the wrong move at the wrong time",
-     "source": "Edie",
-     "lien": "https://www.edie.net/pulling-back-on-climate-action-now-is-the-wrong-move-at-the-wrong-time/",
-     "score": -0.836,
-     "p_positif": 0.019,
-     "p_negatif": 0.8548,
-     "probabilite": 0.855,
-     "date_publication_utc": "2026-11-11T10:00:50Z"
+     "titre": "Sales of Existing US Homes Tumble to Lowest Level Since 2010",
+     "source": "Bloomberg Markets",
+     "lien": "https://www.bloomberg.com/news/articles/2026-11-12/sales-of-existing-us-homes-tumble-to-lowest-level-since-2010",
+     "score": -0.967,
+     "p_positif": 0.0081,
+     "p_negatif": 0.9749,
+     "probabilite": 0.975,
+     "date_publication_utc": "2026-11-12T15:00:00Z"
     },
     {
-     "titre": "First global airline emissions scheme faces 'a litmus test' as credits run short",
-     "source": "Reuters",
-     "lien": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNM200cmtwZ0pzVEs2RHhFRERhS09qZkNQOXhXWWpPeGVZZjczTXZWLTlCSzFkYVdOYTdsbm4wUm95djRSbU9SMnRibmRIa3NmZEh4djNUNi1rMGJCR0pmcGNQSXIyOVRWMU8wcHdXSWV3WFRSWHUxRmdtYnNxRGVOTU1tQ19iSjd5a2JwMVFFem1HVUVxMkNVNjk1cm5EWWthZEFBYTZIVHNSQ2VJd0ZETm1aZFZHZ3dpalRtcDFjbGF6a0NvNlpINm1B?oc=5",
-     "score": -0.761,
-     "p_positif": 0.04,
-     "p_negatif": 0.8012,
-     "probabilite": 0.801,
-     "date_publication_utc": "2026-11-10T16:38:50Z"
+     "titre": "Thailand’s Tourism Comeback Slips Further Out of Reach",
+     "source": "Bloomberg Economics",
+     "lien": "https://www.bloomberg.com/news/articles/2026-11-12/thailand-s-tourism-comeback-slips-further-out-of-reach",
+     "score": -0.966,
+     "p_positif": 0.0085,
+     "p_negatif": 0.9743,
+     "probabilite": 0.974,
+     "date_publication_utc": "2026-11-12T00:30:00Z"
     },
     {
-     "titre": "Data-Center Carbon Disclosure Gaps Make AI Boom’s Climate Impact Tough to Assess",
-     "source": "Bloomberg.com",
-     "lien": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOck00VEVFdkFSanVKdFI5dmg1WWZzSURRV2I0RkZRVlVFeVdBQVMzS05UZ0lMSDg4WC1SSmFkMWhnUkNhTWxMbXNXOUFWdGU2YW9YaDBQYzhZaUZ2b281WkJmQVZsOVlsRkh4c2cwZjYzTVRCUVlkcFd3ajNpa21yWnlvX2xBd2NNTW5CZldQY3BEYVMyS0ZIYTZZWmhOTGVUY0ZydkRBNWc0eERMODBscWZsNVJZdVVTeHlyXzc3N1RuRDVFR1MxZGEtaw?oc=5",
-     "score": -0.616,
-     "p_positif": 0.0259,
-     "p_negatif": 0.6422,
-     "probabilite": 0.642,
-     "date_publication_utc": "2026-11-11T09:46:21Z"
+     "titre": "Polymarket Cuts Workforce After Stumbles Prompt Reorganization",
+     "source": "Bloomberg Markets",
+     "lien": "https://www.bloomberg.com/news/articles/2026-11-11/polymarket-cuts-workforce-after-stumbles-prompt-reorganization",
+     "score": -0.966,
+     "p_positif": 0.0084,
+     "p_negatif": 0.974,
+     "probabilite": 0.974,
+     "date_publication_utc": "2026-11-11T18:50:43Z"
     },
     {
-     "titre": "Less than 1 in 4 new CFOs globally were women in Q3",
-     "source": "ESG Dive",
-     "lien": "https://www.esgdive.com/news/less-than-1-4-new-cfos-globally-were-women-q3/874384/",
-     "score": -0.471,
-     "p_positif": 0.2299,
-     "p_negatif": 0.7011,
-     "probabilite": 0.701,
-     "date_publication_utc": "2026-11-11T15:09:00Z"
+     "titre": "Nvidia Shares Slide as Investors Consider Future Without Huang",
+     "source": "Bloomberg Markets",
+     "lien": "https://www.bloomberg.com/news/articles/2026-11-11/nvidia-tumbles-as-investors-consider-future-without-ceo-huang",
+     "score": -0.966,
+     "p_positif": 0.0075,
+     "p_negatif": 0.973,
+     "probabilite": 0.973,
+     "date_publication_utc": "2026-11-11T22:48:40Z"
     }
    ],
    "releves_reussis": 16,
    "releves_attendus": 8,
-   "plus_long_trou_heures": 3.5,
+   "plus_long_trou_heures": 3.4,
+   "couverture_partielle": false
+  },
+  "esg": {
+   "nb_articles": 56,
+   "nb_sources": 29,
+   "nb_dates_approximatives": 0,
+   "solde_dates_fiables": 28.6,
+   "part_media_principal_pct": 12.5,
+   "media_principal": "ESG News",
+   "solde_avec_plafond": 28.6,
+   "positif_pct": 32.1,
+   "neutre_pct": 64.3,
+   "negatif_pct": 3.6,
+   "solde": 28.6,
+   "marge_erreur": 13.7,
+   "etiquette": "positif",
+   "plus_positifs": [
+    {
+     "titre": "NZECA 2026 Progress Report: members advance climate alignment with net-zero portfolios up 58%",
+     "source": "United Nations Environment Programme Finance Initiative",
+     "lien": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxNVHJyX3lqSkdwZ282dVBpREJnY3B3eml4VWVPc0g1QnVyS0thU3JFLXVYbDU5TURxOVh6STFoRGNYRDMycTJranJZc3owQjc3c2hlLUQtT3JUWDNxSWNhc1RkV2NvV3ByWU5jWXoyNTFRUDltWFduVVEzNlpfdW1NWU1TUlk2a0hoQ3N3UUJZc1BjaVpXZVl5WG9nWXNqV3FtSWtsSWpOQnR0RUZZVEdIMUpjRm5aM3VNMUdybElVWExIQmotU3UzSThJUG0zdnRJSUc4?oc=5",
+     "score": 0.933,
+     "p_positif": 0.952,
+     "p_negatif": 0.0188,
+     "probabilite": 0.952,
+     "date_publication_utc": "2026-11-12T08:03:54Z"
+    },
+    {
+     "titre": "Tanzania sustainable finance framework gains S&P alignment assessment",
+     "source": "Traders Union",
+     "lien": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQN0ctR2JZS1RsYVVvWTZFUmw2MC10c2gtd1Y0VEJ0RVI1MkFBN2F5V0RMSmVaNUNJSm1BbUtyTDBwRHFmdXgxYzJoMEFJRlJUdmRTdmJJcG8wV245Q2FsUEgwT0FjOHFqb2VUVWtDTlFIa0FFYkthZTlsRXJoYjFkUTV0cVR4RjAyTl9tTi16bVQwQnA0blZkamJ3aw?oc=5",
+     "score": 0.931,
+     "p_positif": 0.9441,
+     "p_negatif": 0.0135,
+     "probabilite": 0.944,
+     "date_publication_utc": "2026-11-11T18:19:46Z"
+    },
+    {
+     "titre": "Hyundai Rotem Wins A+ ESG Rating for Third Straight Year",
+     "source": "Seoul Economic Daily",
+     "lien": "https://news.google.com/rss/articles/CBMinwFBVV95cUxQUkIxUjhpQ09XSS16VS1rbWJUc1VwUU8tR01QOUJCSVF2S0cweG9HSlpGOEU5Q3RfTU0wc0ZsLW9jdHk4SGJJYndPbWZrY2lrcWQ2V0ZTRXlUUzgwQm8tdVhDTmR6Y1BCaFZnNEZlWVZnX2xkb2NkTzllRWVTc0pvWXBHc3ZubnRPMXJuUE41RHhZRXNRV2FmNUdRYmJTTUE?oc=5",
+     "score": 0.918,
+     "p_positif": 0.9376,
+     "p_negatif": 0.0194,
+     "probabilite": 0.938,
+     "date_publication_utc": "2026-11-12T02:03:17Z"
+    },
+    {
+     "titre": "From costly to accessible: How the barriers to commercial solar are coming down",
+     "source": "Edie",
+     "lien": "https://www.edie.net/from-costly-to-accessible-how-the-barriers-to-commercial-solar-are-coming-down/",
+     "score": 0.889,
+     "p_positif": 0.9004,
+     "p_negatif": 0.0116,
+     "probabilite": 0.9,
+     "date_publication_utc": "2026-11-12T09:03:57Z"
+    },
+    {
+     "titre": "GGGI Calls for Stronger Partnerships and Bankable Investment Pipelines to Unlock Sustainable Finance in Africa",
+     "source": "Global Green Growth Institute",
+     "lien": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQNjFGOFBkTnc1R2xWMzcwV1FzLTQ2QjM3UDJsa0xnMFhOTWlaalNIX2owNHFpNU9Ca2FpOEVKOXBvU1hNVy0xVDB6a0lOa1FOdHJnU3J2aC1MLW5IWURXak83bHV6aDBCUnBWeVZTcnRpaVlobklCbGwzTjdlOHFOU2dKRjFNNmlhWmJPMzZXMHp6cmltS1g0MkNDRGd0ekV3cHhjX1VSUU1vdVZjRG9LVTY4SlRfNm1FMkp0OVF4emJkaFltS2lv?oc=5",
+     "score": 0.883,
+     "p_positif": 0.8907,
+     "p_negatif": 0.0082,
+     "probabilite": 0.891,
+     "date_publication_utc": "2026-11-12T08:58:59Z"
+    }
+   ],
+   "plus_negatifs": [
+    {
+     "titre": "Nvidia CEO resigns amid scandal; CFO named interim",
+     "source": "ESG Dive",
+     "lien": "https://www.esgdive.com/news/nvidia-ceo-resigns-scandal-cfo-named-interim-ceo-ai/874506/",
+     "score": -0.911,
+     "p_positif": 0.0079,
+     "p_negatif": 0.919,
+     "probabilite": 0.919,
+     "date_publication_utc": "2026-11-12T15:06:00Z"
+    },
+    {
+     "titre": "ExxonMobil launches legal challenge to EU carbon capture rules",
+     "source": "FT Climate Capital",
+     "lien": "https://www.ft.com/content/377d2ae5-112f-411f-bfc1-5e498948cb7b?syn-25a6b1a6=1",
+     "score": -0.779,
+     "p_positif": 0.0349,
+     "p_negatif": 0.8142,
+     "probabilite": 0.814,
+     "date_publication_utc": "2026-11-11T21:26:48Z"
+    }
+   ],
+   "releves_reussis": 16,
+   "releves_attendus": 8,
+   "plus_long_trou_heures": 3.4,
    "couverture_partielle": false
   }
  },
@@ -1094,46 +1064,88 @@
    "media_principal": "Bloomberg",
    "part_media_principal_pct": 53.0,
    "solde_avec_plafond": -22.3
+  },
+  {
+   "seance": "2026-11-12",
+   "groupe": "esg",
+   "nb_articles": 56,
+   "nb_sources": 29,
+   "positif_pct": 32.1,
+   "neutre_pct": 64.3,
+   "negatif_pct": 3.6,
+   "solde": 28.6,
+   "marge_erreur": 13.7,
+   "etiquette": "positif",
+   "couverture_partielle": false,
+   "releves_reussis": 16.0,
+   "releves_attendus": 8.0,
+   "plus_long_trou_heures": 3.4,
+   "nb_dates_approximatives": 0.0,
+   "solde_dates_fiables": 28.6,
+   "media_principal": "ESG News",
+   "part_media_principal_pct": 12.5,
+   "solde_avec_plafond": 28.6
+  },
+  {
+   "seance": "2026-11-12",
+   "groupe": "marche",
+   "nb_articles": 233,
+   "nb_sources": 9,
+   "positif_pct": 34.3,
+   "neutre_pct": 24.0,
+   "negatif_pct": 41.6,
+   "solde": -7.3,
+   "marge_erreur": 11.2,
+   "etiquette": "neutre",
+   "couverture_partielle": false,
+   "releves_reussis": 16.0,
+   "releves_attendus": 8.0,
+   "plus_long_trou_heures": 3.4,
+   "nb_dates_approximatives": 0.0,
+   "solde_dates_fiables": -7.3,
+   "media_principal": "Bloomberg",
+   "part_media_principal_pct": 55.8,
+   "solde_avec_plafond": -16.7
   }
  ],
  "repartition_medias": {
   "marche": {
-   "nb_articles": 5064,
+   "nb_articles": 5277,
    "nb_seances": 20,
    "parts_pct": {
-    "Bloomberg": 50.7,
-    "Wall Street Journal": 14.1,
+    "Bloomberg": 51.1,
+    "Wall Street Journal": 14.0,
     "Financial Times": 11.1,
-    "New York Times": 6.8,
-    "BBC": 6.0,
-    "The Guardian": 4.5,
-    "Euronews": 3.2,
+    "New York Times": 6.7,
+    "BBC": 5.9,
+    "The Guardian": 4.4,
+    "Euronews": 3.1,
     "CNBC": 3.1,
     "Deutsche Welle": 0.5
    },
    "autres_medias_pct": 0.0
   },
   "esg": {
-   "nb_articles": 1487,
+   "nb_articles": 1529,
    "nb_seances": 20,
    "parts_pct": {
-    "ESG News": 8.1,
-    "Edie": 7.9,
+    "Edie": 8.1,
+    "ESG News": 7.8,
     "ESG Today": 7.7,
-    "Responsible Investor": 6.9,
-    "Financial Times": 3.9,
-    "ESG Dive": 3.0,
-    "Vietnam.vn": 2.1,
-    "Trellis": 1.8,
+    "Responsible Investor": 6.7,
+    "Financial Times": 4.0,
+    "ESG Dive": 2.9,
+    "Vietnam.vn": 2.0,
+    "Trellis": 1.9,
+    "Reuters": 1.0,
+    "New Private Markets": 1.0,
     "GreenMoney": 0.9,
-    "Reuters": 0.9,
     "Africa Sustainability Matters": 0.9,
     "Yahoo Finance": 0.9,
-    "New Private Markets": 0.9,
     "TipRanks": 0.8,
     "Yahoo Finance UK": 0.7
    },
-   "autres_medias_pct": 60.6
+   "autres_medias_pct": 62.3
   }
  },
  "agregats": {
@@ -1174,9 +1186,9 @@
     {
      "debut": "2026-11-09",
      "fin": "2026-11-15",
-     "derniere_seance": "2026-11-11",
-     "solde_moyen": -14.6,
-     "nb_jours": 3,
+     "derniere_seance": "2026-11-12",
+     "solde_moyen": -12.8,
+     "nb_jours": 4,
      "nb_jours_ecartes": 0
     }
    ],
@@ -1192,9 +1204,9 @@
     {
      "debut": "2026-11-01",
      "fin": "2026-11-30",
-     "derniere_seance": "2026-11-11",
-     "solde_moyen": -12.8,
-     "nb_jours": 8,
+     "derniere_seance": "2026-11-12",
+     "solde_moyen": -12.2,
+     "nb_jours": 9,
      "nb_jours_ecartes": 0
     }
    ]
@@ -1236,9 +1248,9 @@
     {
      "debut": "2026-11-09",
      "fin": "2026-11-15",
-     "derniere_seance": "2026-11-11",
-     "solde_moyen": 10.4,
-     "nb_jours": 3,
+     "derniere_seance": "2026-11-12",
+     "solde_moyen": 15.0,
+     "nb_jours": 4,
      "nb_jours_ecartes": 0
     }
    ],
@@ -1254,9 +1266,9 @@
     {
      "debut": "2026-11-01",
      "fin": "2026-11-30",
-     "derniere_seance": "2026-11-11",
-     "solde_moyen": 14.3,
-     "nb_jours": 8,
+     "derniere_seance": "2026-11-12",
+     "solde_moyen": 15.9,
+     "nb_jours": 9,
      "nb_jours_ecartes": 0
     }
    ]
@@ -1264,12 +1276,12 @@
  },
  "suivi_taux_neutre": {
   "esg": {
-   "neutre_moyen_pct": 62.2,
-   "nb_journees": 18
+   "neutre_moyen_pct": 62.4,
+   "nb_journees": 19
   },
   "marche": {
-   "neutre_moyen_pct": 32.0,
-   "nb_journees": 18
+   "neutre_moyen_pct": 31.5,
+   "nb_journees": 19
   }
  },
  "modele": {
