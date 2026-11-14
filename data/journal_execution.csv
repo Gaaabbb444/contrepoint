@@ -487,3 +487,5 @@
 2026-11-13 19:23:41,collecte_titres,ok,"309 articles lus, 270 doublons, 39 nouveaux {'marche': 30, 'esg': 9}, 0 flux en panne"
 2026-11-13 22:08:13,collecte_titres,ok,"302 articles lus, 276 doublons, 26 nouveaux {'marche': 22, 'esg': 4}, 0 flux en panne"
 2026-11-14 01:31:01,collecte_titres,ok,"281 articles lus, 256 doublons, 25 nouveaux {'marche': 23, 'esg': 2}, 0 flux en panne"
+2026-11-14 04:17:29,flux:ESG News,avertissement,flux indisponible : 500 Server Error: Internal Server Error for url: https://esgnews.com/feed/
+2026-11-14 04:17:36,collecte_titres,ok,"258 articles lus, 255 doublons, 3 nouveaux {'esg': 2, 'marche': 1}, 1 flux en panne"
