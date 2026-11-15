@@ -508,3 +508,13 @@
 2026-11-14 21:59:15,collecte_titres,ok,"189 articles lus, 185 doublons, 4 nouveaux {'marche': 4}, 0 flux en panne"
 2026-11-15 01:37:22,collecte_titres,ok,"172 articles lus, 162 doublons, 10 nouveaux {'marche': 8, 'esg': 2}, 0 flux en panne"
 2026-11-15 04:20:33,collecte_titres,ok,"141 articles lus, 138 doublons, 3 nouveaux {'marche': 3}, 0 flux en panne"
+2026-11-15 05:34:44,performance,ok,"5 ETF, séance du 2026-11-13, 1419 séances communes"
+2026-11-15 05:34:45,secteurs:msci_world,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/251882/ishares-core-msci-world-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-15 05:34:45,secteurs:screened,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/305419/ishares-msci-world-screened-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-15 05:34:45,secteurs:sri,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/290846/ishares-msci-world-sri-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-15 05:34:45,secteurs:paris,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/318383/ishares-msci-world-paris-aligned-climate-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-15 05:34:47,secteurs,ok,"4 compositions, 4 mesures d'effet sectoriel"
+2026-11-15 05:34:47,sentiment,avertissement,Bloomberg pèse 52.2 % du groupe marche sur 20 séances (plafond de 25 % dépassé)
+2026-11-15 05:34:47,sentiment,ok,"journée du 2026-11-13 : marche négatif (solde -25.8, n=248), esg neutre (solde 0.0, n=59)"
+2026-11-15 05:34:47,parallele,ok,20 / 60 jours exploitables (estimation : 2027-01-14)
+2026-11-15 05:34:47,synthese,ok,"Humeur du marché : négative le vendredi 13/11 (solde −26, marge ±10, 248 articles). Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres. Actualité ESG : neutre le vendredi 13/11 (solde 0, marge ±16, 59 articles). Sur 5 séances, l'ETF World SRI sous-performe le MSCI World de 1,1 point (+1"

@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-11-14T05:31:09Z",
+ "genere_le_utc": "2026-11-15T05:34:47Z",
  "derniere_seance": "2026-11-13",
  "fenetre": {
   "debut": "2026-11-12T17:30:00+01:00",
@@ -131,18 +131,18 @@
    "couverture_partielle": false
   },
   "esg": {
-   "nb_articles": 57,
-   "nb_sources": 36,
+   "nb_articles": 59,
+   "nb_sources": 37,
    "nb_dates_approximatives": 0,
    "solde_dates_fiables": 0.0,
-   "part_media_principal_pct": 14.0,
+   "part_media_principal_pct": 13.6,
    "media_principal": "Edie",
    "solde_avec_plafond": 0.0,
-   "positif_pct": 21.1,
-   "neutre_pct": 57.9,
-   "negatif_pct": 21.1,
+   "positif_pct": 20.3,
+   "neutre_pct": 59.3,
+   "negatif_pct": 20.3,
    "solde": 0.0,
-   "marge_erreur": 16.8,
+   "marge_erreur": 16.3,
    "etiquette": "neutre",
    "plus_positifs": [
     {
@@ -1140,13 +1140,13 @@
   {
    "seance": "2026-11-13",
    "groupe": "esg",
-   "nb_articles": 57,
-   "nb_sources": 36,
-   "positif_pct": 21.1,
-   "neutre_pct": 57.9,
-   "negatif_pct": 21.1,
+   "nb_articles": 59,
+   "nb_sources": 37,
+   "positif_pct": 20.3,
+   "neutre_pct": 59.3,
+   "negatif_pct": 20.3,
    "solde": 0.0,
-   "marge_erreur": 16.8,
+   "marge_erreur": 16.3,
    "etiquette": "neutre",
    "couverture_partielle": false,
    "releves_reussis": 16.0,
@@ -1155,7 +1155,7 @@
    "nb_dates_approximatives": 0.0,
    "solde_dates_fiables": 0.0,
    "media_principal": "Edie",
-   "part_media_principal_pct": 14.0,
+   "part_media_principal_pct": 13.6,
    "solde_avec_plafond": 0.0
   },
   {
@@ -1198,7 +1198,7 @@
    "autres_medias_pct": 0.0
   },
   "esg": {
-   "nb_articles": 1524,
+   "nb_articles": 1526,
    "nb_seances": 20,
    "parts_pct": {
     "Edie": 7.9,
@@ -1206,10 +1206,10 @@
     "ESG News": 7.7,
     "Responsible Investor": 6.6,
     "Financial Times": 4.1,
-    "ESG Dive": 3.0,
+    "ESG Dive": 2.9,
     "Vietnam.vn": 2.0,
     "Trellis": 1.6,
-    "Reuters": 1.0,
+    "Reuters": 1.1,
     "New Private Markets": 1.0,
     "GreenMoney": 0.9,
     "Yahoo Finance": 0.9,
