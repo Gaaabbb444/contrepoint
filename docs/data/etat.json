@@ -1,92 +1,80 @@
 {
- "derniere_execution_utc": "2026-11-16T05:55:58Z",
+ "derniere_execution_utc": "2026-11-17T13:52:57Z",
  "donnees": {
-  "performance_derniere_seance": "2026-11-13",
+  "performance_derniere_seance": "2026-11-16",
   "performance_provisoire": false,
-  "sentiment_derniere_journee": "2026-11-13"
+  "sentiment_derniere_journee": "2026-11-16"
  },
  "etapes": {
   "performance": {
    "statut": "ok",
-   "message": "5 ETF, séance du 2026-11-13, 1419 séances communes",
-   "derniere_reussite_utc": "2026-11-16T05:55:58Z"
+   "message": "5 ETF, séance du 2026-11-16, 1420 séances communes",
+   "derniere_reussite_utc": "2026-11-17T13:52:57Z"
   },
   "secteurs": {
    "statut": "ok",
    "message": "4 compositions, 4 mesures d'effet sectoriel",
-   "derniere_reussite_utc": "2026-11-16T05:55:58Z"
+   "derniere_reussite_utc": "2026-11-17T13:52:57Z"
   },
   "sentiment": {
    "statut": "ok",
-   "message": "journée du 2026-11-13 : marche négatif (solde -25.8, n=248), esg neutre (solde 0.0, n=59)",
-   "derniere_reussite_utc": "2026-11-16T05:55:58Z"
+   "message": "journée du 2026-11-16 : marche négatif (solde -19.6, n=342), esg positif (solde 17.6, n=74)",
+   "derniere_reussite_utc": "2026-11-17T13:52:57Z"
   },
   "parallele": {
    "statut": "ok",
-   "message": "20 / 60 jours exploitables (estimation : 2027-01-14)",
-   "derniere_reussite_utc": "2026-11-16T05:55:58Z"
+   "message": "21 / 60 jours exploitables (estimation : 2027-01-14)",
+   "derniere_reussite_utc": "2026-11-17T13:52:57Z"
   },
   "synthese": {
    "statut": "ok",
-   "message": "Humeur du marché : négative le vendredi 13/11 (solde −26, marge ±10, 248 articles). Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres. Actualité ESG : neutre le vendredi 13/11 (solde 0, marge ±16, 59 articles). Sur 5 séances, l'ETF World SRI sous-performe le MSCI World de 1,1 point (+1",
-   "derniere_reussite_utc": "2026-11-16T05:55:58Z"
+   "message": "Humeur du marché : négative le lundi 16/11 (solde −20, marge ±8, 342 articles). Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres. Actualité ESG : positive le lundi 16/11 (solde +18, marge ±16, 74 articles). Sur 5 séances, l'ETF World SRI sous-performe le MSCI World de 0,5 point (+0,7 ",
+   "derniere_reussite_utc": "2026-11-17T13:52:57Z"
   }
  },
  "tout_va_bien": true,
  "alertes_24h": [
   {
-   "horodatage_utc": "2026-11-16 05:55:56",
+   "horodatage_utc": "2026-11-17 13:52:54",
    "etape": "secteurs:msci_world",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/251882/ishares-core-msci-world-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-16 05:55:56",
+   "horodatage_utc": "2026-11-17 13:52:54",
    "etape": "secteurs:screened",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/305419/ishares-msci-world-screened-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-16 05:55:56",
+   "horodatage_utc": "2026-11-17 13:52:55",
    "etape": "secteurs:sri",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/290846/ishares-msci-world-sri-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-16 05:55:56",
+   "horodatage_utc": "2026-11-17 13:52:55",
    "etape": "secteurs:paris",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/318383/ishares-msci-world-paris-aligned-climate-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-16 05:55:58",
+   "horodatage_utc": "2026-11-17 13:52:56",
    "etape": "sentiment",
    "statut": "avertissement",
-   "message": "Bloomberg pèse 52.2 % du groupe marche sur 20 séances (plafond de 25 % dépassé)"
+   "message": "Bloomberg pèse 52.1 % du groupe marche sur 20 séances (plafond de 25 % dépassé)"
   },
   {
-   "horodatage_utc": "2026-11-15 13:22:49",
-   "etape": "flux:Google Actualités : ESG investing",
-   "statut": "avertissement",
-   "message": "flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=ESG+investing+when:1d&hl=en-US&gl=US&ceid=US:en"
-  },
-  {
-   "horodatage_utc": "2026-11-15 13:22:55",
-   "etape": "flux:Google Actualités : sustainable finance",
-   "statut": "avertissement",
-   "message": "flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%22sustainable+finance%22+when:1d&hl=en-US&gl=US&ceid=US:en"
-  },
-  {
-   "horodatage_utc": "2026-11-15 16:02:52",
+   "horodatage_utc": "2026-11-16 22:23:53",
    "etape": "flux:Euronews Business",
    "statut": "avertissement",
    "message": "flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business"
   },
   {
-   "horodatage_utc": "2026-11-15 22:00:05",
-   "etape": "flux:ESG News",
+   "horodatage_utc": "2026-11-16 22:24:00",
+   "etape": "flux:Google Actualités : ESG investing",
    "statut": "avertissement",
-   "message": "flux indisponible : HTTPSConnectionPool(host='esgnews.com', port=443): Read timed out. (read timeout=25)"
+   "message": "flux indisponible : 429 Client Error: Too Many Requests for url: https://news.google.com/rss/search?q=ESG+investing+when:1d&hl=en-US&gl=US&ceid=US:en"
   }
  ],
  "credits": [
