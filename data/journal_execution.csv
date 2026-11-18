@@ -561,3 +561,13 @@
 2026-11-18 02:59:46,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
 2026-11-18 03:00:02,collecte_titres,ok,"289 articles lus, 223 doublons, 66 nouveaux {'marche': 61, 'esg': 5}, 1 flux en panne"
 2026-11-18 12:00:37,collecte_titres,ok,"298 articles lus, 177 doublons, 121 nouveaux {'marche': 94, 'esg': 27}, 0 flux en panne"
+2026-11-18 13:28:15,performance,ok,"5 ETF, séance du 2026-11-17, 1421 séances communes"
+2026-11-18 13:28:16,secteurs:msci_world,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/251882/ishares-core-msci-world-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-18 13:28:16,secteurs:screened,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/305419/ishares-msci-world-screened-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-18 13:28:16,secteurs:sri,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/290846/ishares-msci-world-sri-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-18 13:28:16,secteurs:paris,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/318383/ishares-msci-world-paris-aligned-climate-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-18 13:28:17,secteurs,ok,"4 compositions, 4 mesures d'effet sectoriel"
+2026-11-18 13:28:18,sentiment,avertissement,Bloomberg pèse 51.4 % du groupe marche sur 20 séances (plafond de 25 % dépassé)
+2026-11-18 13:28:18,sentiment,ok,"journée du 2026-11-17 : marche négatif (solde -24.2, n=207), esg positif (solde 20.8, n=53)"
+2026-11-18 13:28:18,parallele,ok,21 / 60 jours exploitables (estimation : 2027-01-15)
+2026-11-18 13:28:18,synthese,ok,"Humeur du marché : négative le mardi 17/11 (solde −24, marge ±11, 207 articles) — journée partiellement relevée. Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre. Actualité ESG : positive le mardi 17/11 (solde +21, marge ±17, 53 articles) — journée partiellement relevée. Sur 5 séances,"
