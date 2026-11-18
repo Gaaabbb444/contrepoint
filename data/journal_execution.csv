@@ -571,3 +571,4 @@
 2026-11-18 13:28:18,sentiment,ok,"journée du 2026-11-17 : marche négatif (solde -24.2, n=207), esg positif (solde 20.8, n=53)"
 2026-11-18 13:28:18,parallele,ok,21 / 60 jours exploitables (estimation : 2027-01-15)
 2026-11-18 13:28:18,synthese,ok,"Humeur du marché : négative le mardi 17/11 (solde −24, marge ±11, 207 articles) — journée partiellement relevée. Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre. Actualité ESG : positive le mardi 17/11 (solde +21, marge ±17, 53 articles) — journée partiellement relevée. Sur 5 séances,"
+2026-11-18 20:46:14,collecte_titres,ok,"321 articles lus, 219 doublons, 102 nouveaux {'marche': 71, 'esg': 31}, 0 flux en panne"
