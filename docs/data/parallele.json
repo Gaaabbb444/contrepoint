@@ -168,7 +168,7 @@
      },
      {
       "seance": "2026-11-20",
-      "solde": -13.6,
+      "solde": -13.5,
       "etiquette": "négatif",
       "relatif_j_pts": -0.27
      }
@@ -516,7 +516,7 @@
      },
      {
       "seance": "2026-11-20",
-      "solde": -13.6,
+      "solde": -13.5,
       "etiquette": "négatif",
       "relatif_j_pts": 0.21
      }
@@ -864,7 +864,7 @@
      },
      {
       "seance": "2026-11-20",
-      "solde": -13.6,
+      "solde": -13.5,
       "etiquette": "négatif",
       "relatif_j_pts": 0.11
      }
@@ -1212,7 +1212,7 @@
      },
      {
       "seance": "2026-11-20",
-      "solde": -13.6,
+      "solde": -13.5,
       "etiquette": "négatif",
       "relatif_j_pts": 0.398
      }
@@ -1439,7 +1439,7 @@
   "seuil": 0.361,
   "explication": "Sur 30 séances, une corrélation comprise entre −seuil et +seuil peut apparaître par pur hasard (95 % des cas) : la courbe ne dit rien tant qu'elle reste dans cette zone."
  },
- "genere_le_utc": "2026-11-21T13:02:09Z",
+ "genere_le_utc": "2026-11-22T12:53:33Z",
  "parametres": {
   "jours_min": 60,
   "jours_min_par_categorie": 15,

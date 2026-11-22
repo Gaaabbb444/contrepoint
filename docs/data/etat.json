@@ -1,5 +1,5 @@
 {
- "derniere_execution_utc": "2026-11-21T13:02:09Z",
+ "derniere_execution_utc": "2026-11-22T12:53:33Z",
  "donnees": {
   "performance_derniere_seance": "2026-11-20",
   "performance_provisoire": false,
@@ -9,69 +9,63 @@
   "performance": {
    "statut": "ok",
    "message": "5 ETF, séance du 2026-11-20, 1424 séances communes",
-   "derniere_reussite_utc": "2026-11-21T13:02:09Z"
+   "derniere_reussite_utc": "2026-11-22T12:53:33Z"
   },
   "secteurs": {
    "statut": "ok",
    "message": "4 compositions, 4 mesures d'effet sectoriel",
-   "derniere_reussite_utc": "2026-11-21T13:02:09Z"
+   "derniere_reussite_utc": "2026-11-22T12:53:33Z"
   },
   "sentiment": {
    "statut": "ok",
-   "message": "journée du 2026-11-20 : marche négatif (solde -13.6, n=214), esg positif (solde 31.6, n=57)",
-   "derniere_reussite_utc": "2026-11-21T13:02:09Z"
+   "message": "journée du 2026-11-20 : marche négatif (solde -13.5, n=215), esg positif (solde 31.6, n=57)",
+   "derniere_reussite_utc": "2026-11-22T12:53:33Z"
   },
   "parallele": {
    "statut": "ok",
    "message": "24 / 60 jours exploitables (estimation : 2027-01-15)",
-   "derniere_reussite_utc": "2026-11-21T13:02:09Z"
+   "derniere_reussite_utc": "2026-11-22T12:53:33Z"
   },
   "synthese": {
    "statut": "ok",
-   "message": "Humeur du marché : négative le vendredi 20/11 (solde −14, marge ±11, 214 articles). Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre. Actualité ESG : positive le vendredi 20/11 (solde +32, marge ±15, 57 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,3 point (−",
-   "derniere_reussite_utc": "2026-11-21T13:02:09Z"
+   "message": "Humeur du marché : négative le vendredi 20/11 (solde −14, marge ±11, 215 articles). Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre. Actualité ESG : positive le vendredi 20/11 (solde +32, marge ±15, 57 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,3 point (−",
+   "derniere_reussite_utc": "2026-11-22T12:53:33Z"
   }
  },
  "tout_va_bien": true,
  "alertes_24h": [
   {
-   "horodatage_utc": "2026-11-21 13:02:05",
+   "horodatage_utc": "2026-11-22 12:53:30",
    "etape": "secteurs:msci_world",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/251882/ishares-core-msci-world-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-21 13:02:05",
+   "horodatage_utc": "2026-11-22 12:53:30",
    "etape": "secteurs:screened",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/305419/ishares-msci-world-screened-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-21 13:02:05",
+   "horodatage_utc": "2026-11-22 12:53:30",
    "etape": "secteurs:sri",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/290846/ishares-msci-world-sri-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-21 13:02:06",
+   "horodatage_utc": "2026-11-22 12:53:30",
    "etape": "secteurs:paris",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/318383/ishares-msci-world-paris-aligned-climate-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-21 13:02:09",
+   "horodatage_utc": "2026-11-22 12:53:33",
    "etape": "sentiment",
    "statut": "avertissement",
    "message": "Bloomberg pèse 49.3 % du groupe marche sur 20 séances (plafond de 25 % dépassé)"
   },
   {
-   "horodatage_utc": "2026-11-20 13:38:16",
-   "etape": "sentiment",
-   "statut": "avertissement",
-   "message": "Bloomberg pèse 50.2 % du groupe marche sur 20 séances (plafond de 25 % dépassé)"
-  },
-  {
-   "horodatage_utc": "2026-11-20 20:36:37",
+   "horodatage_utc": "2026-11-21 19:34:42",
    "etape": "flux:Euronews Business",
    "statut": "avertissement",
    "message": "flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business"

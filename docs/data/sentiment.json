@@ -1,5 +1,5 @@
 {
- "genere_le_utc": "2026-11-21T13:02:08Z",
+ "genere_le_utc": "2026-11-22T12:53:32Z",
  "derniere_seance": "2026-11-20",
  "fenetre": {
   "debut": "2026-11-19T17:30:00+01:00",
@@ -8,18 +8,18 @@
  },
  "groupes": {
   "marche": {
-   "nb_articles": 214,
-   "nb_sources": 8,
+   "nb_articles": 215,
+   "nb_sources": 9,
    "nb_dates_approximatives": 0,
-   "solde_dates_fiables": -13.6,
-   "part_media_principal_pct": 36.9,
+   "solde_dates_fiables": -13.5,
+   "part_media_principal_pct": 36.7,
    "media_principal": "Bloomberg",
-   "solde_avec_plafond": -16.6,
-   "positif_pct": 27.1,
-   "neutre_pct": 32.2,
-   "negatif_pct": 40.7,
-   "solde": -13.6,
-   "marge_erreur": 10.9,
+   "solde_avec_plafond": -16.5,
+   "positif_pct": 27.0,
+   "neutre_pct": 32.6,
+   "negatif_pct": 40.5,
+   "solde": -13.5,
+   "marge_erreur": 10.8,
    "etiquette": "négatif",
    "plus_positifs": [
     {
@@ -1351,28 +1351,28 @@
   {
    "seance": "2026-11-20",
    "groupe": "marche",
-   "nb_articles": 214,
-   "nb_sources": 8,
-   "positif_pct": 27.1,
-   "neutre_pct": 32.2,
-   "negatif_pct": 40.7,
-   "solde": -13.6,
-   "marge_erreur": 10.9,
+   "nb_articles": 215,
+   "nb_sources": 9,
+   "positif_pct": 27.0,
+   "neutre_pct": 32.6,
+   "negatif_pct": 40.5,
+   "solde": -13.5,
+   "marge_erreur": 10.8,
    "etiquette": "négatif",
    "couverture_partielle": false,
    "releves_reussis": 6.0,
    "releves_attendus": 8.0,
    "plus_long_trou_heures": 9.5,
    "nb_dates_approximatives": 0.0,
-   "solde_dates_fiables": -13.6,
+   "solde_dates_fiables": -13.5,
    "media_principal": "Bloomberg",
-   "part_media_principal_pct": 36.9,
-   "solde_avec_plafond": -16.6
+   "part_media_principal_pct": 36.7,
+   "solde_avec_plafond": -16.5
   }
  ],
  "repartition_medias": {
   "marche": {
-   "nb_articles": 5239,
+   "nb_articles": 5240,
    "nb_seances": 20,
    "parts_pct": {
     "Bloomberg": 49.3,
