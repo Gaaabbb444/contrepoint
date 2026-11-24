@@ -648,3 +648,7 @@
 2026-11-23 15:24:39,sentiment,ok,"journée du 2026-11-20 : marche négatif (solde -13.5, n=215), esg positif (solde 31.6, n=57)"
 2026-11-23 15:24:39,parallele,ok,24 / 60 jours exploitables (estimation : 2027-01-15)
 2026-11-23 15:24:39,synthese,ok,"Humeur du marché : négative le vendredi 20/11 (solde −14, marge ±11, 215 articles). Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre. Actualité ESG : positive le vendredi 20/11 (solde +32, marge ±15, 57 articles). Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,3 point (−"
+2026-11-24 02:26:11,flux:Guardian Business,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/rss
+2026-11-24 02:26:11,flux:Guardian Economics,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/economics/rss
+2026-11-24 02:26:11,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
+2026-11-24 02:26:30,collecte_titres,ok,"240 articles lus, 114 doublons, 126 nouveaux {'marche': 78, 'esg': 48}, 3 flux en panne"
