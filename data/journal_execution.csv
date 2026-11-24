@@ -657,3 +657,13 @@
 2026-11-24 14:01:15,flux:Google Actualités : ESG investing,avertissement,flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=ESG+investing+when:1d&hl=en-US&gl=US&ceid=US:en
 2026-11-24 14:01:22,flux:Google Actualités : sustainable finance,avertissement,flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%22sustainable+finance%22+when:1d&hl=en-US&gl=US&ceid=US:en
 2026-11-24 14:01:28,collecte_titres,ok,"242 articles lus, 126 doublons, 116 nouveaux {'marche': 101, 'esg': 15}, 4 flux en panne"
+2026-11-24 15:18:42,performance,ok,"5 ETF, séance du 2026-11-23, 1425 séances communes"
+2026-11-24 15:18:43,secteurs:msci_world,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/251882/ishares-core-msci-world-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-24 15:18:43,secteurs:screened,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/305419/ishares-msci-world-screened-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-24 15:18:43,secteurs:sri,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/290846/ishares-msci-world-sri-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-24 15:18:43,secteurs:paris,avertissement,composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/318383/ishares-msci-world-paris-aligned-climate-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe
+2026-11-24 15:18:45,secteurs,ok,"4 compositions, 4 mesures d'effet sectoriel"
+2026-11-24 15:18:46,sentiment,avertissement,Bloomberg pèse 49.0 % du groupe marche sur 20 séances (plafond de 25 % dépassé)
+2026-11-24 15:18:46,sentiment,ok,"journée du 2026-11-23 : marche négatif (solde -19.6, n=321), esg neutre (solde 9.6, n=83)"
+2026-11-24 15:18:46,parallele,ok,24 / 60 jours exploitables (estimation : 2027-01-18)
+2026-11-24 15:18:46,synthese,ok,"Humeur du marché : négative le lundi 23/11 (solde −20, marge ±9, 321 articles) — journée partiellement relevée. Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre. Actualité ESG : neutre le lundi 23/11 (solde +10, marge ±13, 83 articles) — journée partiellement relevée. Sur 5 séances, l'"

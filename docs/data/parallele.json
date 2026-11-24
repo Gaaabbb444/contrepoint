@@ -6,7 +6,7 @@
      "jours_exploitables": 24,
      "jours_requis": 60,
      "pourcentage": 40,
-     "date_estimee": "2027-01-15",
+     "date_estimee": "2027-01-18",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
@@ -16,7 +16,7 @@
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 23,
+     "n": 24,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -179,7 +179,7 @@
      "jours_exploitables": 24,
      "jours_requis": 60,
      "pourcentage": 40,
-     "date_estimee": "2027-01-15",
+     "date_estimee": "2027-01-18",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
@@ -189,7 +189,7 @@
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 23,
+     "n": 24,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -354,7 +354,7 @@
      "jours_exploitables": 24,
      "jours_requis": 60,
      "pourcentage": 40,
-     "date_estimee": "2027-01-15",
+     "date_estimee": "2027-01-18",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
@@ -364,7 +364,7 @@
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 23,
+     "n": 24,
      "statut": "principal"
     },
     "comparaison_jours": {
@@ -527,7 +527,7 @@
      "jours_exploitables": 24,
      "jours_requis": 60,
      "pourcentage": 40,
-     "date_estimee": "2027-01-15",
+     "date_estimee": "2027-01-18",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
@@ -537,7 +537,7 @@
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 23,
+     "n": 24,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -702,7 +702,7 @@
      "jours_exploitables": 24,
      "jours_requis": 60,
      "pourcentage": 40,
-     "date_estimee": "2027-01-15",
+     "date_estimee": "2027-01-18",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
@@ -712,7 +712,7 @@
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 23,
+     "n": 24,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -875,7 +875,7 @@
      "jours_exploitables": 24,
      "jours_requis": 60,
      "pourcentage": 40,
-     "date_estimee": "2027-01-15",
+     "date_estimee": "2027-01-18",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
@@ -885,7 +885,7 @@
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 23,
+     "n": 24,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -1050,7 +1050,7 @@
      "jours_exploitables": 24,
      "jours_requis": 60,
      "pourcentage": 40,
-     "date_estimee": "2027-01-15",
+     "date_estimee": "2027-01-18",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
@@ -1060,7 +1060,7 @@
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 23,
+     "n": 24,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -1223,7 +1223,7 @@
      "jours_exploitables": 24,
      "jours_requis": 60,
      "pourcentage": 40,
-     "date_estimee": "2027-01-15",
+     "date_estimee": "2027-01-18",
      "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
     },
     "correlation_meme_jour": {
@@ -1233,7 +1233,7 @@
     },
     "test_decalage_j1": {
      "disponible": false,
-     "n": 23,
+     "n": 24,
      "statut": "exploratoire"
     },
     "comparaison_jours": {
@@ -1399,7 +1399,7 @@
    "jours_exploitables": 24,
    "jours_requis": 60,
    "pourcentage": 40,
-   "date_estimee": "2027-01-15",
+   "date_estimee": "2027-01-18",
    "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
   },
   "correlation": {
@@ -1422,14 +1422,14 @@
   },
   "resultat": {
    "disponible": false,
-   "n": 23,
+   "n": 24,
    "statut": "principal"
   },
   "progression": {
    "jours_exploitables": 24,
    "jours_requis": 60,
    "pourcentage": 40,
-   "date_estimee": "2027-01-15",
+   "date_estimee": "2027-01-18",
    "hypothese": "si chaque séance à venir est exploitable (articles suffisants et relevés complets)"
   }
  },
@@ -1439,7 +1439,7 @@
   "seuil": 0.361,
   "explication": "Sur 30 séances, une corrélation comprise entre −seuil et +seuil peut apparaître par pur hasard (95 % des cas) : la courbe ne dit rien tant qu'elle reste dans cette zone."
  },
- "genere_le_utc": "2026-11-23T15:24:39Z",
+ "genere_le_utc": "2026-11-24T15:18:46Z",
  "parametres": {
   "jours_min": 60,
   "jours_min_par_categorie": 15,
