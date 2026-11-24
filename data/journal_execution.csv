@@ -652,3 +652,8 @@
 2026-11-24 02:26:11,flux:Guardian Economics,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/economics/rss
 2026-11-24 02:26:11,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
 2026-11-24 02:26:30,collecte_titres,ok,"240 articles lus, 114 doublons, 126 nouveaux {'marche': 78, 'esg': 48}, 3 flux en panne"
+2026-11-24 14:01:01,flux:Guardian Business,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/rss
+2026-11-24 14:01:01,flux:Guardian Economics,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/economics/rss
+2026-11-24 14:01:15,flux:Google Actualités : ESG investing,avertissement,flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=ESG+investing+when:1d&hl=en-US&gl=US&ceid=US:en
+2026-11-24 14:01:22,flux:Google Actualités : sustainable finance,avertissement,flux indisponible : 503 Server Error: Service Unavailable for url: https://news.google.com/rss/search?q=%22sustainable+finance%22+when:1d&hl=en-US&gl=US&ceid=US:en
+2026-11-24 14:01:28,collecte_titres,ok,"242 articles lus, 126 doublons, 116 nouveaux {'marche': 101, 'esg': 15}, 4 flux en panne"
