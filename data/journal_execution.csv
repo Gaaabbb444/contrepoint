@@ -688,3 +688,7 @@
 2026-11-25 19:29:10,flux:Guardian Economics,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/economics/rss
 2026-11-25 19:29:10,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
 2026-11-25 19:29:24,collecte_titres,ok,"302 articles lus, 175 doublons, 127 nouveaux {'marche': 93, 'esg': 34}, 3 flux en panne"
+2026-11-26 03:40:44,flux:Guardian Business,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/rss
+2026-11-26 03:40:45,flux:Guardian Economics,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/economics/rss
+2026-11-26 03:40:45,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
+2026-11-26 03:40:59,collecte_titres,ok,"295 articles lus, 222 doublons, 73 nouveaux {'marche': 52, 'esg': 21}, 3 flux en panne"
