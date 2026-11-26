@@ -1,62 +1,68 @@
 {
- "derniere_execution_utc": "2026-11-25T14:58:46Z",
+ "derniere_execution_utc": "2026-11-26T14:29:49Z",
  "donnees": {
-  "performance_derniere_seance": "2026-11-24",
+  "performance_derniere_seance": "2026-11-25",
   "performance_provisoire": false,
-  "sentiment_derniere_journee": "2026-11-24"
+  "sentiment_derniere_journee": "2026-11-25"
  },
  "etapes": {
   "performance": {
    "statut": "ok",
-   "message": "5 ETF, séance du 2026-11-24, 1426 séances communes",
-   "derniere_reussite_utc": "2026-11-25T14:58:46Z"
+   "message": "5 ETF, séance du 2026-11-25, 1427 séances communes",
+   "derniere_reussite_utc": "2026-11-26T14:29:49Z"
   },
   "secteurs": {
    "statut": "ok",
    "message": "4 compositions, 4 mesures d'effet sectoriel",
-   "derniere_reussite_utc": "2026-11-25T14:58:46Z"
+   "derniere_reussite_utc": "2026-11-26T14:29:49Z"
   },
   "sentiment": {
    "statut": "ok",
-   "message": "journée du 2026-11-24 : marche neutre (solde 3.8, n=157), esg neutre (solde 1.6, n=63)",
-   "derniere_reussite_utc": "2026-11-25T14:58:46Z"
+   "message": "journée du 2026-11-25 : marche négatif (solde -22.6, n=168), esg positif (solde 12.3, n=81)",
+   "derniere_reussite_utc": "2026-11-26T14:29:49Z"
   },
   "parallele": {
    "statut": "ok",
-   "message": "24 / 60 jours exploitables (estimation : 2027-01-19)",
-   "derniere_reussite_utc": "2026-11-25T14:58:46Z"
+   "message": "24 / 60 jours exploitables (estimation : 2027-01-20)",
+   "derniere_reussite_utc": "2026-11-26T14:29:49Z"
   },
   "synthese": {
    "statut": "ok",
-   "message": "Humeur du marché : neutre le mardi 24/11 (solde +4, marge ±13, 157 articles) — journée partiellement relevée. Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres. Actualité ESG : neutre le mardi 24/11 (solde +2, marge ±14, 63 articles) — journée partiellement relevée. Sur 5 séances, l'ET",
-   "derniere_reussite_utc": "2026-11-25T14:58:46Z"
+   "message": "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée. Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres. Actualité ESG : positive le mercredi 25/11 (solde +12, marge ±12, 81 articles) — journée partiellement relevée. Sur 5 s",
+   "derniere_reussite_utc": "2026-11-26T14:29:49Z"
   }
  },
  "tout_va_bien": true,
  "alertes_24h": [
   {
-   "horodatage_utc": "2026-11-25 14:58:43",
+   "horodatage_utc": "2026-11-26 14:29:45",
    "etape": "secteurs:msci_world",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/251882/ishares-core-msci-world-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-25 14:58:43",
+   "horodatage_utc": "2026-11-26 14:29:45",
    "etape": "secteurs:screened",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/305419/ishares-msci-world-screened-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-25 14:58:43",
+   "horodatage_utc": "2026-11-26 14:29:46",
    "etape": "secteurs:sri",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/290846/ishares-msci-world-sri-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
   },
   {
-   "horodatage_utc": "2026-11-25 14:58:43",
+   "horodatage_utc": "2026-11-26 14:29:46",
    "etape": "secteurs:paris",
    "statut": "avertissement",
    "message": "composition non mise à jour (400 Client Error: Bad Request for url: https://www.ishares.com/uk/individual/en/products/318383/ishares-msci-world-paris-aligned-climate-ucits-etf/latest-holdings.csv) ; ancienne version conservée si elle existe"
+  },
+  {
+   "horodatage_utc": "2026-11-26 14:29:49",
+   "etape": "sentiment",
+   "statut": "avertissement",
+   "message": "Bloomberg pèse 48.2 % du groupe marche sur 20 séances (plafond de 25 % dépassé)"
   },
   {
    "horodatage_utc": "2026-11-25 14:58:46",
@@ -65,25 +71,19 @@
    "message": "Bloomberg pèse 48.6 % du groupe marche sur 20 séances (plafond de 25 % dépassé)"
   },
   {
-   "horodatage_utc": "2026-11-24 15:18:46",
-   "etape": "sentiment",
-   "statut": "avertissement",
-   "message": "Bloomberg pèse 49.0 % du groupe marche sur 20 séances (plafond de 25 % dépassé)"
-  },
-  {
-   "horodatage_utc": "2026-11-24 23:59:00",
+   "horodatage_utc": "2026-11-25 19:29:10",
    "etape": "flux:Guardian Business",
    "statut": "avertissement",
    "message": "flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/rss"
   },
   {
-   "horodatage_utc": "2026-11-24 23:59:00",
+   "horodatage_utc": "2026-11-25 19:29:10",
    "etape": "flux:Guardian Economics",
    "statut": "avertissement",
    "message": "flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/economics/rss"
   },
   {
-   "horodatage_utc": "2026-11-25 08:55:11",
+   "horodatage_utc": "2026-11-25 19:29:10",
    "etape": "flux:Euronews Business",
    "statut": "avertissement",
    "message": "flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business"
