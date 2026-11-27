@@ -1,53 +1,53 @@
 {
- "genere_le_utc": "2026-11-26T14:29:49Z",
+ "genere_le_utc": "2026-11-27T14:22:00Z",
  "methode": "Phrases générées par des règles fixes (aucune intelligence artificielle) : voir pipeline/synthese.py.",
  "defaut": "sri",
  "par_etf": {
   "screened": [
-   "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée.",
-   "Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres.",
-   "Actualité ESG : positive le mercredi 25/11 (solde +12, marge ±12, 81 articles) — journée partiellement relevée.",
-   "Sur 5 séances, l'ETF World Screened sous-performe le MSCI World de 0,2 point (−4,0 % contre −3,8 %) ; sur un an, l'écart est de −1,0 point.",
-   "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : pas encore interprétable (24 / 60 jours de bourse exploitables ; résultats attendus vers le 20/01/2027)."
+   "Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée.",
+   "Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre.",
+   "Actualité ESG : neutre le jeudi 26/11 (solde +9, marge ±20, 46 articles) — journée partiellement relevée.",
+   "Sur 5 séances, l'ETF World Screened sous-performe le MSCI World de 0,2 point (−0,9 % contre −0,8 %) ; sur un an, l'écart est de −0,9 point.",
+   "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : pas encore interprétable (24 / 60 jours de bourse exploitables ; résultats attendus vers le 21/01/2027)."
   ],
   "sri": [
-   "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée.",
-   "Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres.",
-   "Actualité ESG : positive le mercredi 25/11 (solde +12, marge ±12, 81 articles) — journée partiellement relevée.",
-   "Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 1,2 point (−2,7 % contre −3,8 %) ; sur un an, l'écart est de +2,2 points.",
-   "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : pas encore interprétable (24 / 60 jours de bourse exploitables ; résultats attendus vers le 20/01/2027)."
+   "Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée.",
+   "Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre.",
+   "Actualité ESG : neutre le jeudi 26/11 (solde +9, marge ±20, 46 articles) — journée partiellement relevée.",
+   "Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,8 point (+0,0 % contre −0,8 %) ; sur un an, l'écart est de +1,7 point.",
+   "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : pas encore interprétable (24 / 60 jours de bourse exploitables ; résultats attendus vers le 21/01/2027)."
   ],
   "paris": [
-   "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée.",
-   "Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres.",
-   "Actualité ESG : positive le mercredi 25/11 (solde +12, marge ±12, 81 articles) — journée partiellement relevée.",
-   "Sur 5 séances, l'ETF World Paris-Aligned surperforme le MSCI World de 0,2 point (−3,6 % contre −3,8 %) ; sur un an, l'écart est de −3,1 points.",
-   "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : pas encore interprétable (24 / 60 jours de bourse exploitables ; résultats attendus vers le 20/01/2027)."
+   "Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée.",
+   "Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre.",
+   "Actualité ESG : neutre le jeudi 26/11 (solde +9, marge ±20, 46 articles) — journée partiellement relevée.",
+   "Sur 5 séances, l'ETF World Paris-Aligned fait jeu égal avec le MSCI World (−0,7 % contre −0,8 %) ; sur un an, l'écart est de −3,2 points.",
+   "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : pas encore interprétable (24 / 60 jours de bourse exploitables ; résultats attendus vers le 21/01/2027)."
   ],
   "bnp_sri_pab": [
-   "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée.",
-   "Sur les 5 dernières journées de bourse : 3 négatives, 2 neutres.",
-   "Actualité ESG : positive le mercredi 25/11 (solde +12, marge ±12, 81 articles) — journée partiellement relevée.",
-   "Sur 5 séances, l'ETF BNP Easy SRI PAB surperforme le MSCI World de 0,6 point (−3,2 % contre −3,8 %) ; sur un an, l'écart est de +1,5 point.",
-   "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : pas encore interprétable (24 / 60 jours de bourse exploitables ; résultats attendus vers le 20/01/2027)."
+   "Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée.",
+   "Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre.",
+   "Actualité ESG : neutre le jeudi 26/11 (solde +9, marge ±20, 46 articles) — journée partiellement relevée.",
+   "Sur 5 séances, l'ETF BNP Easy SRI PAB surperforme le MSCI World de 0,6 point (−0,2 % contre −0,8 %) ; sur un an, l'écart est de +1,5 point.",
+   "Test principal (sentiment du marché du jour et performance relative de l'ETF World SRI le lendemain) : pas encore interprétable (24 / 60 jours de bourse exploitables ; résultats attendus vers le 21/01/2027)."
   ]
  },
  "essentiel_par_etf": {
   "screened": [
-   "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée.",
-   "Sur 5 séances, l'ETF World Screened sous-performe le MSCI World de 0,2 point (−4,0 % contre −3,8 %) ; sur un an, l'écart est de −1,0 point."
+   "Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée.",
+   "Sur 5 séances, l'ETF World Screened sous-performe le MSCI World de 0,2 point (−0,9 % contre −0,8 %) ; sur un an, l'écart est de −0,9 point."
   ],
   "sri": [
-   "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée.",
-   "Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 1,2 point (−2,7 % contre −3,8 %) ; sur un an, l'écart est de +2,2 points."
+   "Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée.",
+   "Sur 5 séances, l'ETF World SRI surperforme le MSCI World de 0,8 point (+0,0 % contre −0,8 %) ; sur un an, l'écart est de +1,7 point."
   ],
   "paris": [
-   "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée.",
-   "Sur 5 séances, l'ETF World Paris-Aligned surperforme le MSCI World de 0,2 point (−3,6 % contre −3,8 %) ; sur un an, l'écart est de −3,1 points."
+   "Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée.",
+   "Sur 5 séances, l'ETF World Paris-Aligned fait jeu égal avec le MSCI World (−0,7 % contre −0,8 %) ; sur un an, l'écart est de −3,2 points."
   ],
   "bnp_sri_pab": [
-   "Humeur du marché : négative le mercredi 25/11 (solde −23, marge ±12, 168 articles) — journée partiellement relevée.",
-   "Sur 5 séances, l'ETF BNP Easy SRI PAB surperforme le MSCI World de 0,6 point (−3,2 % contre −3,8 %) ; sur un an, l'écart est de +1,5 point."
+   "Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée.",
+   "Sur 5 séances, l'ETF BNP Easy SRI PAB surperforme le MSCI World de 0,6 point (−0,2 % contre −0,8 %) ; sur un an, l'écart est de +1,5 point."
   ]
  }
 }
