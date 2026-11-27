@@ -726,3 +726,7 @@
 2026-11-27 14:22:00,sentiment,ok,"journée du 2026-11-26 : marche négatif (solde -21.4, n=187), esg neutre (solde 8.7, n=46)"
 2026-11-27 14:22:00,parallele,ok,24 / 60 jours exploitables (estimation : 2027-01-21)
 2026-11-27 14:22:00,synthese,ok,"Humeur du marché : négative le jeudi 26/11 (solde −21, marge ±12, 187 articles) — journée partiellement relevée. Sur les 5 dernières journées de bourse : 4 négatives, 1 neutre. Actualité ESG : neutre le jeudi 26/11 (solde +9, marge ±20, 46 articles) — journée partiellement relevée. Sur 5 séances, l'"
+2026-11-27 23:37:08,flux:Guardian Business,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/rss
+2026-11-27 23:37:08,flux:Guardian Economics,avertissement,flux indisponible : 403 Client Error: Forbidden for url: https://www.theguardian.com/business/economics/rss
+2026-11-27 23:37:09,flux:Euronews Business,avertissement,flux indisponible : 406 Client Error: Not Acceptable for url: https://www.euronews.com/rss?level=vertical&name=business
+2026-11-27 23:37:20,collecte_titres,ok,"236 articles lus, 151 doublons, 85 nouveaux {'marche': 45, 'esg': 40}, 3 flux en panne"
